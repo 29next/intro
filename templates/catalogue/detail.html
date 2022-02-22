@@ -1,12 +1,12 @@
 {% extends "layouts/base.html" %}
 {% block seo %}
-{% seo %}
+    {% seo %}
 {% endblock %}
 {% block title %}
-{{ product.get_title }} | {{ block.super }}
+    {{ product.get_title }} | {{ block.super }}
 {% endblock %}
 {% block description %}
-{{ product.description|default:""|striptags }}
+    {{ product.description|default:""|striptags }}
 {% endblock %}
 {% block breadcrumbs %}
 <section class="store_breadcrumbs">
@@ -21,18 +21,17 @@
     </div>
 </section>
 {% endblock %}
-{% block header %}
-{% endblock header %}
+{% block header %}{% endblock header %}
 {% block content %}
 {% if product.attr.top_bg_img %}
-<style type="text/css">
-@media (min-width: 575px) {
-    .product-intro {
-        background: url('{{ product.attr.top_bg_img.url }}') no-repeat;
-        background-size: cover;
+    <style type="text/css">
+    @media (min-width: 575px) {
+        .product-intro {
+            background: url('{{ product.attr.top_bg_img.url }}') no-repeat;
+            background-size: cover;
+        }
     }
-}
-</style>
+    </style>
 {% endif %}
 <section class="product-{{product.id}} catalogue_product product-intro">
     <div class="store_container">
@@ -52,12 +51,13 @@
                 <div class="catalogue_item-rating catalogue_item-rating--mobile">
                     <div class="catalogue_item-rating-stars">
                         {% for i in '12345' %}
-                        {% if forloop.counter <= product.rating %} <span class="is-count">&#9733;</span>
+                            {% if forloop.counter <= product.rating %}
+                            <span class="is-count">&#9733;</span>
                             {% else %}
-                            <span>&#9733;</span>
+                                <span>&#9733;</span>
                             {% endif %}
-                            {% endfor %}
-                            <span>&nbsp;&nbsp;({{product.num_approved_reviews}})</span>
+                        {% endfor %}
+                        <span>&nbsp;&nbsp;({{product.num_approved_reviews}})</span>
                     </div>
                 </div>
                 {% endif %}
@@ -76,21 +76,21 @@
                 </div>
                 <div class="catalogue_product-price">
                     {% block product_stock_record %}
-                    {% purchase_info_for_product request product as session %}
-                    {% if session.price.exists %}
-                    {% if session.price.price_retail > session.price.excl_tax %}
-                    <del data-product-price-retail>{{ session.price.price_retail|currency:session.price.currency }}</del>
-                    {% endif %}
-                    {% if session.price.excl_tax == 0 %}
-                    {% t "store.catalogue.free" %}
-                    {% elif session.price.is_tax_known %}
-                    <span data-product-price>{{ session.price.incl_tax|currency:session.price.currency }}</span>
-                    {% else %}
-                    {{ session.price.excl_tax|currency:session.price.currency }}
-                    {% endif %}
-                    {% else %}
-                    &nbsp;
-                    {% endif %}
+                        {% purchase_info_for_product request product as session %}
+                        {% if session.price.exists %}
+                            {% if session.price.price_retail > session.price.excl_tax %}
+                                <del data-product-price-retail>{{ session.price.price_retail|currency:session.price.currency }}</del>
+                            {% endif %}
+                            {% if session.price.excl_tax == 0 %}
+                                {% t "store.catalogue.free" %}
+                            {% elif session.price.is_tax_known %}
+                                <span data-product-price>{{ session.price.incl_tax|currency:session.price.currency }}</span>
+                            {% else %}
+                                {{ session.price.excl_tax|currency:session.price.currency }}
+                            {% endif %}
+                        {% else %}
+                        &nbsp;
+                        {% endif %}
                     {% endblock %}
                 </div>
                 {% if product.attr.tagline %}
@@ -103,12 +103,13 @@
                 <div class="catalogue_item-rating">
                     <div class="catalogue_item-rating-stars">
                         {% for i in '12345' %}
-                        {% if forloop.counter <= product.rating %} <span class="is-count">&#9733;</span>
+                            {% if forloop.counter <= product.rating %} 
+                                <span class="is-count">&#9733;</span>
                             {% else %}
-                            <span>&#9733;</span>
+                                <span>&#9733;</span>
                             {% endif %}
-                            {% endfor %}
-                            <span>&nbsp;&nbsp;({{product.num_approved_reviews}})</span>
+                        {% endfor %}
+                        <span>&nbsp;&nbsp;({{product.num_approved_reviews}})</span>
                     </div>
                 </div>
                 {% endif %}
@@ -188,85 +189,84 @@
             <div id="catalogue_product-tab-content" class="content-body">
                 <div id="catalogue_product-tab-about">
                     {% block product_description %}
-                    {% if product.get_description %}
-                    {{ product.get_description|safe }}
-                    {% endif %}
+                        {% if product.get_description %}
+                            {{ product.get_description|safe }}
+                        {% endif %}
                     {% endblock %}
                 </div>
                 <div id="catalogue_product-tab-reviews" class="is-hidden">
                     {% if product.num_approved_reviews == 0 %}
-                    <p>
-                        {% if product|is_review_permitted:user %}
-                            {% url 'catalogue:reviews-add' product_slug=product.slug product_pk=product.id as add_review_url %}
-                            {% t "store.catalogue.no_reviews" %} <a href="{{ add_review_url }}#addreview">{% t "store.catalogue.no_reviews_add" %}</a>.
-                        {% else %}
-                            {% t "store.catalogue.no_reviews" %}.
-                        {% endif %}
-                    </p>
+                        <p>
+                            {% if product|is_review_permitted:user %}
+                                {% url 'catalogue:reviews-add' product_slug=product.slug product_pk=product.id as add_review_url %}
+                                {% t "store.catalogue.no_reviews" %} <a href="{{ add_review_url }}#addreview">{% t "store.catalogue.no_reviews_add" %}</a>.
+                            {% else %}
+                                {% t "store.catalogue.no_reviews" %}.
+                            {% endif %}
+                        </p>
                     {% else %}
-                    <h4 class="mb-3">{% t "store.catalogue.customer_reviews" %}</h4>
-                    <div class="catalogue_item-rating">
-                        <div class="catalogue_item-rating-stars">
-                            {% for i in '12345' %}
-                            {% if forloop.counter <= product.rating %} <span class="is-count">&#9733;</span>
+                        <h4 class="mb-3">{% t "store.catalogue.customer_reviews" %}</h4>
+                        <div class="catalogue_item-rating">
+                            <div class="catalogue_item-rating-stars">
+                                {% for i in '12345' %}
+                                    {% if forloop.counter <= product.rating %} <span class="is-count">&#9733;</span>
                                 {% else %}
-                                <span>&#9733;</span>
-                                {% endif %}
+                                    <span>&#9733;</span>
+                                    {% endif %}
                                 {% endfor %}
+                            </div>
+                            <div class="catalogue_item-rating-count">
+                                ({{product.num_approved_reviews}} Customer Reviews)
+                            </div>
                         </div>
-                        <div class="catalogue_item-rating-count">
-                            ({{product.num_approved_reviews}} Customer Reviews)
-                        </div>
-                    </div>
-                    <div class="catalogue_product-review-list">
-                        {% for review in product.reviews.approved.all|slice:":3" %}
-                        <!-- Review-->
-                        <div class="catalogue_product-review">
-                            {% block user_avartar %}
-                            {% comment "Example code" %}
-                            <div class="comment-author-ava"><img src="{% static 'brand/user-avatar.jpg' %}" alt="Review author"></div>
-                            {% endcomment %}
-                            {% endblock %}
-                            <div class="catalogue_product-review-header">
-                                <div class="catalogue_product-review-title">
-                                    {{ review.title }}
-                                </div>
-                                <div class="catalogue_item-rating mb-0">
-                                    <div class="catalogue_item-rating-stars">
-                                        {% for i in '12345' %}
-                                        {% if forloop.counter <= review.score %} <span class="is-count">&#9733;</span>
-                                            {% else %}
-                                            <span>&#9733;</span>
-                                            {% endif %}
+                        <div class="catalogue_product-review-list">
+                            
+                            {% for review in product.reviews.approved.all|slice:":3" %}
+                            <!-- Review-->
+                            <div class="catalogue_product-review">
+                                <div class="catalogue_product-review-header">
+                                    <div class="catalogue_product-review-title">
+                                        {{ review.title }}
+                                    </div>
+                                    <div class="catalogue_item-rating mb-0">
+                                        <div class="catalogue_item-rating-stars">
+                                            {% for i in '12345' %}
+                                            {% if forloop.counter <= review.score %} <span class="is-count">&#9733;</span>
+                                                {% else %}
+                                                <span>&#9733;</span>
+                                                {% endif %}
                                             {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="catalogue_product-review-body">
+                                    {{ review.body|striptags }}
+                                    <div class="catalogue_product-review-footer">
+                                        {% if review.user == user %}
+                                            {% t "store.review.reviewed_by_you" with review_date=review.date_created %}
+                                        {% else %}
+                                            {% t "store.review.reviewed_by_other" with name=review.reviewer_name review_date=review.date_created %}
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
-                            <div class="catalogue_product-review-body">
-                                {{ review.body|striptags }}
-                                <div class="catalogue_product-review-footer">
-                                    {% if review.user == user %}
-                                    {% t "store.review.reviewed_by_you" with review_date=review.date_created %}
-                                    {% else %}
-                                    {% t "store.review.reviewed_by_other" with name=review.reviewer_name review_date=review.date_created %}
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                        {% if product.num_approved_reviews > 3 %}
-                        <a href="{% url 'catalogue:reviews-list' product_slug=product.slug product_pk=product.id %}" class="button button-sm">{% t "store.catalogue.see_all_reviews" %}</a>
-                        {% endif %}
-                        {% if product|is_review_permitted:user %}
-                        <a id="write_review" href="{% url 'catalogue:reviews-add' product_slug=product.slug product_pk=product.id %}#addreview" class="button button-primary button-sm">
-                            {% t "store.catalogue.write_a_review" %}
-                        </a>
-                        {% endif %}
-                        {% endif %}
+                            {% endfor %}
+                            
+                            {% if product.num_approved_reviews > 3 %}
+                                <a href="{% url 'catalogue:reviews-list' product_slug=product.slug product_pk=product.id %}" class="button button-sm">{% t "store.catalogue.see_all_reviews" %}</a>
+                            {% endif %}
+                            
+                            {% if product|is_review_permitted:user %}
+                                <a id="write_review" href="{% url 'catalogue:reviews-add' product_slug=product.slug product_pk=product.id %}#addreview" class="button button-primary button-sm">
+                                    {% t "store.catalogue.write_a_review" %}
+                                </a>
+                            {% endif %}
+                    
                     </div>
+                    {% endif %}
                     <div id="addreview">
                         {% if product|is_review_permitted:user %}
-                        {% block product_review %}{% endblock product_review %}
+                            {% block product_review %}{% endblock product_review %}
                         {% endif %}
                     </div>
                 </div>

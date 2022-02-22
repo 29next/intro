@@ -10,37 +10,32 @@
     <meta name="viewport" content="{% block viewport %}width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no{% endblock %}" />
     <meta name="robots" content="NOARCHIVE,NOCACHE" />
     {% block favicon %}
-    {% if shop_icon %}
-        {% with image=shop_icon %}
-            {% image_thumbnail image "100x" upscale=False as thumb_shop_icon %}
-            <link rel="shortcut icon" href="{{ thumb_shop_icon.url }}" />
-        {% endwith %}
-    {% endif %}
+        {% if shop_icon %}
+            {% with image=shop_icon %}
+                {% image_thumbnail image "100x" upscale=False as thumb_shop_icon %}
+                <link rel="shortcut icon" href="{{ thumb_shop_icon.url }}" />
+            {% endwith %}
+        {% endif %}
     {% endblock %}
     {% block styles %}
-    <link rel="stylesheet" type="text/css" href="{{ 'main.css'|asset_url }}">
+        <link rel="stylesheet" type="text/css" href="{{ 'main.css'|asset_url }}">
+        <link rel="stylesheet" href="{{ 'css/intlTelInput.css'|asset_url }}">
     {% endblock %}
-    {% block extrastyles %}
-    <link rel="stylesheet" href="{{ 'css/intlTelInput.css'|asset_url }}">
-    {% endblock %}
-    {% block custom_styles %}{% endblock %}
+    {% block extrastyles %}{% endblock %}
     {% block extrahead %}{% endblock %}
     {% block tracking %}
-    {# Default to using Google analytics #}
-            {% include "partials/trackings/google/analytics.html" %}
-            {% include "partials/trackings/taboola/analytics.html" %}
-            {% include "partials/trackings/facebook/analytics.html" %}
-{% endblock %}
-    {% block campaign_headers %}{% endblock %}
+    {# Tracking Scripts #}
+        {% include "partials/trackings/google/analytics.html" %}
+        {% include "partials/trackings/taboola/analytics.html" %}
+        {% include "partials/trackings/facebook/analytics.html" %}
+    {% endblock %}
 </head>
 
 <body id="{% block body_id %}default{% endblock %}" class="{% block body_class %}default{% endblock %}">
     {% block layout %}
         {% block topbar %}{% endblock %}
-
         {% block nav_header %}
         <nav class="store_nav" role="navigation" aria-label="main navigation" id="store_navbar">
-
             <div class="store_container">
                 {% include 'partials/search.html' %}
                 <div class="store_nav-brand">
@@ -57,11 +52,9 @@
                     <a class="store_nav-item store_nav-mobile-search store_search-icon" href="#">
                         <img src="{{ 'img/icons/icon-search.svg'|asset_url }}" alt="search">
                     </a>
-
                     <a class="store_nav-item store_nav-mobile-cart" href="#basket-modal" data-toggle="side-cart">
                         <img src="{{ 'img/icons/icon-cart.svg'|asset_url }}" alt="Cart">&nbsp;<span id="basket-count">{{ request.basket.num_items }}</span>
                     </a>
-
                 </div>
                 <div id="store_nav-site-links" class="store_nav-menu">
                     <div class="store_nav-menu-links">
@@ -89,7 +82,6 @@
                             <a class="store_nav-link" href="#">
                                 <img src="{{ 'img/icons/icon-user.svg'|asset_url }}" alt="account">&nbsp;<span class="store_nav-account-text">{% t "navigation.account.account" %}</span>
                             </a>
-
                             <div class="store_nav-dropdown is-right ">
                                 {% if user.is_authenticated %}
                                     <a class="store_nav-item" href="{% url 'customer:order-list' %}">
@@ -108,11 +100,10 @@
                                         {% t "navigation.account.support" %}
                                     </a>
                                     {% if perms.dashboard.dashboard_manage or user.is_staff %}
-
-                                     <a class="store_nav-item" href="{% url 'dashboard:index' %}">{% t "navigation.account.dashboard" %}</a>
-
+                                         <a class="store_nav-item" href="{% url 'dashboard:index' %}">
+                                             {% t "navigation.account.dashboard" %}
+                                        </a>
                                     {% endif %}
-
                                     <a class="store_nav-item" href="{% url 'customer:logout' %}">
                                         {% t "navigation.account.logout" %}
                                     </a>
@@ -127,9 +118,7 @@
                                 <img src="{{ 'img/icons/icon-cart.svg'|asset_url }}" alt="Cart">&nbsp;<span id="basket-count">{{ request.basket.num_items }}</span>
                             </a>
                         {% endblock %}
-
                         {% include 'partials/nav_lang_currency_switcher.html' %}
-
                     </div>
                 </div>
             </div>
@@ -144,20 +133,17 @@
         {% block footer %}
             {% include "partials/footer.html" %}
         {% endblock %}
-
-    {% endblock %}
-    {% block modals %}
-
-    {% endblock modals %}
-    {# Scripts loaded from a CDN. #}
-    {% block cdn_scripts %}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     {% endblock %}
 
-    {# Local scripts #}
+    {# Modals #}
+    {% block modals %}{% endblock modals %}
+
+    {# Core JS scripts #}
     {% block scripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ 'js/intlTelInput.js'|asset_url }}"></script>
     <script type="text/javascript" src="{{ 'js/main.js'|asset_url }}"></script>
+    {% include "partials/messages_script.html" %}
     {% include "partials/trackings/omnisend/snippet.html" %}
     {% endblock %}
 
@@ -173,18 +159,5 @@
 
     {# Additional JS scripts for backend #}
     {% core_js %}
-
-    {# Additional JS scripts for campaign #}
-    {% block campaign_scripts %}{% endblock %}
-
-    {% include "partials/messages_script.html" %}
-
-    {# Additional JS scripts for checkout #}
-    {% block checkout_extrascipts %}{% endblock %}
-
-    {# Page meta-data - this is populated by the 'metadata' template context processor #}
-
-
 </body>
-
 </html>

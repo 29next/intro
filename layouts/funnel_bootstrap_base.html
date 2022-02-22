@@ -24,11 +24,10 @@
      <link rel="stylesheet" href="{{ 'css/funnel_example_extra.css'|asset_url }}" />
     {% endblock %}
 
-
     {% block tracking %}
-            {% include "partials/trackings/google/analytics.html" %}
-            {% include "partials/trackings/taboola/analytics.html" %}
-            {% include "partials/trackings/facebook/analytics.html" %}
+        {% include "partials/trackings/google/analytics.html" %}
+        {% include "partials/trackings/taboola/analytics.html" %}
+        {% include "partials/trackings/facebook/analytics.html" %}
     {% endblock %}
 
 
@@ -36,28 +35,15 @@
 
 <body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
     {% csrf_token %}
-    {% block layout %}
-
-
-    {% endblock %}
-
+        {% block layout %}
+        {% endblock %}
     {% block scripts %}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-    {% include "partials/trackings/omnisend/snippet.html" %}
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        {% include "partials/trackings/omnisend/snippet.html" %}
     {% endblock %}
-
-
-    
     {% core_js %}
-
-
     {% include "partials/messages_script.html" %}
-    
-
-    {# Page meta-data - this is populated by the 'metadata' template context processor #}
 </body>
 
 </html>
