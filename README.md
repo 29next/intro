@@ -31,7 +31,7 @@ ntk push
 ```
 ntk watch
 ```
-Use the `ntk watch` command to monitor and sync changes from your local environment to the store. 
+> :question:  Use the `ntk watch` command to monitor and sync changes from your local environment to the store. 
 
 
 ### Theme Reference Docs
