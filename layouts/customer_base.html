@@ -1,0 +1,59 @@
+{% extends "layouts/base.html" %}
+
+
+
+{% block title %}
+    {{ page_title }} | {% t "navigation.account.account" %} | {{ block.super }}
+{% endblock %}
+
+{% block body_class %}account-profile{% endblock %}
+
+
+{% block content_wrapper %}
+{% block breadcrumbs %}
+
+            <section class="store_breadcrumbs">
+		    	<div class="store_container">
+			        <nav class="store_breadcrumb" aria-label="breadcrumbs">
+			            <ul>
+			                <li><a href="{{ homepage_url }}">{% t "navigation.main.home" %}</a></li>
+			                <li><a href="{% url 'customer:summary' %}">{% t "navigation.account.account" %}</a>
+			                <li class="is-active"><a href="#" aria-current="page">{{ page_title }}</a></li>
+			            </ul>
+			        </nav>
+			    </div>
+			</section>
+{% endblock %}
+<section class="account_page">
+    <div class="store_container">
+        <div class="account_page-header-wrap">
+            <div class="account_page-header">
+                <div class="account_page-header-wrap">
+     
+                    <div class="account_page-header-text">
+                        {% block header %}{% endblock %}
+                        {% block headertext %}{% endblock %}
+                        
+                    </div>
+
+                    {% block header_right %}{% endblock %}
+
+ 
+                </div>
+            </div>
+        </div>
+        <div class="account_page-content">
+        	{% block column_left %}
+	           {% include "partials/account_navigation.html" %}
+			{% endblock %}
+			<div class="account_page-detail">
+				{% include "partials/alert_messages.html" %}
+
+                    {% block content %}
+                        {% block tabcontent %}{% endblock tabcontent %}
+                    {% endblock content %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,135 @@
+{% extends "layouts/base.html" %}
+
+
+{% block title %}
+    {{ review.title }} | {% t "store.review.reviews" %} | {{ product.title }} | {{ block.super }}
+{% endblock %}
+
+{% block breadcrumbs %}
+
+    <section class="store_breadcrumbs">
+    <div class="store_container">
+        <nav class="store_breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li><a href="{{ homepage_url }}">{% t "navigation.main.home" %}</a></li>
+                {% with category=product.categories.all.0 %}
+                {% for c in category.get_ancestors_and_self %}
+                <li>
+                    <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                </li>
+                {% endfor %}
+                <li>
+                    <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
+                </li>
+                <li>
+                                <a href="{% url 'catalogue:reviews-list' product_slug=product.slug product_pk=product.pk %}">{% t "store.review.all_reviews" %}</a>
+                            </li>
+                {% endwith %}
+                <li class="is-active"><a href="#" aria-current="page">{{ review.title }}</a></li>
+            </ul>
+        </nav>
+    </div>
+</section>
+{% endblock %}
+
+{% block headertext %}
+    {% t "store.review.customer_reviews" %} 
+{% endblock  %}
+
+{% block content %}
+
+<section class="catalogue_review-page">
+    <div class="store_container">
+        <div class="catalogue_review-page-header">
+            <div class="catalogue_review-header-item">
+                <div class="catalogue_review-header-img">
+                    {% with image=product.primary_image %}
+                    {% image_thumbnail image.original "x155" upscale=False as thumb %}
+                    <a href="{{ product.get_absolute_url }}">
+                        <img original="{{ image.original }}" src="{{ thumb.url }}" alt="{{ product.get_title }}" class="thumbnail">
+                    </a>
+                    {% endwith %}
+                </div>
+            </div>
+            <div class="catalogue_review-header-item">
+                <h2><a href="{{ product.get_absolute_url }}">{{ product.get_title }}</a></h2>
+                {% purchase_info_for_product request product as session %}
+                {% if session.price.exists %}
+                {% if session.price.price_retail > session.price.excl_tax %}
+                <del>{{ session.price.price_retail|currency:session.price.currency }}</del>
+                {% endif %}
+                {% if session.price.excl_tax == 0 %}
+                {% t "store.catalogue.free" %} 
+                {% elif session.price.is_tax_known %}
+                {{ session.price.incl_tax|currency:session.price.currency }}
+                {% else %}
+                {{ session.price.excl_tax|currency:session.price.currency }}
+                {% endif %}
+                {% else %}
+                &nbsp;
+                {% endif %}
+                {% if product.rating != None %}
+                <div class="catalogue_item-rating">
+                    <div class="catalogue_item-rating-stars">
+                        {% for i in '12345' %}
+                            {% if forloop.counter <= product.rating %} 
+                                <span class="is-count">&#9733;</span>
+                                {% else %}
+                                <span>&#9733;</span>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <small><a href="{% url 'catalogue:reviews-list' product_slug=product.slug product_pk=product.id %}">
+                         
+                            {% t "store.review.customer_reviews_count" with count=product.num_approved_reviews %}
+                        </a></small>
+                    &nbsp;
+                    {% else %}
+                    
+                    {% endif %}
+                    
+                    
+                </div>
+                {% if product|is_review_permitted:user %}
+                    <div>
+                        <a id="write_review" href="{% url 'catalogue:reviews-add' product_slug=product.slug product_pk=product.id %}#addreview" class="button button-primary button-sm">
+                            {% t "store.catalogue.write_a_review" %} 
+                        </a>
+                    </div>
+                    {% endif %}
+            </div>
+         
+        </div>
+        <hr>
+        <div class="catalogue_product-review-list">
+            <div class="catalogue_product-review">
+                <div class="catalogue_product-review-header">
+                    <div class="catalogue_product-review-title">
+                        {{ review.title }}
+                    </div>
+                    <div class="catalogue_item-rating mb-0">
+                        <div class="catalogue_item-rating-stars">
+                            {% for i in '12345' %}
+                            {% if forloop.counter <= review.score %} <span class="is-count">&#9733;</span>
+                                {% else %}
+                                <span>&#9733;</span>
+                                {% endif %}
+                                {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            <!-- Review-->
+            <div class="catalogue_product-review-body">
+                {{ review.body|striptags }}
+                <div class="catalogue_product-review-footer">
+                        {% if review.user == user %}
+                        {% t "store.review.reviewed_by_you" with review_date=review.date_created %} 
+                        {% else %}
+                        {% t "store.review.reviewed_by_other" with name=review.reviewer_name review_date=review.date_created %}
+            
+                        {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

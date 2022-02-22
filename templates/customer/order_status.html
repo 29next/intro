@@ -1,0 +1,284 @@
+{% extends "layouts/base.html" %}
+
+
+
+{% block content %}
+
+<section class="ordertracking_page">
+    <div class="store_container">
+        <div class="ordertracking_page-content">
+            <div class="ordertracking_page-header">
+                <h4>             
+                    {% t "order.confirmation.order_number" with number=order.number %}
+                </h4>
+                {% with status=order.status %}
+                    {% if status %}
+                        {% if status == "pending" %}
+                            <p>
+                                {% t "order.confirmation.order_status" with date_created=order.date_placed|date %}
+                                <span class="font-bold text-warning">{% t "order.confirmation.pending" %}</span>.
+                            </p>
+                        {% elif status == "confirmed" %}
+                            <p>
+                                {% t "order.confirmation.order_status" with date_created=order.date_placed|date %}
+                                <span class="font-bold text-primary">{% t "order.confirmation.confirmed" %}</span>.
+                            </p>
+                        {% elif status == "processing" %}
+                            <p>
+                                {% t "order.confirmation.order_status" with date_created=order.date_placed|date %}
+                                <span class="font-bold text-secondary">{% t "order.confirmation.processing" %}</span>.
+                            </p>
+
+                        {% elif status == "shipped" %}
+                            <p>
+                                {% t "order.confirmation.order_status" with date_created=order.date_placed|date %}
+                                <span class="font-bold text-primary">{% t "order.confirmation.shipped" %}</span>.
+                            </p>
+                        {% elif status == "delivered" %}
+                            <p> 
+                                {% t "order.confirmation.order_status" with date_created=order.date_placed|date %}
+                                <span class="font-bold text-success">{% t "order.confirmation.delivered" %}</span>.
+                            </p>
+                        {% elif status == "canceled" %}
+                            <p>
+                                {% t "order.confirmation.order_status" with date_created=order.date_placed|date %}
+                                <span class="font-bold text-danger">{% t "order.confirmation.canceled" %}</span>.
+                            </p>
+                        {% else %}
+                            <p>
+                                {% t "order.confirmation.order_status" with date_created=order.date_placed|date %}
+                                <span class="font-bold">{{ order.status }}</span>.
+                            </p>
+                                 
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div class="ordertracking_details">
+                <div class="ordertracking_details-item">
+                    <div class="ordertracking_details-shipping">
+                        <div class="h5">{% t "order.confirmation.shipping_info" %}</div>
+                        <div class="ordertracking_details-shipping-row">
+                            <div class="ordertracking_details-shipping-item">
+                                {% t "order.confirmation.shipping_address" %}:
+                            </div>
+                            <div class="ordertracking_details-shipping-item">
+                                {% if order.shipping_address %}
+                                <address>
+                                    {% for field in order.shipping_address.active_address_fields %}
+                                        {{ field }}
+                                    {% endfor %}
+                                </address>
+                                {% if order.shipping_address.notes %}
+                                    <p class="font-bold">{% t "order.confirmation.instructions" %}</p>
+                                    <p>{{ order.shipping_address.notes|linebreaks }}</p>
+                                {% endif %}
+                                {% else %}
+                                    <p>{% t "order.confirmation.shipping_not_required" %}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="ordertracking_details-shipping-row">
+                            <div class="ordertracking_details-shipping-item">
+                                {% t "order.confirmation.contact" %}:
+                            </div>
+                            <div class="ordertracking_details-shipping-item">
+                                {% t "order.confirmation.phone" %}: {{ order.shipping_address.phone_number }}
+                                {% if order.guest_email %}
+                                    <br />{% t "order.confirmation.email" %}: {{ order.guest_email }}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="ordertracking_details-shipping-row">
+                            <div class="ordertracking_details-shipping-item">
+                                {% t "order.confirmation.shipping_method" %}:
+                            </div>
+                            <div class="ordertracking_details-shipping-item">
+                                {{ order.shipping_method }}
+                            </div>
+                        </div>
+                        <div class="ordertracking_details-shipping-row">
+                            <div class="ordertracking_details-shipping-item">
+                                {% t "order.confirmation.payment_method" %}:
+                            </div>
+                            <div class="ordertracking_details-shipping-item">
+                                {% if order.sources.all.0 %}
+                                    {% if order.sources.all.0.label %}
+                                        {{ order.sources.all.0.label }}
+                                    {% else %}
+                                        {{ order.sources.all.0.source_type }}
+                                    {% endif %}
+                                {% else %}
+                                    {% t "order.confirmation.payment_not_required" %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% if order.tracking_link %}
+                        <div class="ordertracking_details-shipping-row has-button">
+                            <div class="ordertracking_details-shipping-item">
+                                {% t "order.confirmation.tracking" %}:
+                            </div>
+                            <div class="ordertracking_details-shipping-item">
+                                <a href="{{ order.tracking_link }}" class="button button-primary button-sm">{% t "order.confirmation.track_my_order" %}</a>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="ordertracking_details-item">
+                    <div class="ordertracking_details-history">
+                        <div class="h5">{% t "order.confirmation.summary" %}</div>
+                        <div class="ordertracking_details-history-item">
+                            <div class="account_order-detail-summary-list">
+                                <ul>
+                                    {% with discounts=order.basket_discounts %}
+                                        {% block discount_totals %}
+                                            {% if discounts %}
+                                            <li>
+                                                <span>{% t "order.confirmation.subtotal_before_discount" %}:</span>
+                                                {{ order.basket_total_before_discounts_excl_tax|currency:order.currency }}
+                                            </li>
+                                                {% for discount in discounts %}
+                                                <li>
+                                                    <span>{% t "order.confirmation.discount" %}: <br /><span class="tag tag-success">{{ discount.offer }}</span></span>
+                                                    - {{ discount.amount|currency:order.currency }}
+                                                </li>
+                                                {% endfor %}
+                                            {% endif %}
+                                        {% endblock discount_totals %}
+                                        {% block basket_total %}
+                                            {% if discounts %}
+                                                <li>
+                                                    <span>{% t "order.confirmation.subtotal_after_discount" %}:</span>
+                                                    {{ order.basket_total_excl_tax|currency:order.currency }}
+                                                </li>
+                                            {% else %}
+                                                <li>
+                                                    <span>{% t "order.confirmation.subtotal" %}:</span>
+                                                    {{ order.basket_total_excl_tax|currency:order.currency }}
+                                                </li>
+                                            {% endif %}
+                                        {% endblock basket_total %}
+                                    {% endwith %}
+                                    {% block shipping_total %}
+                                        {% if order.has_shipping_discounts %}
+                                        <li>
+                                            <span>{% t "order.confirmation.shipping_charge_before_discount" %}:</span>
+                                            {{ order.shipping_before_discounts_excl_tax|currency:order.currency }}
+                                        </li>
+                                            {% for discount in order.shipping_discounts %}
+                                            <li>
+                                                <span>{% t "order.confirmation.shipping_discount" %}: <br /><span class="tag tag-success">{{ discount.offer }}</span></span>
+                                                - {{ discount.amount|currency:order.currency }}
+                                            </li>
+                                            {% endfor %}
+                                        {% endif %}
+                                        <li>
+                                            <span>{% t "order.confirmation.shipping_charge" %}:</span>
+                                            {{ order.shipping_excl_tax|currency:order.currency }}
+                                        </li>
+                                    {% endblock shipping_total %}
+                                    {% block display_taxes %}
+                                        {% if order.display_taxes %}
+                                        <li>
+                                            <span>{% t "order.confirmation.total" %} {{ order.display_taxes }}:</span>
+                                            {{ order.total_tax|currency:order.currency }}
+                                        </li>
+                                        {% endif %}
+                                    {% endblock display_taxes %}
+                                    {% block post_order_action_totals %}
+                                        {% with actions=order.post_order_actions %}
+                                            {% if actions %}
+                                            <li>
+                                                {% t "order.confirmation.post_order_actions" %}
+                                            </li>
+                                                {% for action in order.post_order_actions %}
+                                                <li>
+                                                    {{ action.message }}
+                                                </li>
+                                                {% endfor %}
+                                            {% endif %}
+                                        {% endwith %}
+                                    {% endblock post_order_action_totals %}
+                                    {% block order_total %}
+                                    <li class="account_order-detail-summary-total">
+                                        <span>{% t "order.confirmation.order_total" %}:</span>
+                                        {{ order.total_incl_tax|currency:order.currency }}
+                                    </li>
+                                    {% endblock order_total %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <table class="account_table">
+                <thead>
+                    <tr>
+                        <th scope="col">{% t "tables.heading.product" %}</th>
+                        <th scope="col">{% t "tables.heading.qty" %}</th>
+                        <th scope="col">{% t "tables.heading.price_ex_tax" %}</th>
+                        <th scope="col">{% t "tables.heading.price_inc_tax" %}</th>
+                        {% comment %}
+                            <th scope="col">&nbsp;</th>
+                        {% endcomment %}
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for line in order.lines.all %}
+                    <tr>
+                        <td data-label='{% t "tables.heading.product" %}'>
+                            <div class="account_table-product">
+                                <div class="account_order-table-pimage">
+                                    {% with image=line.product.primary_image %}
+                                    {% image_thumbnail image.original "200x200" upscale=False as thumb %}
+                                    <a href="{{ line.product.get_absolute_url }}"><img class="thumbnail" src="{{ thumb.url }}" alt="{{ product.get_title }}"></a>
+                                    {% endwith %}
+                                </div>
+                                <div>
+                                    <div class="account_order-table-pname">
+                                        <a href="{{ line.product.get_absolute_url }}">{{ line.description }}</a>
+                                    </div>
+                                    {% if line.upc %}
+                                        <div class="account_order-table-schedule">{{ line.upc }}</div>
+                                    {% endif %}
+                                    {% if line.frequency %}
+                                 
+                                        <div class="account_order-table-schedule mb-1">{% t "tables.content.frequency" with frequency=line.frequency %}</div>
+
+                                        {% iffeature "reviews" %}
+                                            {% if line.product|is_review_permitted:user %}
+                                                <a href="{% url 'catalogue:reviews-add' product_slug=line.product.slug product_pk=line.product.id %}#addreview">{% t "tables.actions.write_review" %}</a>
+                                            {% endif %}
+                                        {% endiffeature %}
+                                 
+                                    {% endif %}
+                                    {% if line.est_dispatch_date %}
+
+                                        <div class="account_order-table-schedule">{% t "tables.content.est_dispatch_date" with date=line.est_dispatch_date %}</div>
+                                
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </td>
+                        <td data-label='{% t "tables.heading.quantity" %}'>{{ line.quantity }}</td>
+                        <td data-label='{% t "tables.heading.price_ex_tax" %}'>{{ line.line_price_before_discounts_excl_tax|currency:order.currency }}</td>
+                        <td data-label='{% t "tables.heading.price_inc_tax" %}'>{{ line.line_price_before_discounts_incl_tax|currency:order.currency }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+
+            <hr class="mb-4 mt-5">
+            <p>
+                {% url 'customer:support-ticket-create' as create_ticket_link %}
+                {% t "store.support.create_support_request" with link=create_ticket_link %}
+            </p>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

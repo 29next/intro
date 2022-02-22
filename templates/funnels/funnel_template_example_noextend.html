@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang='{{ LANGUAGE_CODE|default:"en" }}'>
+
+<head>
+    <title>{% block title %}{{ shop_name }} - {{ shop_tagline }}{% endblock %}</title>
+    <link rel="alternate" hreflang="{{ LANGUAGE_CODE }}" href="https://{{ request.get_host }}{{ request.path }}" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="created" content="{% now " jS M Y h:i" %}" />
+    <meta name="description" content="{% block description %}{% endblock %}" />
+    <meta name="viewport" content="{% block viewport %}width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no{% endblock %}" />
+    <meta name="robots" content="NOARCHIVE,NOCACHE" />
+
+    {% block favicon %}
+    {% if shop_icon %}
+        {% with image=shop_icon %}
+            {% image_thumbnail image "100x" upscale=False as thumb_shop_icon %}
+            <link rel="shortcut icon" href="{{ thumb_shop_icon.url }}" />
+        {% endwith %}
+    {% endif %}
+    {% endblock %}
+
+    {% block styles %}
+     <link rel="stylesheet" href="{{ 'css/funnel_example.css'|asset_url }}" />
+    {% endblock %}
+
+
+    {% block tracking %}
+            {% include "partials/trackings/google/analytics.html" %}
+            {% include "partials/trackings/taboola/analytics.html" %}
+            {% include "partials/trackings/facebook/analytics.html" %}
+    {% endblock %}
+
+
+</head>
+
+<body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
+    {% csrf_token %}
+    <section class="">
+    <div class="funnel_container">
+        <div class="">
+            <div class="">
+                <h1 class="">Store hero value proposition or offer</h1>
+                <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam, natus quae architecto hic quod!</p>
+            </div>
+            <div class="button-group">
+                <button type="button" class="button button-primary button-lg" data-action="add-product" data-stockrecord-id="1" data-quantity="1" data-clear-cart=true data-redirect=false>
+                    Buy One Time
+                </button>
+
+                <button type="button" class="button button-secondary button-lg" data-action="add-product" data-stockrecord-id="1" data-quantity="1" data-interval="day" data-interval-count="30" data-clear-cart=true data-redirect=false>
+                    Subscribe & Save
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="">
+    <div class="funnel_container">
+        <div class="store_list">
+            <div class="store_list--row">
+                <div class="store_row--item">
+                    <div class="store_item--inner">
+                        <div class="store_item--content">
+                            <div class=""><img src="{{ 'img/placeholder650x650.png' | asset_url }}" alt=""></div>
+                            <div class="">Title</div>
+                            <div class="">Lorem ipsum dolor sit amet</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="store_row--item">
+                    <div class="store_item--inner">
+                        <div class="store_item--content">
+                            <div class=""><img src="{{ 'img/placeholder650x650.png' | asset_url }}" alt=""></div>
+                            <div class="">Title</div>
+                            <div class="">Lorem ipsum dolor sit amet</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="store_row--item">
+                    <div class="store_item--inner">
+                        <div class="store_item--content">
+                            <div class=""><img src="{{ 'img/placeholder650x650.png' | asset_url }}" alt=""></div>
+                            <div class="">Title</div>
+                            <div class="">Lorem ipsum dolor sit amet</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="store_row--item">
+                    <div class="store_item--inner">
+                        <div class="store_item--content">
+                            <div class=""><img src="{{ 'img/placeholder650x650.png' | asset_url }}" alt=""></div>
+                            <div class="">Title</div>
+                            <div class="">Lorem ipsum dolor sit amet</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    {% block scripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    {% include "partials/trackings/omnisend/snippet.html" %}
+    {% endblock %}
+
+
+    
+    {% core_js %}
+
+
+
+    {% include "partials/messages_script.html" %}
+    
+
+    {# Page meta-data - this is populated by the 'metadata' template context processor #}
+</body>
+
+</html>

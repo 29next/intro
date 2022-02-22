@@ -1,0 +1,74 @@
+
+.notification {
+  margin-bottom: 1.5rem;
+}
+.notification {
+  background-color: whitesmoke;
+  border-radius: 4px;
+  position: relative;
+  padding: 1.25rem 2.5rem 1.25rem 1.5rem;
+  &.notification-primary {
+      background-color: $color-primary;
+      color: #fff;
+  }
+  &.notification-secondary {
+      background-color: $color-secondary;
+      color: #fff;
+  }
+  &.notification-success {
+      background-color: $color-success;
+      color: #fff;
+  }
+  &.notification-danger {
+      background-color: $color-danger;
+      color: #fff;
+  }
+  &.notification-warning {
+      background-color: $color-warning;
+      color: #4c4c4c;
+  }
+}
+
+.notification a:not(.button):not(.dropdown-item) {
+  color: currentColor;
+  text-decoration: underline;
+}
+
+.notification strong {
+  color: currentColor;
+}
+
+
+.notification > .delete {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background-color: rgba(10, 10, 10, 0.2);
+  border: none;
+  border-radius: 290486px;
+  cursor: pointer;
+  pointer-events: auto;
+  display: inline-block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: 0;
+  height: 20px;
+  max-height: 20px;
+  max-width: 20px;
+  min-height: 20px;
+  min-width: 20px;
+  outline: none;
+  position: relative;
+  vertical-align: top;
+  width: 20px;
+}
+
+.notification > .delete {
+  right: 0.5rem;
+  position: absolute;
+  top: 0.5rem;
+}

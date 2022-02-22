@@ -1,0 +1,17 @@
+{% if paginator.num_pages > 1 %}
+<div class="catalogue-page-pagination">
+            <nav class="store-pagination" role="navigation" aria-label="store-pagination">
+                {% if page_obj.has_next %}
+                    <a href="?{% get_parameters page %}page={{ page_obj.next_page_number }}" class="store-pagination-next">{% t "navigation.pagination.next" %}</a>
+                {% endif %}
+                <ul class="store-pagination-list">
+                    {% with ''|center:paginator.num_pages as range %}
+                        {% for _ in range %}
+                            <li><a class="store-pagination-link {% if forloop.counter == page_obj.number %}active{% endif %}" {% if forloop.counter == page_obj.number %}aria-current="page"{% endif %} href="?{% get_parameters page %}page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+                        {% endfor %}
+                    {% endwith %}
+                </ul>
+
+            </nav>
+        </div>
+{% endif %}

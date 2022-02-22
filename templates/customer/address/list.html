@@ -1,0 +1,64 @@
+{% extends "layouts/customer_base.html" %}
+
+
+{% block header %}<h4>{% t "customer.address.heading" %}</h4>{% endblock %}
+
+
+{% block tabcontent %}
+    {% if addresses %}
+    <div class="account_addresses">
+        <div class="account_addresses-add">
+            <div class="font-bold">{% t "customer.address.manage_addresses" %}</div>
+            <a href="{% url 'customer:address-create' %}" class="button">{% t "customer.address.add_new" %}</a>
+        </div>
+        <table class="account_table">
+            <tbody>
+
+                {% for address in addresses %}
+                    <tr>
+                                <td scope="row" data-label="Shipping Address">
+                                    {% if address.is_default_for_shipping %}
+                                        <span class="tag tag-success mb-3">{% t "customer.address.default_shipping_address" %}</span>
+                                    {% endif %}
+                                    {% if address.is_default_for_billing %}
+                                        <span class="tag tag-primary mb-3">{% t "customer.address.default_billing_address" %}</span>
+                                    {% endif %}
+                                    <address>
+                                        {% for field in address.active_address_fields %}
+                                            {{ field }}</br>
+                                        {% endfor %}
+                                    </address>
+
+                                </td>
+                                <td data-label="">
+                                    <div class="account_table-actions">
+                                        <a href="{% url 'customer:address-detail' pk=address.id %}" class="button button-sm">{% t "global.button.edit" %}</a>
+                                        <a href="{% url 'customer:address-delete' pk=address.id %}" class="button button-sm">{% t "global.button.delete" %}</a>
+                                        {% if address.country.is_shipping_country and not address.is_default_for_shipping %}
+                                            <a class="button button-sm" href="{% url 'customer:address-change-status' pk=address.id action='default_for_shipping' %}">
+                                 
+                                                {% t "customer.address.set_default_shipping_address" %}
+                                            </a>
+                                        {% endif %}
+                                        {% if not address.is_default_for_billing %}
+                                            <a class="button button-sm" href="{% url 'customer:address-change-status' pk=address.id action='default_for_billing' %}">
+                          
+                                                {% t "customer.address.set_default_billing_address" %}
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                </td>
+                    </tr>
+  
+                {% endfor %}
+            </tbody>
+        </table>
+        {% include "partials/pagination.html" %}
+    {% else %}
+        <p>{% t "customer.address.no_addresses" %}</p>
+        <div class="button-group">
+            <a href="{% url 'customer:address-create' %}" class="button">{% t "customer.address.add_new" %}</a>
+        </div>
+    {% endif %}
+
+{% endblock tabcontent %}

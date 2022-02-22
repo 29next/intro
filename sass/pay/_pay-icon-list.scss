@@ -1,0 +1,10 @@
+@if variable-exists(include) {
+  @each $pay in $include {
+    @include pay-icon($pay);
+  }
+} @else {
+  @include pay-icon(visa);
+  @include pay-icon(mc);
+  @include pay-icon(ppal);
+
+}

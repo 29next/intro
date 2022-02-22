@@ -1,0 +1,156 @@
+.order-confirm_page {
+	padding-top:1.5rem;
+}
+.page_content-body {
+	margin: auto;
+    max-width: 900px;
+    padding: 1.5rem .75rem 3rem;
+}
+.order-confirm_header {
+	text-align: center;
+	margin-bottom: 3rem;
+}
+
+.order-confirm_detail {
+    @include column;
+    padding: 1rem 0.875rem;
+
+}
+
+.order-confirm-actions {
+	padding-top:3rem;
+}
+//--------------------------------- order-confirm Table-------------------------//
+.order-confirm_summary {
+	padding-top:3rem;
+}
+table.order-summary_table {
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border-bottom: 1px solid #000;
+
+    tr {
+        border-top: 1px solid #ddd;
+
+        @include md-up {
+            &:first-child {
+                border-top: transparent;
+            }
+        }
+        &:last-child {
+                border-top: 1px solid #000;
+            }
+
+    }
+
+    th,
+    td {
+        padding: 1rem .75rem;
+        font-size: 0.875rem;
+        vertical-align: middle;
+    }
+
+    thead tr {
+        border-top: transparent;
+        border-bottom: 1px solid #000;
+    }
+
+    th {
+        font-size: 1rem;
+        border-top: transparent;
+    }
+   
+}
+
+
+//--------------------------------- Order Status Page -------------------------//
+.ordertracking_page {
+    padding-top:1.5rem;
+}
+.ordertracking_page-content {
+
+    @include column;
+    margin-bottom: 3rem;
+
+    @include md-up {
+        max-width: 80%;
+       
+        margin:0 auto 6rem;
+    }
+    .account_table {
+        margin-bottom: 3rem;
+        @include md-up {
+           margin-bottom: 6rem; 
+        }
+    }
+}
+.ordertracking_page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.ordertracking_details {
+    @include sm-up {
+        display: flex;
+    }
+
+}
+
+.ordertracking_details-item {
+    @include column;
+    padding: 0;
+    margin-bottom: 3rem;
+    @include sm-up {
+        flex:none;
+        width: 50%;
+        padding: 0.75rem;
+    }
+}
+.ordertracking_details-shipping-row {
+    margin-left: -.75rem;
+    margin-right: -.75rem;
+    @include sm-up {
+        display: flex;
+    }
+    &.has-button {
+        align-items: center;
+    }
+}
+.ordertracking_details-shipping-item {
+   @include column;
+   font-size: $text-sm; 
+    @include sm-up {
+        flex:none;
+        width: 50%;
+    }
+    &:first-child {
+        font-weight: bold;
+    }
+
+}
+.ordertracking_details-history-item {
+    border-bottom: 1px solid #000;
+    padding:.75rem 0;
+    font-size: $text-sm; 
+    p:not(:last-child) {
+        margin-bottom: 0.75rem;
+    }
+}
+.ordertracking_details-history {
+    background: #F4F9FC;
+    padding:1rem;
+     @include sm-up {
+        padding: 2rem 3rem;
+     }
+}
+.ordertracking_details-shipping {
+     @include sm-up {
+        padding: 2rem;
+     }
+}
+.account_order-detail-summary-list {
+    li:not(:last-child)  {
+        padding-bottom: 0.75rem;
+    }
+}

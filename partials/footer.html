@@ -1,0 +1,78 @@
+<footer class="store_footer">
+    <div class="store_footer-top">
+        <div class="store_container">
+            <div class="store_footer-links">
+                <div class="store_footer-column">
+                    <div class="store_footer-links-header">
+                        {% t "navigation.footer.about_us" %}
+                    </div>
+                    <ul>
+                        <li><a href="{{ homepage_url }}">{% t "navigation.main.home" %}</a></li>
+                        <li><a href="{% url 'catalogue:index' %}">{% t "navigation.main.shop" %}</a></li>
+                        <li><a href="/blog/">{% t "navigation.main.blog" %}</a></li>
+                    </ul>
+                </div>
+                <div class="store_footer-column">
+                    <div class="store_footer-links-header">
+                        {% t "navigation.footer.account_info" %}
+                    </div>
+                    <ul>
+                        <li><a href="{% url 'basket:summary' %}">{% t "navigation.main.cart" %}</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'customer:summary' %}">{% t "navigation.account.account" %}</a></li>
+            
+                        <li><a href="{% url 'customer:logout' %}">{% t "navigation.account.logout" %}</a></li>
+                        {% else %}
+                        <li><a href="{% url 'customer:login' %}">{% t "navigation.account.login_or_register" %}</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="store_footer-column">
+                    <div class="store_footer-links-header">
+                        {% t "navigation.footer.support_terms" %}
+                    </div>
+                    <ul>
+                        <li><a href="{% url 'support:category-list' %}"><span>{% t "navigation.footer.support" %}</span></a></li>
+                        <li><a href="/terms/">{% t "navigation.footer.terms_conditions" %}</a></li>
+                        <li><a href="/privacy/">{% t "navigation.footer.privacy" %}</a></li>
+                    </ul>
+                </div>
+                <div class="store_footer-column">
+                    <div class="store_footer-links-header">
+                        {% t "navigation.footer.contact_us" %}
+                    </div>
+                    <ul>
+                        <li><a href="/contact/">{% t "navigation.main.contact" %} </a></li>
+                        <li><a href="tel:+123456789">+123456789 </a></li>
+                        <li><a href="mailto:{{ support_email }}">{{ support_email }}</a></li>
+                    </ul>
+                </div>
+                <div class="store_footer-column">
+                    <div class="store_footer-links-header">
+                        {% t "navigation.footer.address" %}
+                    </div>
+                    <address>
+                        Company Name<br>
+                        2358 Stuart Street<br>
+                        Gibsonia, PA<br>
+                        15044
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="store_footer-bottom">
+        <div class="store_container">
+            <div class="store_footer-legal">
+                <div class="store_footer-copy">
+                    &copy;{% now "Y" %} {{ shop_name }}. {% t "navigation.footer.copyright" %}
+                </div>
+                <div class="store_footer-paymeths">
+                    <span class="pay-icon pay-icon-visa"></span>&nbsp;
+                    <span class="pay-icon pay-icon-mc"></span>&nbsp;
+                    <span class="pay-icon pay-icon-ppal"></span>&nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

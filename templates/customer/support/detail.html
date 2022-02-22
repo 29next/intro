@@ -1,0 +1,69 @@
+{% extends "layouts/customer_base.html" %}
+
+{% block breadcrumbs %}
+
+    <section class="store_breadcrumbs">
+                <div class="store_container">
+                    <nav class="store_breadcrumb" aria-label="breadcrumbs">
+                        <ul>
+                            <li><a href="{{ homepage_url }}">{% t "navigation.main.home" %}</a></li>
+                            <li><a href="{% url 'customer:summary' %}">{% t "navigation.account.account" %}</a></li>
+                            <li><a href="{% url 'customer:support-ticket-list' %}">{% t "navigation.account.support" %}</a></li>
+                            <li class="is-active"><a href="#" aria-current="page">{{ page_title }}</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </section>
+{% endblock %}
+{% block header %}<h4>{{ ticket.subject }}</h4>{% endblock %}
+{% block headertext %}<p>{% t "customer.support.created_at" with created_at=ticket.created_at|naturaltime  %} </p>{% endblock %}
+{% block header_right %}
+<div class="account_page-header-status">
+    <span class="tag tag-primary">{{ ticket.status }}</span>
+</div>
+{% endblock %}
+
+{% block tabcontent %}
+        <div class="account_page-support">
+        {% if ticket.status != ticket.TICKET_STATUS_CLOSED %}
+
+        <div class="account_support-form-reply">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name='action' value='create_ticket_comment'>
+                    {% include "partials/form_fields.html" with form=form %}
+                    <div class="field button-group">
+                        <div class="control">
+                            <button class="button" type="submit">{% t "customer.support.update_ticket" %}</button>
+                        </div>
+                    </div>
+                </form>
+        </div>
+        {% endif %}
+
+        {% for ticket_comment in ticket_comments reversed %}
+          <div class="account_support-form-response">
+            <div class="account_support-response-header">
+                <div class="account_support-response-source">
+                    {% t "customer.support.from" with comment_author=ticket_comment.author_name  %}
+                </div>
+                <div class="account_support-response-date">
+                    {{ ticket_comment.created_at|naturaltime }}
+                </div>
+            </div>
+            <div class="account_support-response-body">
+                {{ ticket_comment.body }}
+                {% if ticket_comment.attachments.all %}
+                    <hr>
+                    <strong>{% t "customer.support.attachments" %}</strong>:<br>
+                        {% for attachment in ticket_comment.attachments.all %}
+                            <a href="{{ attachment.file.url }}">{{ attachment.file_name }}</a><br>
+                        {% endfor %}
+
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+
+
+{% endblock tabcontent %}

@@ -1,0 +1,47 @@
+.tag {
+    align-items: center;
+    background-color: #ddd;
+    border-radius: .375em;
+    color: #4a4a4a;
+    display: inline-flex;
+    font-size: .75rem;
+    height: 2em;
+    justify-content: center;
+    line-height: 1.5;
+    padding-left: .75em;
+    padding-right: .75em;
+    white-space: nowrap;
+
+    &.tag-primary {
+        background-color: $color-primary;
+        color: #fff;
+    }
+
+
+    &.tag-secondary {
+        background-color: $color-secondary;
+        color: #fff;
+    }
+
+    &.tag-muted {
+        background-color: $color-muted;
+        color: #000;
+    }
+
+    &.tag-success {
+        background-color: $color-success;
+        color: #fff;
+    }
+
+     &.tag-warning {
+        background-color: $color-warning;
+    }
+
+    &.tag-danger {
+        background-color: $color-danger;
+        color: #fff;
+    }
+
+
+
+}

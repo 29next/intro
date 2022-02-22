@@ -1,0 +1,4 @@
+commit_message: "[skip ci]"
+files:
+  - source: /locales/en.default.json
+    translation: /locales/%two_letters_code%.json

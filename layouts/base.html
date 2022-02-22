@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:'en' }}" class="{% block html_class %}{% endblock %}">
+
+<head>
+    <title>{% block title %}{{ shop_name }} - {{ shop_tagline }}{% endblock %}</title>
+    <link rel="alternate" hreflang="{{ LANGUAGE_CODE }}" href="https://{{ request.get_host }}{{ request.path }}" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="created" content="{% now " jS M Y h:i" %}" />
+    <meta name="description" content="{% block description %}{% endblock %}" />
+    <meta name="viewport" content="{% block viewport %}width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no{% endblock %}" />
+    <meta name="robots" content="NOARCHIVE,NOCACHE" />
+    {% block favicon %}
+    {% if shop_icon %}
+        {% with image=shop_icon %}
+            {% image_thumbnail image "100x" upscale=False as thumb_shop_icon %}
+            <link rel="shortcut icon" href="{{ thumb_shop_icon.url }}" />
+        {% endwith %}
+    {% endif %}
+    {% endblock %}
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="{{ 'main.css'|asset_url }}">
+    {% endblock %}
+    {% block extrastyles %}
+    <link rel="stylesheet" href="{{ 'css/intlTelInput.css'|asset_url }}">
+    {% endblock %}
+    {% block custom_styles %}{% endblock %}
+    {% block extrahead %}{% endblock %}
+    {% block tracking %}
+    {# Default to using Google analytics #}
+            {% include "partials/trackings/google/analytics.html" %}
+            {% include "partials/trackings/taboola/analytics.html" %}
+            {% include "partials/trackings/facebook/analytics.html" %}
+{% endblock %}
+    {% block campaign_headers %}{% endblock %}
+</head>
+
+<body id="{% block body_id %}default{% endblock %}" class="{% block body_class %}default{% endblock %}">
+    {% block layout %}
+        {% block topbar %}{% endblock %}
+
+        {% block nav_header %}
+        <nav class="store_nav" role="navigation" aria-label="main navigation" id="store_navbar">
+
+            <div class="store_container">
+                {% include 'partials/search.html' %}
+                <div class="store_nav-brand">
+                    <a role="button" class="store_nav-burger" aria-label="menu" aria-expanded="false" data-target="store_nav-site-links">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                    <a class="store_nav-item store_nav-logo" href="{{ homepage_url }}">
+                        <img src="{{ 'img/logo.svg'|asset_url }}" alt="{{ shop_name }}">
+                    </a>
+                </div>
+                <div class="store_nav-mobile-top">
+                    <a class="store_nav-item store_nav-mobile-search store_search-icon" href="#">
+                        <img src="{{ 'img/icons/icon-search.svg'|asset_url }}" alt="search">
+                    </a>
+
+                    <a class="store_nav-item store_nav-mobile-cart" href="#basket-modal" data-toggle="side-cart">
+                        <img src="{{ 'img/icons/icon-cart.svg'|asset_url }}" alt="Cart">&nbsp;<span id="basket-count">{{ request.basket.num_items }}</span>
+                    </a>
+
+                </div>
+                <div id="store_nav-site-links" class="store_nav-menu">
+                    <div class="store_nav-menu-links">
+                        <a class="store_nav-item" href="{{ homepage_url }}">
+                            {% t "navigation.main.home" %}
+                        </a>
+                        <a class="store_nav-item" href="{% url 'catalogue:index' %}">
+                            {% t "navigation.main.shop" %}
+                        </a>
+                        <a class="store_nav-item" href="{% url 'blog:blog-list' %}">
+                            {% t "navigation.main.blog" %}
+                        </a>
+                        <a class="store_nav-item" href="{% url 'support:category-list' %}">
+                            {% t "navigation.main.support" %}
+                        </a>
+                        <a class="store_nav-item" href="/contact/">
+                            {% t "navigation.main.contact" %}
+                        </a>
+                    </div>
+                    <div class="store_nav-tool-links">
+                        <a class="store_nav-item store_nav-search store_search-icon" href="#">
+                            <img src="{{ 'img/icons/icon-search.svg'|asset_url }}" alt="search">
+                        </a>
+                        <div class="store_nav-item has-dropdown is-hoverable store_nav-account">
+                            <a class="store_nav-link" href="#">
+                                <img src="{{ 'img/icons/icon-user.svg'|asset_url }}" alt="account">&nbsp;<span class="store_nav-account-text">{% t "navigation.account.account" %}</span>
+                            </a>
+
+                            <div class="store_nav-dropdown is-right ">
+                                {% if user.is_authenticated %}
+                                    <a class="store_nav-item" href="{% url 'customer:order-list' %}">
+                                        {% t "navigation.account.orders" %}
+                                    </a>
+                                    <a class="store_nav-item" href="{% url 'customer:subscription-list' %}">
+                                        {% t "navigation.account.subscriptions" %}
+                                    </a>
+                                    <a class="store_nav-item" href="{% url 'customer:summary' %}">
+                                        {% t "navigation.account.profile" %}
+                                    </a>
+                                    <a class="store_nav-item" href="{% url 'customer:address-list' %}">
+                                        {% t "navigation.account.addresses" %}
+                                    </a>
+                                    <a class="store_nav-item" href="{% url 'customer:support-ticket-list' %}">
+                                        {% t "navigation.account.support" %}
+                                    </a>
+                                    {% if perms.dashboard.dashboard_manage or user.is_staff %}
+
+                                     <a class="store_nav-item" href="{% url 'dashboard:index' %}">{% t "navigation.account.dashboard" %}</a>
+
+                                    {% endif %}
+
+                                    <a class="store_nav-item" href="{% url 'customer:logout' %}">
+                                        {% t "navigation.account.logout" %}
+                                    </a>
+                                {% else %}
+                                    <a class="store_nav-item" href="{% url 'customer:login' %}">{% t "navigation.account.login_or_register" %}</a></li>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                        {% block mini_basket %}
+                            <a class="store_nav-item store_nav-cart" href="#basket-modal" data-toggle="side-cart">
+                                <img src="{{ 'img/icons/icon-cart.svg'|asset_url }}" alt="Cart">&nbsp;<span id="basket-count">{{ request.basket.num_items }}</span>
+                            </a>
+                        {% endblock %}
+
+                        {% include 'partials/nav_lang_currency_switcher.html' %}
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+        {% endblock %}
+        {% block content_wrapper %}
+            {% block breadcrumbs %}{% endblock %}
+            <div id="content_inner">
+                {% block content %}{% endblock %}
+            </div>
+        {% endblock %}
+        {% block footer %}
+            {% include "partials/footer.html" %}
+        {% endblock %}
+
+    {% endblock %}
+    {% block modals %}
+
+    {% endblock modals %}
+    {# Scripts loaded from a CDN. #}
+    {% block cdn_scripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    {% endblock %}
+
+    {# Local scripts #}
+    {% block scripts %}
+    <script type="text/javascript" src="{{ 'js/intlTelInput.js'|asset_url }}"></script>
+    <script type="text/javascript" src="{{ 'js/main.js'|asset_url }}"></script>
+    {% include "partials/trackings/omnisend/snippet.html" %}
+    {% endblock %}
+
+    {# Additional JS scripts #}
+    {% block extrascripts %}{% endblock %}
+
+    {# Block for body onload functions #}
+    <script>
+        $(function() {
+            {% block onbodyload %}{% endblock %}
+        });
+    </script>
+
+    {# Additional JS scripts for backend #}
+    {% core_js %}
+
+    {# Additional JS scripts for campaign #}
+    {% block campaign_scripts %}{% endblock %}
+
+    {% include "partials/messages_script.html" %}
+
+    {# Additional JS scripts for checkout #}
+    {% block checkout_extrascipts %}{% endblock %}
+
+    {# Page meta-data - this is populated by the 'metadata' template context processor #}
+
+
+</body>
+
+</html>

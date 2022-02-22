@@ -1,0 +1,88 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}
+    {{ category.name  }} | {{ block.super }}
+{% endblock %}
+
+{% block headertext %}{% endblock %}
+
+{% block breadcrumbs %}
+
+<section class="store_breadcrumbs">
+        <div class="store_container">
+            <nav class="store_breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                    <li><a href="{{ homepage_url }}">{% t "navigation.main.home" %}</a></li>
+                    <li><a href="{% url 'support:category-list' %}">{% t "navigation.main.support" %}</a></li>
+                    <li class="is-active"><a href="#" aria-current="page">{{ category.name }}</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+{% endblock breadcrumbs %}
+
+{% block content %}
+<section class="support_page">
+        <div class="store_container">
+            <div class="support_header">
+                <div class="support_header-item">
+    
+                     <form  method="get">
+                       <div class="field is-grouped">
+                            <span class="control is-expanded">
+                            {% include 'partials/form_field.html' with field=form.text nolabel=True %}
+                            </span>
+                             <span class="control">
+                                <button class="button" type="submit">
+                                    {% t "global.button.search" %}
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+            <div class="support_header">
+                 <div class="support_header-item">
+                    <h1 class="h4">{{ category.name }} {% t "store.support.articles" %}</h1>
+                </div>
+            </div>
+            <div class="support_search-results">
+                 {% if articles %}
+                <ul class="support_search-list">
+                    {% for article in articles %}
+                        <li>
+                            <div class="support_search-list-item">
+                                <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+                            </div>
+                            <div class="support_search-list-action">
+                                <a href="{{ article.get_absolute_url }}" class="button button-sm">{% t "store.support.view" %}</a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <hr class="mb-4 mt-5">
+                    <p class="text-left">
+                        {% url 'customer:support-ticket-create' as create_ticket_link %}
+                        {% t "store.support.create_support_request" with link=create_ticket_link %}
+                        
+                    </p>
+                {% else %}
+                {% if not is_search %}
+                    {% t "store.support.no_articles" %}
+                {% else %}
+                    {% t "store.support.search_not_found" %}
+                {% endif %}
+                <hr class="mb-4 mt-5">
+                    <p class="text-left">
+                        {% url 'customer:support-ticket-create' as create_ticket_link %}
+                        {% t "store.support.create_support_request" with link=create_ticket_link %}
+                        
+                    </p>
+            {% endif %}
+            </div>
+        </div>
+</section>
+
+{% endblock content %}

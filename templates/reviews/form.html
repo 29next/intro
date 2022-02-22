@@ -1,0 +1,33 @@
+{% extends "templates/catalogue/detail.html" %}
+
+
+{% block product_review %}
+    <h5>{% t "store.review.leave_review" %}</h5>
+    <form method="post" id="add_review_form" method="post" action=".">
+        {% csrf_token %}
+            {% if form.name %}  
+                    {% include 'partials/form_field.html' with field=form.name %}
+            {% endif %}
+            {% if form.email %}
+                    {% include 'partials/form_field.html' with field=form.email %}
+            {% endif %}
+        <div class='field-group is-half'>
+            {% include 'partials/form_field.html' with field=form.title %}
+            
+    
+            {% include 'partials/form_field.html' with field=form.score size='full' %}
+            
+        </div>
+
+            {% include 'partials/form_field.html' with field=form.body %}
+            
+         <div class="field button-group">
+            <div class="control">
+                <button type="submit" class="button button-primary" data-loading-text='{% t "global.button.save_loading" %}'>
+                    {% t "store.review.save_review" %}
+                </button>
+            </div>
+        </div>
+
+    </form>
+{% endblock %}

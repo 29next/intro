@@ -1,0 +1,21 @@
+{% if form.is_bound and not form.is_valid %}
+    <div class="notification notification-danger">
+        <button class="delete"></button>
+        {% t "global.error.please_check_error" %}
+    </div>
+{% endif %}
+
+{% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+        <div class="notification notification-danger">
+            <button class="delete"></button>
+            {{ error }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<div class="{{ form_style }}">
+{% for field in form %}
+    {% include 'partials/form_field.html' with field=field style=style %}
+{% endfor %}
+</div>

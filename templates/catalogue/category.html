@@ -1,0 +1,45 @@
+{% extends "templates/catalogue/browse.html" %}
+
+
+
+{% block title %}
+    {{ category.name }} | {{ block.super }}
+{% endblock %}
+
+{% block description %}
+    {{ category.description|default:""|striptags }}
+{% endblock %}
+
+{% block breadcrumbs %}
+
+
+<section class="store_breadcrumbs">
+        <div class="store_container">
+            <nav class="store_breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                    <li><a href="{{ homepage_url }}">{% t "navigation.main.home" %}</a></li>
+                    <li><a href="{% url 'catalogue:index' %}">{% t "navigation.main.shop" %}</a></li>
+                    <li class="is-active"><a aria-current="page" href="#">{{ category.name }}</a></li>
+                    {% if user.is_staff %}
+                    <li class="column">
+                        <a href="{% url 'dashboard:catalogue-category-update' pk=category.id %}"><small> {% t "store.catalogue.edit_this_category" %}</small></a>
+                    </li>
+                    {% endif %}
+
+                </ul>
+            </nav>
+        </div>
+    </section>
+{% endblock breadcrumbs %}
+
+{% block content %}
+    {% if category.description %}
+        <div>
+            <h1 class="h5"><p>{{ category.description|safe }}</p></h1>
+            {% if category.image %}
+                <div><img src="{{ category.image.url }}" alt="{{ category.name }}" /></div>
+            {% endif %}
+        </div>
+    {% endif %}
+    {{ block.super }}
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "layouts/customer_base.html" %}
+
+
+{% block header %}<h4>{% t "customer.order.heading" %}</h4>{% endblock %}
+
+{% block tabcontent %}
+    
+    {% if orders %}
+        <div class="account_order-history">
+                    <table class="account_table">
+                        <thead>
+                            <tr>
+                                <th scope="col">{% t "tables.heading.order_number" %}</th>
+                                <th scope="col">{% t "tables.heading.total_inc_tax" %}</th>
+                                <th scope="col">{% t "tables.heading.date_submitted" %}</th>
+                                <th scope="col">{% t "tables.heading.status" %}</th>
+                                <th scope="col">&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                                <tr>
+                                    <td data-label='{% t "tables.heading.order_number" %}'><a href="{% url 'customer:order' order_number=order.number %}">{{ order.number }}</a></td>
+                                    <td data-label='{% t "tables.heading.total_inc_tax" %}'>{{ order.total_incl_tax|currency:order.currency }}</td>
+                                    <td data-label='{% t "tables.heading.date_submitted" %}'>{{ order.date_placed }}</td>
+                                    <td data-label='{% t "tables.heading.status" %}'>
+                                        {% if order.status == 'Confirmed' %}
+                                    <span class="tag tag-success">{{ order.status }}</span>
+                                {% elif order.status == 'Processing' %}
+                                    <span class="tag tag-primary">{{ order.status }}</span>
+                                {% elif order.status == 'Canceled' %}
+                                    <span class="tag tag-danger">{{ order.status }}</span>
+                                {% elif order.status == 'Shipped' %}
+                                    <span class="tag tag-secondary">{{ order.status }}</span>
+                                {% else %}
+                                    <span class="tag tag-muted">{{ order.status }}</span>
+                                {% endif %}
+                                    </td>
+                                    <td data-label='{% t "tables.heading.action" %}'><a href="{% url 'customer:order' order_number=order.number %}" class="button button-sm">{% t "tables.actions.view" %}</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% include "partials/pagination.html" %}
+                {% else %}
+                    {% if form.is_bound %}
+                        <p>{% t "customer.order.no_orders_match_search" %}</p>
+                    {% else %}
+                        <p>{% t "customer.order.no_orders_placed" %}</p>
+                    {% endif %}
+                {% endif %}
+
+{% endblock tabcontent %}

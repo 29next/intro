@@ -1,0 +1,59 @@
+{% extends "layouts/customer_base.html" %}
+
+{% block breadcrumbs %}
+    <section class="store_breadcrumbs">
+		    	<div class="store_container">
+			        <nav class="store_breadcrumb" aria-label="breadcrumbs">
+			            <ul>
+			                <li><a href="{{ homepage_url }}">{% t "navigation.main.home" %}</a></li>
+                            <li><a href="{% url 'customer:summary' %}">{% t "navigation.account.account" %}</a></li>
+                            <li><a href="{% url 'customer:support-ticket-list' %}">{% t "navigation.account.support" %}</a></li>
+			                <li class="is-active"><a href="#" aria-current="page">{% t "customer.support.create_new_support" %}</a></li>
+			            </ul>
+			        </nav>
+			    </div>
+			</section>
+{% endblock %}
+{% block header %}<h4>{% t "customer.support.create_support_request" %}</h4>{% endblock %}
+{% block headertext %}<p class="font-lg">{% t "customer.support.create_support_request_timeframe" %}</p>{% endblock %}
+
+{% block tabcontent %}
+    <form id="register_form" action="{{ request.get_full_path }}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if form.is_bound and not form.is_valid %}
+            <div class="notification notification-danger">
+            	<button class="delete"></button>
+                {% t "global.error.please_check_error" %}
+                
+            </div>
+        {% endif %}
+
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <div class="notification notification-danger">
+                	<button class="delete"></button>
+                     {{ error }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% include 'partials/form_field.html' with field=form.requester %}
+        
+        {% include 'partials/form_field.html' with field=form.subject %}
+            
+        <div class='field-group is-half'>
+            
+                {% include 'partials/form_field.html' with field=form.ticket_type size='full' %}
+          
+                {% include 'partials/form_field.html' with field=form.priority size='full' %}
+            
+        </div>
+        
+        {% include 'partials/form_field.html' with field=form.description %}
+            
+        
+        {% include 'partials/form_field.html' with field=form.attachments %}
+            
+        <input type="hidden" name='action' value='create_ticket'>
+        <button class="button" type="submit">{% t "customer.support.submit_ticket" %}</button>
+    </form>
+{% endblock tabcontent %}

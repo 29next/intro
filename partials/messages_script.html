@@ -1,0 +1,26 @@
+<script>
+
+        var funnel = function(k, y) {
+            var clk = "this.parentElement.style.display='none'";
+    return k.messages = {
+       
+        
+        addMessage: function(e, t) {
+            
+            t = '<div class="notification notification-' + e + '"><span class="delete" onclick="'+ clk +'"></span>' + t + "</div>";
+
+
+            y("#basket-messages").append(y(t))
+        },
+        debug: function(e) { k.messages.addMessage("debug", e) },
+        info: function(e) { k.messages.addMessage("primary", e) },
+        success: function(e) { k.messages.addMessage("success", e) },
+        warning: function(e) { k.messages.addMessage("warning", e) },
+        error: function(e) { k.messages.addMessage("danger", e) },
+        clear: function() { y("#basket-messages").html("") },
+        scrollTo: function() { y("html").animate({ scrollTop: y("#basket-messages").offset().top }) }
+    }, 
+      k
+}(funnel || {}, jQuery);
+
+    </script>

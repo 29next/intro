@@ -1,0 +1,44 @@
+{% extends "layouts/funnel_bootstrap_base.html" %}
+{% block layout %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="{{ 'img/logo.svg'|asset_url }}" alt="{{ shop_name }}" >
+            
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<main>
+    <div class="px-4 py-5 my-5 text-center">
+        <img class="d-block mx-auto mb-4" src="{{ 'img/logo.svg'|asset_url }}" alt="{{ shop_name }}">
+        <h1 class="display-5 fw-bold">Centered hero</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <button type="button" class="btn btn-primary btn-lg px-4 gap-3" data-action="add-product" data-stockrecord-id="1" data-quantity="1" data-clear-cart=true data-redirect=false>Buy one time</button>
+                <button type="button" class="btn btn-outline-secondary btn-lg px-4" data-action="add-product" data-stockrecord-id="1" data-quantity="1" data-interval="day" data-interval-count="30" data-clear-cart=true data-redirect=false>Subscribe now</button>
+            </div>
+        </div>
+    </div>
+    
+</main>
+{% endblock%}

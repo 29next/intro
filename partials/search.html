@@ -1,0 +1,19 @@
+<div class="store_search {% if request.resolver_match.url_name == 'search' %}search-visible{% endif %}">
+        <form method="get" action="{% url 'search:search' %}">
+                <div class="field has-addons">
+                                
+                        <div class="control">
+                                <a class="button store_search-close" >{% t "global.button.close" %}</a>
+                        </div>
+                        <div class="control is-expanded">
+                                {% include 'partials/form_field.html' with field=search_form.q nolabel=True  %}
+                        </div>
+                        <div class="control">
+                                <button type="submit" class="button">{% t "global.button.search" %}</button>
+                        </div>
+                        
+                        
+                        
+                </div>
+        </form>
+</div>

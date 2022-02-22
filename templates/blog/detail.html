@@ -1,0 +1,72 @@
+{% extends "layouts/base.html" %}
+
+
+{% block title %}
+{% t "store.blog.title" %} | {{ block.super }}
+{% endblock %}
+
+{% block breadcrumbs %}
+
+<section class="store_breadcrumbs">
+        <div class="store_container">
+            <nav class="store_breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                    <li><a href="{{ homepage_url }}">{% t "navigation.main.home" %}</a></li>
+                    <li><a href="{% url 'blog:blog-list' %}">{% t "navigation.main.blog" %}</a></li>
+                    <li class="is-active"><a aria-current="page" href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+                    {% if user.is_staff %}
+                       <li>
+                           <a  href="{% url 'blog_dashboard:blog-post-detail' pk=post.pk %}"><small> {% t "store.blog.edit_this_post" %} </small></a>
+                        </li>
+                    {% endif %}
+                    
+                </ul>
+            </nav>
+            
+        </div>
+    </section>
+{% endblock %}
+
+
+        <div class="blog_content-header">
+
+{% block content %}
+    <section class="blog_page">
+        <div class="store_container">
+            {% if post %}
+
+
+            <!-- Post-->
+            <div class="blog_content-header">
+                <h1>{{ post.title }}</h1>
+                <p class="font-lg">{{ post.excerpt|safe }}</p>
+                <div class="blog_content-meta">
+                    <p>By {{ post.author.first_name}}&nbsp;{{post.author.last_name }}</p>
+                    <p>{{ post.created_at }}</p>
+            
+                </div>
+            </div>
+
+            <div class="blog_content-feat-img">
+                {% with image=post.featured_image %}
+                        {% if image %}
+                            {% image_thumbnail image "x850" upscale=False as thumb %}
+                            <img alt="Post" src="{{ thumb.url }}">
+                        {% endif %}
+                    {% endwith %}
+            </div>
+
+
+           <div class="blog_content-body content-body">
+
+            {{ post.content|safe }}
+           </div>
+
+
+            
+
+
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

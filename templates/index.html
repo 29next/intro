@@ -1,0 +1,361 @@
+{% extends "layouts/base.html" %}
+
+{% block topbar %}{% include "partials/topbar.html" %}{% endblock %}
+
+{% block content_wrapper %}
+<section class="store_hero">
+    <div class="store_container">
+        <div class="store_hero-content">
+            <div class="store_hero-text">
+                <h1 class="store_hero-title">Store hero value proposition or offer</h1>
+                <p class="store_hero-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam, natus quae architecto hic quod!</p>
+            </div>
+            <div class="store_hero-cta button-group">
+                <a href="#" class="button button-primary button-lg">Button Primary</a>
+                <a href="#" class="button button-secondary button-lg">Button Secondary</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="store_collection">
+    <div class="store_container-fluid">
+        <div class="store_collection-list">
+            <div class="store_collection-row">
+                <div class="store_collection-item">
+                    <div class="store_collection-item-inner">
+                        <div class="store_collection-item-content">
+                            <div class="store_collection-item-title ">Categeroy</div>
+                            <div class="store_collection-item-subtitle">Lorem ipsum dolor sit amet</div>
+                            <div class="store_collection-item-cta">
+                                <a href="#" class="button button-muted">Shop This</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="store_collection-item">
+                    <div class="store_collection-item-inner">
+                        <div class="store_collection-item-content">
+                            <div class="store_collection-item-title ">Categeroy</div>
+                            <div class="store_collection-item-subtitle">Lorem ipsum dolor sit amet</div>
+                            <div class="store_collection-item-cta">
+                                <a href="#" class="button button-muted">Shop This</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="store_collection-item">
+                    <div class="store_collection-item-inner">
+                        <div class="store_collection-item-content">
+                            <div class="store_collection-item-title ">Categeroy</div>
+                            <div class="store_collection-item-subtitle">Lorem ipsum dolor sit amet</div>
+                            <div class="store_collection-item-cta">
+                                <a href="#" class="button button-muted">Shop This</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="store_feature">
+    <div class="store_container">
+        <div class="store_feature-content">
+            <div class="store_feature-text ">
+                <h2 class="store_feature-title">Example Custom Section</h2>
+                <div class="store_feature-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam, natus quae architecto hic quod!</div>
+                <div class="store_feature-cta">
+                    <!-- <a href="#" class="button button-lg button-primary">Button Primary</a> -->
+                    <button data-action="add-product" data-stockrecord-id="1" data-quantity="1" data-redirect=false data-clear-cart=true class="button button-lg button-muted">Buy one time</button>
+                </div>
+            </div>
+            <div class="store_feature-img">
+                <img src="{{ 'img/placeholder650x650.png' | asset_url }}" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="store_products">
+    <div class="store_container">
+        <h2 class="store_products-header">Featured Products</h2>
+        <div class="store_products-list">
+            <div class="store_products-row">
+                <div class="store_products-item">
+                    <div class="store_products-item-inner">
+                        <div class="store_products-content">
+                            <div class="store_products-img">
+                                <img src="{{ 'img/placeholder650x650.png' | asset_url }}" alt="">
+                                <div class="store_products-item-tag">
+                                    <span class="tag tag-danger">tag</span>
+                                </div>
+                            </div>
+                            <div class="store_products-title ">Product Name</div>
+                            <div class="store_products-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam</div>
+                            <div class="store_products-rating">
+                                <div class="store_products-rating-stars">
+                                    <span>★</span>
+                                    <span>★</span>
+                                    <span>★</span>
+                                    <span>★</span>
+                                    <span class="text-muted">★</span>
+                                </div>
+                                <div class="store_products-rating-text">Ratings section</div>
+                            </div>
+                            <div class="store_products-price">
+                                <span class="font-sm"><s>$30.00</s></span> <span class="font-lg font-bold">$10.00</span>
+                            </div>
+                            <div class="store_products-cta">
+                                <a href="#" class="button button-secondary">Shop This</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="store_products-item">
+                    <div class="store_products-item-inner">
+                        <div class="store_products-content">
+                            <div class="store_products-img">
+                                <img src="{{ 'img/placeholder650x650.png' | asset_url }}" alt="">
+                                <div class="store_products-item-tag">
+                                    <span class="tag tag-primary">tag</span>
+                                    <span class="tag tag-success">tag</span>
+                                </div>
+                            </div>
+                            <div class="store_products-title ">Product Name</div>
+                            <div class="store_products-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam</div>
+                            <div class="store_products-rating">
+                                <div class="store_products-rating-stars">
+                                    <span>★</span>
+                                    <span>★</span>
+                                    <span>★</span>
+                                    <span>★</span>
+                                    <span>★</span>
+                                </div>
+                                <div class="store_products-rating-text">Ratings section</div>
+                            </div>
+                            <div class="store_products-price">
+                                <span class="font-sm"><s>$30.00</s></span> <span class="font-lg font-bold">$10.00</span>
+                            </div>
+                            <div class="store_products-cta">
+                                <a href="#" class="button button-secondary">Shop This</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="store_products-item">
+                    <div class="store_products-item-inner">
+                        <div class="store_products-content">
+                            <div class="store_products-img">
+                                <img src="{{ 'img/placeholder650x650.png' | asset_url }}" alt="">
+                                <div class="store_products-item-tag">
+                                    <span class="tag tag-primary">tag</span>
+                                    <span class="tag tag-success">tag</span>
+                                </div>
+                            </div>
+                            <div class="store_products-title ">Product Name</div>
+                            <div class="store_products-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam</div>
+                            <div class="store_products-rating">
+                                <div class="store_products-rating-stars">
+                                    <span>★</span>
+                                    <span>★</span>
+                                    <span>★</span>
+                                    <span>★</span>
+                                    <span class="text-muted">★</span>
+                                </div>
+                                <div class="store_products-rating-text">Ratings section</div>
+                            </div>
+                            <div class="store_products-price">
+                                <span class="font-sm"><s>$30.00</s></span> <span class="font-lg font-bold">$10.00</span>
+                            </div>
+                            <div class="store_products-cta">
+                                <a href="#" class="button button-secondary">Shop This</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="store_testimonials">
+    <div class="store_container">
+        <h2 class="store_testimonials-header">Testimonials</h2>
+        <div class="store_testimonials-list">
+            <div class="store_testimonials-row">
+                <div class="store_testimonials-item">
+                    <div class="store_testimonials-item-inner">
+                        <div class="store_testimonials-content">
+                            <div>
+                                <div class="store_testimonials-rating">
+                                    <div class="store_products-rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                                </div>
+                                <div class="store_testimonials-text">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam
+                                    Lorem ipsum dolor sit
+                                </div>
+                            </div>
+                            <div class="store_testimonials-name">Kristal D. Murphy</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="store_testimonials-item">
+                    <div class="store_testimonials-item-inner">
+                        <div class="store_testimonials-content">
+                            <div>
+                                <div class="store_testimonials-rating">
+                                    <div class="store_products-rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                                </div>
+                                <div class="store_testimonials-text">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam, natus quae architecto hic quod!
+                                    Lorem ip
+                                </div>
+                            </div>
+                            <div class="store_testimonials-name">Kristal D. Murphy</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="store_testimonials-item">
+                    <div class="store_testimonials-item-inner">
+                        <div class="store_testimonials-content">
+                            <div>
+                                <div class="store_testimonials-rating">
+                                    <div class="store_products-rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                                </div>
+                                <div class="store_testimonials-text">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam, natus quae architecto hic quod!
+                                    Lorem ip
+                                </div>
+                            </div>
+                            <div class="store_testimonials-name">Kristal D. Murphy</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="store_feature" style="background: #ffffff url('{{ "img/bg.jpg" | asset_url }}') no-repeat bottom right;background-size: cover;">
+    <div class="store_container">
+        <div class="store_feature-content store_feature-content-lg">
+            <div class="store_feature-text text-center py-6">
+                <h2 class="store_feature-title">Example Custom Section</h2>
+                <div class="store_feature-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam, natus quae architecto hic quod!</div>
+                <div class="store_feature-cta">
+                    <a href="#" class="button button-lg button-primary">Button Primary</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="store_grid">
+    <div class="store_container">
+        <div class="store_grid-list">
+            <div class="store_grid-row">
+                <div class="store_grid-item">
+                    <div class="store_grid-item-inner">
+                        <div class="store_grid-item-content text-center">
+                            <div class="store_grid-item-img"><img src="{{ 'img/icons/icon-shipping.svg' | asset_url }}" alt=""></div>
+                            <div class="store_grid-item-title">Shipping</div>
+                            <div class="store_grid-item-subtitle">Shipping policy text</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="store_grid-item">
+                    <div class="store_grid-item-inner">
+                        <div class="store_grid-item-content text-center">
+                            <div class="store_grid-item-img"><img src="{{ 'img/icons/icon-guarantee.svg' | asset_url }}" alt=""></div>
+                            <div class="store_grid-item-title">Guarantee</div>
+                            <div class="store_grid-item-subtitle">Guarantee policy text</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="store_grid-item">
+                    <div class="store_grid-item-inner">
+                        <div class="store_grid-item-content text-center">
+                            <div class="store_grid-item-img"><img src="{{ 'img/icons/icon-support.svg' | asset_url }}" alt=""></div>
+                            <div class="store_grid-item-title">Support</div>
+                            <div class="store_grid-item-subtitle">Support policy text</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="store_grid-item">
+                    <div class="store_grid-item-inner">
+                        <div class="store_grid-item-content text-center">
+                            <div class="store_grid-item-img"><img src="{{ 'img/icons/icon-secure.svg' | asset_url }}" alt=""></div>
+                            <div class="store_grid-item-title">Secure</div>
+                            <div class="store_grid-item-subtitle">Secure policy text</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="store_grid-row">
+                <div class="store_grid-item">
+                    <div class="store_grid-item-inner">
+                        <div class="store_grid-item-content text-center">
+                            <div class="store_grid-item-img"><img src="{{ 'img/icons/icon-shipping.svg' | asset_url }}" alt=""></div>
+                            <div class="store_grid-item-title">Shipping</div>
+                            <div class="store_grid-item-subtitle">Shipping policy text</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="store_grid-item">
+                    <div class="store_grid-item-inner">
+                        <div class="store_grid-item-content text-center">
+                            <div class="store_grid-item-img"><img src="{{ 'img/icons/icon-guarantee.svg' | asset_url }}" alt=""></div>
+                            <div class="store_grid-item-title">Guarantee</div>
+                            <div class="store_grid-item-subtitle">Guarantee policy text</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="store_grid-item">
+                    <div class="store_grid-item-inner">
+                        <div class="store_grid-item-content text-center">
+                            <div class="store_grid-item-img"><img src="{{ 'img/icons/icon-support.svg' | asset_url }}" alt=""></div>
+                            <div class="store_grid-item-title">Support</div>
+                            <div class="store_grid-item-subtitle">Support policy text</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="store_grid-item">
+                    <div class="store_grid-item-inner">
+                        <div class="store_grid-item-content text-center">
+                            <div class="store_grid-item-img"><img src="{{ 'img/icons/icon-secure.svg' | asset_url }}" alt=""></div>
+                            <div class="store_grid-item-title">Secure</div>
+                            <div class="store_grid-item-subtitle">Secure policy text</div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extrascripts %}
+	<script type="text/javascript" src="{{ 'js/slick.min.js'|asset_url }}"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+	    $('.store_testimonials-row').slick({
+	        slidesToShow: 3,
+	        slidesToScroll: 1,
+	        arrows: true,
+	        dots: false,
+	        fade: false,
+	        responsive: [
+	            {
+	                breakpoint: 960,
+	                settings: {
+	                    slidesToShow: 1,
+	                    slidesToScroll: 1
+	                }
+	            }
+
+	        ]
+
+	    });
+	    
+	});
+	</script>
+{% endblock %}

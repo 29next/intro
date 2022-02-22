@@ -1,0 +1,52 @@
+{% extends "layouts/customer_base.html" %}
+
+{% block tabcontent %}
+    <div class="notification notification-warning text-center">
+    	<button class="delete"></button>
+        {% t "global.warning.address_form_edit_warning" %}
+    </div>
+    <form class="form-custom-address {{ class }}" method="post" data-address-id="{{ object.id }}">
+        {% csrf_token %}
+
+        {% if form.is_bound and not form.is_valid %}
+            <div class="notification notification-danger text-center">
+            	<button class="delete"></button>
+                {% t "global.error.please_check_error" %}
+            </div>
+        {% endif %}
+
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <div class="notification notification-danger">
+                	<button class="delete"></button>
+                    {{ error }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <div>
+            {% for field in form %}
+                {% if field.name == 'country' %}
+                <div class="mb-4">
+                    {% include 'partials/form_field.html' with field=form.country size='full'  %}
+                </div>
+                {% elif field.name == 'phone_number' %}
+                    {% include 'partials/form_field.html' with field=form.phone_number  %}
+                    {% include 'partials/form_field.html' with field=form.phone_number_country  %}
+                {% elif field.name != 'same_as_shipping' and field.name != 'email' %}
+                    {% include 'partials/form_field.html' with field=field %}
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="field button-group">
+            <div class="control">
+                 <button class="button" href="#" onclick="window.history.go(-1);return false">{% t "global.button.cancel" %}</button>
+            </div>
+            <div class="control">
+                <button type="submit" class="button button-primary" data-loading-text='{% t "global.button.save_loading" %}'>{% t "global.button.save" %}</button>
+            </div>
+
+        </div>
+        
+    </form>
+{% endblock tabcontent %}

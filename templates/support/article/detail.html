@@ -1,0 +1,55 @@
+{% extends "layouts/base.html" %}
+
+
+{% block title %}
+    {{ article.title }} | {{ block.super }}
+{% endblock %}
+
+
+
+{% block breadcrumbs %}
+
+<section class="store_breadcrumbs">
+        <div class="store_container">
+            <nav class="store_breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                    <li><a href="{{ homepage_url }}">{% t "navigation.main.home" %}</a></li>
+                    <li><a href="{% url 'support:category-list' %}">{% t "navigation.main.support" %}</a></li>
+                    <li class="is-active"><a href="#" aria-current="page">{{ article.title }}</a></li>
+                    {% if user.is_staff %}
+                    <li>
+                        <a  href="{% url 'support_dashboard:article-detail' pk=article.pk %}"><small> {% t "store.support.edit_this_article" %}</small></a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            
+        </div>
+    </section>
+{% endblock breadcrumbs %}
+
+{% block content %}
+<section class="support_page">
+    <div class="store_container">
+        <div class="support_header">
+            <div class="support_header-item">
+                <h1>{{ article.title }}</h1>
+            </div>
+            <div class="support_article-meta">
+                <p>{% t "store.support.last_updated" %} {{ article.updated_at|date:"M d, Y" }}</p>
+            </div>
+        </div>
+        <div class="support_content-body content-body">
+            {{ article.content|safe }}
+
+            <hr class="mb-4 mt-5">
+            <p>
+                {% url 'customer:support-ticket-create' as create_ticket_link %}
+                {% t "store.support.create_support_request" with link=create_ticket_link %}
+            </p>
+        </div>
+        
+
+    </div>
+</section>
+{% endblock content%}

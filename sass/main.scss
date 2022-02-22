@@ -1,0 +1,41 @@
+// @charset "utf-8";
+@import "reset";
+
+// Globals
+@import "variables";
+@import "mixins";
+@import "base";
+@import "utilities";
+
+
+
+// components
+
+@import "forms";
+@import "buttons";
+@import "tags";
+@import "modals";
+@import "tabs";
+@import "notifications";
+@import "cart";
+@import "navigation";
+@import "footer";
+@import "breadcrumbs";
+@import "pagination";
+
+// pages
+@import "home";
+@import "account-section";
+@import "register-section";
+@import "blog-section";
+@import "catalogue-section";
+@import "order";
+@import "basket";
+@import "checkout";
+@import "search-section";
+@import "support-section";
+
+// tools
+@import "flag/flag-icon";
+@import "pay/pay-icon";
+@import "slick/slick";

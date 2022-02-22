@@ -1,0 +1,44 @@
+
+.store_footer-top {
+	background-color: #F4F9FC
+
+}
+.store_footer-links {
+
+    padding: 1rem 0.75rem;
+    @include md-up {
+        display: flex;
+    }
+}
+.store_footer-column {
+	@include column;
+	ul, address {
+		font-size: 0.875rem;
+	}
+	li {
+		margin-bottom: 0.75rem;
+	}
+
+    
+}
+.store_footer-links-header {
+	font-weight: bold;
+	margin-bottom:1.125rem;
+}
+.store_footer-legal {
+
+    padding: 1rem 0.75rem;
+    
+    @include md-up {
+        display: flex;
+        justify-content: space-between;
+
+    }
+}
+.store_footer-copy {
+	font-size: 0.875rem;
+	margin-bottom: 0.75rem;
+	@include md-up {
+		margin-bottom: 0;
+	}
+}

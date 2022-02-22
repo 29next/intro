@@ -1,0 +1,64 @@
+{% extends "layouts/base.html" %}
+
+{% block description %}{{ page.get_meta_description }}{% endblock %}
+
+{% block styles %}
+    {% if page.campaign.include_site_styles %}
+        {{ block.super }}
+    {% else %}
+        <link rel="stylesheet" href="{{ 'css/campaign.min.css'|asset_url }}" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/css/intlTelInput.css">
+    {% endif %}
+{% endblock %}
+
+{% block custom_styles %}
+    {% if page.campaign.include_site_styles %}
+        {{ block.super }}
+    {% endif %}
+    {% if page.campaign and page.campaign.custom_css %}
+        <link rel="stylesheet" type="text/css" href="{{ page.campaign.custom_css.get_absolute_url }}" />
+    {% endif %}
+{% endblock %}
+
+{% block title %}
+    {{ page.title }}
+{% endblock %}
+
+{% block campaign_headers %}
+    {{ block.super }}
+    {% if page.campaign.header_script %}
+        {{ page.campaign.header_script|safe }}
+    {% endif %}
+    {% if page.header_script %}
+        {{ page.header_script|safe }}
+    {% endif %}
+{% endblock %}
+
+{% block layout %}
+    {% csrf_token %}
+    {{ page.body|safe }}
+    <div class="loader-overlay">
+        <div class="loader-msg">
+          <div class="spinner loading"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block modals %}
+    {{ block.super }}
+{% endblock modals %}
+
+{% block onbodyload %}
+    {{ block.super }}
+    funnel.extraOptions.next_url = "{% if page.next_page %}{{ page.next_page.get_absolute_url }}{% else %}{% url 'checkout:index' %}{% endif %}"
+{% endblock %}
+
+{% block campaign_scripts %}
+    {% if page.campaign.footer_script %}
+        {{ page.campaign.footer_script|safe }}
+    {% endif %}
+
+    {% if page.footer_script %}
+        {{ page.footer_script|safe }}
+    {% endif %}
+{% endblock %}

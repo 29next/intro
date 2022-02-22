@@ -1,0 +1,21 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}
+    {% t "global.error.403" %} | {{ block.super }}
+{% endblock %}
+
+{% block error_heading %}
+    {% t "global.error.403" %}
+{% endblock %}
+
+{% block content_wrapper %}
+<section>
+    <div class="store_container text-center">
+        <div class="page_content-body content-body">
+        {% block error_message %}
+            <p>{% t "global.error.403_message" %}</p>
+        {% endblock %}
+        </div>
+    </div>
+</section>
+{% endblock %}

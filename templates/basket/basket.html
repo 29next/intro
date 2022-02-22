@@ -1,0 +1,45 @@
+{% extends "layouts/base.html" %}
+
+
+{% block title %}
+    {% t "order.cart.title" %} | {{ block.super }}
+{% endblock %}
+
+{% block breadcrumbs %}
+ <section class="store_breadcrumbs">
+    <div class="store_container">
+        <nav class="store_breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li><a href="{{ homepage_url }}">{% t "navigation.main.home" %}</a></li>
+                <li class="is-active"><a href="#" aria-current="page">{% t "order.cart.title" %}</a></li>
+            </ul>
+        </nav>
+    </div>
+</section>
+{% endblock %}
+
+{# Hide mini-basket so we don't have two baskets to keep in sync #}
+{% block mini_basket %}{% endblock %}
+
+{% block headertext %}{% endblock %}
+
+{% block content %}
+    {% include 'templates/basket/partials/basket_content.html' %}
+{% endblock content %}
+
+{% block modals %}{% endblock %}
+
+{% block extrascripts %}
+    {{ block.super }}
+    <script id='google-analytics-events-script'></script>
+{% endblock %}
+
+
+{% block onbodyload %}
+    {{ block.super }}
+    {# We pass in the URL to send AJAX requests to #}
+    var options = {
+        'basketURL': '{% url 'basket:summary' %}'
+    };
+    core.basket.init(options);
+{% endblock %}

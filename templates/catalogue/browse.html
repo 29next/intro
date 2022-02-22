@@ -1,0 +1,116 @@
+{% extends "layouts/base.html" %}
+{% block title %}
+    {% if summary %}{{ summary }} |{% endif %} {{ block.super }}
+{% endblock %}
+
+{% block headertext %}{% endblock %}
+
+{% block breadcrumbs %}
+
+    <section class="store_breadcrumbs">
+        <div class="store_container">
+            <nav class="store_breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                    <li><a href="{{ homepage_url }}">{% t "navigation.main.home" %}</a></li>
+
+                    <li class="is-active"><a aria-current="page" href="#">{{ summary }}</a></li>
+
+
+                </ul>
+            </nav>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+<section class="catalogue_page">
+    <div class="store_container">
+
+        {% if products %}
+        <div class="catalogue_list">
+
+            <div class="catalogue_list-row">
+                {% for product in products %}
+                <div class="catalogue_list-item">
+                    <div class="catalogue_list-item-inner">
+                        <div class="catalogue_item-img">
+                            {% block product_image %}
+                                {% with image=product.primary_image %}
+                                    {% image_thumbnail image.original "350x350" crop="center" upscale=True as thumb %}
+                                        <a href="{{ product.get_absolute_url }}">
+                                            <img src="{{ thumb.url }}" alt="{{ product.get_title }}">
+                                        </a>
+                                {% endwith %}
+                            {% endblock %}
+                        </div>
+                        {% block product_title %}
+                            <div class="catalogue_item-name">
+                                <a href="{{ product.get_absolute_url }}" title="{{ product.get_title }}">{{ product.get_title|truncatewords:4 }}</a>
+                            </div>
+                        {% endblock %}
+
+
+                        <div class="catalogue_item-desc">
+                            {{ product.excerpt|safe|truncatewords_html:10 }}
+                        </div>
+                        {% block product_review %}
+                                {% iffeature 'reviews' %}
+                                    {% if product.rating %}
+                                    <div class="catalogue_item-rating">
+                                        <div class="catalogue_item-rating-stars">
+                                             {% for i in '12345' %}
+                                                {% if forloop.counter <= product.rating %}
+                                                    <span class="is-count">&#9733;</span>
+                                                {% else %}
+                                                    <span>&#9733;</span>
+                                                {% endif %}
+                                            {% endfor %}
+
+                                        </div>
+                                        <div class="catalogue_item-rating-count">
+                                            ({{product.num_approved_reviews}})
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                {% endiffeature %}
+                        {% endblock %}
+
+                        {% block product_price %}
+                            <div class="catalogue_item-price">
+                                {% purchase_info_for_product request product as session %}
+
+                                    {% if session.price.exists %}
+                                        {% if session.price.price_retail > session.price.excl_tax %}
+                                        <div class="catalogue_item-price-previous">
+                                            <s>{{ session.price.price_retail|currency:session.price.currency }}</s>
+                                        </div>
+                                        {% endif %}
+                                <div class="catalogue_item-price-current">
+                                    {% if session.price.excl_tax == 0 %}
+                                                {% t "store.catalogue.free" %}
+                                            {% elif session.price.is_tax_known %}
+                                                {{ session.price.incl_tax|currency:session.price.currency }}
+                                            {% else %}
+                                                {{ session.price.excl_tax|currency:session.price.currency }}
+                                        {% endif %}
+                                    {% else %}
+                                        &nbsp;
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endblock %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+        {% include "partials/pagination.html" %}
+        {% else %}
+            <p>{% t "store.catalogue.none_found" %}</p>
+        {% endif %}
+
+
+    </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,93 @@
+<div class="basket_summary-content" id="sidebar">
+    <div class="basket_summary-header">
+
+
+        <h6>{% t "order.cart.summary" %}</h6>
+
+            <span class="tag tag-primary">
+                {% t "order.cart.items_count" with count=basket.num_items %}
+            </span>
+
+
+    </div>
+
+    <div class="basket_summary-totals">
+
+        <table class="basket_summary-table">
+            <tbody>
+                <tr>
+                    <td>{% t "order.cart.basket_total" %}</td>
+                    <td></td>
+                    <td class="text-right">
+                        {{ basket.total_excl_tax_excl_discounts|currency:basket.currency }}
+                    </td>
+                </tr>
+                {% with offer_discounts=basket.offer_discounts voucher_discounts=basket.grouped_voucher_discounts %}
+                    {% for discount in offer_discounts %}
+                        <tr>
+                            <td>{% t "order.cart.applied_offer" %} <span class="tag tag-primary">{{ discount.name }}</span></td>
+                            <td></td>
+                            <td class="text-right">-{{ discount.discount|currency:basket.currency }}</td>
+                        </tr>
+                    {% endfor %}
+
+                    {% if voucher_discounts %}
+                        {% for discount in voucher_discounts %}
+                            <tr>
+                                <td>{% t "order.cart.applied_coupons" %} <span class="tag tag-primary">{{ discount.voucher.code }}</span></td>
+                                <td>
+                                    {% if editable %}
+                                        <form action="{% url 'basket:vouchers-remove' pk=discount.voucher.id %}" method="POST" id="remove-vocher-form-{{ discount.voucher.id }}">
+                                            {% csrf_token %}
+                                            <a class="remove-from-cart text-danger" href="#" onclick="document.getElementById('remove-vocher-form-{{ discount.voucher.id }}').submit();" data-toggle="tooltip" title="" data-original-title="Remove">X</a>
+                                        </form>
+                                    {% endif %}
+                                </td>
+                                <td class="text-right">-{{ discount.discount|currency:basket.currency }}</td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                {% with subscription_rebill_quantity=basket.subscription_rebill_quantity %}
+                    {% if subscription_rebill_quantity %}
+                        <tr>
+                            <td>
+                                {% t "order.cart.subscription_items" with count=subscription_rebill_quantity %}
+                            </td>
+                            <td></td>
+                            <td class="text-right">
+                                {{ basket.total_subscription_rebill_price_excl_tax|currency:basket.currency }}
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endwith %}
+                <tr>
+                    <td>{% t "order.cart.shipping" %}</td>
+                    <td></td>
+                    <td class="text-right">
+                        {{ shipping_charge.excl_tax|currency:basket.currency }}
+                    </td>
+                </tr>
+                {% if basket.display_taxes %}
+                    <tr>
+                        <td>{{ basket.display_taxes }}</td>
+                        <td></td>
+                        <td class="text-right">
+                        {{ order_total.tax|currency:basket.currency }}
+                        </td>
+                    </tr>
+                {% endif %}
+                <tr class="font-bold">
+                    <td>{% t "order.cart.order_total" %}</td>
+                    <td></td>
+                    <td class="text-right">
+                        {{ order_total.incl_tax|currency:basket.currency }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        {% if editable %}
+            <a class="button button-primary" href="{% url 'checkout:index' %}">{% t "order.cart.proceed_to_checkout" %}&nbsp;</a>
+        {% endif %}
+    </div>
+</div>

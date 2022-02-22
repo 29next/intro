@@ -1,0 +1,18 @@
+.search_header {
+    margin-bottom: 1.5rem;
+}
+
+.search_header-item {
+    @include column;
+    @include md-up {
+            padding-left: 1.5rem;
+        }
+    &.header-item-count {
+        font-size: $text-lg;
+        display: none;
+
+        @include md-up {
+            display: block;
+        }
+    } 
+}

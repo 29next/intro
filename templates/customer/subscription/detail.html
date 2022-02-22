@@ -1,0 +1,372 @@
+{% extends "layouts/customer_base.html" %}
+
+{% block custom_styles %}
+<link rel="stylesheet" href="{{ 'css/flatpickr.min.css'|asset_url }}">
+{% endblock %}
+{% block breadcrumbs %}
+<section class="store_breadcrumbs">
+    <div class="store_container">
+        <nav class="store_breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li><a href="{{ homepage_url }}">{% t "navigation.main.home" %}</a></li>
+                <li><a href="{% url 'customer:summary' %}">{% t "navigation.account.account" %}</a></li>
+                <li><a href="{% url 'customer:subscription-list' %}">{% t "navigation.account.subscriptions" %}</a></li>
+                <li class="is-active"><a href="#" aria-current="page">{{ page_title }}</a></li>
+            </ul>
+        </nav>
+    </div>
+</section>
+{% endblock %}
+{% block header %}<h4>{% t "customer.subscriptions.heading_detail" with page_title=page_title %}</h4>{% endblock %}
+{% block headertext %}
+<p class="font-lg">{% t "customer.subscriptions.status_is"  %}
+    {% if subscription.status == subscription.ACTIVE %}
+    <span class="text-success">{{ subscription.status }}</span>
+    {% elif subscription.status == subscription.PENDING %}
+    <span class="text-muted">{{ subscription.status }}</span>
+    {% elif subscription.status == subscription.PAST_DUE %}
+    <span class="text-warning">{{ subscription.status }}</span>
+    {% elif subscription.status == subscription.CANCELED %}
+    <span class="text-danger">{{ subscription.status }}</span>
+    {% else %}
+    {{ subscription.status }}
+    {% endif %}
+</p>
+<p class="font-lg">{% t "customer.subscriptions.next_shipment" with ship_date=subscription.next_renewal_date  %}</p>
+<p class="font-lg">{% t "customer.subscriptions.subscription_schedule" with subscription_frequency=subscription.frequency %} </p>
+{% endblock %}
+{% block modals %}
+{{ block.super }}
+<!-- Change Next Shipment Date Modal -->
+<div class="store_modal" id="sub-change-next-shipment-date" tabindex="-1" role="dialog">
+    <div class="store_modal-background"></div>
+    <form method="post" novalidate>
+        <div class="store_modal-content">
+            <div class="store_modal-box content-body text-center">
+                <h5>{% t "customer.subscriptions.modal_change_ship_date_heading" %}</h5>
+                <p>{% t "customer.subscriptions.modal_change_ship_date_body" %}</p>
+                <h6>{% t "customer.subscriptions.modal_next_ship_date" with next_renewal=object.next_renewal_date|date:"d M, Y" %}</h6>
+                <p>{% t "customer.subscriptions.modal_use_calendar_body" %}</p>
+                <div>
+                    {% include "partials/form_field.html" with field=next_shipment_form.next_renewal_date nolabel=True %}
+                </div>
+                <input type="hidden" name='action' value='change_next_shipment_date'>
+                {% csrf_token %}
+                <div class="button-group is-centered">
+                    <button class="button" type="submit">
+                        {% t "customer.subscriptions.modal_change_ship_date_button" %}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <button class="store_modal-close" aria-label="close"></button>
+</div>
+<!-- Cancel Modal -->
+<div class="store_modal" id="subscription-cancel" tabindex="-1" role="dialog">
+    <div class="store_modal-background"></div>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        <div class="store_modal-content">
+            <div class="store_modal-box content-body text-center">
+                <h5>{% t "customer.subscriptions.modal_cancel_heading" %}</h5>
+                <p>{% t "customer.subscriptions.modal_cancel_body" %}</p>
+                <p>
+                    {% t "customer.subscriptions.modal_cancel_create" %}
+
+                    <a href="{% url 'customer:support-ticket-create' %}">{% t "customer.subscriptions.modal_cancel_support_ticket" %}</a>
+
+                    {% t "customer.subscriptions.modal_cancel_happy_to_help" %}
+
+                </p>
+                <p><strong>{% t "customer.subscriptions.modal_cancel_reason" %}</strong><span class="text-danger">{% t "customer.subscriptions.required" %}</span></p>
+                {% include "partials/form_field.html" with field=cancel_form.cancel_reason nolabel=True %}
+                <input type="hidden" name='action' value='cancel'>
+                <div class="button-group is-centered">
+                    <a class="button store_modal-dismiss">
+                        {% t "global.button.nevermind" %}
+                    </a>
+                    <button class="button subscription-cancel-button" disabled>
+                        {% t "global.button.confirm" %}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <button class="store_modal-close" aria-label="close"></button>
+</div>
+<!-- Subscription Down Sell Modal -->
+{% if object.downsell_avaliable %}
+<form method="post">
+    {% csrf_token %}
+    <div class="store_modal" id="subscription-cancel-downsell" tabindex="-1" role="dialog">
+        <div class="store_modal-background"></div>
+        <div class="store_modal-content">
+            <div class="store_modal-box content-body text-center">
+                <h4 class="store_modal-title">{% t "customer.subscriptions.modal_downsell_header" %}</h4>
+                <p>{% t "customer.subscriptions.modal_downsell_body" %}</p>
+                <div class="text-center">
+                    <h6>
+                        <strong>
+                            {% t "customer.subscriptions.modal_downsell_offer_for_you" with name=object.user.first_name %}
+                        </strong>
+                    </h6>
+                </div>
+                <div class="notification notification-primary">
+                    <strong>
+
+                        {% t "customer.subscriptions.modal_downsell_offer_detail" with percentage=subscription_downsell_info.percentage|floatformat:0 total=subscription_downsell_info.total_incl_tax.incl_tax|currency:object.currency %}
+                    </strong>
+                </div>
+
+
+                <table class="account_table">
+                    <thead>
+                        <tr>
+                            <th scope="col">{% t "tables.heading.product" %}</th>
+                            <th scope="col">{% t "tables.heading.qty" %}</th>
+                            <th scope="col">{% t "tables.heading.new_total" %}</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	{% for line in object.lines.all %}
+                        <tr>
+                            <td data-label='{% t "tables.heading.product" %}'>
+                                <div class="account_table-product">
+                                {% with image=line.product.primary_image product=line.product %}
+                                	{% image_thumbnail image.original "200x200" upscale=False as thumb %}
+	                                	<div class="account_table-pimage">
+	                                        <img src="{{ thumb.url }}" alt="{{ product.get_title }}">
+	                                    </div>
+                                    <div>
+                                        <div class="account_table-pname">
+                                        	{{ product.get_title }}
+                                        	({{ line.stockrecord.subscription_suggested_downsell_price|currency:object.currency }})
+				                        </div>
+                                    </div>
+                                {% endwith %}
+                                </div>
+                            </td>
+                            <td data-label='{% t "tables.heading.qty" %}'>{{ line.quantity }}</td>
+
+                            <td data-label='{% t "tables.heading.total" %}'>
+	                                {{ line.downsell_line_price_incl_tax|currency:object.currency }}
+
+                            </td>
+
+                        </tr>
+                        {% endfor %}
+
+                        <tr>
+                            <td colspan="2" style="text-align: right">{% t "tables.content.shipping" %}</td>
+                            <td>{{ subscription_downsell_info.shipping_charge.incl_tax|currency:object.currency }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: right"><div class="account_table-total">{% t "tables.heading.new_total" %}</div></td>
+                            <td><div class="account_table-total">{{ subscription_downsell_info.total_incl_tax.incl_tax|currency:object.currency }}</div></td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+
+                <div class="button-group is-centered">
+                    <a class="button store_modal-dismiss store_modal-button"  data-target="subscription-cancel">{% t "customer.subscriptions.no_downsell" %}</a>
+                    <input type="hidden" name='action' value='subscription_downsell'>
+                    <button class="button" type="submit" type="submit">{% t "customer.subscriptions.yes_downsell" %}</button>
+                </div>
+            </div>
+        </div>
+        <a class="store_modal-close" aria-label="close"></a>
+    </div>
+</form>
+{% endif %}
+<!-- Change Schedule Modal -->
+<div class="store_modal" id="sub-change-schedule" tabindex="-1" role="dialog">
+    <div class="store_modal-background"></div>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        <div class="store_modal-content">
+            <div class="store_modal-box content-body text-center">
+                <h5>{% t "customer.subscriptions.modal_change_schedule_heading" %}</h5>
+                <p>{% t "customer.subscriptions.modal_change_schedule_body" %}</p>
+                <br>
+                <div class="field">
+                    <label class="label" for="account-city">{% t "customer.subscriptions.modal_change_schedule_label" %}</label>
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            {% render_field change_schedule_form.interval_count %}
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name='action' value='change_schedule'>
+                <div class="button-group is-centered">
+                    <button class="button" type="submit">
+                        {% t "customer.subscriptions.modal_change_schedule_button" %}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <button class="store_modal-close" aria-label="close"></button>
+</div>
+{% if object.num_lines > 1%}
+<!-- Remove Product Modal -->
+{% for line in object.lines.active %}
+<div class="store_modal" id="subscription-remove-product-{{ line.id }}" tabindex="-1" role="dialog">
+    <div class="store_modal-background"></div>
+    <form method="post">
+        <div class="store_modal-content">
+            <div class="store_modal-box content-body text-center">
+                <h5>{% t "customer.subscriptions.modal_remove_product_heading" %}</h5>
+                {% with image=line.product.primary_image product=line.product %}
+                {% image_thumbnail image.original "200x200" upscale=False as thumb %}
+                <h5>{% t "customer.subscriptions.modal_remove_product_confirmation" %}</h5><img src="{{ thumb.url }}" alt="Product" style="width: 130px;">
+                <h5>{{ product.get_title }}</h5>
+                <p><strong>{% t "tables.heading.qty" %}:</strong> {{ line.quantity }} <strong>{% t "tables.heading.price" %}:</strong> {{ line.price|currency:object.currency }}</p>
+                <p><em>{% t "customer.subscriptions.modal_remove_product_body" %}</em></p>
+                {% endwith %}
+                <input type="hidden" name='action' value='remove_subscription_line'>
+                <input type="hidden" name='line_id' value='{{ line.id }}'>
+                {% csrf_token %}
+                <div class="button-group is-centered">
+                    <a class="button store_modal-dismiss">
+                        {% t "global.button.nevermind" %}
+                    </a>
+                    <button class="button">
+                        {% t "global.button.confirm" %}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <button class="store_modal-close" aria-label="close"></button>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock modals %}
+{% block tabcontent %}
+
+<div class="account_order-card">
+    <div class="account_order-detail">
+        <div class="account_order-detail-shipping">
+            <div class="account_order-detail-header">
+                {% t "customer.subscriptions.shipping_address" %}
+            </div>
+            <div class="account_order-detail-address">
+                <address>
+                    {% for field in object.user_address.active_address_fields %}
+                    {{ field }}<br />
+                    {% endfor %}
+                </address>
+            </div>
+            {% if object.status != object.CANCELED %}
+            <div class="account_order-detail-link"><a href="{% url 'customer:subscription-shipping-address' pk=object.id %}">{% t "customer.subscriptions.edit_shipping_address" %}</a></div>
+            {% endif %}
+        </div>
+        <div class="account_order-detail-pay">
+            <div class="account_order-detail-header">
+                {% t "customer.subscriptions.payment_method" %}
+            </div>
+            <div class="account_order-detail-card">
+                <span class="">{{ object.bankcard.number }}</span>
+                <br>
+                <strong>{% t "customer.subscriptions.expires" %}</strong> {{ object.bankcard.expiry_month }}
+                <br>
+                <address>
+                    {% for field in object.billing_address.active_address_fields %}
+                    {{ field }}<br />
+                    {% endfor %}
+                </address>
+            </div>
+            {% if object.status != object.CANCELED %}
+            <div class="account_order-detail-link"><a href="{% url 'customer:subscription-payment-method' pk=object.id %}">{% t "customer.subscriptions.update_payment_method" %}</a></div>
+            {% endif %}
+        </div>
+        <div class="account_order-detail-summary">
+            <div class="account_order-detail-header">
+                {% t "customer.subscriptions.order_summary" %}
+            </div>
+            <div class="account_order-detail-summary-list">
+                <ul>
+                    <li><span>{% t "customer.subscriptions.subtotal" %}:</span>{{ object.total_incl_tax|currency:object.currency }}</li>
+                    <li><span>{% t "customer.subscriptions.shipping" %}</span>{{ object.shipping_charge.incl_tax|currency:object.currency }}</li>
+                    <li class="account_order-detail-summary-total"><span>{% t "customer.subscriptions.total" %}</span>{{ object.total_incl_shipping.incl_tax|currency:object.currency }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="account_order-detail-actions">
+        {% if object.status != object.CANCELED %}
+        <a href="#" class="button button-sm store_modal-button" data-target="sub-change-next-shipment-date">{% t "customer.subscriptions.edit_ship_date" %}</a>
+        <a href="#" class="button button-sm store_modal-button" data-target="sub-change-schedule">{% t "customer.subscriptions.change_schedule" %}</a>
+        <a href="#" class="button button-sm store_modal-button" {% if object.downsell_avaliable %} data-target="subscription-cancel-downsell" {% else %} data-target="subscription-cancel" {% endif %}>{% t "global.button.cancel" %}</a>
+        {% endif %}
+    </div>
+</div>
+<form id='subscription_line_form' method="post">
+    {% csrf_token %}
+    <input type="hidden" name='action' value='change_quantity_subscription_line'>
+    <table class="account_table">
+        <thead>
+            <tr>
+                <th scope="col">{% t "tables.heading.product" %}</th>
+                <th scope="col">{% t "tables.heading.qty" %}</th>
+                <th scope="col">{% t "tables.heading.total" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ formset.management_form }}
+            {% for form in formset %}
+            {% with line=form.instance %}
+            {{ form.id }}
+            <tr>
+                <td data-label='{% t "tables.heading.product" %}'>
+                    {% with image=line.product.primary_image product=line.product %}
+                    {% image_thumbnail image.original "200x200" crop="center" upscale=False as thumb %}
+                    <div class="account_table-product">
+                        <div class="account_table-pimage">
+                            <a href="{% url 'catalogue:detail' product.product_slug product.pk %}">
+                                <img src="{{ thumb.url }}" alt="{{ product.get_title }}">
+                            </a>
+                        </div>
+                        <div>
+                            <div class="account_table-pname">
+                                {{ product.get_title }}
+                                {% if line.price_incl_tax %}
+                                ({{ line.price_incl_tax|currency:object.currency }})
+                                {% endif %}
+                            </div>
+                            <div class="account_table-schedule">{% t "tables.content.sub_frequency" with frequency=subscription.frequency %}</div>
+                        </div>
+                    </div>
+                    {% endwith %}
+                </td>
+                <td data-label='{% t "tables.heading.quantity" %}'>{% include 'partials/form_field.html' with field=form.quantity nolabel=True %}</td>
+                <td data-label='{% t "tables.heading.total" %}'>
+                    <div class="account_table-total">
+                        {{ line.line_price_incl_tax|currency:object.currency }}
+                    </div>
+                    {% if object.num_lines > 1 %}
+                    <a href="#" class="store_modal-button" data-toggle="modal" data-target="subscription-remove-product-{{ line.id }}">{{% t "customer.subscriptions.remove" %}</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endwith %}
+            {% endfor %}
+        </tbody>
+    </table>
+</form>
+{% endblock tabcontent %}
+{% block extrascripts %}
+	<script type="text/javascript" src="{{ 'js/flatpickr.min.js'|asset_url }}"></script>
+	<script type="text/javascript">
+	flatpickr("#id_next_renewal_date", {
+	    inline: true
+	});
+    $('.radio').change(function(){
+      $('.subscription-cancel-button').removeAttr('disabled');
+    });
+	</script>
+{% endblock %}

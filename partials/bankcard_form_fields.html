@@ -1,0 +1,50 @@
+{% if form.is_bound and not form.is_valid %}
+    <div class="notification notification-danger col-sm-12">
+        <button class="delete"></button>
+        {% t "global.error.please_check_error" %}
+    </div>
+{% endif %}
+
+{% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+        <div class="notification notification-danger">
+             {{ error }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+{% if gateway_name == 'spreedly' %}
+    <div id="spreedly-error-block" class="error-block text-danger mb-3"></div>
+{% endif %}
+
+<div class="field-group is-half">
+    {% if gateway_name == 'spreedly' %}
+        <div class="field">
+            <div class="control">
+                <div id="spreedly-number" class="input"></div>
+                <span class="error-block text-danger"></span>
+                {% for field in form.hidden_fields %}
+                    {{ field }}
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        {% include 'partials/form_field.html' with field=form.number nolabel=True %}
+    {% endif %}
+    {% include 'partials/form_field.html' with field=form.name nolabel=True %}
+</div>
+<div class="field-group is-half">
+    {% include 'partials/form_field.html' with field=form.expiry nolabel=True %}
+    {% if gateway_name == 'spreedly' %}
+        <div class="field">
+            <div class="control">
+                <div id="spreedly-cvv" class="input"></div>
+                <span class="error-block text-danger"></span>
+            </div>
+        </div>
+    {% else %}
+        {% include 'partials/form_field.html' with field=form.cvc nolabel=True %}
+    {% endif %}
+</div>
+   
+{% include 'partials/form_field.html' with field=form.is_saved_card nolabel=True %}

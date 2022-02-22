@@ -1,0 +1,63 @@
+{% if storefront_geos and storefront_geos|length > 1 %}
+<div class="store_nav-item has-dropdown is-hoverable store_nav-lang-currency">
+    <a class="store_nav-link" href="#">
+        <span class="flag-icon flag-icon-{{ request.COUNTRY_CODE|lower }}"></span>&nbsp;<span class="store_nav-lang-currency-text">Language/Currency</span>
+    </a>
+    <div class="store_nav-dropdown is-right ">
+        <form action="{% url 'core:set-storefront' %}" method="post" id='set-storefront'>
+            {% csrf_token %}
+            <input name="country" type="hidden" value="" />
+            <input name="language" type="hidden" value="" />
+            <input name="currency" type="hidden" value="" />
+            <input name="next" type="hidden" value="{{ language_neutral_url_path }}">
+            {% for storefront in storefront_geos %}
+            <a class="store_nav-item" href="#" data-country="{{ storefront.country.code }}" data-language="{{ storefront.get_language }}" data-currency="{{ storefront.currency.code }}">
+                <span class="flag-icon flag-icon-{{ storefront.country.code|lower }}"></span>&nbsp;&nbsp;<span> {{ storefront.country }}</span>
+            </a>
+            {% endfor %}
+        </form>
+        <hr class="store_nav-divider">
+        {% if languages_active_storefront %}
+        <form action="{% url 'set_language' %}" method="post" id='set-language'>
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ language_neutral_url_path }}">
+            <div class="field store_nav-item store-language-select">
+                <div class="control">
+                    <div class="select is-small">
+                        <select name="language">
+                            {% for language_code, name in languages_active_storefront %}
+                                <option value="{{ language_code }}" {% if request.LANGUAGE_CODE == language_code %} selected {% endif %}>
+                                    {{ name }}
+                                </option>
+                            {% endfor %}
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+        {% endif %}
+        <hr class="store_nav-divider">
+        {% if currencies and currencies|length > 1 %}
+        <form action="{% url 'core:set-currency' %}" method="post" id='set-currency'>
+                {% csrf_token %}
+                <div class="field store_nav-item store-currency-select">
+                    <div class="control">
+                        <div class="select is-small">
+                            <select name="currency">
+                                {% for currency in currencies %}
+                                <option value="{{ currency.code }}" {% if request.CURRENCY_CODE == currency.code %} selected {% endif %}>
+                                    {{ currency.symbol }} {{ currency.code }}
+                                </option>
+                                {% endfor %}
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+        </form>
+        {% endif %}
+        
+    </div>
+</div>
+{% endif %}

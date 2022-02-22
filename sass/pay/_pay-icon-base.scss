@@ -1,0 +1,22 @@
+.pay-icon-background {
+  background-size: contain;
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
+.pay-icon {
+  @extend .pay-icon-background;
+  position: relative;
+  display: inline-block;
+  width: (4 / 3) * 2rem;
+  line-height: 2rem;
+  &:before {
+    content: '\00a0';
+  }
+}
+
+@mixin pay-icon($pay) {
+  .pay-icon-#{$pay} {
+    background-image: url(#{$pay-icon-css-path}/#{$pay}.svg);
+  }
+}

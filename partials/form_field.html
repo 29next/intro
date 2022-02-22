@@ -1,0 +1,96 @@
+{% if field.is_hidden %}
+    {{ field }}
+{% else %}
+    {% comment %}
+        Make the field widget type available to templates so we can mark-up
+        checkboxes differently to other widgets.
+    {% endcomment %}
+    {% annotate_form_field field %}
+
+    {% block control_group %}
+
+            <div class="{{ style }} field form-group {% if field.errors %}has-error{% endif %} {{ fieldStyle }}">
+
+                {% block label %}
+                    {% if not nolabel and field.widget_type != 'checkbox' %}
+                        <label for="{{ field.auto_id }}" class="control-label label{% if field.field.required %} required{% endif %}">
+                            {{ field.label|safe }}
+                        </label>
+                    {% endif %}
+                {% endblock %}
+
+                {% block controls %}
+                        {% block widget %}
+                            {% if field.widget_type == 'checkbox' %}
+                                <div class="control">
+
+                                    <label class="checkbox" for="{{ field.id_for_label }}">{% render_field field %} {{field.label}}</label>
+                                </div>
+                            {% elif field.widget_type == 'radioselect' %}
+                                {% for radio in field %}
+                                    <div class="control">
+                                        <label for="id_{{ field.name }}_{{ forloop.counter0 }}" class="radio">{{ radio.data.label }}
+                                            <input id="id_{{ field.name }}_{{ forloop.counter0 }}" name="{{ field.name }}"
+                                            type="radio" value="{{ radio.data.value }}" class="{% if field.errors %}is-invalid{% endif %}"
+                                            {% if radio.data.value == field.value %}checked="checked"{% endif %}/>
+                                        </label>
+                                    </div>
+                                {% endfor %}
+                            {% elif field.widget_type == 'clearablefile' %}
+
+                                <div class="control is-expanded">
+                                    {% render_field field class+="input" %}
+
+                                </div>
+
+                            {% elif field.widget_type == 'Textarea' %}
+                                <div class="control">
+                                    {% render_field field class+="textarea" %}
+                                </div>
+                            {% elif field.widget_type == 'select' %}
+                                {% if size == 'full' %}
+                                    <div class="control">
+                                        <div class="select is-fullwidth">
+                                            {% render_field field %}
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="control">
+                                        <div class="select {{ selectStyle }}">
+                                            {% render_field field class+="form-control" %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% else %}
+                                {% if size == 'sm' %}
+                                    {% render_field field class+="input is-small" %}
+                                {% elif size == 'md' %}
+                                    {% render_field field class+="input is-medium" %}
+                                {% elif size == 'lg' %}
+                                    {% render_field field class+="input is-large" %}
+                                {% else %}
+                                <div class="control {{ controlStyle }}">
+                                    {% render_field field class+="input form-control" %}
+                                </div>
+                                {% endif %}
+                            {% endif %}
+                        {% endblock %}
+
+                        {% block errors %}
+                            {% for error in field.errors %}
+                                <span class="error-block text-danger"><i class="icon-exclamation-sign"></i> {{ error }}</span>
+                            {% endfor %}
+                        {% endblock %}
+
+                        {% block help_text %}
+                            {% if field.help_text %}
+                                <span class='help-block'>
+                                    {# We allow HTML within form help fields #}
+                                    {{ field.help_text|safe }}
+                                </span>
+                            {% endif %}
+                        {% endblock %}
+                {% endblock %}
+            </div>
+    {% endblock %}
+{% endif %}

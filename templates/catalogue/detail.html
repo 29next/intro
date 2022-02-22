@@ -1,0 +1,458 @@
+{% extends "layouts/base.html" %}
+{% block seo %}
+{% seo %}
+{% endblock %}
+{% block title %}
+{{ product.get_title }} | {{ block.super }}
+{% endblock %}
+{% block description %}
+{{ product.description|default:""|striptags }}
+{% endblock %}
+{% block breadcrumbs %}
+<section class="store_breadcrumbs">
+    <div class="store_container">
+        <nav class="store_breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li><a href="{{ homepage_url }}">{% t "navigation.main.home" %}</a></li>
+                <li><a href="{% url 'catalogue:index' %}">{% t "navigation.main.shop" %}</a></li>
+                <li class="is-active"><a href="#" aria-current="page">{{ product.get_title }}</a></li>
+            </ul>
+        </nav>
+    </div>
+</section>
+{% endblock %}
+{% block header %}
+{% endblock header %}
+{% block content %}
+{% if product.attr.top_bg_img %}
+<style type="text/css">
+@media (min-width: 575px) {
+    .product-intro {
+        background: url('{{ product.attr.top_bg_img.url }}') no-repeat;
+        background-size: cover;
+    }
+}
+</style>
+{% endif %}
+<section class="product-{{product.id}} catalogue_product product-intro">
+    <div class="store_container">
+        <div class="catalogue_product-content">
+            <!-- Poduct Gallery-->
+            {% block product_gallery %}
+            <div class="catalogue_product-gallery">
+                <div class="catalogue_product-title catalogue_product-title--mobile">
+                    {{ product.get_title }}
+                    {% if user.is_staff %}
+                    <span class="font-normal font-sm">
+                        <a href="{% url 'dashboard:catalogue-product' pk=product.id %}"><small> {% t "store.catalogue.edit_this_product" %}</small></a>
+                    </span>
+                    {% endif %}
+                </div>
+                {% iffeature "reviews" %}
+                {% if product.rating %}
+                <div class="catalogue_item-rating catalogue_item-rating--mobile">
+                    <div class="catalogue_item-rating-stars">
+                        {% for i in '12345' %}
+                        {% if forloop.counter <= product.rating %} <span class="is-count">&#9733;</span>
+                            {% else %}
+                            <span>&#9733;</span>
+                            {% endif %}
+                            {% endfor %}
+                            <span>&nbsp;&nbsp;({{product.num_approved_reviews}})</span>
+                    </div>
+                </div>
+                {% endif %}
+                {% endiffeature %}
+                {% include "templates/catalogue/partials/carousel.html" %}
+            </div>
+            {% endblock %}
+            <!-- Product Info-->
+            <div class="catalogue_product-detail prod-info">
+                <div class="catalogue_product-title">
+                    {{ product.get_title }}
+                    {% if user.is_staff %}
+                    <span class="font-normal font-sm">
+                        <a href="{% url 'dashboard:catalogue-product' pk=product.id %}"><small> {% t "store.catalogue.edit_this_product" %}</small></a>
+                    </span>
+                    {% endif %}
+                </div>
+                <div class="catalogue_product-price">
+                    {% block product_stock_record %}
+                    {% purchase_info_for_product request product as session %}
+                    {% if session.price.exists %}
+                    {% if session.price.price_retail > session.price.excl_tax %}
+                    <del data-product-price-retail>{{ session.price.price_retail|currency:session.price.currency }}</del>
+                    {% endif %}
+                    {% if session.price.excl_tax == 0 %}
+                    {% t "store.catalogue.free" %}
+                    {% elif session.price.is_tax_known %}
+                    <span data-product-price>{{ session.price.incl_tax|currency:session.price.currency }}</span>
+                    {% else %}
+                    {{ session.price.excl_tax|currency:session.price.currency }}
+                    {% endif %}
+                    {% else %}
+                    &nbsp;
+                    {% endif %}
+                    {% endblock %}
+                </div>
+                {% if product.attr.tagline %}
+                <div class="catalogue_product-desc">
+                    {{ product.attr.tagline|safe }}
+                </div>
+                {% endif %}
+                <div class="catalogue_product-desc"><small>{{ product.get_excerpt|safe }}</small></div>
+                {% iffeature "reviews" %}
+                {% if product.rating %}
+                <div class="catalogue_item-rating">
+                    <div class="catalogue_item-rating-stars">
+                        {% for i in '12345' %}
+                        {% if forloop.counter <= product.rating %} <span class="is-count">&#9733;</span>
+                            {% else %}
+                            <span>&#9733;</span>
+                            {% endif %}
+                            {% endfor %}
+                            <span>&nbsp;&nbsp;({{product.num_approved_reviews}})</span>
+                    </div>
+                </div>
+                {% endif %}
+                {% endiffeature %}
+                {% comment %}
+                {% if variant_form.child_link %}
+                <div class="catalogue_product-option">
+                    <div class="control">
+                        <div class="select">
+                            {% render_field variant_form.child_link %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endcomment %}
+                {% for field in variant_form %}
+                {% if 'attr' in field.id_for_label %}
+                {% include "partials/form_field.html" with field=field %}
+                {% endif %}
+                {% endfor %}
+                {% comment %}{% if not product.is_parent and product.attr.interval and interval_count_choices %}{% endcomment %}
+                {% if product.attr.interval and interval_count_choices %}
+                <div class="font-lg font-bold text-uppercase mb-2 mt-2">{% t "store.catalogue.buy_option" %}</div>
+                <div class="catalogue_product-option">
+                    <div class="field">
+                        <div class="control">
+                            <label class="radio" for="product-option-1">
+                                <input type="radio" id="product-option-1" name="prod-price" value="opt1" checked>
+                                {% t "store.catalogue.one_time" %}
+                            </label>
+                            <label class="radio" for="product-option-2">
+                                <input type="radio" id="product-option-2" name="prod-price" value="opt2">
+                                {% t "store.catalogue.subscribe_save" %}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="subscribe-text" style="display: none;">
+                        <h5>{{ product.attr.subscription_detail_text|safe }}</h5>
+                        <h6>{% t "store.catalogue.order_arrival_frequency" %}</h6>
+                        <div class="button-group" id="id_subscription_options">
+                            {% for interval_count_choice_value, interval_count_choice_text in interval_count_choices %}
+                            <label class="radio">
+                                <input type="radio" autocomplete="off" name="options" value="{{ interval_count_choice_value }}" interval="{{ product.attr.interval.option }}"> {{ interval_count_choice_text }}
+                            </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                <hr class="mb-3">
+                <div class="catalogue_product-action">
+                    {% if user.is_authenticated %}
+                    {% iffeature "wishlists" %}
+                    {% with wishlists=user.wishlists.all %}
+                    {# Select wishlists that contains product #}
+                    {% wishlists_containing_product wishlists product as product_wishlists %}
+                    {% if not product_wishlists %}
+                    <form class="d-initial" id="add_to_wishlist_form" action="{% url 'customer:wishlists-add-product' product_pk=product.pk %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="button button-sm" data-toggle="tooltip" title="" data-original-title="Wishlist" data-loading-text='{% t "store.catalogue.add_to_wishlist_loading" %}'>{% t "store.catalogue.add_to_wishlist" %}</button>
+                    </form>
+                    {% endif %}
+                    {% for wishlist in product_wishlists %}
+                    <form class="d-initial" action="{% url 'customer:wishlists-remove-product' key=wishlist.key product_pk=product.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="button button-sm" data-toggle="tooltip" title="" data-original-title='{% t "store.catalogue.product_in_wishlist" with name=wishlist.name url=wishlist.get_absolute_url %}' data-loading-text='{% t "store.catalogue.remove_loading" %}'>{% t "store.catalogue.remove" %}</button>
+                    </form>
+                    {% endfor %}
+                    {% endwith %}
+                    {% endiffeature %}
+                    {% else %}
+                    {% endif %}
+                    {% block product_basket_form %}
+                    {% purchase_info_for_product request product as session %}
+                    {% comment %} {% if not product.is_parent %} {% endcomment %}
+                    {% if session.availability.is_available_to_buy %}
+                    {% basket_form request product 'single' as basket_form %}
+                    <form id="add-to-cart" class="d-initial" action="{% url 'basket:add' pk=product.pk %}" method="post">
+                        {% csrf_token %}
+                        {% include "partials/form_fields.html" with form=basket_form %}
+                        <button type="submit" class="button button-primary button-lg is-fullwidth omnisend-add-to-cart-button" data-loading-text='{% t "store.catalogue.add_to_cart_loading" %}' data-disabled-text="Unavailable">{% t "store.catalogue.add_to_cart" %}</button>
+                    </form>
+                    {% endif %}
+                    {% comment %} {% endif %} {% endcomment %}
+                    {% endblock %}
+                </div>
+            </div><!-- end product info -->
+        </div>
+    </div><!-- End Container -->
+</section><!-- End bgdiv -->
+<section class="catalogue_product-extra" style="{% if product.attr.details_bg %}background: {{ product.attr.details_bg }}; {% endif %}">
+    <div class="store_container">
+        <!-- Product Tabs-->
+        <div class="catalogue_product-tabs">
+            <div class="tabs is-centered is-boxed is-medium">
+                <ul>
+                    <li id="catalogue_product-about-tab" data-target="catalogue_product-tab-about" class="is-active">
+                        <a>
+                            <span>{% t "store.catalogue.about" %}</span>
+                        </a>
+                    </li>
+                    {% iffeature "reviews" %}
+                    <li id="catalogue_product-reviews-tab" data-target="catalogue_product-tab-reviews">
+                        <a>
+                            <span>{% t "store.catalogue.reviews" %} ({{ product.num_approved_reviews }})</span>
+                        </a>
+                    </li>
+                    {% endiffeature %}
+                </ul>
+            </div>
+            <div id="catalogue_product-tab-content" class="content-body">
+                <div id="catalogue_product-tab-about">
+                    {% block product_description %}
+                    {% if product.get_description %}
+                    {{ product.get_description|safe }}
+                    {% endif %}
+                    {% endblock %}
+                </div>
+                <div id="catalogue_product-tab-reviews" class="is-hidden">
+                    {% iffeature "reviews" %}
+                    {% if product.num_approved_reviews == 0 %}
+                    <p>
+                        {% if product|is_review_permitted:user %}
+                        {% url 'catalogue:reviews-add' product_slug=product.slug product_pk=product.id as add_review_url %}
+                        {% t "store.catalogue.no_reviews" %} <a href="{{ add_review_url }}#addreview">{% t "store.catalogue.no_reviews_add" %}</a>.
+                        {% else %}
+                        {% t "store.catalogue.no_reviews" %}.
+                        {% endif %}
+                    </p>
+                    {% else %}
+                    <h4 class="mb-3">{% t "store.catalogue.customer_reviews" %}</h4>
+                    <div class="catalogue_item-rating">
+                        <div class="catalogue_item-rating-stars">
+                            {% for i in '12345' %}
+                            {% if forloop.counter <= product.rating %} <span class="is-count">&#9733;</span>
+                                {% else %}
+                                <span>&#9733;</span>
+                                {% endif %}
+                                {% endfor %}
+                        </div>
+                        <div class="catalogue_item-rating-count">
+                            ({{product.num_approved_reviews}} Customer Reviews)
+                        </div>
+                    </div>
+                    <div class="catalogue_product-review-list">
+                        {% for review in product.reviews.approved.all|slice:":3" %}
+                        <!-- Review-->
+                        <div class="catalogue_product-review">
+                            {% block user_avartar %}
+                            {% comment "Example code" %}
+                            <div class="comment-author-ava"><img src="{% static 'brand/user-avatar.jpg' %}" alt="Review author"></div>
+                            {% endcomment %}
+                            {% endblock %}
+                            <div class="catalogue_product-review-header">
+                                <div class="catalogue_product-review-title">
+                                    {{ review.title }}
+                                </div>
+                                <div class="catalogue_item-rating mb-0">
+                                    <div class="catalogue_item-rating-stars">
+                                        {% for i in '12345' %}
+                                        {% if forloop.counter <= review.score %} <span class="is-count">&#9733;</span>
+                                            {% else %}
+                                            <span>&#9733;</span>
+                                            {% endif %}
+                                            {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="catalogue_product-review-body">
+                                {{ review.body|striptags }}
+                                <div class="catalogue_product-review-footer">
+                                    {% if review.user == user %}
+                                    {% t "store.review.reviewed_by_you" with review_date=review.date_created %}
+                                    {% else %}
+                                    {% t "store.review.reviewed_by_other" with name=review.reviewer_name review_date=review.date_created %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% if product.num_approved_reviews > 3 %}
+                        <a href="{% url 'catalogue:reviews-list' product_slug=product.slug product_pk=product.id %}" class="button button-sm">{% t "store.catalogue.see_all_reviews" %}</a>
+                        {% endif %}
+                        {% if product|is_review_permitted:user %}
+                        <a id="write_review" href="{% url 'catalogue:reviews-add' product_slug=product.slug product_pk=product.id %}#addreview" class="button button-primary button-sm">
+                            {% t "store.catalogue.write_a_review" %}
+                        </a>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                    <div id="addreview">
+                        {% if product|is_review_permitted:user %}
+                        {% block product_review %}{% endblock product_review %}
+                        {% endif %}
+                    </div>
+                    {% endiffeature %}
+                </div>
+            </div>
+        </div>
+        <!-- End Tabs -->
+    </div><!-- End Container -->
+</section>
+{% endblock content %}
+{% block extrascripts %}
+{{ product.data|json_script:"product-data" }}
+{{ block.super }}
+<script type="text/javascript" src="{{ 'js/slick.min.js'|asset_url }}"></script>
+<script type="text/javascript" src="{{ 'js/slick_lightbox.min.js'|asset_url }}"></script>
+{% include 'partials/trackings/omnisend/product_view_snippet.html' with product=product %}
+<script>
+var hash = window.location.hash;
+if (hash == '#addreview') {
+    document.querySelector('#catalogue_product-reviews-tab').classList.add('is-active');
+    document.querySelector('#catalogue_product-about-tab').classList.remove('is-active');
+    document.querySelector('#catalogue_product-tab-about').classList.add('is-hidden');
+    document.querySelector('#catalogue_product-tab-reviews').classList.remove('is-hidden');
+}
+
+$("input[name='prod-price']").click(function() {
+    if ($("#product-option-2").is(":checked")) {
+        $(".subscribe-text").show();
+    } else {
+        $(".subscribe-text").hide();
+    }
+});
+initProdSlider();
+</script>
+<script>
+var theme = (function(t, $) {
+
+    t.product = {
+        init: function(options) {
+            t.product.selector = options.selector;
+
+            var productData = document.getElementById(t.product.selector.productData);
+            if (!productData || !productData.innerHTML.length) {
+                return;
+            }
+
+            t.product.productObject = JSON.parse(productData.innerHTML);
+            console.log(t.product.productObject);
+            if (t.product.productObject.structure !== 'parent') {
+                return;
+            }
+            t.product.handleVariantSelect();
+            $("select[name*='attr_']").on("change", t.product.handleVariantSelect);
+        },
+        getSelectAttributeValues: function() {
+            var attributeValues = [];
+            $("select[name*='attr_']").each(function(_, ele) {
+                attributeValues.push({
+                    name: $(ele).attr('name').replace("attr_", ""),
+                    value: $(ele).val()
+                });
+            });
+            return attributeValues;
+        },
+        getVariantFromProductObject: function() {
+            var selectedAttributes = t.product.getSelectAttributeValues();
+            var children = t.product.productObject.children;
+            var found = children.find(function(variant) {
+                var isMatch = [];
+                selectedAttributes.forEach(function(selectedAttribute) {
+                    for (let i = 0; i < variant.variant_attribute_values.length; i++) {
+                        if (variant.variant_attribute_values[i].code === selectedAttribute.name) {
+                            isMatch.push(variant.variant_attribute_values[i].id === parseInt(selectedAttribute.value));
+                            break;
+                        }
+                    }
+                });
+                return isMatch.every(Boolean);
+            });
+
+            return found;
+        },
+        updatePrice: function(variant) {
+            if (!variant) {
+                $(`[${t.product.selector.salePrice}]`).html('');
+                $(`[${t.product.selector.retailPrice}]`).html('');
+                return;
+            }
+            $(`[${t.product.selector.salePrice}]`).html(variant.purchase_info.price.format);
+            $(`[${t.product.selector.retailPrice}]`).html(variant.purchase_info.price_retail.format);
+
+        },
+        updateForm: function(variant) {
+            var selector = `#${t.product.selector.addToCartForm}`;
+            if (!variant || variant.purchase_info.availability !== 'instock') {
+                $(selector).find("button").prop('disabled', true);
+                $(selector).find("button").text('Unavailable');
+                return;
+            }
+            $(selector).find("button").prop('disabled', false);
+            $(selector).find("button").text('{% t "store.catalogue.add_to_cart" %}');
+            var addProductUrl = $(selector).attr('action').replace(/\d+/g, variant.id);
+            $(selector).attr('action', addProductUrl);
+
+        },
+        updateImage: function(variant) {
+            if (!variant || variant.image === null) {
+                return;
+            }
+            var slideno = (variant.image.id);
+            var slideIndex = $('.slider-nav').find('#' + slideno).data('slick-index');
+
+            $('.slider-nav').slick('slickGoTo', slideIndex);
+        },
+        handleVariantSelect: function() {
+            var found = t.product.getVariantFromProductObject();
+            t.product.updatePrice(found);
+            t.product.updateForm(found);
+            t.product.updateImage(found);
+        }
+    };
+
+
+
+    return t;
+})(theme || {}, jQuery);
+
+(function() {
+    theme.product.init({
+        selector: {
+            salePrice: 'data-product-price',
+            retailPrice: 'data-product-price-retail',
+            productData: 'product-data',
+            addToCartForm: 'add-to-cart',
+
+        }
+    })
+})();
+</script>
+{% if facebook_add_to_cart_event %}
+{{ facebook_add_to_cart_event }}
+{% endif %}
+<script>
+{% if google_add_to_cart_event %} { { google_add_to_cart_event } } {% endif %}
+</script>
+{% include "partials/trackings/facebook/analytics_view_content_product.html" %}
+{% include "partials/trackings/taboola/analytics_view_content_product.html" %}
+{% if taboola_add_to_cart_event %}
+{{ taboola_add_to_cart_event }}
+{% endif %}
+{% endblock %}

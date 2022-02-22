@@ -1,0 +1,33 @@
+<aside class="account_page-menu">
+    <div class="account_menu dropdown is-hoverable">
+        <div class="dropdown-trigger">
+            <button id="account_menu-button" class="button" aria-haspopup="true" aria-controls="account_menu-list">
+                <span>{% t "navigation.account.account_navigation" %}</span>
+            </button>
+        </div>
+        <div class="dropdown-menu" id="account_menu-list" role="menu">
+            <div class="dropdown-content">
+                <a class="dropdown-item {% if active_tab == 'orders' %}active{% endif %}" href="{% url 'customer:order-list' %}">
+                    <img src="{{ 'img/icons/icon-account-history.svg'|asset_url }}" alt="Order History">
+                    <span>{% t "navigation.account.orders" %}</span>
+                </a>
+                <a class="dropdown-item {% if active_tab == 'subscriptions' %}active{% endif %}" href="{% url 'customer:subscription-list' %}">
+                    <img src="{{ 'img/icons/icon-account-subs.svg'|asset_url }}" alt="Subscriptions">
+                    <span>{% t "navigation.account.subscriptions" %}</span>
+                </a>
+                <a class="dropdown-item {% if active_tab == 'profile' %}active{% endif %}" href="{% url 'customer:profile-view' %}">
+                    <img src="{{ 'img/icons/icon-account-user.svg'|asset_url }}" alt="Profile">
+                    <span>{% t "navigation.account.profile" %}</span>
+                </a>
+                <a class="dropdown-item {% if active_tab == 'addresses' %}active{% endif %}" href="{% url 'customer:address-list' %}">
+                    <img src="{{ 'img/icons/icon-account-addresses.svg'|asset_url }}" alt="Addresses">
+                    <span>{% t "navigation.account.addresses" %}</span>
+                </a>
+                <a class="dropdown-item {% if active_tab == 'support' %}active{% endif %}" href="{% url 'customer:support-ticket-list' %}">
+                    <img src="{{ 'img/icons/icon-account-support.svg'|asset_url }}" alt="Support">
+                    <span>{% t "navigation.account.support" %}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</aside>

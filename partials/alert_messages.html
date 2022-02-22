@@ -1,0 +1,14 @@
+<div id="messages">
+{% if messages %}
+    {% for message in messages %}
+    <div class="notification {% for tag in message.tags|split %}notification-{% if tag == 'error' %}danger{% else %}{{ tag }}{% endif %} {% endfor %}">
+            <button class="delete"></button>
+                {% if 'safe' in message.tags %}
+                    {{ message|safe }}
+                {% else %}
+                    {{ message }}
+                {% endif %}
+        </div>
+    {% endfor %}
+{% endif %}
+</div>

@@ -1,0 +1,114 @@
+{% extends "layouts/base.html" %}
+
+
+{% block title %}
+    {% t "store.blog.title" %} | {{ block.super }}
+{% endblock %}
+
+
+{% block breadcrumbs %}
+
+    <section class="store_breadcrumbs">
+        <div class="store_container">
+            <nav class="store_breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                    <li><a href="{{ homepage_url }}">{% t "navigation.main.home" %}</a></li>
+                    {% if category %}
+                    <li><a href="{% url 'blog:blog-list' %}">{% t "navigation.main.blog" %}</a></li>
+                    <li class="is-active"><a aria-current="page" href="{{ category.get_absolute_url }}">{{ category.name }}</a></li>
+                    {% else %}
+                    <li class="is-active"><a aria-current="page" href="{% url 'blog:blog-list' %}">{% t "navigation.main.blog" %}</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+    <section class="blog_page">
+    <div class="store_container">
+        <div class="blog-wrap">
+            <div class="blog_filter-column">
+                <div class="blog_filters">
+                    {% if categories %}
+                    <div class="blog_header-filter">
+                        <div class="field">
+                            <div class="control">
+                                <div class="select is-fullwidth">
+                                    <select onchange="location = this.value;">
+                                        <option>Category filter</option>
+                                        <option value="{% url 'blog:blog-list' %}">All Categories</option>
+                                        {% for category in categories %}
+                                            <option value="{{ category.get_absolute_url }}">{{ category.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% block search_posts %}
+                     <div class="blog_header-search widget">
+                            <form action="{% url 'blog:blog-list' %}" method="get" class="input-group form-group">
+                                <div class="field has-addons">
+                                    <span class="control is-expanded">
+                                        {% include 'partials/form_field.html' with field=form.name nolabel=True  %}
+                                    </span>
+                                    <span class="control">
+                                         <button type="submit" name="search" class="button"><img src="{{ 'img/icons/icon-search.svg'|asset_url }}" alt="search"></button>
+                                    </span>
+
+                                </div>
+                               
+                            </form>
+                        </div>
+                    {% endblock search_posts %}
+                </div>
+            </div>
+            <div class="blog_list-column">
+                {% if posts %}
+                {% for post in posts %}
+
+                    <div class="blog_list-item">
+                        {% with image=post.featured_image %}
+                            {% if image %}
+                                {% image_thumbnail image "x600" upscale=False as thumb %}
+                                <div class="blog_list-img">
+                                    <figure>
+                                        <a href="{{post.get_absolute_url}}"><img src="{{ thumb.url }}" alt="Post"></a>
+                                    </figure>
+                                </div>
+                            {% endif %}
+                        {% endwith %}
+                        <div class="blog_list-content">
+                            <div class="blog_list-article-cat">
+                                {% for category in post.categories.all %}<a href="{{ category.get_absolute_url }}"><span class="tag">{{ category.name }}</span></a>{% if not forloop.last %},{% endif %}{% endfor %}
+                            </div>
+                            <div class="blog_list-article-title">{{ post.title }}</div>
+                            <div class="blog_list-article-excerpt">{{ post.excerpt_with_readmore|safe }}</div>
+                            <div class="blog_list-article-author">By &nbsp;{{ post.author.first_name}}&nbsp;{{post.author.last_name }}</div>
+                            <div class="blog_list-article-date">{{ post.created_at }}</div>
+                            <div class="blog_list-action"><a class="button" href="{{post.get_absolute_url}}">Read</a></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+
+            </div>
+
+        </div>
+        {% include "partials/pagination.html" %}
+        {% else %}
+        {% if search_not_found %}
+                {% t "store.blog.search_not_found" %}
+            {% else %}
+                <p>{% t "store.blog.no_posts" %}</p>
+            {% endif %}
+
+        {% endif %}
+
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,258 @@
+.btn-primary {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    color: #fff
+}
+
+.btn-primary:hover {
+    	border: 1px solid transparent;
+        background-color: lighten($color-primary, 10%);
+        color: white;
+}
+
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:hover {
+    color: #fff
+}
+
+
+.btn-success {
+    background-color: $color-success;
+    border-color: $color-success;
+}
+
+.btn-success:hover {
+    	border: 1px solid transparent;
+        background-color: darken($color-success, 10%);
+        color: white;
+}
+.btn-success:not(:disabled):not(.disabled):active, .btn-success.active:not(:disabled):not(.disabled), .show > .btn-success.dropdown-toggle {
+        color: #fff;
+    background-color: $color-success;
+    border-color: $color-success;
+}
+
+
+.btn-outline-secondary {
+    border-color: $color-secondary;
+    background-color: transparent;
+    color: $color-secondary
+}
+
+.btn-outline-secondary:hover {
+    background-color: $color-secondary;
+    color: #fff;
+    border-color: $color-secondary;
+}
+
+.btn-outline-secondary:not(:disabled):not(.disabled):active, .btn-outline-secondary.active:not(:disabled):not(.disabled), .show > .btn-outline-secondary.dropdown-toggle {
+    background-color: $color-secondary;
+    color: #fff;
+    border-color: $color-secondary
+}
+.btn-outline-primary {
+    border-color: $color-primary;
+    background-color: transparent;
+    color: $color-primary
+}
+
+.btn-outline-primary:hover {
+    background-color: $color-primary;
+    color: #fff;
+    border-color: $color-primary;
+}
+
+
+.btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active, .show>.btn-outline-primary.dropdown-toggle {
+    background-color: $color-primary;
+    border-color: $color-primary;
+}
+
+
+.btn-outline-success {
+    border-color: $color-success;
+    background-color: transparent;
+    color: $color-success
+}
+
+.btn-outline-success:hover {
+    background-color: $color-success;
+    color: #fff
+}
+
+.btn-outline-info {
+    border-color: #acacac;
+    background-color: transparent;
+    color: #acacac
+}
+
+.btn-outline-info:hover {
+    background-color: #acacac;
+    color: #fff
+}
+
+.btn-outline-warning {
+    border-color: #ffce6d;
+    background-color: transparent;
+    color: #ffce6d
+}
+
+.btn-outline-warning:hover {
+    background-color: #ffce6d;
+    color: #fff
+}
+
+.btn-outline-danger {
+    border-color: #d30000;
+    background-color: transparent;
+    color: #d30000
+}
+
+.btn-outline-danger:hover {
+    background-color: #d30000;
+    color: #fff
+}
+
+
+.checkout-branding {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    top: 0;
+    min-height: 100%;
+    padding: 1.5rem
+}
+
+.checkout-branding .checkout-logo {
+    width: initial;
+}
+
+.checkout-branding .checkout-logo img {
+    height: 100%
+}
+
+.checkout-steps>a {
+    border-top: 1px solid #e1e7ec;
+    border-bottom: 1px solid #e1e7ec;
+    background-color: #fff;
+    color: #616975
+}
+
+.checkout-steps>a>.angle {
+    background-color: #fff
+}
+
+.checkout-steps>a>.angle::after {
+    border-left-color: #fff
+}
+
+.checkout-steps>a>.angle::before {
+    border-color: transparent;
+    border-left-color: #d8e0e6
+}
+
+.checkout-steps>a:hover {
+    color: #1e232f
+}
+
+.checkout-steps>a.active {
+    background-color: $color-primary;
+    color: #fff
+}
+
+.checkout-steps>a.active>.angle::after {
+    border-left-color: $color-primary
+}
+
+.checkout-steps>a.active+a>.angle {
+    background-color: $color-primary
+}
+
+.checkout-steps>a.completed>.step-indicator {
+    color: #66a360
+}
+
+.checkout-steps>a.completed:hover {
+    color: #616975
+}
+
+.checkout-steps>a:first-child {
+    border-right: 1px solid #e1e7ec
+}
+
+.checkout-steps>a:last-child {
+    border-left: 1px solid #e1e7ec
+}
+
+@media (max-width:575px) {
+    .checkout-steps>a {
+        border: 1px solid #e1e7ec
+    }
+}
+
+.checkout-footer {
+    border: 1px solid #e1e7ec;
+    table-layout: auto
+}
+
+#checkout-nav * {
+    color: #000
+}
+
+#checkout-nav .checkout-logo {
+    width: 270px
+}
+
+@media (max-width:767px) {
+    #checkout-nav .checkout-logo {
+        display: block;
+        margin: 0 auto 15px
+    }
+}
+
+#checkout-nav .social .first>* {
+    margin: 0 5px
+}
+
+#checkout-nav .social .first i {
+    font-size: 16px
+}
+
+#checkout-nav .social .first h2 {
+    font-size: 16px
+}
+
+#checkout-nav .social .last {
+    border-left: 1px solid #000;
+    padding-left: 25px;
+    margin-left: 25px
+}
+
+@media (max-width:767px) {
+    #checkout-nav .social .last {
+        padding-left: 15px;
+        margin-left: 15px
+    }
+}
+
+@media (max-width:575px) {
+    #checkout-nav .social .last {
+        border-left: 0;
+        padding-left: 0;
+        margin-left: 0
+    }
+}
+
+#checkout-nav .social .last h2 {
+    font-size: 16px
+}
+
+.icon-summary-basket {
+    fill: $color-primary;
+}
+@media (max-width:365px) {
+.icon-cart-summary {
+    display: none;
+}
+}
