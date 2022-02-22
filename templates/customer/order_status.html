@@ -248,11 +248,9 @@
                                  
                                         <div class="account_order-table-schedule mb-1">{% t "tables.content.frequency" with frequency=line.frequency %}</div>
 
-                                        {% iffeature "reviews" %}
                                             {% if line.product|is_review_permitted:user %}
                                                 <a href="{% url 'catalogue:reviews-add' product_slug=line.product.slug product_pk=line.product.id %}#addreview">{% t "tables.actions.write_review" %}</a>
                                             {% endif %}
-                                        {% endiffeature %}
                                  
                                     {% endif %}
                                     {% if line.est_dispatch_date %}

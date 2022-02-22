@@ -77,12 +77,11 @@
             </div>
             <div class="account_order-detail-card">
                 {% for source in order.sources.all %}
-                                                {{ source.label }}
-                                                <br>
-                                            {% empty %}
-                                                {% t "customer.order.no_payment_required" %}
-                                            {% endfor %}
-
+                    {{ source.label }}
+                    <br>
+                {% empty %}
+                    {% t "customer.order.no_payment_required" %}
+                {% endfor %}
             </div>
         </div>
         <div class="account_order-detail-summary">
@@ -94,16 +93,20 @@
                     {% with discounts=order.basket_discounts %}
                     {% block discount_totals %}
                     {% if discounts %}
-                    <li>
-                        <span>{% t "customer.order.cart_total_ex_discounts" %}</span>
-                        {{ order.basket_total_before_discounts_excl_tax|currency:order.currency }} </li> {% for discount in discounts %} <li>
+                        <li>
+                            <span>{% t "customer.order.cart_total_ex_discounts" %}</span>
+                            {{ order.basket_total_before_discounts_excl_tax|currency:order.currency }} 
+                        </li> 
+                            
+                        {% for discount in discounts %} 
+                        <li>
                             <span>{% t "customer.order.discount" %}</span>
-                            {{ discount.offer_name }}
-                            - {{ discount.amount|currency:order.currency }}
-                    </li>
-                    {% endfor %}
+                            {{ discount.offer_name }} - {{ discount.amount|currency:order.currency }}
+                        </li>
+                        {% endfor %}
                     {% endif %}
                     {% endblock discount_totals %}
+                    
                     {% block basket_total %}
                     {% if discounts %}
                     <li>
@@ -179,93 +182,89 @@
     </div>
 </div>
 <table class="account_table">
-                    <thead>
-                        <tr>
-                            <th scope="col">{% t "tables.heading.product" %}</th>
-                            <th scope="col">{% t "tables.heading.qty" %}</th>
-                            <th scope="col">{% t "tables.heading.price_ex_tax" %}</th>
-                            <th scope="col">{% t "tables.heading.price_inc_tax" %}</th>
-                            {% comment %}
-                            <th scope="col">&nbsp;</th>
-                            {% endcomment %}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for line in order.lines.all %}
-                            {% with product=line.product %}
-                            <tr>
-                                <td data-label="Product">
-                                    {% if product %}
-                                    <div class="account_table-product">
-                                        <div class="account_order-table-pimage">
-                                            <!-- <img src="assets/img/placeholder100x100.png" alt="product name"> -->
-                                            {% with image=line.product.primary_image %}
-                                                {% image_thumbnail image.original "200x200" upscale=False as thumb %}
-                                                <a href="{{ line.product.get_absolute_url }}"><img class="thumbnail" src="{{ thumb.url }}" alt="{{ product.get_title }}"></a>
-                                            {% endwith %}
-
-                                        </div>
-                                        <div>
-                                            {% if product.is_public %}
-                                            <div class="account_order-table-pname">
-                                                <a href="{{ product.get_absolute_url }}">{{ line.description }}</a>
-                                            </div>
-                                            {% else %}
-                                            <div class="account_order-table-pname">
-                                                {{ line.description }}
-                                            </div>
-                                            {% endif %}
-                                            {% if line.frequency %}
-                                
-                                                <div class="account_order-table-schedule">{% t "tables.content.frequency" with frequency=line.frequency %}</div>
-                                            {% endif %}
-                                                {% if product|is_review_permitted:user %}
-                                                <a href="{% url 'catalogue:reviews-add' product_slug=product.slug product_pk=product.id %}#addreview">{% t "tables.actions.write_review" %}</a>
-                                                {% endif %}
-                                            {% else %}
-                                             <div class="account_order-table-pname">
-                                                {{ line.description }}
-                                            </div>
-                                      
-                                                <div class="account_order-table-schedule">{% t "tables.content.frequency" with frequency=line.frequency %}</div>
-                                      
-
-                                            {% endif %}
-                                        </div>
-                                </td>
-                                <td data-label='{% t "tables.heading.quantity" %}'>{{ line.quantity }}</td>
-                                <td data-label='{% t "tables.heading.price_ex_tax" %}'>{{ line.line_price_before_discounts_excl_tax|currency:order.currency }}</td>
-                                <td data-label='{% t "tables.heading.price_inc_tax" %}'>{{ line.line_price_before_discounts_incl_tax|currency:order.currency }}</td>
-                                    <td data-label='{% t "tables.heading.action" %}'>
-                                        {% if product and product.is_public %}
-                                        <form id="line_form_{{ line.id }}" action="{% url 'customer:order-line' order_number=order.number line_id=line.id %}" method="post">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="action" value="reorder" />
-                                            <button id="reorder_line_{{ line.id }}" class="button button-sm" type="submit" data-loading-text='{% t "tables.actions.reorder_loading" %}'>{% t "tables.actions.reorder" %}</button>
-                                        </form>
-                                        {% else %}
-                                        {% t "tables.content.not_available" %}
-                                        {% endif %}
-                                    </td>
-
-                            </tr>
+    <thead>
+        <tr>
+            <th scope="col">{% t "tables.heading.product" %}</th>
+            <th scope="col">{% t "tables.heading.qty" %}</th>
+            <th scope="col">{% t "tables.heading.price_ex_tax" %}</th>
+            <th scope="col">{% t "tables.heading.price_inc_tax" %}</th>
+            {% comment %}
+            <th scope="col">&nbsp;</th>
+            {% endcomment %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for line in order.lines.all %}
+            {% with product=line.product %}
+            <tr>
+                <td data-label="Product">
+                    {% if product %}
+                    <div class="account_table-product">
+                        <div class="account_order-table-pimage">
+                            <!-- <img src="assets/img/placeholder100x100.png" alt="product name"> -->
+                            {% with image=line.product.primary_image %}
+                                {% image_thumbnail image.original "200x200" upscale=False as thumb %}
+                                <a href="{{ line.product.get_absolute_url }}"><img class="thumbnail" src="{{ thumb.url }}" alt="{{ product.get_title }}"></a>
                             {% endwith %}
-                        {% endfor %}
-                    </tbody>
-                </table>
 
-                <div class="account_order-reorder-action">
-                    {% block order_actions %}
-                    <form id="order_form_{{ order.id }}" action="{% url 'customer:order' order_number=order.number %}" method="post">
-                        {% csrf_token %}
-                        <input type="hidden" name="order_id" value="{{ order.id }}" />
-                        <input type="hidden" name="action" value="reorder" />
-                        <button type="submit" class="button" data-loading-text='{% t "global.button.reorder_loading" %}'>{% t "global.button.reorder_all" %}</button>
-                    </form>
-                    {% endblock order_actions %}
-                </div>
+                        </div>
+                        <div>
+                            {% if product.is_public %}
+                            <div class="account_order-table-pname">
+                                <a href="{{ product.get_absolute_url }}">{{ line.description }}</a>
+                            </div>
+                            {% else %}
+                            <div class="account_order-table-pname">
+                                {{ line.description }}
+                            </div>
+                            {% endif %}
+                            {% if line.frequency %}
+                                <div class="account_order-table-schedule">{% t "tables.content.frequency" with frequency=line.frequency %}</div>
+                            {% endif %}
+                                {% if product|is_review_permitted:user %}
+                                <a href="{% url 'catalogue:reviews-add' product_slug=product.slug product_pk=product.id %}#addreview">{% t "tables.actions.write_review" %}</a>
+                                {% endif %}
+                            {% else %}
+                                <div class="account_order-table-pname">
+                                {{ line.description }}
+                            </div>
+                                <div class="account_order-table-schedule">{% t "tables.content.frequency" with frequency=line.frequency %}</div>
+                            {% endif %}
+                        </div>
+                </td>
+                <td data-label='{% t "tables.heading.quantity" %}'>{{ line.quantity }}</td>
+                <td data-label='{% t "tables.heading.price_ex_tax" %}'>{{ line.line_price_before_discounts_excl_tax|currency:order.currency }}</td>
+                <td data-label='{% t "tables.heading.price_inc_tax" %}'>{{ line.line_price_before_discounts_incl_tax|currency:order.currency }}</td>
+                    <td data-label='{% t "tables.heading.action" %}'>
+                        {% if product and product.is_public %}
+                        <form id="line_form_{{ line.id }}" action="{% url 'customer:order-line' order_number=order.number line_id=line.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="action" value="reorder" />
+                            <button id="reorder_line_{{ line.id }}" class="button button-sm" type="submit" data-loading-text='{% t "tables.actions.reorder_loading" %}'>{% t "tables.actions.reorder" %}</button>
+                        </form>
+                        {% else %}
+                        {% t "tables.content.not_available" %}
+                        {% endif %}
+                    </td>
 
-                <hr>
+            </tr>
+            {% endwith %}
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="account_order-reorder-action">
+    {% block order_actions %}
+    <form id="order_form_{{ order.id }}" action="{% url 'customer:order' order_number=order.number %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="order_id" value="{{ order.id }}" />
+        <input type="hidden" name="action" value="reorder" />
+        <button type="submit" class="button" data-loading-text='{% t "global.button.reorder_loading" %}'>{% t "global.button.reorder_all" %}</button>
+    </form>
+    {% endblock order_actions %}
+</div>
+
+<hr>
 
 <br>
 <br>
