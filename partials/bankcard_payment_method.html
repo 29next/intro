@@ -14,7 +14,6 @@
                     <tr>
                         <td data-label="Payment Method">
                             <div class="control">
-                                
                                 <label class="radio" for="bankcard_{{ bankcard.id }}">
                                     <input required type="radio" name="bankcard_id" id="bankcard_{{ bankcard.id }}" value="{{ bankcard.id }}" {% if bankcard.id == bankcard_id|add:"0" or not bankcard_id and not forloop.counter0 %} checked{%endif %}> <strong>{{bankcard.card_type}}</strong>&nbsp{% t "customer.subscriptions.ending_in" %} {{ bankcard.last_four }}</label>
                             </div>
