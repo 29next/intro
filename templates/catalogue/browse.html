@@ -54,7 +54,6 @@
                             {{ product.excerpt|safe|truncatewords_html:10 }}
                         </div>
                         {% block product_review %}
-                                {% iffeature 'reviews' %}
                                     {% if product.rating %}
                                     <div class="catalogue_item-rating">
                                         <div class="catalogue_item-rating-stars">
@@ -72,7 +71,6 @@
                                         </div>
                                     </div>
                                     {% endif %}
-                                {% endiffeature %}
                         {% endblock %}
 
                         {% block product_price %}

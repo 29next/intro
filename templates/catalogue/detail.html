@@ -48,7 +48,6 @@
                     </span>
                     {% endif %}
                 </div>
-                {% iffeature "reviews" %}
                 {% if product.rating %}
                 <div class="catalogue_item-rating catalogue_item-rating--mobile">
                     <div class="catalogue_item-rating-stars">
@@ -62,7 +61,6 @@
                     </div>
                 </div>
                 {% endif %}
-                {% endiffeature %}
                 {% include "templates/catalogue/partials/carousel.html" %}
             </div>
             {% endblock %}
@@ -101,7 +99,6 @@
                 </div>
                 {% endif %}
                 <div class="catalogue_product-desc"><small>{{ product.get_excerpt|safe }}</small></div>
-                {% iffeature "reviews" %}
                 {% if product.rating %}
                 <div class="catalogue_item-rating">
                     <div class="catalogue_item-rating-stars">
@@ -115,24 +112,13 @@
                     </div>
                 </div>
                 {% endif %}
-                {% endiffeature %}
-                {% comment %}
-                {% if variant_form.child_link %}
-                <div class="catalogue_product-option">
-                    <div class="control">
-                        <div class="select">
-                            {% render_field variant_form.child_link %}
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
-                {% endcomment %}
+
                 {% for field in variant_form %}
-                {% if 'attr' in field.id_for_label %}
-                {% include "partials/form_field.html" with field=field %}
-                {% endif %}
+                    {% if 'attr' in field.id_for_label %}
+                        {% include "partials/form_field.html" with field=field %}
+                    {% endif %}
                 {% endfor %}
-                {% comment %}{% if not product.is_parent and product.attr.interval and interval_count_choices %}{% endcomment %}
+
                 {% if product.attr.interval and interval_count_choices %}
                 <div class="font-lg font-bold text-uppercase mb-2 mt-2">{% t "store.catalogue.buy_option" %}</div>
                 <div class="catalogue_product-option">
@@ -163,30 +149,9 @@
                 {% endif %}
                 <hr class="mb-3">
                 <div class="catalogue_product-action">
-                    {% if user.is_authenticated %}
-                    {% iffeature "wishlists" %}
-                    {% with wishlists=user.wishlists.all %}
-                    {# Select wishlists that contains product #}
-                    {% wishlists_containing_product wishlists product as product_wishlists %}
-                    {% if not product_wishlists %}
-                    <form class="d-initial" id="add_to_wishlist_form" action="{% url 'customer:wishlists-add-product' product_pk=product.pk %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit" class="button button-sm" data-toggle="tooltip" title="" data-original-title="Wishlist" data-loading-text='{% t "store.catalogue.add_to_wishlist_loading" %}'>{% t "store.catalogue.add_to_wishlist" %}</button>
-                    </form>
-                    {% endif %}
-                    {% for wishlist in product_wishlists %}
-                    <form class="d-initial" action="{% url 'customer:wishlists-remove-product' key=wishlist.key product_pk=product.id %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit" class="button button-sm" data-toggle="tooltip" title="" data-original-title='{% t "store.catalogue.product_in_wishlist" with name=wishlist.name url=wishlist.get_absolute_url %}' data-loading-text='{% t "store.catalogue.remove_loading" %}'>{% t "store.catalogue.remove" %}</button>
-                    </form>
-                    {% endfor %}
-                    {% endwith %}
-                    {% endiffeature %}
-                    {% else %}
-                    {% endif %}
                     {% block product_basket_form %}
                     {% purchase_info_for_product request product as session %}
-                    {% comment %} {% if not product.is_parent %} {% endcomment %}
+
                     {% if session.availability.is_available_to_buy %}
                     {% basket_form request product 'single' as basket_form %}
                     <form id="add-to-cart" class="d-initial" action="{% url 'basket:add' pk=product.pk %}" method="post">
@@ -195,7 +160,7 @@
                         <button type="submit" class="button button-primary button-lg is-fullwidth omnisend-add-to-cart-button" data-loading-text='{% t "store.catalogue.add_to_cart_loading" %}' data-disabled-text="Unavailable">{% t "store.catalogue.add_to_cart" %}</button>
                     </form>
                     {% endif %}
-                    {% comment %} {% endif %} {% endcomment %}
+
                     {% endblock %}
                 </div>
             </div><!-- end product info -->
@@ -213,13 +178,11 @@
                             <span>{% t "store.catalogue.about" %}</span>
                         </a>
                     </li>
-                    {% iffeature "reviews" %}
                     <li id="catalogue_product-reviews-tab" data-target="catalogue_product-tab-reviews">
                         <a>
                             <span>{% t "store.catalogue.reviews" %} ({{ product.num_approved_reviews }})</span>
                         </a>
                     </li>
-                    {% endiffeature %}
                 </ul>
             </div>
             <div id="catalogue_product-tab-content" class="content-body">
@@ -231,14 +194,13 @@
                     {% endblock %}
                 </div>
                 <div id="catalogue_product-tab-reviews" class="is-hidden">
-                    {% iffeature "reviews" %}
                     {% if product.num_approved_reviews == 0 %}
                     <p>
                         {% if product|is_review_permitted:user %}
-                        {% url 'catalogue:reviews-add' product_slug=product.slug product_pk=product.id as add_review_url %}
-                        {% t "store.catalogue.no_reviews" %} <a href="{{ add_review_url }}#addreview">{% t "store.catalogue.no_reviews_add" %}</a>.
+                            {% url 'catalogue:reviews-add' product_slug=product.slug product_pk=product.id as add_review_url %}
+                            {% t "store.catalogue.no_reviews" %} <a href="{{ add_review_url }}#addreview">{% t "store.catalogue.no_reviews_add" %}</a>.
                         {% else %}
-                        {% t "store.catalogue.no_reviews" %}.
+                            {% t "store.catalogue.no_reviews" %}.
                         {% endif %}
                     </p>
                     {% else %}
@@ -307,7 +269,6 @@
                         {% block product_review %}{% endblock product_review %}
                         {% endif %}
                     </div>
-                    {% endiffeature %}
                 </div>
             </div>
         </div>

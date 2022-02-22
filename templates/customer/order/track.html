@@ -266,11 +266,9 @@
                             {% if line.frequency %}
                             <div class="account_order-table-schedule">{% t "tables.content.frequency" with frequency=line.frequency %}</div>
                             {% endif %}
-                            {% iffeature "reviews" %}
                             {% if product|is_review_permitted:user %}
                             <a href="{% url 'catalogue:reviews-add' product_slug=product.slug product_pk=product.id %}#addreview">{% t "tables.actions.write_review" %}</a>
                             {% endif %}
-                            {% endiffeature %}
                             {% else %}
                             <div class="account_order-table-pname">
                                 {{ line.description }}

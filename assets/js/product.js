@@ -4,6 +4,9 @@ var theme = (function(t, $) {
         init: function(options) {
             t.product.selector = options.selector;
 
+            t.product.initImageSlider();
+            t.product.handleReviewForm();
+
             var productData = document.getElementById(t.product.selector.productData);
             if (!productData || !productData.innerHTML.length) {
                 return;
@@ -13,10 +16,9 @@ var theme = (function(t, $) {
             if (t.product.productObject.structure !== 'parent') {
                 return;
             }
-            t.product.initImageSlider();
+
             t.product.handleVariantSelect();
-            $("select[name*='attr_']").on("change", t.product.handleVariantSelect);
-            t.product.handleReviewForm()
+            $("select[name*='attr_']").on("change", t.product.handleVariantSelect);          
             
         },
         getSelectAttributeValues: function() {
