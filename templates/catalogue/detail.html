@@ -315,41 +315,22 @@
     </div><!-- End Container -->
 </section>
 {% endblock content %}
+
 {% block extrascripts %}
-{{ product.data|json_script:"product-data" }}
 {{ block.super }}
+
+{{ product.data|json_script:"product-data" }}
+
 <script type="text/javascript" src="{{ 'js/slick.min.js'|asset_url }}"></script>
 <script type="text/javascript" src="{{ 'js/slick_lightbox.min.js'|asset_url }}"></script>
+<script type="text/javascript" src="{{ 'js/product.js'|asset_url }}"></script>
+
 {% include 'partials/trackings/omnisend/product_view_snippet.html' with product=product %}
-<script>
-var hash = window.location.hash;
-if (hash == '#addreview') {
-    document.querySelector('#catalogue_product-reviews-tab').classList.add('is-active');
-    document.querySelector('#catalogue_product-about-tab').classList.remove('is-active');
-    document.querySelector('#catalogue_product-tab-about').classList.add('is-hidden');
-    document.querySelector('#catalogue_product-tab-reviews').classList.remove('is-hidden');
-}
-
-$("input[name='prod-price']").click(function() {
-    if ($("#product-option-2").is(":checked")) {
-        $(".subscribe-text").show();
-    } else {
-        $(".subscribe-text").hide();
-    }
-});
-initProdSlider();
-</script>
-
-<script type="text/javascript" src="{{ 'js/product-variants.js'|asset_url }}"></script>
-{% if facebook_add_to_cart_event %}
-{{ facebook_add_to_cart_event }}
-{% endif %}
-<script>
-{% if google_add_to_cart_event %} { { google_add_to_cart_event } } {% endif %}
-</script>
 {% include "partials/trackings/facebook/analytics_view_content_product.html" %}
 {% include "partials/trackings/taboola/analytics_view_content_product.html" %}
-{% if taboola_add_to_cart_event %}
-{{ taboola_add_to_cart_event }}
-{% endif %}
+
+{% if facebook_add_to_cart_event %}{{ facebook_add_to_cart_event }}{% endif %}
+{% if google_add_to_cart_event %} { { google_add_to_cart_event } } {% endif %}
+{% if taboola_add_to_cart_event %}{{ taboola_add_to_cart_event }}{% endif %}
+
 {% endblock %}

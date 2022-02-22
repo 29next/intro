@@ -35,8 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-
-
     // Dropdowns
 
     var $dropdowns = getAll('.dropdown:not(.is-hoverable)');
@@ -160,78 +158,57 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-   $('input[name=phone_number]').each(function () {
-                var ele = this;
-                // clear placeholder
-                $(ele).attr('placeholder', '');
-                var existingCountry = $(ele).closest('form').find('[name=phone_number_country]').val();
+$('input[name=phone_number]').each(function () {
+    var ele = this;
+    // clear placeholder
+    $(ele).attr('placeholder', '');
+    var existingCountry = $(ele).closest('form').find('[name=phone_number_country]').val();
 
-                var iti = window.intlTelInput(ele, {
-                    geoIpLookup: function (callback) {
-                        $.ajax({
-                            url: "https://freegeoip.app/json/",
-                            jsonpCallback: "callback",
-                            dataType: "jsonp",
-                        }).done(function (location) {
-                            callback(location.country_code);
-                            initDropdownCountry($(ele).closest('form'), location.country_code);
-                        }).fail(function (jqXHR, textStatus, errorThrown) {
-                            callback($(ele).closest('form').find('[name=country]').val());
-                        });
-                    },
-                    initialCountry: existingCountry || "auto",
-                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.js",
-                });
-
-                // for initial phone_number_country value when phone number not empty and autodetect with libs
-                var countryData = iti.getSelectedCountryData();
-                $(ele).closest('form').find('[name=phone_number_country]').val(Object.keys(countryData).length ? countryData.iso2.toUpperCase() : "");
-
-                ele.addEventListener('countrychange', function (e) {
-                    var countryCode = window.intlTelInputGlobals.getInstance(ele).getSelectedCountryData().iso2;
-                    if (!countryCode) {
-                        return;
-                    }
-                    $(ele).closest('form').find('[name=phone_number_country]').val(countryCode.toUpperCase());
-                });
+    var iti = window.intlTelInput(ele, {
+        geoIpLookup: function (callback) {
+            $.ajax({
+                url: "https://freegeoip.app/json/",
+                jsonpCallback: "callback",
+                dataType: "jsonp",
+            }).done(function (location) {
+                callback(location.country_code);
+                initDropdownCountry($(ele).closest('form'), location.country_code);
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                callback($(ele).closest('form').find('[name=country]').val());
             });
-   function initProdSlider() {
+        },
+        initialCountry: existingCountry || "auto",
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.js",
+    });
 
-            $('.slider-for').slick({
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                arrows: false,
-                fade: false,
-                asNavFor: '.slider-nav'
-            });
-            $('.slider-nav').slick({
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                asNavFor: '.slider-for',
-                dots: false,
-                arrows: true,
-                focusOnSelect: true
-            });
-            $('.slider-for').slickLightbox();
-    };
+    // for initial phone_number_country value when phone number not empty and autodetect with libs
+    var countryData = iti.getSelectedCountryData();
+    $(ele).closest('form').find('[name=phone_number_country]').val(Object.keys(countryData).length ? countryData.iso2.toUpperCase() : "");
 
-
+    ele.addEventListener('countrychange', function (e) {
+        var countryCode = window.intlTelInputGlobals.getInstance(ele).getSelectedCountryData().iso2;
+        if (!countryCode) {
+            return;
+        }
+        $(ele).closest('form').find('[name=phone_number_country]').val(countryCode.toUpperCase());
+    });
+});
 
 $(document.body).on('submit', 'form', function(){
-                var form = $(this);
-                if ($(":invalid", form).length === 0) {
-                    var button = form.find('button');
-                    if (button){
-                        var dataLoadingText = button.attr("data-loading-text");
-                        button.text(dataLoadingText);
-                    }
-                }
-            });
+    var form = $(this);
+    if ($(":invalid", form).length === 0) {
+        var button = form.find('button');
+        if (button){
+            var dataLoadingText = button.attr("data-loading-text");
+            button.text(dataLoadingText);
+        }
+    }
+});
 
  $('select[name="currency"]').on('change', function (e) {
-                e.preventDefault();
-                $('form[id="set-currency"]').submit();
-            });
+    e.preventDefault();
+    $('form[id="set-currency"]').submit();
+});
 
 function searchActions( openTrigger, closeTrigger, target ) {
     var sInput = document.querySelector("#id_q");
