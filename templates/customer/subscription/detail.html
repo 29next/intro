@@ -1,8 +1,5 @@
 {% extends "layouts/customer_base.html" %}
 
-{% block custom_styles %}
-<link rel="stylesheet" href="{{ 'css/flatpickr.min.css'|asset_url }}">
-{% endblock %}
 {% block breadcrumbs %}
 <section class="store_breadcrumbs">
     <div class="store_container">
@@ -360,11 +357,7 @@
 </form>
 {% endblock tabcontent %}
 {% block extrascripts %}
-	<script type="text/javascript" src="{{ 'js/flatpickr.min.js'|asset_url }}"></script>
 	<script type="text/javascript">
-	flatpickr("#id_next_renewal_date", {
-	    inline: true
-	});
     $('.radio').change(function(){
       $('.subscription-cancel-button').removeAttr('disabled');
     });
