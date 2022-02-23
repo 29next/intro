@@ -284,8 +284,21 @@
 
 <script type="text/javascript" src="{{ 'js/slick.min.js'|asset_url }}"></script>
 <script type="text/javascript" src="{{ 'js/slick_lightbox.min.js'|asset_url }}"></script>
-<script type="text/javascript" src="{{ 'js/product.js'|asset_url }}"></script>
+<script>
+(function() {
+    theme.product.init({
+        selector: {
+            sliderWrapper: '.slider-for',
+            sliderNav: '.slider-nav',
+            salePrice: 'data-product-price',
+            retailPrice: 'data-product-price-retail',
+            productData: 'product-data',
+            addToCartForm: 'add-to-cart',
 
+        }
+    })
+})();
+</script>
 {% include 'partials/trackings/omnisend/product_view_snippet.html' with product=product %}
 {% include "partials/trackings/facebook/analytics_view_content_product.html" %}
 {% include "partials/trackings/taboola/analytics_view_content_product.html" %}

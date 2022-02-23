@@ -142,8 +142,21 @@
     {% block scripts %}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ 'js/intlTelInput.js'|asset_url }}"></script>
-    <script type="text/javascript" src="{{ 'js/main.js'|asset_url }}"></script>
-    {% include "partials/messages_script.html" %}
+    <!-- <script type="text/javascript" src="{{ 'js/main.js'|asset_url }}"></script> -->
+    <script type="text/javascript" src="{{ 'js/theme.js'|asset_url }}"></script>
+    <script>
+    (function() {
+        theme.init({
+            selector: {
+                searchWrapper: '.store_search',
+                searchVisible: 'store_search-visible',
+                searchOpen: '.store_search-icon',
+                searchClose: '.store_search-close'
+           } 
+        }
+    )
+    })();
+    </script>
     {% include "partials/trackings/omnisend/snippet.html" %}
     {% endblock %}
 
