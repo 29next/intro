@@ -1,9 +1,4 @@
 var theme = (function(t, $) {
-    t.utility = {
-        getAll: function(selector) {
-            return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
-        }
-    };
     t.messages = {
         init: function() {
             t.messages.dismiss();
@@ -32,7 +27,7 @@ var theme = (function(t, $) {
     };
     t.dropdowns = {
         init: function() {
-            var $dropdowns = t.utility.getAll('.dropdown:not(.is-hoverable)');
+            var $dropdowns = t.utils.getAll('.dropdown:not(.is-hoverable)');
             if ($dropdowns.length > 0) {
                 $dropdowns.forEach(function($el) {
                     $el.addEventListener('click', function(event) {
@@ -60,8 +55,13 @@ var theme = (function(t, $) {
     };
     t.modals = {
         init: function() {
-            var $modalButtons = t.utility.getAll('.store_modal-button');
-            var $modalCloses = t.utility.getAll('.store_modal-background, .store_modal-close, .store_modal-dismiss');
+            t.modals.selector = {
+                triggerModal: '.store_modal-button',
+                dismissModal: '.store_modal-dismiss',
+                modalBackground: '.store_modal-background'
+            }
+            var $modalButtons = t.utils.getAll(t.modals.selector.triggerModal);
+            var $modalCloses = t.utils.getAll([t.modals.selector.dismissModal, t.modals.selector.modalBackground]);
             if ($modalCloses.length > 0) {
                 $modalCloses.forEach(function($el) {
                     $el.addEventListener('click', function() {
@@ -69,7 +69,6 @@ var theme = (function(t, $) {
                     });
                 });
             }
-
             if ($modalButtons.length > 0) {
                 $modalButtons.forEach(function($el) {
                     $el.addEventListener('click', function() {
@@ -81,17 +80,16 @@ var theme = (function(t, $) {
 
             document.addEventListener('keydown', function(event) {
                 var e = event || window.event;
-
                 if (e.keyCode === 27) {
                     t.modals.closeModals();
-                    // closeDropdowns(); TODO: fix this
+                    // closeDropdowns(); TODO: is this necessary?
                 }
             });
 
         },
         closeModals: function() {
             document.documentElement.classList.remove('is-clipped');
-            t.utility.getAll('.store_modal').forEach(function($el) {
+            t.utils.getAll('.store_modal').forEach(function($el) {
                 $el.classList.remove('is-active');
             });
         },
@@ -105,7 +103,7 @@ var theme = (function(t, $) {
     t.tabs = {
         init: function() {
             var tabs = document.querySelectorAll('.tabs li');
-            var tabContentBoxes = document.querySelectorAll('#catalogue_product-tab-content > div');
+            var tabContent = document.querySelectorAll('.tab-content > div');
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
                     tabs.forEach(item => item.classList.remove('is-active'));
@@ -113,7 +111,7 @@ var theme = (function(t, $) {
 
                     var target = tab.dataset.target;
                     // console.log(target);
-                    tabContentBoxes.forEach(box => {
+                    tabContent.forEach(box => {
                         if (box.getAttribute('id') === target) {
                             box.classList.remove('is-hidden');
                         } else {
@@ -128,7 +126,7 @@ var theme = (function(t, $) {
         init: function() {
             document.addEventListener('DOMContentLoaded', function() {
                 // Get all "navbar-burger" elements
-                var $navbarBurgers = t.utility.getAll('.store_nav-burger');
+                var $navbarBurgers = t.utils.getAll('.store_nav-burger');
                 // Check if there are any nav burgers
                 if ($navbarBurgers.length > 0) {
                     // Add a click event on each of them
@@ -227,16 +225,16 @@ var theme = (function(t, $) {
     };
     t.search = {
         init: function() {
-            t.init.selector = {
+            t.search.selector = {
                 searchWrapper: '.store_search',
                 searchVisible: 'store_search-visible',
                 searchOpen: '.store_search-icon',
                 searchClose: '.store_search-close'
             }
             t.search.searchActions(
-                t.init.selector.searchWrapper,
-                t.init.selector.searchOpen, 
-                t.init.selector.searchClose
+                t.search.selector.searchWrapper,
+                t.search.selector.searchOpen, 
+                t.search.selector.searchClose
             );
         },
         searchActions: function(target, openTrigger, closeTrigger) {
@@ -253,8 +251,15 @@ var theme = (function(t, $) {
           }
     };
     t.product = {
-        init: function(options) {
-            t.product.selector = options.selector;
+        init: function() {
+            t.product.selector = {
+                sliderWrapper: '.slider-for',
+                sliderNav: '.slider-nav',
+                salePrice: 'data-product-price',
+                retailPrice: 'data-product-price-retail',
+                productData: 'product-data',
+                addToCartForm: 'add-to-cart'
+            }
 
             t.product.initImageSlider();
             t.product.handleReviewForm();
@@ -374,6 +379,12 @@ var theme = (function(t, $) {
             });
         }
     };
+    t.utils = {
+        getAll: function(selector) {
+            return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
+        }
+    };
+
     // global init
     t.init = function(options) {
         t.messages.init();
@@ -386,4 +397,5 @@ var theme = (function(t, $) {
     };
 
     return t;
+
 })(theme || {}, jQuery);
