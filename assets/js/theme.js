@@ -180,7 +180,7 @@ var theme = (function(t, $) {
             });
         },
         currencySwitcher: function() {
-            $('select[name="currency"]').on('change', function (e) {
+            $('select[name="currency"]').on('change', function(e) {
                 e.preventDefault();
                 $('form[id="set-currency"]').submit();
             });
@@ -363,12 +363,11 @@ var theme = (function(t, $) {
             t.product.updateImage(found);
         },
         handleReviewForm: function() {
-            var hash = window.location.hash;
-            if (hash == '#addreview') {
+            if (window.location.hash == '#addreview') {
                 $('#catalogue_product-reviews-tab').addClass('is-active');
                 $('#catalogue_product-about-tab').removeClass('is-active');
-                $('#catalogue_product-tab-about').addClass('is-hidden');
-                $('#catalogue_product-tab-reviews').removeClass('is-hidden');
+                $('#tab-about').addClass('is-hidden');
+                $('#tab-reviews').removeClass('is-hidden');
             }
             $("input[name='prod-price']").click(function() {
                 if ($("#product-option-2").is(":checked")) {
