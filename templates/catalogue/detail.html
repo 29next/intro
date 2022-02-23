@@ -174,27 +174,27 @@
         <div class="catalogue_product-tabs">
             <div class="tabs is-centered is-boxed is-medium">
                 <ul>
-                    <li id="catalogue_product-about-tab" data-target="catalogue_product-tab-about" class="is-active">
+                    <li id="catalogue_product-about-tab" data-target="tab-about" class="is-active">
                         <a>
                             <span>{% t "store.catalogue.about" %}</span>
                         </a>
                     </li>
-                    <li id="catalogue_product-reviews-tab" data-target="catalogue_product-tab-reviews">
+                    <li id="catalogue_product-reviews-tab" data-target="tab-reviews">
                         <a>
                             <span>{% t "store.catalogue.reviews" %} ({{ product.num_approved_reviews }})</span>
                         </a>
                     </li>
                 </ul>
             </div>
-            <div id="catalogue_product-tab-content" class="content-body">
-                <div id="catalogue_product-tab-about">
+            <div id="catalogue_product-tab-content" class="content-body tab-content">
+                <div id="tab-about">
                     {% block product_description %}
                         {% if product.get_description %}
                             {{ product.get_description|safe }}
                         {% endif %}
                     {% endblock %}
                 </div>
-                <div id="catalogue_product-tab-reviews" class="is-hidden">
+                <div id="tab-reviews" class="is-hidden">
                     {% if product.num_approved_reviews == 0 %}
                         <p>
                             {% if product|is_review_permitted:user %}
@@ -261,8 +261,7 @@
                                     {% t "store.catalogue.write_a_review" %}
                                 </a>
                             {% endif %}
-                    
-                    </div>
+                        </div>
                     {% endif %}
                     <div id="addreview">
                         {% if product|is_review_permitted:user %}
@@ -284,8 +283,11 @@
 
 <script type="text/javascript" src="{{ 'js/slick.min.js'|asset_url }}"></script>
 <script type="text/javascript" src="{{ 'js/slick_lightbox.min.js'|asset_url }}"></script>
-<script type="text/javascript" src="{{ 'js/product.js'|asset_url }}"></script>
-
+<script>
+(function() {
+    theme.product.init();
+})();
+</script>
 {% include 'partials/trackings/omnisend/product_view_snippet.html' with product=product %}
 {% include "partials/trackings/facebook/analytics_view_content_product.html" %}
 {% include "partials/trackings/taboola/analytics_view_content_product.html" %}

@@ -1,8 +1,5 @@
 {% extends "layouts/customer_base.html" %}
 
-{% block custom_styles %}
-<link rel="stylesheet" href="{{ 'css/flatpickr.min.css'|asset_url }}">
-{% endblock %}
 {% block breadcrumbs %}
 <section class="store_breadcrumbs">
     <div class="store_container">
@@ -60,7 +57,7 @@
             </div>
         </div>
     </form>
-    <button class="store_modal-close" aria-label="close"></button>
+    <button class="store_modal-close store_modal-dismiss" aria-label="close"></button>
 </div>
 <!-- Cancel Modal -->
 <div class="store_modal" id="subscription-cancel" tabindex="-1" role="dialog">
@@ -93,7 +90,7 @@
             </div>
         </div>
     </form>
-    <button class="store_modal-close" aria-label="close"></button>
+    <button class="store_modal-close store_modal-dismiss" aria-label="close"></button>
 </div>
 <!-- Subscription Down Sell Modal -->
 {% if object.downsell_avaliable %}
@@ -178,7 +175,7 @@
                 </div>
             </div>
         </div>
-        <a class="store_modal-close" aria-label="close"></a>
+        <a class="store_modal-close store_modal-dismiss" aria-label="close"></a>
     </div>
 </form>
 {% endif %}
@@ -209,7 +206,7 @@
             </div>
         </div>
     </form>
-    <button class="store_modal-close" aria-label="close"></button>
+    <button class="store_modal-close store_modal-dismiss" aria-label="close"></button>
 </div>
 {% if object.num_lines > 1%}
 <!-- Remove Product Modal -->
@@ -241,7 +238,7 @@
             </div>
         </div>
     </form>
-    <button class="store_modal-close" aria-label="close"></button>
+    <button class="store_modal-close store_modal-dismiss" aria-label="close"></button>
 </div>
 {% endfor %}
 {% endif %}
@@ -360,11 +357,7 @@
 </form>
 {% endblock tabcontent %}
 {% block extrascripts %}
-	<script type="text/javascript" src="{{ 'js/flatpickr.min.js'|asset_url }}"></script>
 	<script type="text/javascript">
-	flatpickr("#id_next_renewal_date", {
-	    inline: true
-	});
     $('.radio').change(function(){
       $('.subscription-cancel-button').removeAttr('disabled');
     });
