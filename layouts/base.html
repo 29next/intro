@@ -146,15 +146,7 @@
     <script type="text/javascript" src="{{ 'js/theme.js'|asset_url }}"></script>
     <script>
     (function() {
-        theme.init({
-            selector: {
-                searchWrapper: '.store_search',
-                searchVisible: 'store_search-visible',
-                searchOpen: '.store_search-icon',
-                searchClose: '.store_search-close'
-           } 
-        }
-    )
+        theme.init();
     })();
     </script>
     {% include "partials/trackings/omnisend/snippet.html" %}

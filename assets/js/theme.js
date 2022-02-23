@@ -7,11 +7,10 @@ var theme = (function(t, $) {
     t.messages = {
         init: function() {
             t.messages.dismiss();
-        } 
+        },
         addMessage: function(tag, msg) {
             var msgHTML = '<div class="notification notification-' + tag + '">' +
-                '<button class="delete"></button>'  + msg +
-                '</div>';
+                '<button class="delete"></button>'  + msg + '</div>';
             $('#messages').append($(msgHTML));
         },
         debug: function(msg) { t.messages.addMessage('debug', msg); },
@@ -26,14 +25,9 @@ var theme = (function(t, $) {
             $('html').animate({scrollTop: $('#messages').offset().top});
         },
         dismiss: function() {
-            document.addEventListener('DOMContentLoaded', () => {
-                (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
-                    const $notification = $delete.parentNode;
-                    $delete.addEventListener('click', () => {
-                        $notification.parentNode.removeChild($notification);
-                    });
-                });
-            });
+            $(document).on('click', '.notification .delete', function(event) {
+                $(event.target).parent().remove();
+            })
         }
     };
     t.dropdowns = {
@@ -135,10 +129,8 @@ var theme = (function(t, $) {
             document.addEventListener('DOMContentLoaded', function() {
                 // Get all "navbar-burger" elements
                 var $navbarBurgers = t.utility.getAll('.store_nav-burger');
-            
                 // Check if there are any nav burgers
                 if ($navbarBurgers.length > 0) {
-            
                     // Add a click event on each of them
                     $navbarBurgers.forEach(function($el) {
                         $el.addEventListener('click', function() {
@@ -234,8 +226,13 @@ var theme = (function(t, $) {
         }
     };
     t.search = {
-        init: function(options) {
-            t.init.selector = options.selector;
+        init: function() {
+            t.init.selector = {
+                searchWrapper: '.store_search',
+                searchVisible: 'store_search-visible',
+                searchOpen: '.store_search-icon',
+                searchClose: '.store_search-close'
+            }
             t.search.searchActions(
                 t.init.selector.searchWrapper,
                 t.init.selector.searchOpen, 
@@ -385,7 +382,7 @@ var theme = (function(t, $) {
         t.nav.init();
         t.tabs.init();
         t.forms.init();
-        t.search.init(options);
+        t.search.init();
     };
 
     return t;
