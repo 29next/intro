@@ -102,25 +102,33 @@ var theme = (function(t, $) {
     };
     t.tabs = {
         init: function() {
-            var tabs = document.querySelectorAll('.tabs li');
-            var tabContent = document.querySelectorAll('.tab-content > div');
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    tabs.forEach(item => item.classList.remove('is-active'));
-                    tab.classList.add('is-active');
-
-                    var target = tab.dataset.target;
-                    // console.log(target);
-                    tabContent.forEach(box => {
-                        if (box.getAttribute('id') === target) {
-                            box.classList.remove('is-hidden');
-                        } else {
-                            box.classList.add('is-hidden');
-                        }
-                    })
+            t.tabs.selector = {
+                tabNav: '.tabs li',
+                tabContent: '.tab-content > div',
+                activeClass: 'is-active',
+                hiddenClass: 'is-hidden'
+            }
+            t.tabs.handleTabSwitch();
+        },
+        handleTabSwitch: function() {
+            $(t.tabs.selector.tabNav).on('click', function() {
+                var target = $(this).find('a:first').attr('href');
+                $(t.tabs.selector.tabNav).each(function(index, ele) {
+                    if (target !== $(ele).find('a:first').attr('href')) {
+                        $(ele).removeClass(t.tabs.selector.activeClass);
+                    } else {
+                        $(ele).addClass(t.tabs.selector.activeClass);
+                    }
+                })
+                $(t.tabs.selector.tabContent).each(function(index, ele) {
+                    if (target.replace('#', '') !== $(ele).attr('id')) {
+                        $(ele).removeClass(t.tabs.selector.activeClass).addClass(t.tabs.selector.hiddenClass);
+                    } else {
+                        $(ele).removeClass(t.tabs.selector.hiddenClass).addClass(t.tabs.selector.activeClass);
+                    }
                 })
             })
-        }
+        }  
     };
     t.nav = {
         init: function() {
@@ -258,10 +266,16 @@ var theme = (function(t, $) {
                 salePrice: 'data-product-price',
                 retailPrice: 'data-product-price-retail',
                 productData: 'product-data',
-                addToCartForm: 'add-to-cart'
+                addToCartForm: 'add-to-cart',
+                subscriptionOptionInputName: 'subscription-option',
+                subcriptionOptionID: '#product-subscribe',
+                subscriptionOptions: '#subscriptionOptions', 
+                productReviewsTab: '#catalogue_product-reviews-tab',
+                productReviewsAboutTab: '#catalogue_product-about-tab'
             }
 
             t.product.initImageSlider();
+            t.product.handleSubscriptionOption();
             t.product.handleReviewForm();
 
             var productData = document.getElementById(t.product.selector.productData);
@@ -320,7 +334,7 @@ var theme = (function(t, $) {
             var selector = `#${t.product.selector.addToCartForm}`;
             if (!variant || variant.purchase_info.availability !== 'instock') {
                 $(selector).find("button").prop('disabled', true);
-                $(selector).find("button").text('Unavailable');
+                $(selector).find("button").text('{% t "store.catalogue.product_unavailable" %}');
                 return;
             }
             $(selector).find("button").prop('disabled', false);
@@ -362,6 +376,15 @@ var theme = (function(t, $) {
             t.product.updateForm(found);
             t.product.updateImage(found);
         },
+        handleSubscriptionOption: function() {
+            $('input[name=' + t.product.selector.subscriptionOptionInputName + ']').click(function() {
+                if ($(t.product.selector.subcriptionOptionID).is(":checked")) {
+                    $(t.product.selector.subscriptionOptions).show();
+                } else {
+                    $(t.product.selector.subscriptionOptions).hide();
+                }
+            });
+        },
         handleReviewForm: function() {
             if (window.location.hash == '#addreview') {
                 $('#catalogue_product-reviews-tab').addClass('is-active');
@@ -369,13 +392,6 @@ var theme = (function(t, $) {
                 $('#tab-about').addClass('is-hidden');
                 $('#tab-reviews').removeClass('is-hidden');
             }
-            $("input[name='prod-price']").click(function() {
-                if ($("#product-option-2").is(":checked")) {
-                    $(".subscribe-text").show();
-                } else {
-                    $(".subscribe-text").hide();
-                }
-            });
         }
     };
     t.utils = {
