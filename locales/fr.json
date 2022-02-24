@@ -24,7 +24,8 @@
             "login_loading": "Connexion...",
             "register": "S'inscrire",
             "register_loading": "Enregistrement...",
-            "go_back": "Retournez"
+            "go_back": "Retournez",
+            "request_cancellation": "Request cancellation"
         },
         "error": {
             "please_check_error": "<strong>Oups ! Nous avons trouvé quelques erreurs</strong> . Veuillez vérifier les messages d'erreur ci-dessous et réessayer",
@@ -51,9 +52,11 @@
             "about": "À propos"
         },
         "account": {
+            "account_navigation": "Account Navigation",
             "account": "Compte",
             "subscriptions": "Abonnements",
             "orders": "Historique des commandes",
+            "profile": "Profile",
             "addresses": "Adresses",
             "emails": "Historique des e-mails",
             "support": "Assistance",
@@ -196,7 +199,22 @@
             "tracking_your_order_message": "Vous pouvez suivre l'état de votre commande",
             "view_order_status": "Afficher le statut de la commande",
             "print_this_page": "Imprimer cette page",
-            "continue_shopping": "Continuer vos achats"
+            "continue_shopping": "Continuer vos achats",
+            "order_number": "Order #{{ number }}",
+            "order_status": "Ordered on {{ date_created }} and is",
+            "pending": "Pending",
+            "confirmed": "Confirmed",
+            "processing": "Processing",
+            "shipped": "Shipped",
+            "delivered": "Delivered",
+            "canceled": "Canceled",
+            "shipping_info": "Shipping information",
+            "contact": "Contact",
+            "payment_method": "Payment method",
+            "tracking": "Tracking",
+            "track_my_order": "Track my order",
+            "summary": "Summary",
+            "shipping_discount": "Shipping Discount"
         },
         "offline": {
             "thanks": "Merci ! Nous avons reçu votre commande.",
@@ -417,6 +435,7 @@
             "heading": "Assistance",
             "support_tickets": "Billets d'assistance",
             "create_new": "Créer un nouveau",
+            "submit_ticket": "Submit ticket",
             "no_tickets": "Aucun ticket n'a encore été créé.",
             "created_at": "Créé {{ created_at }}",
             "update_ticket": "Billet de mise",
