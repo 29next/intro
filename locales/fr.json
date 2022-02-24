@@ -25,7 +25,7 @@
             "register": "S'inscrire",
             "register_loading": "Enregistrement...",
             "go_back": "Retournez",
-            "request_cancellation": "Request cancellation"
+            "request_cancellation": "Demande d'annulation"
         },
         "error": {
             "please_check_error": "<strong>Oups ! Nous avons trouvé quelques erreurs</strong> . Veuillez vérifier les messages d'erreur ci-dessous et réessayer",
@@ -45,18 +45,18 @@
         "main": {
             "home": "Accueil",
             "shop": "Magasiner",
-            "blog": "Blog",
+            "blog": "Blogue",
             "support": "Assistance",
             "contact": "Contacter",
             "cart": "Chariot",
             "about": "À propos"
         },
         "account": {
-            "account_navigation": "Account Navigation",
+            "account_navigation": "Navigation dans le compte",
             "account": "Compte",
             "subscriptions": "Abonnements",
             "orders": "Historique des commandes",
-            "profile": "Profile",
+            "profile": "Profil",
             "addresses": "Adresses",
             "emails": "Historique des e-mails",
             "support": "Assistance",
@@ -163,7 +163,7 @@
             "message_line_saved": "{{ title }} a été enregistré pour plus tard"
         },
         "checkout": {
-            "terms_agree": "By creating your order, you agree to our <a href='#' data-toggle='modal' data-target='#terms_page_button'>Terms of Service</a> and <a href='#' data-toggle='modal' data-target='#privacy_page_button'>Privacy Policy</a>.",
+            "terms_agree": "En créant votre commande, vous acceptez nos <a href='#' data-toggle='modal' data-target='#terms_page_button'>Conditions d'utilisation</a> et <a href='#' data-toggle='modal' data-target='#privacy_page_button'>Politique de confidentialité</a>.",
             "subscription_terms_agree": "Vous acceptez également nos conditions générales d'abonnement <a href='#'data-toggle='modal' data-target='#subscription_terms_page_button'></a> et nous autorisez à facturer votre mode de paiement. Vous pouvez modifier ou annuler votre abonnement à tout moment via votre compte."
         },
         "confirmation": {
@@ -200,21 +200,21 @@
             "view_order_status": "Afficher le statut de la commande",
             "print_this_page": "Imprimer cette page",
             "continue_shopping": "Continuer vos achats",
-            "order_number": "Order #{{ number }}",
-            "order_status": "Ordered on {{ date_created }} and is",
-            "pending": "Pending",
-            "confirmed": "Confirmed",
-            "processing": "Processing",
-            "shipped": "Shipped",
-            "delivered": "Delivered",
-            "canceled": "Canceled",
-            "shipping_info": "Shipping information",
-            "contact": "Contact",
-            "payment_method": "Payment method",
+            "order_number": "Commande n°{{ number }}",
+            "order_status": "Commandé sur {{ date_created }} et est",
+            "pending": "En attente",
+            "confirmed": "confirmé",
+            "processing": "Traitement",
+            "shipped": "expédié",
+            "delivered": "Livré",
+            "canceled": "Annulé",
+            "shipping_info": "Informations sur l'expédition",
+            "contact": "Contacter",
+            "payment_method": "Mode de paiement",
             "tracking": "Tracking",
-            "track_my_order": "Track my order",
-            "summary": "Summary",
-            "shipping_discount": "Shipping Discount"
+            "track_my_order": "Suivre ma commande",
+            "summary": "Résumé",
+            "shipping_discount": "Réduction sur l'expédition"
         },
         "offline": {
             "thanks": "Merci ! Nous avons reçu votre commande.",
@@ -239,10 +239,10 @@
     },
     "store": {
         "blog": {
-            "title": "Blog",
+            "title": "Blogue",
             "edit_this_post": "Modifier cet article",
             "no_posts": "Aucun article n'a encore été créé.",
-            "search_not_found": "Found <strong>0</strong> results."
+            "search_not_found": "Trouvé <strong>0</strong> résultats."
         },
         "catalogue": {
             "free": "Gratuit",
@@ -321,7 +321,7 @@
             "view": "Voir",
             "create_support_request": "Vous avez encore besoin d'aide ? Créez <a href='{{ link }}'>une demande d'assistance</a> avec notre équipe de service client et nous serions heureux de vous aider.",
             "no_categories": "Aucune catégorie n'a encore été créée.",
-            "articles": "Articles",
+            "articles": "Des articles",
             "no_articles": "Aucun article n'a encore été créé.",
             "edit_this_article": "Modifier cet article",
             "last_updated": "Dernière mise à jour"
@@ -435,7 +435,7 @@
             "heading": "Assistance",
             "support_tickets": "Billets d'assistance",
             "create_new": "Créer un nouveau",
-            "submit_ticket": "Submit ticket",
+            "submit_ticket": "Soumettre un ticket",
             "no_tickets": "Aucun ticket n'a encore été créé.",
             "created_at": "Créé {{ created_at }}",
             "update_ticket": "Billet de mise",
