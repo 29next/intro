@@ -1,12 +1,9 @@
 {% extends "layouts/customer_base.html" %}
 
-
 {% block styles %}
-{{ block.super }}
+    {{ block.super }}
     <link rel="stylesheet" type="text/css" href="{{ 'css/input_cards.css'|asset_url }}">
 {% endblock %}
-
-
 
 {% block breadcrumbs %}
 <section class="store_breadcrumbs">
@@ -16,8 +13,7 @@
                 <li><a href="{{ homepage_url }}">{% t "navigation.main.home" %}</a></li>
                 <li><a href="{% url 'customer:summary' %}">{% t "navigation.account.account" %}</a></li>
                 <li><a href="{% url 'customer:subscription-list' %}">{% t "navigation.account.subscriptions" %}</a></li>
-                <li><a href="{% url 'customer:subscription-detail' pk=subscription.id %}">#{{ subscription.id }}</a>
-                    </li>
+                <li><a href="{% url 'customer:subscription-detail' pk=subscription.id %}">#{{ subscription.id }}</a></li>
                 <li class="is-active"><a href="#" aria-current="page">{% t "customer.subscriptions.payment_method" %}</a></li>
             </ul>
         </nav>
@@ -26,24 +22,18 @@
 {% endblock %}
 
 
-
 {% block tabcontent %}
-
     <form id="payment-detail-form" method="post">
         <div class="accordion payment-methods">
             {% include "partials/bankcard_payment_method.html" with bankcards=bankcards collapsed=False %}
         </div>
         <div class="field button-group">
-           
-                <a class="button" href="{% url 'customer:subscription-detail' pk=subscription.id %}">
-                  {% t "global.button.back" %}
-                </a>
-           
-        
-                <button type="submit" class="button button-primary" {% if gateway_name == 'spreedly' %} disabled{% endif %}>
-                    {% t "global.button.continue" %}
-                </button>
-         
+            <a class="button" href="{% url 'customer:subscription-detail' pk=subscription.id %}">
+                {% t "global.button.back" %}
+            </a>
+            <button type="submit" class="button button-primary" data-loading-text="Please wait...">
+                {% t "global.button.continue" %}
+            </button>
         </div>
         <input type="hidden" name="payment_method" />
         {% csrf_token %}
@@ -52,14 +42,9 @@
 
 {% block extrascripts %}
     {{ block.super }}
-
-
-
     <script src="{{ 'js/jquery.creditCardValidator.js'|asset_url }}"></script>
     <script src="{{ 'js/input_mask.min.js'|asset_url }}"></script>
-    {% if gateway_name == 'spreedly' %}
-        <script src="https://core.spreedly.com/iframe/iframe-v1.min.js"></script>
-    {% endif %}
+    <script src="https://core.spreedly.com/iframe/iframe-v1.min.js"></script>
 {% endblock %}
 
 {% block onbodyload %}

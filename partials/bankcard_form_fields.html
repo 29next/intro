@@ -6,11 +6,9 @@
 {% endif %}
 
 {% if form.non_field_errors %}
-    {% for error in form.non_field_errors %}
-        <div class="notification notification-danger">
-             {{ error }}
-        </div>
-    {% endfor %}
+    <div class="notification notification-danger">
+        {{ error }}
+    </div>
 {% endif %}
 
 {% if gateway_name == 'spreedly' %}
@@ -18,33 +16,25 @@
 {% endif %}
 
 <div class="field-group is-half">
-    {% if gateway_name == 'spreedly' %}
-        <div class="field">
-            <div class="control">
-                <div id="spreedly-number" class="input"></div>
-                <span class="error-block text-danger"></span>
-                {% for field in form.hidden_fields %}
-                    {{ field }}
-                {% endfor %}
-            </div>
+    <div class="field">
+        <div class="control">
+            <div id="spreedly-number" class="input"></div>
+            <span class="error-block text-danger"></span>
+            {% for field in form.hidden_fields %}
+                {{ field }}
+            {% endfor %}
         </div>
-    {% else %}
-        {% include 'partials/form_field.html' with field=form.number nolabel=True %}
-    {% endif %}
+    </div>
     {% include 'partials/form_field.html' with field=form.name nolabel=True %}
 </div>
 <div class="field-group is-half">
     {% include 'partials/form_field.html' with field=form.expiry nolabel=True %}
-    {% if gateway_name == 'spreedly' %}
-        <div class="field">
-            <div class="control">
-                <div id="spreedly-cvv" class="input"></div>
-                <span class="error-block text-danger"></span>
-            </div>
+    <div class="field">
+        <div class="control">
+            <div id="spreedly-cvv" class="input"></div>
+            <span class="error-block text-danger"></span>
         </div>
-    {% else %}
-        {% include 'partials/form_field.html' with field=form.cvc nolabel=True %}
-    {% endif %}
+    </div>
 </div>
    
 {% include 'partials/form_field.html' with field=form.is_saved_card nolabel=True %}
