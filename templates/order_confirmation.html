@@ -282,12 +282,10 @@
 
 {% block tracking %}
 {{ block.super }}
-
+{% include "partials/trackings/extra_conversion_scripts.html" %}
 {% include "partials/trackings/google/analytics_transaction.html" %}
 
 {% if taboola_make_purchase_event %}{{ taboola_make_purchase_event }}{% endif %}
-    {% include "partials/trackings/extra_conversion_scripts.html" %}
-{% endif %}
 
 {% if send_analytics_event %}
     {% include "partials/trackings/facebook/analytics_transaction.html" %}

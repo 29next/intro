@@ -125,17 +125,17 @@
                 <div class="catalogue_product-option">
                     <div class="field">
                         <div class="control">
-                            <label class="radio" for="product-option-1">
-                                <input type="radio" id="product-option-1" name="prod-price" value="opt1" checked>
+                            <label class="radio" for="product-one-time">
+                                <input type="radio" id="product-one-time" name="subscription-option" value="one-time" checked>
                                 {% t "store.catalogue.one_time" %}
                             </label>
-                            <label class="radio" for="product-option-2">
-                                <input type="radio" id="product-option-2" name="prod-price" value="opt2">
+                            <label class="radio" for="product-subscribe">
+                                <input type="radio" id="product-subscribe" name="subscription-option" value="subscribe">
                                 {% t "store.catalogue.subscribe_save" %}
                             </label>
                         </div>
                     </div>
-                    <div class="subscribe-text" style="display: none;">
+                    <div id="subscriptionOptions" style="display: none;">
                         <h5>{{ product.attr.subscription_detail_text|safe }}</h5>
                         <h6>{% t "store.catalogue.order_arrival_frequency" %}</h6>
                         <div class="button-group" id="id_subscription_options">
@@ -175,12 +175,12 @@
             <div class="tabs is-centered is-boxed is-medium">
                 <ul>
                     <li id="catalogue_product-about-tab" data-target="tab-about" class="is-active">
-                        <a>
+                        <a href="#tab-about">
                             <span>{% t "store.catalogue.about" %}</span>
                         </a>
                     </li>
                     <li id="catalogue_product-reviews-tab" data-target="tab-reviews">
-                        <a>
+                        <a href="#tab-reviews">
                             <span>{% t "store.catalogue.reviews" %} ({{ product.num_approved_reviews }})</span>
                         </a>
                     </li>
@@ -281,8 +281,6 @@
 
 {{ product.data|json_script:"product-data" }}
 
-<script type="text/javascript" src="{{ 'js/slick.min.js'|asset_url }}"></script>
-<script type="text/javascript" src="{{ 'js/slick_lightbox.min.js'|asset_url }}"></script>
 <script>
 (function() {
     theme.product.init();

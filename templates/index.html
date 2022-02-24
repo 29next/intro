@@ -290,72 +290,33 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="store_grid-row">
-                <div class="store_grid-item">
-                    <div class="store_grid-item-inner">
-                        <div class="store_grid-item-content text-center">
-                            <div class="store_grid-item-img"><img src="{{ 'img/icons/icon-shipping.svg' | asset_url }}" alt=""></div>
-                            <div class="store_grid-item-title">Shipping</div>
-                            <div class="store_grid-item-subtitle">Shipping policy text</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="store_grid-item">
-                    <div class="store_grid-item-inner">
-                        <div class="store_grid-item-content text-center">
-                            <div class="store_grid-item-img"><img src="{{ 'img/icons/icon-guarantee.svg' | asset_url }}" alt=""></div>
-                            <div class="store_grid-item-title">Guarantee</div>
-                            <div class="store_grid-item-subtitle">Guarantee policy text</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="store_grid-item">
-                    <div class="store_grid-item-inner">
-                        <div class="store_grid-item-content text-center">
-                            <div class="store_grid-item-img"><img src="{{ 'img/icons/icon-support.svg' | asset_url }}" alt=""></div>
-                            <div class="store_grid-item-title">Support</div>
-                            <div class="store_grid-item-subtitle">Support policy text</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="store_grid-item">
-                    <div class="store_grid-item-inner">
-                        <div class="store_grid-item-content text-center">
-                            <div class="store_grid-item-img"><img src="{{ 'img/icons/icon-secure.svg' | asset_url }}" alt=""></div>
-                            <div class="store_grid-item-title">Secure</div>
-                            <div class="store_grid-item-subtitle">Secure policy text</div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
 </section>
 {% endblock %}
 
 {% block extrascripts %}
-	<script type="text/javascript" src="{{ 'js/slick.min.js'|asset_url }}"></script>
-	<script type="text/javascript">
-	$(document).ready(function() {
-	    $('.store_testimonials-row').slick({
-	        slidesToShow: 3,
-	        slidesToScroll: 1,
-	        arrows: true,
-	        dots: false,
-	        fade: false,
-	        responsive: [
-	            {
-	                breakpoint: 960,
-	                settings: {
-	                    slidesToShow: 1,
-	                    slidesToScroll: 1
-	                }
-	            }
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.store_testimonials-row').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            arrows: true,
+            dots: false,
+            fade: false,
+            responsive: [
+                {
+                    breakpoint: 960,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
 
-	        ]
+            ]
 
-	    });
-	    
-	});
-	</script>
+        });
+        
+    });
+</script>
 {% endblock %}
