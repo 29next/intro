@@ -35,9 +35,8 @@
 
 <body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
     {% csrf_token %}
+    
     {% block layout %}
-
-
     {% endblock %}
 
     {% block scripts %}

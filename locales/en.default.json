@@ -264,6 +264,7 @@
             "remove_loading": "Removing...",
             "add_to_cart": "Add to cart",
             "add_to_cart_loading": "Adding...",
+            "product_unavailable": "Unavailable",
             "about": "About",
             "reviews": "Reviews",
             "no_reviews": "This product does not have any reviews yet",
