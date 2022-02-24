@@ -122,9 +122,11 @@ var theme = (function(t, $) {
                 })
                 $(t.tabs.selector.tabContent).each(function(index, ele) {
                     if (target.replace('#', '') !== $(ele).attr('id')) {
-                        $(ele).removeClass(t.tabs.selector.activeClass).addClass(t.tabs.selector.hiddenClass);
+                        $(ele).removeClass(t.tabs.selector.activeClass)
+                        $(ele).addClass(t.tabs.selector.hiddenClass);
                     } else {
-                        $(ele).removeClass(t.tabs.selector.hiddenClass).addClass(t.tabs.selector.activeClass);
+                        $(ele).removeClass(t.tabs.selector.hiddenClass)
+                        $(ele).addClass(t.tabs.selector.activeClass);
                     }
                 })
             })

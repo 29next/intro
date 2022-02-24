@@ -42,3 +42,28 @@ Customising the theme is as simple as changing the HTML, CSS, and JS as needed. 
 - [Template Tag Refenernce](https://developers.29next.com/themes/templates/tags/)
 - [Filter Reference](https://developers.29next.com/themes/templates/filters/)
 - [URLs & Template Paths](https://developers.29next.com/themes/templates/urls-and-template-paths/)
+
+
+### Staying Up to Date with Changes
+
+It's a best practice for theme developers building on top of Intro to stay up to date with the latest changes. The best way to stay up to date is by adding a remote `upsteam` pointing to the Intro repository. [More on Git Forks and Upstreams](https://www.atlassian.com/git/tutorials/git-forks-and-upstreams).
+
+
+1. Navigate to your local clone/fork directory
+
+2. List existing remotes to check for `origin` and `upsteam`
+```
+git remote -v
+```
+3. If you don't have an `upstream`, add it with the `remote` command. 
+```
+git remote add upstream git@github.com:29next/intro.git
+```
+4. Verify that you now have the `upstream` remote added correctly. 
+```
+git remote -v
+```
+5. Pull in the latest changes from Intro into your local respository. 
+```
+git fetch upstream && git pull upstream main
+```
