@@ -10,7 +10,7 @@
             "close": "Schliessen",
             "save": "Sparen",
             "save_loading": "Speichern...",
-            "nevermind": "Nevermind",
+            "nevermind": "Macht nichts",
             "confirm": "Bestätigen",
             "submit_loading": "Einreichen...",
             "reorder_all": "Alle Artikel neu bestellen",
@@ -25,7 +25,7 @@
             "register": "Registrieren",
             "register_loading": "Registrieren...",
             "go_back": "Geh zurück",
-            "request_cancellation": "Request cancellation"
+            "request_cancellation": "Stornierung beantragen"
         },
         "error": {
             "please_check_error": "<strong>Ups! Wir haben einige Fehler gefunden</strong> - bitte überprüfen Sie die folgenden Fehlermeldungen und versuchen Sie es erneut",
@@ -52,16 +52,16 @@
             "about": "Über"
         },
         "account": {
-            "account_navigation": "Account Navigation",
-            "account": "Account",
+            "account_navigation": "Konto-Navigation",
+            "account": "Konto",
             "subscriptions": "Abos",
             "orders": "Historie der Bestellung",
-            "profile": "Profile",
+            "profile": "Profil",
             "addresses": "Adressen",
             "emails": "E-Mail-Verlauf",
             "support": "Unterstützung",
             "dashboard": "Dashboard",
-            "logout": "Logout",
+            "logout": "Abmelden",
             "login_or_register": "Einloggen oder Registrieren"
         },
         "footer": {
@@ -200,21 +200,21 @@
             "view_order_status": "Bestellstatus anzeigen",
             "print_this_page": "Diese Seite drucken",
             "continue_shopping": "Einkauf fortsetzen",
-            "order_number": "Order #{{ number }}",
-            "order_status": "Ordered on {{ date_created }} and is",
-            "pending": "Pending",
-            "confirmed": "Confirmed",
-            "processing": "Processing",
-            "shipped": "Shipped",
-            "delivered": "Delivered",
-            "canceled": "Canceled",
-            "shipping_info": "Shipping information",
-            "contact": "Contact",
-            "payment_method": "Payment method",
+            "order_number": "Bestellung Nr.{{ number }}",
+            "order_status": "Bestellt am {{ date_created }} und ist",
+            "pending": "Ausstehend",
+            "confirmed": "Bestätigt",
+            "processing": "Verarbeitung",
+            "shipped": "Versendet",
+            "delivered": "Geliefert",
+            "canceled": "Abgesagt",
+            "shipping_info": "Informationen zum Versand",
+            "contact": "Kontakt",
+            "payment_method": "Zahlungsweise",
             "tracking": "Tracking",
-            "track_my_order": "Track my order",
-            "summary": "Summary",
-            "shipping_discount": "Shipping Discount"
+            "track_my_order": "Verfolge meine Bestellung",
+            "summary": "Zusammenfassung",
+            "shipping_discount": "Rabatt auf Versand"
         },
         "offline": {
             "thanks": "Danke! Wir haben Ihre Bestellung erhalten.",
@@ -242,7 +242,7 @@
             "title": "Blog",
             "edit_this_post": "Diesen Beitrag bearbeiten",
             "no_posts": "Es wurden noch keine Beiträge erstellt.",
-            "search_not_found": "Found <strong>0</strong> results."
+            "search_not_found": "Es wurden <strong>0</strong> Ergebnisse gefunden."
         },
         "catalogue": {
             "free": "Kostenlos",
@@ -435,7 +435,7 @@
             "heading": "Unterstützung",
             "support_tickets": "Support-Tickets",
             "create_new": "Neues erstellen",
-            "submit_ticket": "Submit ticket",
+            "submit_ticket": "Ticket einreichen",
             "no_tickets": "Es wurden noch keine Tickets erstellt.",
             "created_at": "{{ created_at }}erstellt",
             "update_ticket": "Ticket aktualisieren",
