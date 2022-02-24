@@ -20,12 +20,12 @@
             "continue": "Ga verder",
             "update": "Update",
             "update_loading": "Updaten...",
-            "login": "Login",
+            "login": "Inloggen",
             "login_loading": "Inloggen...",
             "register": "Inschrijven",
             "register_loading": "Registreren...",
             "go_back": "Ga terug",
-            "request_cancellation": "Request cancellation"
+            "request_cancellation": "Verzoek om annulering"
         },
         "error": {
             "please_check_error": "<strong>oeps! We hebben enkele fouten gevonden</strong> - controleer de foutmeldingen hieronder en probeer het opnieuw",
@@ -46,20 +46,20 @@
             "home": "Home",
             "shop": "Winkel",
             "blog": "Blog",
-            "support": "Support",
+            "support": "Ondersteuning",
             "contact": "Contact",
             "cart": "Winkelwagen",
             "about": "Over"
         },
         "account": {
-            "account_navigation": "Account Navigation",
+            "account_navigation": "Account navigatie",
             "account": "Account",
             "subscriptions": "Abonnementen",
             "orders": "Bestelgeschiedenis",
-            "profile": "Profile",
+            "profile": "Profiel",
             "addresses": "Aadressen",
             "emails": "E-mailgeschiedenis",
-            "support": "Support",
+            "support": "Ondersteuning",
             "dashboard": "dashboard",
             "logout": "Uitloggen",
             "login_or_register": "Inloggen of registreren"
@@ -104,7 +104,7 @@
             "new_total": "Nieuw totaal",
             "subject": "Onderwerp",
             "last_updated": "Laatst bijgewerkt",
-            "priority": "Priority"
+            "priority": "Prioriteit"
         },
         "content": {
             "price": "Prijs",
@@ -149,7 +149,7 @@
             "basket_total_new_ex_tax": "Het totaal van je winkelmandje is nu <b>{{ total }}</b>",
             "items_count": {
                 "one": "{{ count }} item",
-                "other": "{{ count }} Items"
+                "other": "{{ count }} items"
             },
             "subscription_items": {
                 "one": "Abonnement ({{ count }} item)",
@@ -200,21 +200,21 @@
             "view_order_status": "Bestelstatus bekijken",
             "print_this_page": "Print deze pagina",
             "continue_shopping": "Ga verder met winkelen",
-            "order_number": "Order #{{ number }}",
-            "order_status": "Ordered on {{ date_created }} and is",
-            "pending": "Pending",
-            "confirmed": "Confirmed",
-            "processing": "Processing",
-            "shipped": "Shipped",
-            "delivered": "Delivered",
-            "canceled": "Canceled",
-            "shipping_info": "Shipping information",
+            "order_number": "Bestelling #{{ number }}",
+            "order_status": "Besteld op {{ date_created }} en is",
+            "pending": "In afwachting",
+            "confirmed": "Bevestigd",
+            "processing": "Verwerking",
+            "shipped": "Verzonden",
+            "delivered": "Geleverd",
+            "canceled": "Geannuleerd",
+            "shipping_info": "Informatie over verzending",
             "contact": "Contact",
-            "payment_method": "Payment method",
+            "payment_method": "Betaalmethode",
             "tracking": "Tracking",
-            "track_my_order": "Track my order",
-            "summary": "Summary",
-            "shipping_discount": "Shipping Discount"
+            "track_my_order": "Mijn bestelling volgen",
+            "summary": "Samenvatting",
+            "shipping_discount": "Korting op verzending"
         },
         "offline": {
             "thanks": "Bedankt! We hebben je bestelling ontvangen.",
@@ -242,7 +242,7 @@
             "title": "Blog",
             "edit_this_post": "Bewerk dit bericht",
             "no_posts": "Er zijn nog geen berichten aangemaakt.",
-            "search_not_found": "Found <strong>0</strong> results."
+            "search_not_found": "Gevonden <strong>0</strong> resultaten."
         },
         "catalogue": {
             "free": "Gratis",
@@ -315,7 +315,7 @@
             "search_suggestion": "Bedoel je <a href='{{ search_url }}?q={{ suggestion }}'>'{{ suggestion }}'</a>?"
         },
         "support": {
-            "title": "Support",
+            "title": "Ondersteuning",
             "heading": "Hoe kunnen we je helpen?",
             "search_not_found": "0 resultaten gevonden.",
             "view": "Bekijk",
@@ -432,10 +432,10 @@
             "same_as_shipping_address": "Hetzelfde als Verzendadres"
         },
         "support": {
-            "heading": "Support",
-            "support_tickets": "Support Tickets",
+            "heading": "Ondersteuning",
+            "support_tickets": "Tickets voor ondersteuning",
             "create_new": "Nieuw maken",
-            "submit_ticket": "Submit ticket",
+            "submit_ticket": "Ticket indienen",
             "no_tickets": "Er zijn nog geen tickets gemaakt.",
             "created_at": "{{ created_at }}gemaakt",
             "update_ticket": "Ticket bijwerken",
@@ -446,8 +446,8 @@
             "create_support_request_timeframe": "Normaal gesproken reageren we tickets binnen 24 werkuren."
         },
         "login": {
-            "title": "Login",
-            "heading": "Login",
+            "title": "Inloggen",
+            "heading": "Inloggen",
             "register_link": "Heb je geen account? <a href='{{ link }}'>Aan de slag</a>.",
             "forgot_password": "Ik ben mijn wachtwoord vergeten",
             "sms": "Log in met sms",
@@ -459,7 +459,7 @@
             "heading": "Inschrijven",
             "welcome_to": "Welkom bij {{ shop_name }}",
             "already_have_account": "Heb je al een account?",
-            "login": "Log in"
+            "login": "Inloggen"
         }
     }
 }
