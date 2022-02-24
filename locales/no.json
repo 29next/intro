@@ -24,7 +24,8 @@
             "login_loading": "Logger inn...",
             "register": "Registrer deg",
             "register_loading": "Registrerer...",
-            "go_back": "Gå tilbake"
+            "go_back": "Gå tilbake",
+            "request_cancellation": "Request cancellation"
         },
         "error": {
             "please_check_error": "<strong>Oops! Vi fant noen feil</strong> - vennligst sjekk feilmeldingene nedenfor og prøv igjen",
@@ -51,9 +52,11 @@
             "about": "Om"
         },
         "account": {
+            "account_navigation": "Account Navigation",
             "account": "Konto",
             "subscriptions": "Abonnementer",
             "orders": "Ordrehistorikk",
+            "profile": "Profile",
             "addresses": "Adresser",
             "emails": "E-posthistorikk",
             "support": "Støtte",
@@ -196,7 +199,22 @@
             "tracking_your_order_message": "Du kan spore status for din ordre",
             "view_order_status": "Vis bestillingsstatus",
             "print_this_page": "Skriv ut denne siden",
-            "continue_shopping": "Fortsett å handle"
+            "continue_shopping": "Fortsett å handle",
+            "order_number": "Order #{{ number }}",
+            "order_status": "Ordered on {{ date_created }} and is",
+            "pending": "Pending",
+            "confirmed": "Confirmed",
+            "processing": "Processing",
+            "shipped": "Shipped",
+            "delivered": "Delivered",
+            "canceled": "Canceled",
+            "shipping_info": "Shipping information",
+            "contact": "Contact",
+            "payment_method": "Payment method",
+            "tracking": "Tracking",
+            "track_my_order": "Track my order",
+            "summary": "Summary",
+            "shipping_discount": "Shipping Discount"
         },
         "offline": {
             "thanks": "Takk! Vi har mottatt bestillingen din.",
@@ -417,6 +435,7 @@
             "heading": "Støtte",
             "support_tickets": "Brukerstøtte Billetter",
             "create_new": "Opprett ny",
+            "submit_ticket": "Submit ticket",
             "no_tickets": "Ingen billetter har blitt opprettet ennå.",
             "created_at": "Opprettet {{ created_at }}",
             "update_ticket": "Oppdater billett",
