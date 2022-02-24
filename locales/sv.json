@@ -24,7 +24,8 @@
             "login_loading": "Logga in...",
             "register": "Registrera",
             "register_loading": "Registrerar...",
-            "go_back": "Gå tillbaka"
+            "go_back": "Gå tillbaka",
+            "request_cancellation": "Request cancellation"
         },
         "error": {
             "please_check_error": "<strong>Hoppsan! Vi hittade några fel</strong> - kontrollera felmeddelandena nedan och försök igen",
@@ -51,9 +52,11 @@
             "about": "Om"
         },
         "account": {
+            "account_navigation": "Account Navigation",
             "account": "Konto",
             "subscriptions": "Prenumerationer",
             "orders": "Orderhistorik",
+            "profile": "Profile",
             "addresses": "Adresser",
             "emails": "E-posthistorik",
             "support": "Support",
@@ -196,7 +199,22 @@
             "tracking_your_order_message": "Du kan spåra status för din beställning",
             "view_order_status": "Visa orderstatus",
             "print_this_page": "Skriv ut den här sidan",
-            "continue_shopping": "Fortsätt shoppa"
+            "continue_shopping": "Fortsätt shoppa",
+            "order_number": "Order #{{ number }}",
+            "order_status": "Ordered on {{ date_created }} and is",
+            "pending": "Pending",
+            "confirmed": "Confirmed",
+            "processing": "Processing",
+            "shipped": "Shipped",
+            "delivered": "Delivered",
+            "canceled": "Canceled",
+            "shipping_info": "Shipping information",
+            "contact": "Contact",
+            "payment_method": "Payment method",
+            "tracking": "Tracking",
+            "track_my_order": "Track my order",
+            "summary": "Summary",
+            "shipping_discount": "Shipping Discount"
         },
         "offline": {
             "thanks": "Tack! Vi har tagit emot din beställning.",
@@ -417,6 +435,7 @@
             "heading": "Support",
             "support_tickets": "Support-biljetter",
             "create_new": "Skapa ny",
+            "submit_ticket": "Submit ticket",
             "no_tickets": "Inga biljetter har skapats ännu.",
             "created_at": "Skapad {{ created_at }}",
             "update_ticket": "Uppdatera biljett",

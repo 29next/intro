@@ -24,7 +24,8 @@
             "login_loading": "Inloggen...",
             "register": "Inschrijven",
             "register_loading": "Registreren...",
-            "go_back": "Ga terug"
+            "go_back": "Ga terug",
+            "request_cancellation": "Request cancellation"
         },
         "error": {
             "please_check_error": "<strong>oeps! We hebben enkele fouten gevonden</strong> - controleer de foutmeldingen hieronder en probeer het opnieuw",
@@ -51,9 +52,11 @@
             "about": "Over"
         },
         "account": {
+            "account_navigation": "Account Navigation",
             "account": "Account",
             "subscriptions": "Abonnementen",
             "orders": "Bestelgeschiedenis",
+            "profile": "Profile",
             "addresses": "Aadressen",
             "emails": "E-mailgeschiedenis",
             "support": "Support",
@@ -196,7 +199,22 @@
             "tracking_your_order_message": "Je kunt de status van je bestelling volgen",
             "view_order_status": "Bestelstatus bekijken",
             "print_this_page": "Print deze pagina",
-            "continue_shopping": "Ga verder met winkelen"
+            "continue_shopping": "Ga verder met winkelen",
+            "order_number": "Order #{{ number }}",
+            "order_status": "Ordered on {{ date_created }} and is",
+            "pending": "Pending",
+            "confirmed": "Confirmed",
+            "processing": "Processing",
+            "shipped": "Shipped",
+            "delivered": "Delivered",
+            "canceled": "Canceled",
+            "shipping_info": "Shipping information",
+            "contact": "Contact",
+            "payment_method": "Payment method",
+            "tracking": "Tracking",
+            "track_my_order": "Track my order",
+            "summary": "Summary",
+            "shipping_discount": "Shipping Discount"
         },
         "offline": {
             "thanks": "Bedankt! We hebben je bestelling ontvangen.",
@@ -417,6 +435,7 @@
             "heading": "Support",
             "support_tickets": "Support Tickets",
             "create_new": "Nieuw maken",
+            "submit_ticket": "Submit ticket",
             "no_tickets": "Er zijn nog geen tickets gemaakt.",
             "created_at": "{{ created_at }}gemaakt",
             "update_ticket": "Ticket bijwerken",
