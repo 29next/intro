@@ -250,13 +250,13 @@ var theme = (function(t, $) {
         searchActions: function(target, openTrigger, closeTrigger) {
             var sInput = document.querySelector("#id_q");
             $(openTrigger).on( 'click', function() {
-            $(target).addClass(t.init.selector.searchVisible);
+            $(target).addClass(t.search.selector.searchVisible);
               setTimeout( function() {
                     $( sInput ).focus();
                 }, 200);
             });
             $(closeTrigger).on( 'click', function() {
-                $(target).removeClass(t.init.selector.searchVisible);
+                $(target).removeClass(t.search.selector.searchVisible);
             });
           }
     };
