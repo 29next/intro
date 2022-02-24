@@ -25,7 +25,7 @@
             "register": "Registrera",
             "register_loading": "Registrerar...",
             "go_back": "Gå tillbaka",
-            "request_cancellation": "Request cancellation"
+            "request_cancellation": "Begär avbokning"
         },
         "error": {
             "please_check_error": "<strong>Hoppsan! Vi hittade några fel</strong> - kontrollera felmeddelandena nedan och försök igen",
@@ -52,11 +52,11 @@
             "about": "Om"
         },
         "account": {
-            "account_navigation": "Account Navigation",
+            "account_navigation": "Navigering",
             "account": "Konto",
             "subscriptions": "Prenumerationer",
             "orders": "Orderhistorik",
-            "profile": "Profile",
+            "profile": "Profil",
             "addresses": "Adresser",
             "emails": "E-posthistorik",
             "support": "Support",
@@ -86,7 +86,7 @@
             "items_purchased": "Köpta artiklar",
             "quantity": "Mängd",
             "qty": "Antal",
-            "schedule": "Schedule",
+            "schedule": "Tidtabell",
             "price": "Pris",
             "price_inc_tax": "Pris inkl. moms",
             "price_ex_tax": "Pris exkl. moms",
@@ -156,7 +156,7 @@
                 "other": "Prenumeration ({{ count }} artiklar)"
             },
             "message_offer_gained": "Din varukorg är nu berättigad till {{ name }} erbjudandet.",
-            "message_offer_lost": "Your basket no longer qualifies for the {{ name }} offer.",
+            "message_offer_lost": "Din varukorg kvalificerar inte längre för erbjudandet {{ name }}.",
             "message_addition": "{{ title }}  har lagts till i kundkorgen.",
             "message_addition_multiple": "{{ quantity }}  exemplar av  {{ title }} har lagts till i kundkorgen.",
             "message_line_restored": "{{ title }} har flyttats tillbaka till din varukorg.",
@@ -200,21 +200,21 @@
             "view_order_status": "Visa orderstatus",
             "print_this_page": "Skriv ut den här sidan",
             "continue_shopping": "Fortsätt shoppa",
-            "order_number": "Order #{{ number }}",
-            "order_status": "Ordered on {{ date_created }} and is",
-            "pending": "Pending",
-            "confirmed": "Confirmed",
+            "order_number": "Beställning #{{ number }}",
+            "order_status": "Beställd på {{ date_created }} och är",
+            "pending": "Väntar",
+            "confirmed": "bekräftat",
             "processing": "Processing",
-            "shipped": "Shipped",
-            "delivered": "Delivered",
-            "canceled": "Canceled",
-            "shipping_info": "Shipping information",
-            "contact": "Contact",
-            "payment_method": "Payment method",
-            "tracking": "Tracking",
-            "track_my_order": "Track my order",
-            "summary": "Summary",
-            "shipping_discount": "Shipping Discount"
+            "shipped": "Levereras",
+            "delivered": "Levereras",
+            "canceled": "Avbruten",
+            "shipping_info": "Leveransinformation",
+            "contact": "Kontakt",
+            "payment_method": "Betalningsmetod",
+            "tracking": "spårning",
+            "track_my_order": "Spåra min beställning",
+            "summary": "Sammanfattning",
+            "shipping_discount": "Frakt Rabatt"
         },
         "offline": {
             "thanks": "Tack! Vi har tagit emot din beställning.",
@@ -242,7 +242,7 @@
             "title": "blogg",
             "edit_this_post": "Redigera detta inlägg",
             "no_posts": "Inga inlägg har skapats ännu.",
-            "search_not_found": "Found <strong>0</strong> results."
+            "search_not_found": "Hittade <strong>0</strong> resultat."
         },
         "catalogue": {
             "free": "Gratis",
@@ -380,7 +380,7 @@
             "no_subscriptions": "Inga prenumerationer har skapats ännu.",
             "status_is": "Din prenumeration är",
             "next_shipment": "Din nästa försändelse kommer att vara på <strong>{{ ship_date }}</strong>",
-            "subscription_schedule": "Your subscription is scheduled every <strong>{{ subscription_frequency }}</strong>.",
+            "subscription_schedule": "Din prenumeration är schemalagd var <strong>{{ subscription_frequency }}</strong>.",
             "modal_change_ship_date_heading": "Ändra nästa leveransdatum",
             "modal_change_ship_date_body": "Ändra leveransschemat för hur ofta nya beställningar ska tas emot.",
             "modal_next_ship_date": "Nästa försändelse är {{ next_renewal }}.",
@@ -435,7 +435,7 @@
             "heading": "Support",
             "support_tickets": "Support-biljetter",
             "create_new": "Skapa ny",
-            "submit_ticket": "Submit ticket",
+            "submit_ticket": "Skicka ärende",
             "no_tickets": "Inga biljetter har skapats ännu.",
             "created_at": "Skapad {{ created_at }}",
             "update_ticket": "Uppdatera biljett",
