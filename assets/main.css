@@ -2676,7 +2676,9 @@ a.store_nav-item.active,
 .store_collection-item-subtitle {
   font-size: 1.125rem;
   margin-bottom: 1.125rem; }
-
+.store_products {
+    padding: 3rem 0;
+}
 .store_products-header {
   text-align: center; }
 
@@ -2781,6 +2783,8 @@ a.store_nav-item.active,
 
 .store_products-rating-stars {
   letter-spacing: -0.1rem; }
+  .store_products-rating-stars .is-count {
+    color: #3273dc; }
 
 .store_products-rating-text {
   margin-left: 1rem; }

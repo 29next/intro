@@ -42,7 +42,7 @@
 
 .store_collection-list {
     padding-top: 3rem;
-    padding-bottom: 0;
+    padding-bottom: 3rem;
 }
 
 .store_collection-row {
@@ -87,7 +87,9 @@
 
 
 // ----------------------- FEATURE SECTION -----------------------//
-
+.store_products {
+    padding: 3rem 0;
+}
 
 .store_products-header {
     text-align: center;
@@ -201,6 +203,9 @@
 
 .store_products-rating-stars {
     letter-spacing: -0.1rem;
+    .is-count {
+        color: $link-color;
+    }
 }
 
 .store_products-rating-text {
@@ -297,7 +302,7 @@
         margin-right: -.75rem;
     }
 }
-.store_grid-row {}
+
 .store_grid-item {
     @include column;
     @include md-up {

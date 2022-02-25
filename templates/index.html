@@ -80,6 +80,76 @@
     <div class="store_container">
         <h2 class="store_products-header">Featured Products</h2>
         <div class="store_products-list">
+            {% comment %}
+                Below is an example using global template variables - update id's to match store products and remove the comment tags
+            {% endcomment %}
+            {% comment %}
+               
+            <div class="store_products-row">
+                {% for product in products|by_ids:'2,24,6' %}
+                <div class="store_products-item">
+                    <div class="store_products-item-inner">
+                        <div class="store_products-content">
+                            <div class="store_products-img">
+                                {% block product_image %}
+                                {% with image=product.primary_image %}
+                                {% image_thumbnail image.original "350x350" crop="center" upscale=True as thumb %}
+                                    <img original="{{ image.original }}" src="{{ thumb.url }}" alt="{{ product.get_title }}">
+                                {% endwith %}
+                                {% endblock %}
+                            </div>
+                            <div class="store_products-title ">{{ product.get_title }}</div>
+                            <div class="store_products-desc">{{ product.get_excerpt|safe|truncatewords_html:3 }}</div>
+                            {% iffeature 'reviews' %}
+                            {% if product.rating %}
+                            <div class="store_products-rating">
+                                <div class="store_products-rating-stars">
+                                {% for i in '12345' %}
+                                    {% if forloop.counter <= product.rating %}
+                                        <span class="is-count">&#9733;</span>
+                                    {% else %}
+                                        <span>&#9733;</span>
+                                    {% endif %}
+                                {% endfor %}
+                                </div>
+                                <div class="store_products-rating-text">({{product.num_approved_reviews}})</div>
+                            </div>
+                            {% endif %}
+                            {% endiffeature %}
+                            {% block product_price %}
+                            <div class="store_products-price">
+                                {% purchase_info_for_product request product as session %}
+                                {% if session.price.exists %}
+                                    {% if session.price.price_retail > session.price.excl_tax %}
+                                         <span class="font-sm">
+                                            <s>{{ session.price.price_retail|currency:session.price.currency }}</s>
+                                        </span>
+                                    {% endif %}
+                                    <span class="font-lg font-bold">
+                                    {% if session.price.excl_tax == 0 %}
+                                    
+                                                {% t "store.catalogue.free" %}
+                                            {% elif session.price.is_tax_known %}
+                                                {{ session.price.incl_tax|currency:session.price.currency }}
+                                            {% else %}
+                                                {{ session.price.excl_tax|currency:session.price.currency }}
+                                    {% endif %}
+                                    {% else %}
+                                        &nbsp;
+                                    </span>
+                                {% endif %}       
+                            </div>
+                            {% endblock %}
+                            <div class="store_products-cta">
+                                <a href="{{ product.get_absolute_url }}" class="button button-primary">Shop This</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+            {% endcomment %}
             <div class="store_products-row">
                 <div class="store_products-item">
                     <div class="store_products-item-inner">
@@ -94,11 +164,42 @@
                             <div class="store_products-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam</div>
                             <div class="store_products-rating">
                                 <div class="store_products-rating-stars">
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span class="text-muted">★</span>
+                                    <span class="is-count">★</span>
+                                    <span class="is-count">★</span>
+                                    <span class="is-count">★</span>
+                                    <span class="is-count">★</span>
+                                    <span class="is-count">★</span>
+                                </div>  
+                                <div class="store_products-rating-text">Ratings section</div>
+                            </div>
+                            <div class="store_products-price">
+                                <span class="font-sm"><s>$30.00</s></span> <span class="font-lg font-bold">$10.00</span>
+                            </div>
+                            <div class="store_products-cta">
+                                <a href="#" class="button button-secondary">Shop This</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="store_products-item">
+                    <div class="store_products-item-inner">
+                        <div class="store_products-content">
+                            <div class="store_products-img">
+                                <img src="{{ 'img/placeholder650x650.png' | asset_url }}" alt="">
+                                <div class="store_products-item-tag">
+                                    <span class="tag tag-primary">tag</span>
+                                    <span class="tag tag-success">tag</span>
+                                </div>
+                            </div>
+                            <div class="store_products-title ">Product Name</div>
+                            <div class="store_products-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam</div>
+                            <div class="store_products-rating">
+                                <div class="store_products-rating-stars">
+                                    <span class="is-count">★</span>
+                                    <span class="is-count">★</span>
+                                    <span class="is-count">★</span>
+                                    <span class="is-count">★</span>
+                                    <span class="is-count">★</span>
                                 </div>
                                 <div class="store_products-rating-text">Ratings section</div>
                             </div>
@@ -125,42 +226,11 @@
                             <div class="store_products-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam</div>
                             <div class="store_products-rating">
                                 <div class="store_products-rating-stars">
+                                    <span class="is-count">★</span>
+                                    <span class="is-count">★</span>
+                                    <span class="is-count">★</span>
+                                    <span class="is-count">★</span>
                                     <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                </div>
-                                <div class="store_products-rating-text">Ratings section</div>
-                            </div>
-                            <div class="store_products-price">
-                                <span class="font-sm"><s>$30.00</s></span> <span class="font-lg font-bold">$10.00</span>
-                            </div>
-                            <div class="store_products-cta">
-                                <a href="#" class="button button-secondary">Shop This</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="store_products-item">
-                    <div class="store_products-item-inner">
-                        <div class="store_products-content">
-                            <div class="store_products-img">
-                                <img src="{{ 'img/placeholder650x650.png' | asset_url }}" alt="">
-                                <div class="store_products-item-tag">
-                                    <span class="tag tag-primary">tag</span>
-                                    <span class="tag tag-success">tag</span>
-                                </div>
-                            </div>
-                            <div class="store_products-title ">Product Name</div>
-                            <div class="store_products-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam</div>
-                            <div class="store_products-rating">
-                                <div class="store_products-rating-stars">
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span class="text-muted">★</span>
                                 </div>
                                 <div class="store_products-rating-text">Ratings section</div>
                             </div>
@@ -177,7 +247,26 @@
         </div>
     </div>
 </section>
-<section class="store_testimonials">
+<section class="store_feature" style="background:#f4f9fc">
+    <div class="store_container">
+        <div class="store_feature-content">
+            <div class="store_feature-text ">
+                <h2 class="store_feature-title">SPECIAL OFFER</h2>
+                <div class="store_feature-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam, natus quae architecto hic quod!</div>
+                <div class="store_feature-cta button-group">
+                    <button data-action="add-product" data-stockrecord-id="1" data-quantity="1" data-clear-cart=true class="button button-secondary button-lg ">Buy one time</button>
+                    <button data-action="add-product" data-stockrecord-id="1" data-quantity="1" data-interval="month" data-interval-count="1" data-redirect=false data-clear-cart=true class="button button-primary button-lg ">Subscribe & Save</button>
+                </div>
+            </div>
+            <div class="store_feature-img">
+                <img src="{{ 'img/generic-product-placeholder.png' | asset_url }}" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="store_testimonials" >
     <div class="store_container">
         <h2 class="store_testimonials-header">Testimonials</h2>
         <div class="store_testimonials-list">

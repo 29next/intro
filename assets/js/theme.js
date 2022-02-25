@@ -154,20 +154,23 @@ var theme = (function(t, $) {
                         });
                     });
                 }
-                window.onscroll = function() { t.nav.stickyHeader() }
+               window.onscroll = function() { 
+                    stickyHeader() 
+                }
+                var navbar = document.getElementById("store_navbar");
+                var sticky = navbar.offsetTop;
+
+                function stickyHeader() {
+                    if (window.pageYOffset >= sticky) {
+                        navbar.classList.add("sticky");
+                        document.documentElement.classList.add('has-navbar-fixed-top');
+                    } else {
+                        navbar.classList.remove("sticky");
+                        document.documentElement.classList.remove('has-navbar-fixed-top');
+                    }
+                }
             })
 
-        },
-        stickyHeader: function() {
-            var navbar = document.getElementById("store_navbar");
-            var sticky = navbar.offsetTop;
-            if (window.pageYOffset >= sticky) {
-                navbar.classList.add("sticky");
-                document.documentElement.classList.add('has-navbar-fixed-top');
-            } else {
-                navbar.classList.remove("sticky");
-                document.documentElement.classList.remove('has-navbar-fixed-top');
-            }
         }
     };
     t.forms = {
@@ -334,7 +337,7 @@ var theme = (function(t, $) {
         },
         updateForm: function(variant) {
             var selector = `#${t.product.selector.addToCartForm}`;
-            if (!variant || variant.purchase_info.availability !== 'instock') {
+            if (!variant || variant.purchase_info.availability === 'outofstock' || variant.purchase_info.availability === 'unavailable') {
                 $(selector).find("button").prop('disabled', true);
                 $(selector).find("button").text('{% t "store.catalogue.product_unavailable" %}');
                 return;
