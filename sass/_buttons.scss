@@ -47,7 +47,8 @@
     &:hover,
     &.is-hovered {
         border: 1px solid transparent;
-        background-color: lighten($color-primary, 10%);
+        // background-color: lighten($color-primary, 10%);
+        filter: brightness(95%);
         color: white;
     }
 }
@@ -60,7 +61,8 @@
     &:hover,
     &.is-hovered {
         border: 1px solid transparent;
-        background-color: lighten($color-secondary, 10%);
+        // background-color: lighten($color-secondary, 10%);
+        filter: brightness(95%);
         color: white;
     }
 }

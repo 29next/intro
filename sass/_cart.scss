@@ -209,7 +209,8 @@
 
         &:hover {
             border: 1px solid transparent;
-            background-color: lighten($color-primary, 10%);
+            // background-color: lighten($color-primary, 10%);
+            filter: brightness(95%);
             color: white;
         }
     }
