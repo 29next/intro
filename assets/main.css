@@ -1815,6 +1815,7 @@ label.error {
     color: white; }
     .sidecart-footer .cart-btn:hover {
       border: 1px solid transparent;
+      background-color: var(--primary_color);
       filter: brightness(95%);
       color: white; }
 

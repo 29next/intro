@@ -210,6 +210,7 @@
         &:hover {
             border: 1px solid transparent;
             // background-color: lighten($color-primary, 10%);
+            background-color: $color-primary;
             filter: brightness(95%);
             color: white;
         }
