@@ -284,6 +284,7 @@ var theme = (function(t, $) {
             t.product.handleReviewForm();
 
             var productData = document.getElementById(t.product.selector.productData);
+            
             if (!productData || !productData.innerHTML.length) {
                 return;
             }
@@ -292,7 +293,7 @@ var theme = (function(t, $) {
             if (t.product.productObject.structure !== 'parent') {
                 return;
             }
-
+            console.log(t.product.productObject);
             t.product.handleVariantSelect();
             $("select[name*='attr_']").on("change", t.product.handleVariantSelect);          
             
@@ -367,10 +368,10 @@ var theme = (function(t, $) {
             $(t.product.selector.sliderWrapper).slickLightbox();
         },
         updateImage: function(variant) {
-            if (!variant || variant.image === null) {
+            if (!variant || variant.images === null) {
                 return;
             }
-            var slideno = (variant.image.id);
+            var slideno = (variant.images[0].id);
             var slideIndex = $(t.product.selector.sliderNav).find('#' + slideno).data('slick-index');
 
             $(t.product.selector.sliderNav).slick('slickGoTo', slideIndex);
