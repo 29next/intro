@@ -1,0 +1,51 @@
+<html lang="{{ LANGUAGE_CODE|default:'en' }}" class="{% block html_class %}{% endblock %}">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="alternate" hreflang="{{ LANGUAGE_CODE }}" href="https://{{ request.get_host }}{{ request.path }}" />
+    {% image_thumbnail shop_icon "32x32" as thumb %}
+    <link rel="shortcut icon" href="{{ thumb.url }}" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="created" content="{% now 'jS M Y h:i' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="robots" content="NOARCHIVE,NOCACHE" />
+    {% block stylesheet %}{% endblock %}
+</head>
+<body>
+    <div class="checkout">
+        <header class="checkout_header--banner">
+            {% block banner_header %}{% endblock %}
+        </header>
+        {% block order_summary_toggle %}{% endblock %}
+        <div class="checkout_main">
+            <div class="checkout_container">
+                <div class="checkout_container--main">
+                    <div class="checkout_steps">
+                        <div class="checkout_steps--inner">
+                            <div class="checkout_steps--content">
+                                <header class="checkout_header" role="banner">
+                                    {% block checkout_header %}{% endblock %}
+                                </header>
+                                {% block checkout_nav %}{% endblock %}
+                                <main class="checkout_steps--main-content" role="main">
+                                    {% block checkout_content %}{% endblock %}
+                                </main>
+                                <footer class="checkout_footer">
+                                    {% block checkout_footer %}{% endblock %}
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                    <aside id="order_summary" class="checkout_summary" role="complementary">
+                        <div class="checkout_summary--inner">
+                            {% block order_summary_sidebar %}{% endblock %}
+                        </div>
+                    <aside>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block tracking_code %}{% endblock %}
+    {% block checkout_js %}{% endblock %}
+</body>
+</html>
