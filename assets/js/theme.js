@@ -264,7 +264,8 @@ var theme = (function(t, $) {
           }
     };
     t.product = {
-        init: function() {
+        init: function(options) {
+            t.product.options = options;
             t.product.selector = {
                 sliderWrapper: '.slider-for',
                 sliderNav: '.slider-nav',
@@ -293,7 +294,6 @@ var theme = (function(t, $) {
             if (t.product.productObject.structure !== 'parent') {
                 return;
             }
-            console.log(t.product.productObject);
             t.product.handleVariantSelect();
             $("select[name*='attr_']").on("change", t.product.handleVariantSelect);          
             
@@ -340,11 +340,11 @@ var theme = (function(t, $) {
             var selector = `#${t.product.selector.addToCartForm}`;
             if (!variant || variant.purchase_info.availability === 'outofstock' || variant.purchase_info.availability === 'unavailable') {
                 $(selector).find("button").prop('disabled', true);
-                $(selector).find("button").text('{% t "store.catalogue.product_unavailable" %}');
+                $(selector).find("button").text(t.product.options.unavailable_msg);
                 return;
             }
             $(selector).find("button").prop('disabled', false);
-            $(selector).find("button").text('{% t "store.catalogue.add_to_cart" %}');
+            $(selector).find("button").text(t.product.options.add_to_cart_msg);
             var addProductUrl = $(selector).attr('action').replace(/\d+/g, variant.id);
             $(selector).attr('action', addProductUrl);
 

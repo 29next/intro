@@ -283,7 +283,10 @@
 
 <script>
 (function() {
-    theme.product.init();
+    theme.product.init({
+        add_to_cart_msg: '{% t "store.catalogue.add_to_cart" %}',
+        unavailable_msg: '{% t "store.catalogue.product_unavailable" %}'
+    });
 })();
 </script>
 {% include 'partials/trackings/omnisend/product_view_snippet.html' with product=product %}
