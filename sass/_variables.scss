@@ -13,15 +13,17 @@ $navh:3.25rem;
 $navhm:$navh;
 
 // colours
-$color-primary:#3273dc;
-$color-secondary:#dc9b32;
+// $color-primary:#3273dc;
+// $color-secondary:#dc9b32;
+$color-primary:var(--primary_color);
+$color-secondary:var(--accent_color);
 $color-muted:#f2f2f2;
 $color-success:#48c78e;
 $color-danger:#e02447;
 $color-warning: #ffe08a;
 $color-body:#4a4a4a;
 $link-color: $color-primary;
-$link-hover-color: lighten($link-color, 10%);
+// $link-hover-color: lighten($link-color, 10%);
 $nav-item-color: #4a4a4a;
 $nav-item-active-color: $link-color;
 

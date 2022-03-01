@@ -18,6 +18,12 @@
         {% endif %}
     {% endblock %}
     {% block styles %}
+        <style>
+            :root {
+                --primary_color: {{ shop_primary_color }};
+                --accent_color: {{ shop_accent_color }};
+             }
+        </style>
         <link rel="stylesheet" type="text/css" href="{{ 'main.css'|asset_url }}">
         <link rel="stylesheet" href="{{ 'css/intlTelInput.css'|asset_url }}">
     {% endblock %}
