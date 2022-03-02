@@ -52,7 +52,22 @@
                     </a>
                     <a class="store_nav-item store_nav-logo" href="{{ homepage_url }}">
                         <img src="{{ 'img/logo.svg'|asset_url }}" alt="{{ shop_name }}">
+
+                        {# Below is an example using brand setting variables - once a logo and icon are set in the brand settings you can remove the comment tags to pull the images from the settings #}
+                        {% comment %}
+                        <picture>
+                            {% with image=shop_logo %}
+                                {% image_thumbnail image "150x" upscale=False as thumb_shop_logo %}
+                                 <source srcset="{{ thumb_shop_logo.url }}" media="(min-width: 500px)" />
+                            {% endwith %}
+                            {% with image=shop_icon %}
+                                {% image_thumbnail image "30x" upscale=False as thumb_shop_icon %}
+                                <img src="{{ thumb_shop_icon.url }}" alt="{{ shop_name }}" />
+                            {% endwith %}
+                        </picture>
+                        {% endcomment%}
                     </a>
+
                 </div>
                 <div class="store_nav-mobile-top">
                     <a class="store_nav-item store_nav-mobile-search store_search-icon" href="#">
