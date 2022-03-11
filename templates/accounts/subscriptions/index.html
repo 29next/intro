@@ -16,23 +16,23 @@
                         <th scope="col">&nbsp;</th>
                     </tr>
                 </thead>
-            
+
                 <tbody>
                     {% for subscription in subscriptions %}
                         <tr>
                             <td data-label='{% t "tables.heading.id" %}'><a href="{% url 'customer:subscription-detail' subscription.pk %}">{{ subscription.pk }}</a></td>
                             <td data-label='{% t "tables.heading.status" %}'>
-                                
+
                                 {% if subscription.status == subscription.ACTIVE %}
-                                    <span class="tag tag-success">{{ subscription.status }}</span>
+                                    <span class="tag tag-success">{{ subscription.status|title }}</span>
                                 {% elif subscription.status == subscription.PENDING %}
-                                    <span class="tag tag-muted">{{ subscription.status }}</span>
+                                    <span class="tag tag-muted">{{ subscription.status|title }}</span>
                                 {% elif subscription.status == subscription.PAST_DUE %}
-                                    <span class="tag tag-warning">{{ subscription.status }}</span>
+                                    <span class="tag tag-warning">{{ subscription.status|title }}</span>
                                 {% elif subscription.status == subscription.CANCELED %}
-                                    <span class="tag tag-danger">{{ subscription.status }}</span>
+                                    <span class="tag tag-danger">{{ subscription.status|title }}</span>
                                 {% else %}
-                                    {{ subscription.status }}
+                                    {{ subscription.status|title }}
                                 {% endif %}
                             </td>
                             <td data-label='{% t "tables.heading.next_renewal" %}'>{{ subscription.next_renewal_date }}</td>
@@ -40,7 +40,7 @@
                             <td data-label='{% t "tables.heading.schedule" %}'>{{ subscription.frequency }}</td>
                             <td data-label='{% t "tables.heading.action" %}'><a href="{% url 'customer:subscription-detail' subscription.pk %}" class="button button-sm">{% t "tables.actions.manage" %}</a></td>
                         </tr>
-                        
+
                     {% endfor %}
                 </tbody>
             </table>
