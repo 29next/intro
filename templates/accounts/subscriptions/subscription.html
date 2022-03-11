@@ -253,7 +253,7 @@
             </div>
             <div class="account_order-detail-address">
                 <address>
-                    {% for field in object.user_address.active_address_fields %}
+                    {% for field in object.shipping_address.active_address_fields %}
                     {{ field }}<br />
                     {% endfor %}
                 </address>
