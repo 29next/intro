@@ -5,7 +5,7 @@
 
 
 {% block tabcontent %}
-    {% if addresses %}
+    {% if addresses %}<form method="post">{% csrf_token %}
     <div class="account_addresses">
         <div class="account_addresses-add">
             <div class="font-bold">{% t "customer.address.manage_addresses" %}</div>
@@ -33,7 +33,7 @@
                                 <td data-label="">
                                     <div class="account_table-actions">
                                         <a href="{% url 'customer:address-detail' pk=address.id %}" class="button button-sm">{% t "global.button.edit" %}</a>
-                                        <a href="{% url 'customer:address-delete' pk=address.id %}" class="button button-sm">{% t "global.button.delete" %}</a>
+                                        <a href="#" data-delete-id="{{ address.id }}" class="button button-sm">{% t "global.button.delete" %}</a>
                                         {% if address.country.is_shipping_country and not address.is_default_for_shipping %}
                                             <a class="button button-sm" href="{% url 'customer:address-change-status' pk=address.id action='default_for_shipping' %}">
                                  
@@ -53,7 +53,7 @@
                 {% endfor %}
             </tbody>
         </table>
-        {% include "partials/pagination.html" %}
+        </form>{% include "partials/pagination.html" %}
     {% else %}
         <p>{% t "customer.address.no_addresses" %}</p>
         <div class="button-group">
