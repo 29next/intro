@@ -216,7 +216,7 @@
                             {% endif %}
 
                         {% endblock shipping_total %}
-                        
+
                         {% block display_taxes %}
                             {% if order.display_taxes %}
                                 <tr>
@@ -227,7 +227,7 @@
                                 </tr>
                             {% endif %}
                         {% endblock display_taxes %}
-                        
+
                         {% block post_order_action_totals %}
                             {% with actions=order.post_order_actions %}
                                 {% if actions %}
@@ -257,13 +257,13 @@
             {% block order_tracking %}
             <div class="order-confirm-tracking">
                 {% if not order.user %}
-                
+
                     <h2>{% t "order.confirmation.tracking_your_order" %}</h2>
-                  
+
                     <p>{% t "order.confirmation.tracking_your_order_message" %}</p>
                     <a class="button button-primary" href="{% url 'customer:anon-order' order_number=order.number hash=order.verification_hash %}">{% t "order.confirmation.view_order_status" %}</a>
                 {% endif %}
-            </div>  
+            </div>
             {% endblock %}
             {% block order_actions %}
             <div class="order-confirm-actions">

@@ -35,6 +35,7 @@
         {% include "partials/trackings/taboola/analytics.html" %}
         {% include "partials/trackings/facebook/analytics.html" %}
     {% endblock %}
+    {% app_hook 'global_header' %}
 </head>
 
 <body id="{% block body_id %}default{% endblock %}" class="{% block body_class %}default{% endblock %}">
@@ -187,5 +188,6 @@
     {# Additional JS scripts for backend #}
     {% core_js %}
     {% include "partials/messages_script.html" %}
+    {% app_hook 'global_footer' %}
 </body>
 </html>

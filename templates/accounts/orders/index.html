@@ -4,7 +4,7 @@
 {% block header %}<h4>{% t "customer.order.heading" %}</h4>{% endblock %}
 
 {% block tabcontent %}
-    
+
     {% if orders %}
         <div class="account_order-history">
                     <table class="account_table">
@@ -25,15 +25,15 @@
                                     <td data-label='{% t "tables.heading.date_submitted" %}'>{{ order.date_placed }}</td>
                                     <td data-label='{% t "tables.heading.status" %}'>
                                         {% if order.status == 'Confirmed' %}
-                                    <span class="tag tag-success">{{ order.status }}</span>
+                                    <span class="tag tag-success">{{ order.status|title }}</span>
                                 {% elif order.status == 'Processing' %}
-                                    <span class="tag tag-primary">{{ order.status }}</span>
+                                    <span class="tag tag-primary">{{ order.status|title }}</span>
                                 {% elif order.status == 'Canceled' %}
-                                    <span class="tag tag-danger">{{ order.status }}</span>
+                                    <span class="tag tag-danger">{{ order.status|title }}</span>
                                 {% elif order.status == 'Shipped' %}
-                                    <span class="tag tag-secondary">{{ order.status }}</span>
+                                    <span class="tag tag-secondary">{{ order.status|title }}</span>
                                 {% else %}
-                                    <span class="tag tag-muted">{{ order.status }}</span>
+                                    <span class="tag tag-muted">{{ order.status|title }}</span>
                                 {% endif %}
                                     </td>
                                     <td data-label='{% t "tables.heading.action" %}'><a href="{% url 'customer:order' order_number=order.number %}" class="button button-sm">{% t "tables.actions.view" %}</a></td>

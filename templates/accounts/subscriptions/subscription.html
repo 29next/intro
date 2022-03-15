@@ -18,15 +18,15 @@
 {% block headertext %}
 <p class="font-lg">{% t "customer.subscriptions.status_is"  %}
     {% if subscription.status == subscription.ACTIVE %}
-    <span class="text-success">{{ subscription.status }}</span>
+    <span class="text-success">{{ subscription.status|title }}</span>
     {% elif subscription.status == subscription.PENDING %}
-    <span class="text-muted">{{ subscription.status }}</span>
+    <span class="text-muted">{{ subscription.status|title }}</span>
     {% elif subscription.status == subscription.PAST_DUE %}
-    <span class="text-warning">{{ subscription.status }}</span>
+    <span class="text-warning">{{ subscription.status|title }}</span>
     {% elif subscription.status == subscription.CANCELED %}
-    <span class="text-danger">{{ subscription.status }}</span>
+    <span class="text-danger">{{ subscription.status|title }}</span>
     {% else %}
-    {{ subscription.status }}
+    {{ subscription.status|title }}
     {% endif %}
 </p>
 <p class="font-lg">{% t "customer.subscriptions.next_shipment" with ship_date=subscription.next_renewal_date  %}</p>
@@ -253,7 +253,7 @@
             </div>
             <div class="account_order-detail-address">
                 <address>
-                    {% for field in object.user_address.active_address_fields %}
+                    {% for field in object.shipping_address.active_address_fields %}
                     {{ field }}<br />
                     {% endfor %}
                 </address>

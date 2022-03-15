@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 {% endif %}
-                {% include "templates/catalogue/partials/carousel.html" %}
+                {% include "partials/product_carousel.html" %}
             </div>
             {% endblock %}
             <!-- Product Info-->
@@ -103,7 +103,7 @@
                 <div class="catalogue_item-rating">
                     <div class="catalogue_item-rating-stars">
                         {% for i in '12345' %}
-                            {% if forloop.counter <= product.rating %} 
+                            {% if forloop.counter <= product.rating %}
                                 <span class="is-count">&#9733;</span>
                             {% else %}
                                 <span>&#9733;</span>
@@ -220,7 +220,7 @@
                             </div>
                         </div>
                         <div class="catalogue_product-review-list">
-                            
+
                             {% for review in product.reviews.approved.all|slice:":3" %}
                             <!-- Review-->
                             <div class="catalogue_product-review">
@@ -251,11 +251,11 @@
                                 </div>
                             </div>
                             {% endfor %}
-                            
+
                             {% if product.num_approved_reviews > 3 %}
                                 <a href="{% url 'catalogue:reviews-list' product_slug=product.slug product_pk=product.id %}" class="button button-sm">{% t "store.catalogue.see_all_reviews" %}</a>
                             {% endif %}
-                            
+
                             {% if product|is_review_permitted:user %}
                                 <a id="write_review" href="{% url 'catalogue:reviews-add' product_slug=product.slug product_pk=product.id %}#addreview" class="button button-primary button-sm">
                                     {% t "store.catalogue.write_a_review" %}
@@ -289,6 +289,9 @@
     });
 })();
 </script>
+{% app_hook 'view_product' %}
+{% app_hook 'add_to_cart' %}
+
 {% include 'partials/trackings/omnisend/product_view_snippet.html' with product=product %}
 {% include "partials/trackings/facebook/analytics_view_content_product.html" %}
 {% include "partials/trackings/taboola/analytics_view_content_product.html" %}

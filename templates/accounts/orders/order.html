@@ -16,7 +16,7 @@
 {% block header %}<h4>{% t "customer.order.heading" %}</h4>{% endblock %}
 {% block headertext %}
     <p class="font-lg">
-        {% t "customer.order.heading_order_date" with order_date=order.date_placed %}{% if order.status %}{% t "customer.order.heading_order_status" with order_status=order.status %}{% endif %}
+        {% t "customer.order.heading_order_date" with order_date=order.date_placed %}{% if order.status %}{% t "customer.order.heading_order_status" with order_status=order.status|title %}{% endif %}
     </p>
 {% endblock %}
 {% block modals %}
@@ -28,16 +28,13 @@
     <div class="store_modal" id="cancleOrderModal" tabindex="-1" role="dialog">
         <div class="store_modal-background"></div>
             <div class="store_modal-content">
-
                 <div class="store_modal-box content-body text-center">
                     <h5>{% t "customer.order.cancel_modal_header" with number=order.number %}</h5>
                     <p>{% t "customer.order.cancel_modal_body" %}</p>
-
                     {% include "partials/form_fields.html" with form=cancel_order_form %}
                     {% if order.subscription_set.count %}
-                    {% include "partials/form_fields.html" with form=cancel_subscription_form %}
+                        {% include "partials/form_fields.html" with form=cancel_subscription_form %}
                     {% endif %}
-
                     <div class="button-group is-centered">
                         <a class="button store_modal-dismiss">
                             {% t "global.button.nevermind" %}
@@ -62,12 +59,10 @@
             <div class="account_order-detail-address">
                 <address>
                     {% for field in order.shipping_address.active_address_fields %}
-                    {{ field }}<br />
+                        {{ field }}<br />
                     {% endfor %}
                 </address>
                 {{ order.shipping_address.phone_number|default:"-" }}
-
-
             </div>
         </div>
 
@@ -95,10 +90,10 @@
                     {% if discounts %}
                         <li>
                             <span>{% t "customer.order.cart_total_ex_discounts" %}</span>
-                            {{ order.basket_total_before_discounts_excl_tax|currency:order.currency }} 
-                        </li> 
-                            
-                        {% for discount in discounts %} 
+                            {{ order.basket_total_before_discounts_excl_tax|currency:order.currency }}
+                        </li>
+
+                        {% for discount in discounts %}
                         <li>
                             <span>{% t "customer.order.discount" %}</span>
                             {{ discount.offer_name }} - {{ discount.amount|currency:order.currency }}
@@ -106,7 +101,7 @@
                         {% endfor %}
                     {% endif %}
                     {% endblock discount_totals %}
-                    
+
                     {% block basket_total %}
                     {% if discounts %}
                     <li>

@@ -1,14 +1,10 @@
 {% extends "layouts/base.html" %}
 
-
 {% block headertext %}
     {% t "customer.register.title" %}
 {% endblock %}
 
-
-
 {% block breadcrumbs %}
-    
     <section class="store_breadcrumbs">
     	<div class="store_container">
 	        <nav class="store_breadcrumb" aria-label="breadcrumbs">
@@ -61,18 +57,15 @@
 
 		            </div>
 		            {% include 'partials/form_field.html' with field=form.password1 size='md' %}
-		     
+
 		            <div class="field button-group">
 		                <div class="control is-expanded">
 		                    <button class="button button-lg is-fullwidth" type="submit" data-loading-text='{% t "global.button.register_loading" %}' >{% t "global.button.register" %}</button>
 		                </div>
 		            </div>
 
-		            
+
 		        </form>
-		        <div class="register_terms">
-		          <!--   By continuing you accept our <a href="/terms/">Terms & Conditions</a> and <a href="/privacy/">Privacy Policy</a>. -->
-		        </div>
 	        </div>
 	    </div>
 	</section>

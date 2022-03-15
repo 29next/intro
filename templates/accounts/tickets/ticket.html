@@ -19,7 +19,7 @@
 {% block headertext %}<p>{% t "customer.support.created_at" with created_at=ticket.created_at|naturaltime  %} </p>{% endblock %}
 {% block header_right %}
 <div class="account_page-header-status">
-    <span class="tag tag-primary">{{ ticket.status }}</span>
+    <span class="tag tag-primary">{{ ticket.status|title }}</span>
 </div>
 {% endblock %}
 
