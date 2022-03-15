@@ -10,6 +10,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="robots" content="NOARCHIVE,NOCACHE" />
     {% block stylesheet %}{% endblock %}
+
+    {% app_hook 'global_header' %}
+
 </head>
 <body>
     <div class="checkout">
@@ -47,5 +50,12 @@
     </div>
     {% block tracking_code %}{% endblock %}
     {% block checkout_js %}{% endblock %}
+
+    {% app_hook 'global_footer' %}
+
+    {% if checkout.step == 'information' %}
+        {% app_hook 'start_checkout' %}
+    {% endif %}
+
 </body>
 </html>

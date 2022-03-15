@@ -122,16 +122,6 @@
                             </table>
                         </form>
 
-
-
-
-
-
-
-
-
-
-
                         <div class="basket_footer">
                             <div class="basket_footer-voucher">
                                 {% block vouchers %}
@@ -146,8 +136,6 @@
                                             <button type="submit" class="button" data-loading-text='{% t "tables.actions.add_coupon_loading" %}'>{% t "tables.actions.add_coupon" %}</button>
                                         </span>
                                     </div>
-
-
                                 </form>
                                 {% endif %}
                                 {% endblock vouchers %}
@@ -288,7 +276,7 @@
             </div>
             <div class="basket_summary">
                 {% block basket_summary %}
-                    {% include 'templates/cart/partials/summary.html' with editable=1%}
+                    {% include 'partials/cart_summary.html' with editable=1 %}
                 {% endblock %}
             </div>
         </div>
