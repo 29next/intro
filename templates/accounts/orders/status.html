@@ -288,6 +288,9 @@
 {% if taboola_make_purchase_event %}{{ taboola_make_purchase_event }}{% endif %}
 
 {% if send_analytics_event %}
+
+{% app_hook 'complete_checkout' %}
+
     {% include "partials/trackings/facebook/analytics_transaction.html" %}
 {% endif %}
 
