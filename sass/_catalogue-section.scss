@@ -548,7 +548,20 @@
 .slider-for.slick-initialized, .slider-nav.slick-initialized {display:block;}
 
 
-
+//-------------------------- Category  Page -----------------------//
+.category_header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    .store_section--item {
+        flex: none;
+        padding-top: 0;
+        
+    }
+    .store_section--item_content {
+        padding-top: 0;
+    }
+}
 
 //-------------------------- Review Page -----------------------//
 .catalogue_review-page {
