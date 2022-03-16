@@ -36,8 +36,7 @@
         {% include "partials/trackings/facebook/analytics.html" %}
     {% endblock %}
 
-{% app_hook 'global_header' %}"
-
+    {% app_hook 'global_header' %}
 </head>
 
 <body id="{% block body_id %}default{% endblock %}" class="{% block body_class %}default{% endblock %}">
@@ -191,7 +190,7 @@
     {% core_js %}
     {% include "partials/messages_script.html" %}
 
-{% app_hook 'global_footer' %}"
+    {% app_hook 'global_footer' %}
 
 </body>
 </html>

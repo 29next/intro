@@ -20,7 +20,6 @@
 {# Hide mini-basket so we don't have two baskets to keep in sync #}
 {% block mini_basket %}{% endblock %}
 
-{% block headertext %}{% endblock %}
 
 {% block content %}
     {% include 'partials/cart_content.html' %}
@@ -28,17 +27,9 @@
 
 {% block modals %}{% endblock %}
 
-{% block extrascripts %}
-    {{ block.super }}
-    <script id='google-analytics-events-script'></script>
-{% endblock %}
-
 
 {% block onbodyload %}
     {{ block.super }}
-    {# We pass in the URL to send AJAX requests to #}
-    var options = {
-        'basketURL': '{% url 'basket:summary' %}'
-    };
-    core.basket.init(options);
+    {# Cart JS actions #}
+    core.basket.init();
 {% endblock %}
