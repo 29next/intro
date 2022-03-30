@@ -3946,6 +3946,9 @@ table.account_table {
   .slider-nav .slick-slide.slick-current {
     opacity: 1; }
 
+.slider-nav.is-no-scroll .slick-track {
+  transform: none !important; }
+
 .slick-loading .slick-list {
   background: #fff url('{{ "img/ajax-loader.gif" | asset_url }}') center center no-repeat; }
 

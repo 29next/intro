@@ -9,8 +9,12 @@
      {% endfor %}
 </div>
 {% if all_images|length > 1 %}
+{% if all_images|length < 4 %}
+<div class="slider-nav is-no-scroll">
+{% else %}    
 <div class="slider-nav">
-    {% for image in all_images %}{% image_thumbnail image.original "250x250" crop="center" as thumb %}
+{% endif %}
+{% for image in all_images %}{% image_thumbnail image.original "250x250" crop="center" as thumb %}
     <div id="{{ image.id }}">
         <img src="{{ thumb.url }}" alt="{{ product.get_title }}">
     </div>

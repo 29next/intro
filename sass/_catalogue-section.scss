@@ -358,16 +358,18 @@
 }
 
 .slider-nav {
+    &.is-no-scroll {
+        .slick-track {
+            transform: none !important;
+        }
+    }
     .slick-slide {
         opacity: .5;
         cursor: pointer;
-
         &.slick-current {
             opacity: 1;
         }
     }
-
-
 }
 
 //------------ Slider --------------- //
