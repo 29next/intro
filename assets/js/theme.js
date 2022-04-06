@@ -388,6 +388,8 @@ var theme = (function(t, $) {
                     $(t.product.selector.subscriptionOptions).show();
                 } else {
                     $(t.product.selector.subscriptionOptions).hide();
+                    $("#id_interval").val('');
+                    $("#id_interval_count").val('');
                 }
             });
         },
