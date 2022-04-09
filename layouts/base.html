@@ -53,21 +53,30 @@
                         <span aria-hidden="true"></span>
                     </a>
                     <a class="store_nav-item store_nav-logo" href="{{ homepage_url }}">
-                        <img src="{{ 'img/logo.svg'|asset_url }}" alt="{{ shop_name }}">
-
-                        {# Below is an example using brand setting variables - once a logo and icon are set in the brand settings you can remove the comment tags to pull the images from the settings #}
-                        {% comment %}
                         <picture>
-                            {% with image=shop_logo %}
-                                {% image_thumbnail image "150x" upscale=False as thumb_shop_logo %}
-                                 <source srcset="{{ thumb_shop_logo.url }}" media="(min-width: 500px)" />
-                            {% endwith %}
-                            {% with image=shop_icon %}
-                                {% image_thumbnail image "30x" upscale=False as thumb_shop_icon %}
-                                <img src="{{ thumb_shop_icon.url }}" alt="{{ shop_name }}" />
-                            {% endwith %}
+                            {% if shop_icon and shop_logo  %}
+                                {% with image=shop_logo %}
+                                    {% image_thumbnail image "150x" upscale=False as thumb_shop_logo %}
+                                     <source srcset="{{ thumb_shop_logo.url }}" media="(min-width: 1024px)" />
+                                {% endwith %}
+                                {% with image=shop_icon %}
+                                    {% image_thumbnail image "30x" upscale=False as thumb_shop_icon %}
+                                    <img src="{{ thumb_shop_icon.url }}" alt="{{ shop_name }}" />
+                                {% endwith %}
+                            {% elif shop_logo and not shop_icon %}
+                                {% with image=shop_logo %}
+                                    {% image_thumbnail image "150x" upscale=False as thumb_shop_logo %}
+                                    <img src="{{ thumb_shop_logo.url }}" alt="{{ shop_name }}" />
+                                {% endwith %}
+                            {% elif shop_icon and not shop_logo %}
+                                {% with image=shop_icon %}
+                                    {% image_thumbnail image "30x" upscale=False as thumb_shop_icon %}
+                                    <img src="{{ thumb_shop_icon.url }}" alt="{{ shop_name }}" />
+                                {% endwith %}
+                            {% else %}
+                                <img src="{{ 'img/logo.svg'|asset_url }}" alt="{{ shop_name }}">
+                            {% endif %}
                         </picture>
-                        {% endcomment%}
                     </a>
 
                 </div>

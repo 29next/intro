@@ -275,7 +275,7 @@ var theme = (function(t, $) {
                 addToCartForm: 'add-to-cart',
                 subscriptionOptionInputName: 'subscription-option',
                 subcriptionOptionID: '#product-subscribe',
-                subscriptionOptions: '#subscriptionOptions', 
+                subscriptionOptions: '#product-subscribe-options',
                 productReviewsTab: '#catalogue_product-reviews-tab',
                 productReviewsAboutTab: '#catalogue_product-about-tab'
             }
@@ -386,12 +386,27 @@ var theme = (function(t, $) {
             $('input[name=' + t.product.selector.subscriptionOptionInputName + ']').click(function() {
                 if ($(t.product.selector.subcriptionOptionID).is(":checked")) {
                     $(t.product.selector.subscriptionOptions).show();
+                    $(t.product.setIntervalValue)
                 } else {
                     $(t.product.selector.subscriptionOptions).hide();
-                    $("#id_interval").val('');
-                    $("#id_interval_count").val('');
+                    $(t.product.clearIntervalValue)
                 }
             });
+            $("#product-subscribe-options-select").on("click", "label", t.product.setOptionToHiddenField);
+        },
+        setOptionToHiddenField: function() {
+            var b = $(this).children("input[type=radio]").val(),
+                a = $(this).children("input[type=radio]").attr("interval");
+            $("#id_interval").val(a), $("#id_interval_count").val(b);
+        },
+        setIntervalValue: function() {
+            $("#product-subscribe-options-select input[type=radio]:first").prop("checked", true);
+            $("#id_interval").val($("#product-subscribe-options-select input[type='radio']").first().attr("interval"));
+            $("#id_interval_count").val($("#product-subscribe-options-select input[type='radio']").first().val());
+        },
+        clearIntervalValue: function() {
+            $("#product-subscribe-options-select input[type=radio]").prop("checked", false);
+            $("#id_interval").val(""), $("#id_interval_count").val("");
         },
         handleReviewForm: function() {
             if (window.location.hash == '#addreview') {

@@ -135,13 +135,13 @@
                             </label>
                         </div>
                     </div>
-                    <div id="subscriptionOptions" style="display: none;">
+                    <div id="product-subscribe-options" style="display: none;">
                         <h5>{{ product.attr.subscription_detail_text|safe }}</h5>
                         <h6>{% t "store.catalogue.order_arrival_frequency" %}</h6>
-                        <div class="button-group" id="id_subscription_options">
+                        <div class="button-group" id="product-subscribe-options-select">
                             {% for interval_count_choice_value, interval_count_choice_text in interval_count_choices %}
-                            <label class="radio">
-                                <input type="radio" autocomplete="off" name="options" value="{{ interval_count_choice_value }}" interval="{{ product.attr.interval.option }}"> {{ interval_count_choice_text }}
+                            <label class="radio" for="{{ interval_count_choice_value }}_{{ product.attr.interval.option }}">
+                                <input id="{{ interval_count_choice_value }}_{{ product.attr.interval.option }}" type="radio" autocomplete="off" name="options" value="{{ interval_count_choice_value }}" interval="{{ product.attr.interval.option }}"> {{ interval_count_choice_text }}
                             </label>
                             {% endfor %}
                         </div>

@@ -287,7 +287,7 @@ a.store_nav-item.active,
 
 
     img {
-        max-height: initial;
+        max-height: $navh;
     }
 
     @include lg-down {
@@ -302,7 +302,6 @@ a.store_nav-item.active,
     color: $nav-item-color;
     cursor: pointer;
     display: block;
-    height: 3.25rem;
     position: relative;
     width: 3.25rem;
 
