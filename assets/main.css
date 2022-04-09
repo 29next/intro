@@ -2303,7 +2303,7 @@ a.store_nav-item.active,
     display: flex; }
 
 .store_nav-logo img {
-  max-height: initial; }
+  max-height: 3.25rem; }
 
 @media (max-width: 1023px) {
   .store_nav-logo {
@@ -2316,7 +2316,6 @@ a.store_nav-item.active,
   color: #4a4a4a;
   cursor: pointer;
   display: block;
-  height: 3.25rem;
   position: relative;
   width: 3.25rem; }
   .store_nav-burger:hover {
