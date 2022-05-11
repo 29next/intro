@@ -289,15 +289,8 @@
     });
 })();
 </script>
+
 {% app_hook 'view_product' %}
 {% app_hook 'add_to_cart' %}
-
-{% include 'partials/trackings/omnisend/product_view_snippet.html' with product=product %}
-{% include "partials/trackings/facebook/analytics_view_content_product.html" %}
-{% include "partials/trackings/taboola/analytics_view_content_product.html" %}
-
-{% if facebook_add_to_cart_event %}{{ facebook_add_to_cart_event }}{% endif %}
-{% if google_add_to_cart_event %} { { google_add_to_cart_event } } {% endif %}
-{% if taboola_add_to_cart_event %}{{ taboola_add_to_cart_event }}{% endif %}
 
 {% endblock %}

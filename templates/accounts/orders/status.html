@@ -280,22 +280,10 @@
 {% endif %}
 {% endblock %}
 
-{% block tracking %}
-{{ block.super }}
-{% include "partials/trackings/extra_conversion_scripts.html" %}
-{% include "partials/trackings/google/analytics_transaction.html" %}
-
-{% if taboola_make_purchase_event %}{{ taboola_make_purchase_event }}{% endif %}
+{% block extrascripts %}
 
 {% if send_analytics_event %}
-
-{% app_hook 'complete_checkout' %}
-
-    {% include "partials/trackings/facebook/analytics_transaction.html" %}
+    {% app_hook 'complete_checkout' %}
 {% endif %}
 
-{% endblock %}
-
-{% block checkout_extrascipts %}
-    {% include 'checkout/partials/confirmation_scripts.html' %}
 {% endblock %}
