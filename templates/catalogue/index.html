@@ -39,60 +39,59 @@
                                 {% endwith %}
                             {% endblock %}
                         </div>
-                        {% block product_title %}
-                            <div class="catalogue_item-name">
-                                <a href="{{ product.get_absolute_url }}" title="{{ product.get_title }}">{{ product.get_title|truncatewords:4 }}</a>
-                            </div>
-                        {% endblock %}
 
+                        {% block product_title %}
+                        <div class="catalogue_item-name">
+                            <a href="{{ product.get_absolute_url }}" title="{{ product.get_title }}">{{ product.get_title|truncatewords:4 }}</a>
+                        </div>
+                        {% endblock %}
 
                         <div class="catalogue_item-desc">
                             {{ product.excerpt|safe|truncatewords_html:10 }}
                         </div>
                         {% block product_review %}
-                                    {% if product.rating %}
-                                    <div class="catalogue_item-rating">
-                                        <div class="catalogue_item-rating-stars">
-                                             {% for i in '12345' %}
-                                                {% if forloop.counter <= product.rating %}
-                                                    <span class="is-count">&#9733;</span>
-                                                {% else %}
-                                                    <span>&#9733;</span>
-                                                {% endif %}
-                                            {% endfor %}
-
-                                        </div>
-                                        <div class="catalogue_item-rating-count">
-                                            ({{product.num_approved_reviews}})
-                                        </div>
-                                    </div>
-                                    {% endif %}
+                            {% if product.rating %}
+                            <div class="catalogue_item-rating">
+                                <div class="catalogue_item-rating-stars">
+                                        {% for i in '12345' %}
+                                        {% if forloop.counter <= product.rating %}
+                                            <span class="is-count">&#9733;</span>
+                                        {% else %}
+                                            <span>&#9733;</span>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <div class="catalogue_item-rating-count">
+                                    ({{product.num_approved_reviews}})
+                                </div>
+                            </div>
+                            {% endif %}
                         {% endblock %}
 
                         {% block product_price %}
                             <div class="catalogue_item-price">
                                 {% purchase_info_for_product request product as session %}
-
-                                    {% if session.price.exists %}
-                                        {% if session.price.price_retail > session.price.excl_tax %}
+                                {% if session.price.exists %}
+                                    {% if session.price.price_retail > session.price.excl_tax %}
                                         <div class="catalogue_item-price-previous">
                                             <s>{{ session.price.price_retail|currency:session.price.currency }}</s>
                                         </div>
-                                        {% endif %}
-                                <div class="catalogue_item-price-current">
-                                    {% if session.price.excl_tax == 0 %}
+                                    {% endif %}
+                                    <div class="catalogue_item-price-current">
+                                        {% if session.price.excl_tax == 0 %}
                                                 {% t "store.catalogue.free" %}
                                             {% elif session.price.is_tax_known %}
                                                 {{ session.price.incl_tax|currency:session.price.currency }}
                                             {% else %}
                                                 {{ session.price.excl_tax|currency:session.price.currency }}
                                         {% endif %}
-                                    {% else %}
-                                        &nbsp;
-                                    {% endif %}
-                                </div>
+                                    </div>
+                                {% else %}
+                                    &nbsp;
+                                {% endif %}
                             </div>
                         {% endblock %}
+
                     </div>
                 </div>
                 {% endfor %}
