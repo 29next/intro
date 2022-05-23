@@ -61,20 +61,20 @@
                                 {% endwith %}
                                 {% with image=store.branding.icon %}
                                     {% image_thumbnail image "30x" upscale=False as thumb_store_icon %}
-                                    <img src="{{ thumb_store_icon.url }}" alt="{{ shop_name }}" />
+                                    <img src="{{ thumb_store_icon.url }}" alt="{{ shop.name }}" />
                                 {% endwith %}
                             {% elif store.branding.logo and not store.branding.icon %}
                                 {% with image=store.branding.logo %}
                                     {% image_thumbnail image "150x" upscale=False as thumb_store_logo %}
-                                    <img src="{{ thumb_store_logo.url }}" alt="{{ shop_name }}" />
+                                    <img src="{{ thumb_store_logo.url }}" alt="{{ shop.name }}" />
                                 {% endwith %}
                             {% elif store.branding.icon and not store.branding.logo %}
                                 {% with image=store.branding.icon %}
                                     {% image_thumbnail image "30x" upscale=False as thumb_store_icon %}
-                                    <img src="{{ thumb_store_icon.url }}" alt="{{ shop_name }}" />
+                                    <img src="{{ thumb_store_icon.url }}" alt="{{ shop.name }}" />
                                 {% endwith %}
                             {% else %}
-                                <img src="{{ 'img/logo.svg'|asset_url }}" alt="{{ shop_name }}">
+                                <img src="{{ 'img/logo.svg'|asset_url }}" alt="{{ shop.name }}">
                             {% endif %}
                         </picture>
                     </a>
