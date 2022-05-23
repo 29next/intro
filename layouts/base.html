@@ -2,7 +2,7 @@
 <html lang="{{ LANGUAGE_CODE|default:'en' }}" class="{% block html_class %}{% endblock %}">
 
 <head>
-    <title>{% block title %}{{ shop_name }} - {{ shop_tagline }}{% endblock %}</title>
+    <title>{% block title %}{{ store.name }} - {{ store.tagline }}{% endblock %}</title>
     <link rel="alternate" hreflang="{{ LANGUAGE_CODE }}" href="https://{{ request.get_host }}{{ request.path }}" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <meta name="created" content="{% now " jS M Y h:i" %}" />
@@ -10,18 +10,18 @@
     <meta name="viewport" content="{% block viewport %}width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no{% endblock %}" />
     <meta name="robots" content="NOARCHIVE,NOCACHE" />
     {% block favicon %}
-        {% if shop_icon %}
-            {% with image=shop_icon %}
-                {% image_thumbnail image "100x" upscale=False as thumb_shop_icon %}
-                <link rel="shortcut icon" href="{{ thumb_shop_icon.url }}" />
+        {% if store.branding.icon %}
+            {% with image=store.branding.icon %}
+                {% image_thumbnail image "100x" upscale=False as thumb_store_icon %}
+                <link rel="shortcut icon" href="{{ thumb_store_icon.url }}" />
             {% endwith %}
         {% endif %}
     {% endblock %}
     {% block styles %}
         <style>
             :root {
-                --primary_color: {{ shop_primary_color }};
-                --accent_color: {{ shop_accent_color }};
+                --primary_color: {{ store.branding.primary_color }};
+                --accent_color: {{ store.branding.accent_color }};
              }
         </style>
         <link rel="stylesheet" type="text/css" href="{{ 'main.css'|asset_url }}">
@@ -54,24 +54,24 @@
                     </a>
                     <a class="store_nav-item store_nav-logo" href="{{ homepage_url }}">
                         <picture>
-                            {% if shop_icon and shop_logo  %}
-                                {% with image=shop_logo %}
-                                    {% image_thumbnail image "150x" upscale=False as thumb_shop_logo %}
-                                     <source srcset="{{ thumb_shop_logo.url }}" media="(min-width: 1024px)" />
+                            {% if store.branding.icon and store.branding.logo  %}
+                                {% with image=store.branding.logo %}
+                                    {% image_thumbnail image "150x" upscale=False as thumb_store_logo %}
+                                     <source srcset="{{ thumb_store_logo.url }}" media="(min-width: 1024px)" />
                                 {% endwith %}
-                                {% with image=shop_icon %}
-                                    {% image_thumbnail image "30x" upscale=False as thumb_shop_icon %}
-                                    <img src="{{ thumb_shop_icon.url }}" alt="{{ shop_name }}" />
+                                {% with image=store.branding.icon %}
+                                    {% image_thumbnail image "30x" upscale=False as thumb_store_icon %}
+                                    <img src="{{ thumb_store_icon.url }}" alt="{{ shop_name }}" />
                                 {% endwith %}
-                            {% elif shop_logo and not shop_icon %}
-                                {% with image=shop_logo %}
-                                    {% image_thumbnail image "150x" upscale=False as thumb_shop_logo %}
-                                    <img src="{{ thumb_shop_logo.url }}" alt="{{ shop_name }}" />
+                            {% elif store.branding.logo and not store.branding.icon %}
+                                {% with image=store.branding.logo %}
+                                    {% image_thumbnail image "150x" upscale=False as thumb_store_logo %}
+                                    <img src="{{ thumb_store_logo.url }}" alt="{{ shop_name }}" />
                                 {% endwith %}
-                            {% elif shop_icon and not shop_logo %}
-                                {% with image=shop_icon %}
-                                    {% image_thumbnail image "30x" upscale=False as thumb_shop_icon %}
-                                    <img src="{{ thumb_shop_icon.url }}" alt="{{ shop_name }}" />
+                            {% elif store.branding.icon and not store.branding.logo %}
+                                {% with image=store.branding.icon %}
+                                    {% image_thumbnail image "30x" upscale=False as thumb_store_icon %}
+                                    <img src="{{ thumb_store_icon.url }}" alt="{{ shop_name }}" />
                                 {% endwith %}
                             {% else %}
                                 <img src="{{ 'img/logo.svg'|asset_url }}" alt="{{ shop_name }}">

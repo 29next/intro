@@ -9,7 +9,7 @@
                     <ul>
                         <li><a href="{{ homepage_url }}">{% t "navigation.main.home" %}</a></li>
                         <li><a href="{% url 'catalogue:index' %}">{% t "navigation.main.shop" %}</a></li>
-                        <li><a href="/blog/">{% t "navigation.main.blog" %}</a></li>
+                        <li><a href="{% url 'blog:blog-list' %}">{% t "navigation.main.blog" %}</a></li>
                     </ul>
                 </div>
                 <div class="store_footer-column">
@@ -43,21 +43,33 @@
                     </div>
                     <ul>
                         <li><a href="/contact/">{% t "navigation.main.contact" %} </a></li>
-                        <li><a href="tel:+123456789">+123456789 </a></li>
+                        {% if store.phone %}
+                            <li><a href="tel:{{ store.phone }}">{{ store.phone }} </a></li>
+                        {% endif %}
                         <li><a href="mailto:{{ support_email }}">{{ support_email }}</a></li>
                     </ul>
                 </div>
+                {% if store.address.line_1 %}
                 <div class="store_footer-column">
                     <div class="store_footer-links-header">
                         {% t "navigation.footer.address" %}
                     </div>
                     <address>
-                        Company Name<br>
-                        2358 Stuart Street<br>
-                        Gibsonia, PA<br>
-                        15044
+                        {% if store.legal_name %}{{ store.legal_name }}<br>{% endif %}
+                        {% if store.address.line_1 %}{{ store.address.line_1 }}<br>{% endif %}
+                        {% if store.address.line_2 %}{{ store.address.line_2 }}<br>{% endif %}
+                        {% if store.address.city and store.address.state  %}
+                            {{ store.address.city }}, {{ store.address.state }}<br>
+                        {% elif store.address.city and not store.address.state %}
+                            {{ store.address.city }}<br>
+                        {% elif store.address.state and not store.address.city %}
+                            {{ store.address.state }}<br>
+                        {% endif %}
+                        {% if store.address.postcode %}{{ store.address.postcode }}<br>{% endif %}
+                        {% if store.address.country %}{{ store.address.country }}<br>{% endif %}
                     </address>
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -65,7 +77,7 @@
         <div class="store_container">
             <div class="store_footer-legal">
                 <div class="store_footer-copy">
-                    &copy;{% now "Y" %} {{ shop_name }}. {% t "navigation.footer.copyright" %}
+                    &copy;{% now "Y" %} {{ store.name }}. {% t "navigation.footer.copyright" %}
                 </div>
                 <div class="store_footer-paymeths">
                     <span class="pay-icon pay-icon-visa"></span>&nbsp;
