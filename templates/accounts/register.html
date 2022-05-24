@@ -50,12 +50,7 @@
 		                {% include 'partials/form_field.html' with field=form.first_name size='md' %}
 		                {% include 'partials/form_field.html' with field=form.last_name size='md' %}
 		            </div>
-		            <div class="field-group is-half">
-		                {% include 'partials/form_field.html' with field=form.email size='md' %}
-		                {% include 'partials/form_field.html' with field=form.phone_number size='md' %}
-                        {% include "partials/form_field.html" with field=form.phone_number_country %}
-
-		            </div>
+					{% include 'partials/form_field.html' with field=form.email size='md' %}
 		            {% include 'partials/form_field.html' with field=form.password1 size='md' %}
 
 		            <div class="field button-group">
