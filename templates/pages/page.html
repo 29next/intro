@@ -4,6 +4,9 @@
     {{ page.title}} | {{ block.super }}
 {% endblock %}
 
+
+
+{% block content_wrapper %}
 {% block breadcrumbs %}    
 <section class="store_breadcrumbs">
     <div class="store_container">
@@ -16,8 +19,6 @@
     </div>
 </section>
 {% endblock %}
-
-{% block content_wrapper %}
 <section>
     <div class="store_container">
         <div class="page_content-body content-body">

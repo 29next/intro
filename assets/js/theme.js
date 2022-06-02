@@ -111,7 +111,8 @@ var theme = (function(t, $) {
             t.tabs.handleTabSwitch();
         },
         handleTabSwitch: function() {
-            $(t.tabs.selector.tabNav).on('click', function() {
+            $(t.tabs.selector.tabNav).on('click', function(e) {
+                e.preventDefault();
                 var target = $(this).find('a:first').attr('href');
                 $(t.tabs.selector.tabNav).each(function(index, ele) {
                     if (target !== $(ele).find('a:first').attr('href')) {

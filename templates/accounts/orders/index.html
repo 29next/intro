@@ -24,17 +24,17 @@
                                     <td data-label='{% t "tables.heading.total_inc_tax" %}'>{{ order.total_incl_tax|currency:order.currency }}</td>
                                     <td data-label='{% t "tables.heading.date_submitted" %}'>{{ order.date_placed }}</td>
                                     <td data-label='{% t "tables.heading.status" %}'>
-                                        {% if order.status == 'Confirmed' %}
-                                    <span class="tag tag-success">{{ order.status|title }}</span>
-                                {% elif order.status == 'Processing' %}
-                                    <span class="tag tag-primary">{{ order.status|title }}</span>
-                                {% elif order.status == 'Canceled' %}
-                                    <span class="tag tag-danger">{{ order.status|title }}</span>
-                                {% elif order.status == 'Shipped' %}
-                                    <span class="tag tag-secondary">{{ order.status|title }}</span>
-                                {% else %}
-                                    <span class="tag tag-muted">{{ order.status|title }}</span>
-                                {% endif %}
+                                        {% if order.status == 'confirmed' %}
+                                            <span class="tag tag-success">{{ order.status|title }}</span>
+                                        {% elif order.status == 'processing' %}
+                                            <span class="tag tag-primary">{{ order.status|title }}</span>
+                                        {% elif order.status == 'canceled' %}
+                                            <span class="tag tag-danger">{{ order.status|title }}</span>
+                                        {% elif order.status == 'shipped' %}
+                                            <span class="tag tag-secondary">{{ order.status|title }}</span>
+                                        {% else %}
+                                            <span class="tag tag-muted">{{ order.status|title }}</span>
+                                        {% endif %}
                                     </td>
                                     <td data-label='{% t "tables.heading.action" %}'><a href="{% url 'customer:order' order_number=order.number %}" class="button button-sm">{% t "tables.actions.view" %}</a></td>
                                 </tr>
