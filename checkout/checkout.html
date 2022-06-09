@@ -2,7 +2,7 @@
 <head>
     <title>{% block title %}{% endblock %}</title>
     <link rel="alternate" hreflang="{{ LANGUAGE_CODE }}" href="https://{{ request.get_host }}{{ request.path }}" />
-    {% image_thumbnail shop_icon "32x32" as thumb %}
+    {% image_thumbnail store.branding.icon "32x32" as thumb %}
     <link rel="shortcut icon" href="{{ thumb.url }}" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <meta name="created" content="{% now 'jS M Y h:i' %}" />
