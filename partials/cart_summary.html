@@ -65,7 +65,11 @@
                     <td>{% t "order.cart.shipping" %}</td>
                     <td></td>
                     <td class="text-right">
-                        {{ shipping_charge.excl_tax|currency:basket.currency }}
+                        {% if shipping_charge %}
+                            {{ shipping_charge.excl_tax|currency:basket.currency }}
+                        {% else %}
+                            <small>{% trans 'Calculated at checkout' %}</small>
+                        {% endif %}
                     </td>
                 </tr>
                 {% if basket.display_taxes %}
