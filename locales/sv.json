@@ -138,7 +138,7 @@
             "applied_offer": "Tillämpat erbjudande",
             "applied_coupons": "Tillämpade kuponger",
             "shipping": "Frakt",
-            "calculated_at_checkout": "<small>Calculated at checkout</small>",
+            "calculated_at_checkout": "<small>Beräknat i kassan</small>",
             "order_total": "Beställning totalt",
             "proceed_to_checkout": "Fortsätt till kassan",
             "basket_warnings_header": "Viktiga meddelanden om artiklar i varukorgen",
@@ -378,7 +378,7 @@
         },
         "subscriptions": {
             "heading": "Prenumerationer",
-            "heading_detail": "Subscription {{ page_title }}",
+            "heading_detail": "Prenumeration {{ page_title }}",
             "no_subscriptions": "Inga prenumerationer har skapats ännu.",
             "status_is": "Din prenumeration är",
             "next_shipment": "Din nästa försändelse kommer att vara på <strong>{{ ship_date }}</strong>",
