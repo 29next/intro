@@ -138,6 +138,7 @@
             "applied_offer": "Toegepast aanbod",
             "applied_coupons": "Toegepaste kortingsbonnen",
             "shipping": "Verzenden",
+            "calculated_at_checkout": "<small>Calculated at checkout</small>",
             "order_total": "Totaal bestellen",
             "proceed_to_checkout": "Ga verder met afrekenen",
             "basket_warnings_header": "Belangrijke berichten over items in je winkelmandje",

@@ -138,6 +138,7 @@
             "applied_offer": "Anvendt tilbud",
             "applied_coupons": "Anvendte kuponger",
             "shipping": "Frakt",
+            "calculated_at_checkout": "<small>Calculated at checkout</small>",
             "order_total": "Bestilling totalt",
             "proceed_to_checkout": "Gå videre til kassen",
             "basket_warnings_header": "Viktige meldinger om elementer i handlekurven",

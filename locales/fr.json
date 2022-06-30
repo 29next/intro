@@ -138,6 +138,7 @@
             "applied_offer": "Offre appliquée",
             "applied_coupons": "Coupons appliqués",
             "shipping": "Expédition",
+            "calculated_at_checkout": "<small>Calculated at checkout</small>",
             "order_total": "Total de la commande",
             "proceed_to_checkout": "Procéder à la caisse",
             "basket_warnings_header": "Messages importants concernant les articles de votre panier",

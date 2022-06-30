@@ -138,6 +138,7 @@
             "applied_offer": "Angewandtes Angebot",
             "applied_coupons": "Angewandte Coupons",
             "shipping": "Versand",
+            "calculated_at_checkout": "<small>Calculated at checkout</small>",
             "order_total": "Gesamtzahl der Bestellung",
             "proceed_to_checkout": "Weiter zur Kasse",
             "basket_warnings_header": "Wichtige Nachrichten über Artikel in Ihrem Warenkorb",

@@ -138,6 +138,7 @@
             "applied_offer": "Tillämpat erbjudande",
             "applied_coupons": "Tillämpade kuponger",
             "shipping": "Frakt",
+            "calculated_at_checkout": "<small>Calculated at checkout</small>",
             "order_total": "Beställning totalt",
             "proceed_to_checkout": "Fortsätt till kassan",
             "basket_warnings_header": "Viktiga meddelanden om artiklar i varukorgen",

@@ -143,6 +143,7 @@
             "applied_offer": "Applied Offer",
             "applied_coupons": "Applied Coupons",
             "shipping": "Shipping",
+            "calculated_at_checkout": "<small>Calculated at checkout</small>",
             "order_total": "Order Total",
             "proceed_to_checkout": "Proceed to checkout",
             "basket_warnings_header": "Important messages about items in your basket",
