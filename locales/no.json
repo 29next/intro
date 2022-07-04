@@ -163,11 +163,11 @@
             "message_line_saved": "{{ title }} er lagret for senere",
             "calculated_at_checkout": "Beregnet i kassen",
             "subscription_details": "Detaljer om abonnement",
-            "product": "Product",
-            "quantity": "Qty",
-            "price": "Price",
-            "subscription_total": "Subscription Total",
-            "subscription_renewal_message": "Your subscription will renew every"
+            "product": "Produkt",
+            "quantity": "Antall",
+            "price": "Pris",
+            "subscription_total": "Abonnement Totalt",
+            "subscription_renewal_message": "Abonnementet ditt vil fornye hver"
         },
         "checkout": {
             "terms_agree": "Ved å opprette bestillingen din godtar du våre <a href='#' data-toggle='modal' data-target='#terms_page_button'>Vilkår for bruk</a> og <a href='#' data-toggle='modal' data-target='#privacy_page_button'>Personvernpolicy</a>.",
