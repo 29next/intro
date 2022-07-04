@@ -135,7 +135,6 @@
             "applied_offer": "Offerta applicata",
             "applied_coupons": "Coupon applicati",
             "shipping": "Spedizione",
-            "calculated_at_checkout": "<small>Calculated at checkout</small>",
             "order_total": "Totale ordine",
             "proceed_to_checkout": "Procedi al checkout",
             "basket_warnings_header": "Messaggi importanti sugli articoli nel carrello",
@@ -158,7 +157,14 @@
             "message_addition": "{{ title }}  è stato aggiunto al tuo carrello.",
             "message_addition_multiple": "{{ quantity }}  copie di  {{ title }} sono state aggiunte al tuo carrello.",
             "message_line_restored": "{{ title }} è stato spostato di nuovo nel carrello.",
-            "message_line_saved": "{{ title }} è stato salvato per dopo"
+            "message_line_saved": "{{ title }} è stato salvato per dopo",
+            "calculated_at_checkout": "Calculated at checkout",
+            "subscription_details": "Subscription Details",
+            "product": "Product",
+            "quantity": "Qty",
+            "price": "Price",
+            "subscription_total": "Subscription Total",
+            "subscription_renewal_message": "Your subscription will renew every"
         },
         "checkout": {
             "terms_agree": "Creando il tuo ordine, accetti le nostre <a href='#' data-toggle='modal' data-target='#terms_page_button'>Condizioni di servizio</a> e <a href='#' data-toggle='modal' data-target='#privacy_page_button'>Privacy Policy</a>.",

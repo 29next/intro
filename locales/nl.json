@@ -138,7 +138,6 @@
             "applied_offer": "Toegepast aanbod",
             "applied_coupons": "Toegepaste kortingsbonnen",
             "shipping": "Verzenden",
-            "calculated_at_checkout": "<small>Calculated at checkout</small>",
             "order_total": "Totaal bestellen",
             "proceed_to_checkout": "Ga verder met afrekenen",
             "basket_warnings_header": "Belangrijke berichten over items in je winkelmandje",
@@ -161,7 +160,14 @@
             "message_addition": "{{ title }}  is toegevoegd aan uw mandje.",
             "message_addition_multiple": "{{ quantity }}  exemplaren van  {{ title }} zijn toegevoegd aan je winkelmandje.",
             "message_line_restored": "{{ title }} is terugverplaatst naar je winkelmandje.",
-            "message_line_saved": "{{ title }} is opgeslagen voor later"
+            "message_line_saved": "{{ title }} is opgeslagen voor later",
+            "calculated_at_checkout": "Calculated at checkout",
+            "subscription_details": "Subscription Details",
+            "product": "Product",
+            "quantity": "Qty",
+            "price": "Price",
+            "subscription_total": "Subscription Total",
+            "subscription_renewal_message": "Your subscription will renew every"
         },
         "checkout": {
             "terms_agree": "Door je bestelling aan te maken, ga je akkoord met onze <a href='#' data-toggle='modal' data-target='#terms_page_button'>Servicevoorwaarden</a> en <a href='#' data-toggle='modal' data-target='#privacy_page_button'>Privacybeleid</a>.",
