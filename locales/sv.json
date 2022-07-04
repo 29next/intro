@@ -161,13 +161,13 @@
             "message_addition_multiple": "{{ quantity }}  exemplar av  {{ title }} har lagts till i kundkorgen.",
             "message_line_restored": "{{ title }} har flyttats tillbaka till din varukorg.",
             "message_line_saved": "{{ title }} har sparats till senare",
-            "calculated_at_checkout": "Calculated at checkout",
-            "subscription_details": "Subscription Details",
-            "product": "Product",
-            "quantity": "Qty",
-            "price": "Price",
-            "subscription_total": "Subscription Total",
-            "subscription_renewal_message": "Your subscription will renew every"
+            "calculated_at_checkout": "Beräknad i kassan",
+            "subscription_details": "Information om prenumeration",
+            "product": "Produkt",
+            "quantity": "Antal",
+            "price": "Pris",
+            "subscription_total": "Prenumeration Totalt",
+            "subscription_renewal_message": "Din prenumeration förnyas varje"
         },
         "checkout": {
             "terms_agree": "Genom att skapa din beställning godkänner du våra <a href='#' data-toggle='modal' data-target='#terms_page_button'>användarvillkor</a> och <a href='#' data-toggle='modal' data-target='#privacy_page_button'>Sekretesspolicy</a>.",
