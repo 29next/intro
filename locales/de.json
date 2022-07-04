@@ -166,8 +166,8 @@
             "product": "Produkt",
             "quantity": "Menge",
             "price": "Preis",
-            "subscription_total": "Subscription Total",
-            "subscription_renewal_message": "Your subscription will renew every"
+            "subscription_total": "Abonnement insgesamt",
+            "subscription_renewal_message": "Ihr Abonnement verlängert sich jedes Mal"
         },
         "checkout": {
             "terms_agree": "Durch die Erstellung Ihrer Bestellung stimmen Sie unseren <a href='#' data-toggle='modal' data-target='#terms_page_button'>Nutzungsbedingungen</a> und <a href='#' data-toggle='modal' data-target='#privacy_page_button'>Datenschutzrichtlinie</a>zu.",
