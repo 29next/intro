@@ -166,8 +166,8 @@
             "product": "Product",
             "quantity": "Aantal",
             "price": "Prijs",
-            "subscription_total": "Subscription Total",
-            "subscription_renewal_message": "Your subscription will renew every"
+            "subscription_total": "Totaal abonnement",
+            "subscription_renewal_message": "Je abonnement wordt elke keer verlengd"
         },
         "checkout": {
             "terms_agree": "Door je bestelling aan te maken, ga je akkoord met onze <a href='#' data-toggle='modal' data-target='#terms_page_button'>Servicevoorwaarden</a> en <a href='#' data-toggle='modal' data-target='#privacy_page_button'>Privacybeleid</a>.",
