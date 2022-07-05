@@ -116,10 +116,11 @@
                     {% endif %}
                 {% endwith %}
                 <tr>
-                    <td>{% t "order.cart.shipping" %}</td>
-                    <td></td>
-                    <td class="text-right">
-                        <small>{% t "order.cart.calculated_at_checkout" %}</small>
+                    <td colspan="3">
+                        <span>{% t "order.cart.shipping" %}</span>
+                        <span class="text-right is-float-right">
+                            <small>{% t "order.cart.calculated_at_checkout" %}</small>
+                        </span>
                     </td>
                 </tr>
                 {% if basket.display_taxes %}
