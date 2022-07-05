@@ -110,7 +110,11 @@
                             </td>
                             <td></td>
                             <td class="text-right">
-                                {{ basket.total_subscription_rebill_price_excl_tax|currency:basket.currency }}
+                                {% if basket.is_tax_known %}
+                                    {{ subscription_total_incl_tax|currency:basket.currency }}
+                                {% else %}
+                                    {{ subscription_total_excl_tax|currency:basket.currency }}
+                                {% endif %}
                             </td>
                         </tr>
                     {% endif %}
