@@ -73,13 +73,15 @@
                                                         </tr>
                                                     {% endfor %}
                                                     <tr>
-                                                        <td colspan='2'>{% t "order.cart.shipping" %}</td>
-                                                        <td>
-                                                            {% if group.shipping_price.excl_tax %}
-                                                                {{ group.shipping_price.excl_tax|currency:group.currency }}
-                                                            {% else %}
-                                                                <small>{% t "order.cart.calculated_at_checkout" %}</small>
-                                                            {% endif %}
+                                                        <td colspan="3">
+                                                            <span>{% t "order.cart.shipping" %}</span>
+                                                            <span class="text-right is-float-right">
+                                                                {% if group.shipping_price.excl_tax %}
+                                                                    {{ group.shipping_price.excl_tax|currency:group.currency }}
+                                                                {% else %}
+                                                                    <small>{% t "order.cart.calculated_at_checkout" %}</small>
+                                                                {% endif %}
+                                                            </span>
                                                         </td>
                                                     </tr>
                                                     {% if group.total_tax %}
