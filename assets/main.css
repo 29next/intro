@@ -441,43 +441,49 @@ p {
   display: none !important; }
 
 .font-lg {
-  font-size: 1.125rem; }
+  font-size: 1.125rem !important; }
 
 .font-sm {
-  font-size: 0.875rem; }
+  font-size: 0.875rem !important; }
 
 .font-bold {
-  font-weight: bold; }
+  font-weight: bold !important; }
 
 .font-normal {
-  font-weight: normal; }
+  font-weight: normal !important; }
 
 .text-right {
-  text-align: right; }
+  text-align: right !important; }
 
 .text-center {
-  text-align: center; }
+  text-align: center !important; }
 
 .text-left {
-  text-align: left; }
+  text-align: left !important; }
 
 .text-secondary {
-  color: var(--primary_color); }
+  color: var(--primary_color) !important; }
 
 .text-primary {
-  color: var(--accent_color); }
+  color: var(--accent_color) !important; }
 
 .text-muted {
-  color: #f2f2f2; }
+  color: #f2f2f2 !important; }
 
 .text-success {
-  color: #48c78e; }
+  color: #48c78e !important; }
 
 .text-danger {
-  color: #e02447; }
+  color: #e02447 !important; }
 
 .text-warning {
-  color: #ffe08a; }
+  color: #ffe08a !important; }
+
+.is-float-left {
+  float: left !important; }
+
+.is-float-right {
+  float: right !important; }
 
 .m-0 {
   margin: 0 !important; }
@@ -3939,14 +3945,14 @@ table.account_table {
   @media (min-width: 769px) {
     .slider-nav img {
       padding: 1.5rem; } }
+.slider-nav.is-no-scroll .slick-track {
+  transform: none !important; }
+
 .slider-nav .slick-slide {
   opacity: .5;
   cursor: pointer; }
   .slider-nav .slick-slide.slick-current {
     opacity: 1; }
-
-.slider-nav.is-no-scroll .slick-track {
-  transform: none !important; }
 
 .slick-loading .slick-list {
   background: #fff url('{{ "img/ajax-loader.gif" | asset_url }}') center center no-repeat; }
@@ -4255,8 +4261,7 @@ table.order-summary_table {
 
 @media (min-width: 769px) {
   .basket_page-content {
-    display: flex;
-    align-items: center; } }
+    display: flex; } }
 
 .basket_list {
   display: block;
@@ -4288,7 +4293,7 @@ table.order-summary_table {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 1.5rem 0 3rem; } }
+    margin: 1.5rem 0; } }
 
 .basket_footer-voucher {
   margin-bottom: 1.5rem; }
@@ -4298,8 +4303,10 @@ table.order-summary_table {
 
 .basket_summary-content {
   background: #F4F9FC;
-  padding: 1.5rem; }
-
+  padding: 1.5rem .625rem; }
+  @media (min-width: 769px) {
+    .basket_summary-content {
+      padding: 1.5rem; } }
 .basket_summary-header {
   display: flex;
   align-items: center;
