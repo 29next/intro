@@ -43,7 +43,7 @@
                                 {% render_field field class+="input" %}
 
                             </div>
-                            {% elif field.widget_type == 'bootstrapdatepicker' %}
+                            {% elif field.widget_type == 'datetimepicker' %}
                             <div class="control">
                                 <input type="date" id="id_{{ field.name }}" name="{{ field.name }}" class="input form-control">
                             </div>
