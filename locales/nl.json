@@ -392,7 +392,7 @@
             "modal_change_ship_date_heading": "Datum van volgende zending wijzigen",
             "modal_change_ship_date_body": "Wijzig het verzendschema voor hoe vaak nieuwe bestellingen worden ontvangen.",
             "modal_next_ship_date": "De volgende zending is {{ next_renewal }}.",
-            "modal_use_calendar_body": "Gebruik de kalander hieronder om de volgende verzenddatum bij te werken.",
+            "modal_use_calendar_body": "Gebruik de onderstaande kalender om de volgende verzenddatum bij te werken.",
             "modal_change_ship_date_button": "Datum van volgende zending wijzigen",
             "modal_cancel_heading": "Annulering abonnement",
             "modal_cancel_body": "Kunnen we iets doen om bij ons te blijven?",
