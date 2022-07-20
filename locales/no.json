@@ -392,7 +392,7 @@
             "modal_change_ship_date_heading": "Endre neste forsendelsesdato",
             "modal_change_ship_date_body": "Endre leveringsplanen for hvor ofte du skal motta nye ordrer.",
             "modal_next_ship_date": "Neste forsendelse er {{ next_renewal }}.",
-            "modal_use_calendar_body": "Bruk kalanderen nedenfor for å oppdatere neste forsendelsesdato.",
+            "modal_use_calendar_body": "Bruk kalenderen nedenfor for å oppdatere neste forsendelsesdato.",
             "modal_change_ship_date_button": "Endre neste forsendelsesdato",
             "modal_cancel_heading": "Avbestilling av abonnement",
             "modal_cancel_body": "Er det noe vi kan gjøre for at du skal bli hos oss?",
