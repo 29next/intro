@@ -443,7 +443,11 @@
             "ending_in": "ending in",
             "use_new_credit_card": "Use a New Credit Card?",
             "billing_address": "Billing address",
-            "same_as_shipping_address": "Same as Shipping address"
+            "same_as_shipping_address": "Same as Shipping address",
+            "reactivate": "Reactivate",
+            "modal_reactivate_heading":"Reactivate Subscription",
+            "modal_reactivate_body": "Set a new shipment date for your subscription.",
+            "modal_reactivate_button": "Set Shipment Date"
         },
         "support": {
              "heading": "Support",
