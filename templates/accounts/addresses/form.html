@@ -32,7 +32,6 @@
                 </div>
                 {% elif field.name == 'phone_number' %}
                     {% include 'partials/form_field.html' with field=form.phone_number  %}
-                    {% include 'partials/form_field.html' with field=form.phone_number_country  %}
                 {% elif field.name != 'same_as_shipping' and field.name != 'email' %}
                     {% include 'partials/form_field.html' with field=field %}
                 {% endif %}

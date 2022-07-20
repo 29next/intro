@@ -178,7 +178,6 @@ var theme = (function(t, $) {
         init: function() {
             t.forms.loadingText();
             t.forms.currencySwitcher();
-            t.forms.phoneNumberInput();
         },
         
         loadingText: function() {
@@ -197,43 +196,6 @@ var theme = (function(t, $) {
             $('select[name="currency"]').on('change', function(e) {
                 e.preventDefault();
                 $('form[id="set-currency"]').submit();
-            });
-        },
-        phoneNumberInput: function() {
-            $('input[name=phone_number]').each(function () {
-                var ele = this;
-                // clear placeholder
-                $(ele).attr('placeholder', '');
-                var existingCountry = $(ele).closest('form').find('[name=phone_number_country]').val();
-            
-                var iti = window.intlTelInput(ele, {
-                    geoIpLookup: function (callback) {
-                        $.ajax({
-                            url: "https://freegeoip.app/json/",
-                            jsonpCallback: "callback",
-                            dataType: "jsonp",
-                        }).done(function (location) {
-                            callback(location.country_code);
-                            initDropdownCountry($(ele).closest('form'), location.country_code);
-                        }).fail(function (jqXHR, textStatus, errorThrown) {
-                            callback($(ele).closest('form').find('[name=country]').val());
-                        });
-                    },
-                    initialCountry: existingCountry || "auto",
-                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.js",
-                });
-            
-                // for initial phone_number_country value when phone number not empty and autodetect with libs
-                var countryData = iti.getSelectedCountryData();
-                $(ele).closest('form').find('[name=phone_number_country]').val(Object.keys(countryData).length ? countryData.iso2.toUpperCase() : "");
-            
-                ele.addEventListener('countrychange', function (e) {
-                    var countryCode = window.intlTelInputGlobals.getInstance(ele).getSelectedCountryData().iso2;
-                    if (!countryCode) {
-                        return;
-                    }
-                    $(ele).closest('form').find('[name=phone_number_country]').val(countryCode.toUpperCase());
-                });
             });
         }
     };

@@ -398,7 +398,7 @@
             "modal_change_ship_date_heading": "Change Next Shipment Date",
             "modal_change_ship_date_body": "Change the shipping schedule for how often to receive new orders.",
             "modal_next_ship_date": "Next shipment is {{ next_renewal }}.",
-            "modal_use_calendar_body": "Use the calander below to update the next shipment date.",
+            "modal_use_calendar_body": "Use the calendar below to update the next shipment date.",
             "modal_change_ship_date_button": "Change Next Shipment Date",
             "modal_cancel_heading": "Subscription Cancellation",
             "modal_cancel_body": "Is there anything we can do for you to stay with us?",
