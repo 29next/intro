@@ -437,7 +437,11 @@
             "ending_in": "eindigend op",
             "use_new_credit_card": "Een nieuwe creditcard gebruiken?",
             "billing_address": "Factuuradres",
-            "same_as_shipping_address": "Hetzelfde als Verzendadres"
+            "same_as_shipping_address": "Hetzelfde als Verzendadres",
+            "reactivate": "Reactiveren",
+            "modal_reactivate_heading": "Abonnement opnieuw activeren",
+            "modal_reactivate_body": "Stel een nieuwe verzenddatum in voor uw abonnement.",
+            "modal_reactivate_button": "Datum van verzending instellen"
         },
         "support": {
             "heading": "Ondersteuning",
