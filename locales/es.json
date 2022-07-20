@@ -392,7 +392,7 @@
             "modal_change_ship_date_heading": "Cambiar fecha de envío siguiente",
             "modal_change_ship_date_body": "Cambia el calendario de envíos según la frecuencia con que se deben recibir nuevos pedidos.",
             "modal_next_ship_date": "El próximo envío es {{ next_renewal }}.",
-            "modal_use_calendar_body": "Utiliza el calendario que aparece a continuación para actualizar la próxima fecha de envío.",
+            "modal_use_calendar_body": "Usa el calendario que aparece a continuación para actualizar la próxima fecha de envío.",
             "modal_change_ship_date_button": "Cambiar fecha de envío siguiente",
             "modal_cancel_heading": "Cancelación de suscripción",
             "modal_cancel_body": "¿Hay algo que podamos hacer para que te quedes con nosotros?",
