@@ -437,7 +437,11 @@
             "ending_in": "endet in",
             "use_new_credit_card": "Eine neue Kreditkarte benutzen?",
             "billing_address": "Rechnungsadresse",
-            "same_as_shipping_address": "Gleich wie Lieferadresse"
+            "same_as_shipping_address": "Gleich wie Lieferadresse",
+            "reactivate": "Reaktivieren",
+            "modal_reactivate_heading": "Abonnement reaktivieren",
+            "modal_reactivate_body": "Legen Sie ein neues Versanddatum für Ihr Abonnement fest.",
+            "modal_reactivate_button": "Versanddatum festlegen"
         },
         "support": {
             "heading": "Unterstützung",
