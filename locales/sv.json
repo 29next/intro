@@ -392,7 +392,7 @@
             "modal_change_ship_date_heading": "Ändra nästa leveransdatum",
             "modal_change_ship_date_body": "Ändra leveransschemat för hur ofta nya beställningar ska tas emot.",
             "modal_next_ship_date": "Nästa försändelse är {{ next_renewal }}.",
-            "modal_use_calendar_body": "Använd nedanstående kalander för att uppdatera nästa leveransdatum.",
+            "modal_use_calendar_body": "Använd kalendern nedan för att uppdatera nästa leveransdatum.",
             "modal_change_ship_date_button": "Ändra nästa leveransdatum",
             "modal_cancel_heading": "Avbeställning av prenumeration",
             "modal_cancel_body": "Finns det något vi kan göra för att du ska bo hos oss?",
