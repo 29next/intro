@@ -437,7 +437,11 @@
             "ending_in": "slutter i",
             "use_new_credit_card": "Bruke et nytt kredittkort?",
             "billing_address": "Faktureringsadresse",
-            "same_as_shipping_address": "Samme som forsendelsesadresse"
+            "same_as_shipping_address": "Samme som forsendelsesadresse",
+            "reactivate": "Aktiver på nytt",
+            "modal_reactivate_heading": "Aktiver abonnement på nytt",
+            "modal_reactivate_body": "Angi en ny forsendelsesdato for abonnementet ditt.",
+            "modal_reactivate_button": "Angi forsendelsesdato"
         },
         "support": {
             "heading": "Støtte",
