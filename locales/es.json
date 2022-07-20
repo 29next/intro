@@ -437,7 +437,11 @@
             "ending_in": "terminando en",
             "use_new_credit_card": "¿Utilizas una nueva tarjeta de crédito?",
             "billing_address": "Dirección de facturación",
-            "same_as_shipping_address": "Igual que la dirección de envío"
+            "same_as_shipping_address": "Igual que la dirección de envío",
+            "reactivate": "Reactivar",
+            "modal_reactivate_heading": "Reactivar la suscripción",
+            "modal_reactivate_body": "Establece una nueva fecha de envío para tu suscripción.",
+            "modal_reactivate_button": "Definir fecha de envío"
         },
         "support": {
             "heading": "Soporte",
