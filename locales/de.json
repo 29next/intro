@@ -392,7 +392,7 @@
             "modal_change_ship_date_heading": "Nächstes Lieferdatum ändern",
             "modal_change_ship_date_body": "Ändern Sie den Versandplan dafür, wie oft neue Bestellungen erhalten werden sollen.",
             "modal_next_ship_date": "Die nächste Lieferung ist {{ next_renewal }}.",
-            "modal_use_calendar_body": "Verwenden Sie den folgenden Kalander, um das nächste Lieferdatum zu aktualisieren.",
+            "modal_use_calendar_body": "Verwenden Sie den unten stehenden Kalender, um das nächste Versanddatum zu aktualisieren.",
             "modal_change_ship_date_button": "Nächstes Lieferdatum ändern",
             "modal_cancel_heading": "Kündigung des Ab",
             "modal_cancel_body": "Können wir irgendetwas tun, damit du bei uns bleibst?",
