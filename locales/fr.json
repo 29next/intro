@@ -392,7 +392,7 @@
             "modal_change_ship_date_heading": "Modifier la date d'expédition suivante",
             "modal_change_ship_date_body": "Modifiez le calendrier d'expédition en fonction de la fréquence de réception de nouvelles commandes.",
             "modal_next_ship_date": "La prochaine expédition est {{ next_renewal }}.",
-            "modal_use_calendar_body": "Utilisez la calandre ci-dessous pour mettre à jour la prochaine date d'expédition.",
+            "modal_use_calendar_body": "Utilisez le calendrier ci-dessous pour mettre à jour la prochaine date d'expédition.",
             "modal_change_ship_date_button": "Modifier la date d'expédition suivante",
             "modal_cancel_heading": "Annulation d'abonnement",
             "modal_cancel_body": "Y a-t-il quelque chose que nous puissions faire pour que vous restiez chez nous ?",
