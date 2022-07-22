@@ -15,7 +15,9 @@
             
                 {% include 'partials/form_field.html' with field=form.language size='full' %}
           
-                {% include 'partials/form_field.html' with field=form.phone_number %}
+                {% comment %}
+                    {% include 'partials/form_field.html' with field=form.phone_number %}
+                {% endcomment %}
             
         </div>
         <div class="field button-group">
