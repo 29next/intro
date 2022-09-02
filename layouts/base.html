@@ -10,7 +10,7 @@
     <meta name="viewport" content="{% block viewport %}width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no{% endblock %}" />
     <meta name="robots" content="NOARCHIVE,NOCACHE" />
     {% block seo %}
-        {% seo request %}
+        {% seo %}
     {% endblock %}
     {% block favicon %}
         {% if store.branding.icon %}
