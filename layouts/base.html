@@ -31,10 +31,6 @@
     {% block extrastyles %}{% endblock %}
     {% block extrahead %}{% endblock %}
     {% block tracking %}
-    {# Tracking Scripts #}
-        {% include "partials/trackings/google/analytics.html" %}
-        {% include "partials/trackings/taboola/analytics.html" %}
-        {% include "partials/trackings/facebook/analytics.html" %}
     {% endblock %}
 
     {% app_hook 'global_header' %}
@@ -182,7 +178,6 @@
         theme.init();
     })();
     </script>
-    {% include "partials/trackings/omnisend/snippet.html" %}
     {% endblock %}
 
     {# Additional JS scripts #}
