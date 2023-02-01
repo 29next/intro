@@ -331,7 +331,7 @@ var theme = (function(t, $) {
             $(t.product.selector.sliderWrapper).slickLightbox();
         },
         updateImage: function(variant) {
-            if (!variant || variant.images === null) {
+            if (!variant || (variant.images && !variant.images.length)) {
                 return;
             }
             var slideno = (variant.images[0].id);
