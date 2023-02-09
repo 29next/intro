@@ -1,0 +1,51 @@
+<section>
+    <div class="store_container">
+        <div class="content-body text-center">
+            <h4>Customers Who Viewed this Item Bought</h4>
+        </div>
+        <div class="catalogue_list-row">
+            {% for item in product.sorted_recommended_products %}
+            <div class="catalogue_list-item">
+                <div class="catalogue_list-item-inner">
+                    <div class="catalogue_item-content">
+                        <a href="{{ product.get_absolute_url }}">
+                            <div class="catalogue_item-img">
+                                {% with image=item.primary_image %}
+                                {% image_thumbnail image.original "350x350" crop="center" upscale=True as thumb %}
+                                <a href="{{ item.get_absolute_url }}">
+                                    <img src="{{ thumb.url }}" alt="{{ item.get_title }}">
+                                </a>
+                                {% endwith %}
+                            </div>
+                            <div class="catalogue_item-name ">{{ item.get_title }}</div>
+                            {% block product_price %}
+                            <div class="catalogue_item-price">
+                                {% purchase_info_for_product request product as session %}
+                                {% if session.price.exists %}
+                                {% if session.price.price_retail > session.price.excl_tax %}
+                                <span class="catalogue_item-price-previous">
+                                    <s>{{ session.price.price_retail|currency:session.price.currency }}</s>
+                                </span>
+                                {% endif %}
+                                <span class="catalogue_item-price-current">
+                                    {% if session.price.excl_tax == 0 %}
+                                    {% t "store.catalogue.free" %}
+                                    {% elif session.price.is_tax_known %}
+                                    {{ session.price.incl_tax|currency:session.price.currency }}
+                                    {% else %}
+                                    {{ session.price.excl_tax|currency:session.price.currency }}
+                                    {% endif %}
+                                    {% else %}
+                                    &nbsp;
+                                </span>
+                                {% endif %}
+                            </div>
+                            {% endblock %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

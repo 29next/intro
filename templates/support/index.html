@@ -29,7 +29,7 @@
                             {% include 'partials/form_field.html' with field=form.text nolabel=True %}
                         </span>
                         <span class="control">
-                            <button class="button" type="submit">
+                            <button class="button button-primary" type="submit">
                                 {% t "global.button.search" %}
                             </button>
                         </span>
@@ -43,7 +43,7 @@
             {% for category in categories %}
             <div class="support_category">
                 <div class="support_category_wrap">
-                    <div class="support_category-title">
+                    <div class="support_category-title h5">
                         <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
                     </div>
                     <div class="support_category-links">

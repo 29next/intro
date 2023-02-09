@@ -8,8 +8,7 @@
     -webkit-appearance: none;
     align-items: center;
     border: 1px solid transparent;
-    border-radius: 4px;
-    border-radius: 0;
+    border-radius: 0.375em;
     box-shadow: none;
     display: inline-flex;
     font-size: 1rem;
@@ -51,7 +50,6 @@ fieldset[disabled] .input {
     cursor: not-allowed;
 }
 
-
 .select::after {
     border: 3px solid transparent;
     border-radius: 2px;
@@ -68,13 +66,13 @@ fieldset[disabled] .input {
     transform-origin: center;
     width: 0.625em;
 }
+
 .select select,
 .textarea,
 .input {
     background-color: white;
     border-color: #dbdbdb;
-    border-radius: 4px;
-    border-radius: 0;
+    border-radius: 0.375em;
     color: #363636;
 }
 
@@ -316,11 +314,11 @@ fieldset[disabled] .select select:hover {
 
 
 
-.select select{
+.select select {
     padding-right: 2.5em;
 }
 
-.select:not(.is-multiple):not(.is-loading):hover::after  {
+.select:not(.is-multiple):not(.is-loading):hover::after {
     border-color: #363636;
 }
 
@@ -350,10 +348,18 @@ fieldset[disabled] .select select:hover {
 }
 
 //----------------labels------------------//
+label {
+    &.custom-file-label {
+        display: none;
+        visibility: hidden;
+    }
+}
+
 .label {
     color: #363636;
     display: block;
     font-size: 0.875rem;
+
 }
 
 .label:not(:last-child) {
@@ -515,11 +521,13 @@ fieldset[disabled] .select select:hover {
     flex-shrink: 1;
 }
 
-.error-block, .help-block {
+.error-block,
+.help-block {
     display: block;
     font-size: .75rem;
     margin-top: .25rem;
 }
+
 label.error {
     color: $color-danger;
     display: block;

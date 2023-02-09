@@ -12,6 +12,7 @@ textarea {
 }
 body {
     font-size: 1rem;
+    color: #4a4a4a;
 }
 a {
   color: $link-color;
@@ -69,42 +70,57 @@ h6,
 .h4,
 .h5,
 .h6 {
-
     font-weight: bold;
-    line-height: 1.5
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
 }
 
 h1,
 .h1 {
-
-    font-size: $h1; // ~50px
-
-
+    font-size: 2.027rem;
+    @include lg-up {
+        font-size: 3.815rem;
+    }
 }
 
 h2,
 .h2 {
-    font-size: $h2; // ~40px
+    font-size: 1.802rem;    
+    @include lg-up {
+        font-size: 3.052rem;
+    }
 }
 
 h3,
 .h3 {
-    font-size: $h3; // ~36px
+    font-size: 1.602rem;
+    @include lg-up {
+        font-size: 2.441rem;
+    }
 }
 
 h4,
 .h4 {
-    font-size: $h4; // ~28px
+    font-size: 1.424rem;
+    @include lg-up {
+        font-size: 1.953rem;
+    }
 }
 
 h5,
 .h5 {
-    font-size: $h5; // ~24px
+    font-size: 1.266rem;
+    @include lg-up {
+        font-size: 1.563rem;
+    }
 }
 
 h6,
 .h6 {
-    font-size: $h6; // ~20px
+    font-size: 1.125rem;
+    @include lg-up {
+        font-size: 1.25rem;
+    }
 }
 
 p {
@@ -248,9 +264,7 @@ p {
     }
 }
 
-.store_section {
 
-}
 .store_section--list {
     padding: 3rem 0;
     &:not(:first-child) {
@@ -296,5 +310,4 @@ p {
 .store_section--item_content {
     padding: 0.75rem;
     position: relative;
-
 }

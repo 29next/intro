@@ -1,19 +1,15 @@
 {% if field.is_hidden %}
     {{ field }}
 {% else %}
-    {% comment %}
-        Make the field widget type available to templates so we can mark-up
-        checkboxes differently to other widgets.
-    {% endcomment %}
+
     {% annotate_form_field field %}
 
     {% block control_group %}
-
-            <div class="{{ style }} field form-group {% if field.errors %}has-error{% endif %} {{ fieldStyle }}">
+            <div class="field {{ style }}{% if field.errors %} has-error{% endif %} {{ fieldStyle }}">
 
                 {% block label %}
                     {% if not nolabel and field.widget_type != 'checkbox' %}
-                        <label for="{{ field.auto_id }}" class="control-label label{% if field.field.required %} required{% endif %}">
+                        <label for="{{ field.auto_id }}" class="label{% if field.field.required %} required{% endif %}">
                             {{ field.label|safe }}
                         </label>
                     {% endif %}
@@ -37,6 +33,10 @@
                                     </div>
                                 {% endfor %}
 
+                            {% elif field.widget_type == 'customfileinput' %}
+                          
+                                    {% render_field field class+="form-control" %}
+
                             {% elif field.widget_type == 'clearablefile' %}
 
                             <div class="control is-expanded">
@@ -45,7 +45,7 @@
                             </div>
                             {% elif field.widget_type == 'datetimepicker' %}
                             <div class="control">
-                                <input type="date" id="id_{{ field.name }}" name="{{ field.name }}" class="input form-control">
+                                <input type="date" id="id_{{ field.name }}" name="{{ field.name }}" class="input">
                             </div>
                             {% elif field.widget_type == 'textarea' %}
                                 <div class="control">
@@ -61,7 +61,7 @@
                                     {% else %}
                                     <div class="control">
                                         <div class="select {{ selectStyle }}">
-                                            {% render_field field class+="form-control" %}
+                                            {% render_field field %}
                                         </div>
                                     </div>
                                 {% endif %}
@@ -74,7 +74,7 @@
                                     {% render_field field class+="input is-large" %}
                                 {% else %}
                                 <div class="control {{ controlStyle }}">
-                                    {% render_field field class+="input form-control" %}
+                                    {% render_field field class+="input" %}
                                 </div>
                                 {% endif %}
                             {% endif %}
@@ -82,14 +82,13 @@
 
                         {% block errors %}
                             {% for error in field.errors %}
-                                <span class="error-block text-danger"><i class="icon-exclamation-sign"></i> {{ error }}</span>
+                                <span class="error-block text-danger">{{ error }}</span>
                             {% endfor %}
                         {% endblock %}
 
                         {% block help_text %}
                             {% if field.help_text %}
                                 <span class='help-block'>
-                                    {# We allow HTML within form help fields #}
                                     {{ field.help_text|safe }}
                                 </span>
                             {% endif %}

@@ -22,8 +22,8 @@
     {% block styles %}
         <style>
             :root {
-                --primary_color: {{ store.branding.primary_color }};
-                --accent_color: {{ store.branding.accent_color }};
+                --primary-color: {{ store.branding.primary_color }};
+                --accent-color: {{ store.branding.accent_color }};
              }
         </style>
         <link rel="stylesheet" type="text/css" href="{{ 'main.css'|asset_url }}">
@@ -50,8 +50,8 @@
                         <span aria-hidden="true"></span>
                     </a>
                     <a class="store_nav-item store_nav-logo" href="{{ homepage_url }}">
-                        <picture>
-                            {% if store.branding.icon and store.branding.logo  %}
+                        {% if store.branding.icon and store.branding.logo  %}
+                        <picture>                           
                                 {% with image=store.branding.logo %}
                                     {% image_thumbnail image "150x" upscale=False as thumb_store_logo %}
                                      <source srcset="{{ thumb_store_logo.url }}" media="(min-width: 1024px)" />
@@ -70,46 +70,49 @@
                                     {% image_thumbnail image "30x" upscale=False as thumb_store_icon %}
                                     <img src="{{ thumb_store_icon.url }}" alt="{{ store.name }}" />
                                 {% endwith %}
-                            {% else %}
-                                <h1 class="h6">{{ store.name }}</h1>
-                            {% endif %}
                         </picture>
+                        {% else %}
+                            <h1 class="h6 mb-0">{{ store.name }}</h1>
+                        {% endif %}
                     </a>
 
                 </div>
                 <div class="store_nav-mobile-top">
                     <a class="store_nav-item store_nav-mobile-search store_search-icon" href="#">
-                        <img src="{{ 'img/icons/icon-search.svg'|asset_url }}" alt="search">
+                        <img src="{{ 'img/icons/icon-search.svg'|asset_url }}" alt="{% t 'global.button.search' %}">
                     </a>
                     <a class="store_nav-item store_nav-mobile-cart" href="#basket-modal" data-toggle="side-cart">
-                        <img src="{{ 'img/icons/icon-cart.svg'|asset_url }}" alt="Cart">&nbsp;<span id="basket-count">{{ request.basket.num_items }}</span>
+                        <img src="{{ 'img/icons/icon-cart.svg'|asset_url }}" alt="{% t 'navigation.main.cart' %}" alt="{% t 'navigation.main.cart' %}">&nbsp;<span id="basket-count">{{ request.basket.num_items }}</span>
                     </a>
                 </div>
                 <div id="store_nav-site-links" class="store_nav-menu">
+                    {% url 'catalogue:index' as catalogue_url %}
+                    {% url 'blog:blog-list' as blog_url %}
+                    {% url 'support:category-list' as support_url %}
                     <div class="store_nav-menu-links">
-                        <a class="store_nav-item" href="{{ homepage_url }}">
+                        <a {% if request.path == homepage_url %} class="store_nav-item active" aria-current="page" {% else %} class="store_nav-item" {% endif %} href="{{ homepage_url }}">
                             {% t "navigation.main.home" %}
                         </a>
-                        <a class="store_nav-item" href="{% url 'catalogue:index' %}">
+                        <a {% if catalogue_url in request.path %} class="store_nav-item active" aria-current="page" {% else %} class="store_nav-item" {% endif %} href="{% url 'catalogue:index' %}">
                             {% t "navigation.main.shop" %}
                         </a>
-                        <a class="store_nav-item" href="{% url 'blog:blog-list' %}">
+                        <a {% if blog_url in request.path %} class="store_nav-item active" aria-current="page" {% else %} class="store_nav-item" {% endif %} href="{% url 'blog:blog-list' %}">
                             {% t "navigation.main.blog" %}
                         </a>
-                        <a class="store_nav-item" href="{% url 'support:category-list' %}">
+                        <a {% if support_url in request.path %} class="store_nav-item active" aria-current="page" {% else %} class="store_nav-item" {% endif %} href="{% url 'support:category-list' %}">
                             {% t "navigation.main.support" %}
                         </a>
-                        <a class="store_nav-item" href="/contact/">
+                        <a {% if '/contact/' == request.path %} class="store_nav-item active" aria-current="page" {% else %} class="store_nav-item" {% endif %} href="/contact/">
                             {% t "navigation.main.contact" %}
                         </a>
                     </div>
                     <div class="store_nav-tool-links">
                         <a class="store_nav-item store_nav-search store_search-icon" href="#">
-                            <img src="{{ 'img/icons/icon-search.svg'|asset_url }}" alt="search">
+                            <img src="{{ 'img/icons/icon-search.svg'|asset_url }}" alt="{% t 'global.button.search' %}">
                         </a>
                         <div class="store_nav-item has-dropdown is-hoverable store_nav-account">
                             <a class="store_nav-link" href="#">
-                                <img src="{{ 'img/icons/icon-user.svg'|asset_url }}" alt="account">&nbsp;<span class="store_nav-account-text">{% t "navigation.account.account" %}</span>
+                                <img src="{{ 'img/icons/icon-user.svg'|asset_url }}" alt="{% t 'navigation.account.account' %}">&nbsp;<span class="store_nav-account-text">{% t "navigation.account.account" %}</span>
                             </a>
                             <div class="store_nav-dropdown is-right ">
                                 {% if user.is_authenticated %}
@@ -144,7 +147,7 @@
                         </div>
                         {% block mini_basket %}
                             <a class="store_nav-item store_nav-cart" href="#basket-modal" data-toggle="side-cart">
-                                <img src="{{ 'img/icons/icon-cart.svg'|asset_url }}" alt="Cart">&nbsp;<span id="basket-count">{{ request.basket.num_items }}</span>
+                                <img src="{{ 'img/icons/icon-cart.svg'|asset_url }}" alt="{% t 'navigation.main.cart' %}">&nbsp;<span id="basket-count">{{ request.basket.num_items }}</span>
                             </a>
                         {% endblock %}
                         {% include 'partials/nav_lang_currency_switcher.html' %}
@@ -191,8 +194,9 @@
     </script>
 
     {# Additional JS scripts for backend #}
+    {% include 'partials/side_cart.html' %}
     {% core_js %}
-    {% include "partials/messages_script.html" %}
+
 
     {% app_hook 'global_footer' %}
 

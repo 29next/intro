@@ -25,5 +25,25 @@
 	&-ppal {
 		background-image: url("{{ 'img/pay/ppal.svg' | asset_url }}");
 	}
-
+	&-klarna {
+		background-image: url("{{ 'img/pay/klarna.svg' | asset_url }}");
+	}
+	&-amex {
+		background-image: url("{{ 'img/pay/amex.svg' | asset_url }}");
+	}
+	&-diners {
+		background-image: url("{{ 'img/pay/diners.svg' | asset_url }}");
+	}
+	&-discover {
+		background-image: url("{{ 'img/pay/discover.svg' | asset_url }}");
+	}
+	&-maestro {
+		background-image: url("{{ 'img/pay/maestro.svg' | asset_url }}");
+	}
+	&-jcb {
+		background-image: url("{{ 'img/pay/jcb.svg' | asset_url }}");
+	}
+	&-dankort {
+		background-image: url("{{ 'img/pay/dankort.svg' | asset_url }}");
+	}
 }
