@@ -199,6 +199,7 @@
         font-weight: bold;
         padding: 1.25rem;
         border: none;
+        border-radius: .375em;
         text-align: center;
         text-decoration: none;
         display: inline-block;
@@ -579,7 +580,7 @@ table.sidecart-table {
         padding: 0.5rem;
         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
         width: auto;
-
+        font-size: .875rem;
         p {
             margin-bottom: 0.5rem;
         }
@@ -600,7 +601,7 @@ table.sidecart-table {
 
             td {
                 border-top: 1px solid #dee2e6;
-                padding: 0.15rem;
+                padding: 0.375rem;
             }
         }
 

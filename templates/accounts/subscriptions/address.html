@@ -42,10 +42,10 @@
                             {% csrf_token %}
                             <input type="hidden" name="address_id" value="{{ address.id }}" />
                             {% if address.is_default_for_shipping %}
-                                <button type="submit" class="button button-sm ship-address" data-loading-text='{% t "global.button.save_loading" %}'>
+                                <button type="submit" class="button button-primary button-sm ship-address" data-loading-text='{% t "global.button.save_loading" %}'>
                                     {% t "customer.subscriptions.ship_to_default_address" %}</button>
                                 {% else %}
-                                <button type="submit" class="button button-sm ship-address" data-loading-text='{% t "global.button.save_loading" %}'>{% t "customer.subscriptions.ship_to_this_address" %}</button>
+                                <button type="submit" class="button button-primary button-sm ship-address" data-loading-text='{% t "global.button.save_loading" %}'>{% t "customer.subscriptions.ship_to_this_address" %}</button>
                             {% endif %}
                             <br>
                         </form>

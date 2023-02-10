@@ -29,7 +29,6 @@ body.has-navbar-fixed-top {
 .store_nav>.store_container {
     align-items: stretch;
     display: flex;
-    // min-height: $navhm;
     width: 100%;
 
     @include lg-down {
@@ -95,7 +94,6 @@ a.store_nav-item.active,
 .store_nav-link:focus-within,
 .store_nav-link:hover,
 .store_nav-link.active {
-    background-color: #fafafa;
     color: $nav-item-active-color;
 }
 

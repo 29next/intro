@@ -32,9 +32,8 @@
                 {% if post %}
                     <div class="blog_content-header">
                         <h1>{{ post.title }}</h1>
-                        <p class="font-lg">{{ post.excerpt|safe }}</p>
                         <div class="blog_content-meta">
-                            <p>By {{ post.author.first_name}}&nbsp;{{post.author.last_name }}</p>
+                            <p>By {{ post.author.first_name}}&nbsp;{{ post.author.last_name }}</p>
                             <p>{{ post.created_at }}</p>
                         </div>
                     </div>

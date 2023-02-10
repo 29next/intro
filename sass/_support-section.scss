@@ -14,19 +14,14 @@
     @include md-up {
         width: 80%;
     }
-
-
 }
 
 .support_header-item {
     @include column;
-    
-
 }
 
 .support_categories {
     margin-bottom: 3rem;
-
     @include md-up {
         display: flex;
         justify-content: center;
@@ -39,7 +34,6 @@
     padding: 0.75rem;
     @include md-up {
         min-width: 45%;
-
     }
 
 }
@@ -52,7 +46,6 @@
 
 .support_category-title {
     font-weight: bold;
-    font-size: $h5;
     margin-bottom: .75rem;
 }
 

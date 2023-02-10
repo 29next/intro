@@ -11,8 +11,8 @@
                 <p class="store_hero-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam, natus quae architecto hic quod!</p>
             </div>
             <div class="store_hero-cta button-group">
-                <a href="#" class="button button-primary button-lg">Button Primary</a>
-                <a href="#" class="button button-secondary button-lg">Button Secondary</a>
+                <a href="{% url 'catalogue:index' %}" class="button button-primary button-lg">Shop Now</a>
+                <a href="{% url 'catalogue:detail' 'example-product' 2 %}" class="button button-secondary button-lg">Shop Now</a>
             </div>
         </div>
     </div>
@@ -21,55 +21,29 @@
     <div class="store_container-fluid">
         <div class="store_collection-list">
             <div class="store_collection-row">
+                {% for category in product_categories|by_ids:'1,2,3'  %}
                 <div class="store_collection-item">
                     <div class="store_collection-item-inner">
                         <div class="store_collection-item-content">
-                            <div class="store_collection-item-title ">Categeroy</div>
-                            <div class="store_collection-item-subtitle">Lorem ipsum dolor sit amet</div>
+                            <div class="store_collection-item-title ">{{ category.name }}</div>
+                            <div class="store_collection-item-subtitle">{{ category.description }}</div>
                             <div class="store_collection-item-cta">
-                                <a href="#" class="button button-muted">Shop This</a>
+                                <a href="{{ category.get_absolute_url }}" class="button button-muted">Shop Now</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="store_collection-item">
-                    <div class="store_collection-item-inner">
-                        <div class="store_collection-item-content">
-                            <div class="store_collection-item-title ">Categeroy</div>
-                            <div class="store_collection-item-subtitle">Lorem ipsum dolor sit amet</div>
-                            <div class="store_collection-item-cta">
-                                <a href="#" class="button button-muted">Shop This</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="store_collection-item">
-                    <div class="store_collection-item-inner">
-                        <div class="store_collection-item-content">
-                            <div class="store_collection-item-title ">Categeroy</div>
-                            <div class="store_collection-item-subtitle">Lorem ipsum dolor sit amet</div>
-                            <div class="store_collection-item-cta">
-                                <a href="#" class="button button-muted">Shop This</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
 </section>
-
-
 <section class="store_products">
     <div class="store_container">
         <h2 class="store_products-header">Featured Products</h2>
         <div class="store_products-list">
-            {# Below is an example using global template variables - update id's to match store products and remove the comment tags #}
-
-            {% comment %}
-
             <div class="store_products-row">
-                {% for product in products|by_ids:'2,24,6' %}
+                {% for product in products|by_ids:'2,3,4,5' %}
                 <div class="store_products-item">
                     <div class="store_products-item-inner">
                         <div class="store_products-content">
@@ -81,8 +55,7 @@
                                 {% endwith %}
                                 {% endblock %}
                             </div>
-                            <div class="store_products-title ">{{ product.get_title }}</div>
-                            <div class="store_products-desc">{{ product.get_excerpt|safe|truncatewords_html:3 }}</div>
+                            <div class="store_products-title h5">{{ product.get_title }}</div>
                             {% if product.rating %}
                             <div class="store_products-rating">
                                 <div class="store_products-rating-stars">
@@ -101,129 +74,27 @@
                             <div class="store_products-price">
                                 {% purchase_info_for_product request product as session %}
                                 {% if session.price.exists %}
-                                    {% if session.price.price_retail > session.price.excl_tax %}
+                                    {% if session.price.price_retail > session.price.price %}
                                          <span class="font-sm">
                                             <s>{{ session.price.price_retail|currency:session.price.currency }}</s>
                                         </span>
                                     {% endif %}
                                     <span class="font-lg font-bold">
-                                    {% if session.price.excl_tax == 0 %}
-
-                                                {% t "store.catalogue.free" %}
-                                            {% elif session.price.is_tax_known %}
-                                                {{ session.price.incl_tax|currency:session.price.currency }}
-                                            {% else %}
-                                                {{ session.price.excl_tax|currency:session.price.currency }}
-                                    {% endif %}
-                                    {% else %}
-                                        &nbsp;
+                                        {{ session.price.price|currency:session.price.currency }}
                                     </span>
+                                    {% else %}
+                                    &nbsp;
                                 {% endif %}
                             </div>
                             {% endblock %}
                             <div class="store_products-cta">
-                                <a href="{{ product.get_absolute_url }}" class="button button-primary">Shop This</a>
+                                <a href="{{ product.get_absolute_url }}" class="button button-primary">Shop Now</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
 
-            </div>
-            {% endcomment %}
-            <div class="store_products-row">
-                <div class="store_products-item">
-                    <div class="store_products-item-inner">
-                        <div class="store_products-content">
-                            <div class="store_products-img">
-                                <img src="{{ 'img/placeholder650x650.png' | asset_url }}" alt="">
-                                <div class="store_products-item-tag">
-                                    <span class="tag tag-danger">tag</span>
-                                </div>
-                            </div>
-                            <div class="store_products-title ">Product Name</div>
-                            <div class="store_products-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam</div>
-                            <div class="store_products-rating">
-                                <div class="store_products-rating-stars">
-                                    <span class="is-count">★</span>
-                                    <span class="is-count">★</span>
-                                    <span class="is-count">★</span>
-                                    <span class="is-count">★</span>
-                                    <span class="is-count">★</span>
-                                </div>
-                                <div class="store_products-rating-text">Ratings section</div>
-                            </div>
-                            <div class="store_products-price">
-                                <span class="font-sm"><s>$30.00</s></span> <span class="font-lg font-bold">$10.00</span>
-                            </div>
-                            <div class="store_products-cta">
-                                <a href="#" class="button button-secondary">Shop This</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="store_products-item">
-                    <div class="store_products-item-inner">
-                        <div class="store_products-content">
-                            <div class="store_products-img">
-                                <img src="{{ 'img/placeholder650x650.png' | asset_url }}" alt="">
-                                <div class="store_products-item-tag">
-                                    <span class="tag tag-primary">tag</span>
-                                    <span class="tag tag-success">tag</span>
-                                </div>
-                            </div>
-                            <div class="store_products-title ">Product Name</div>
-                            <div class="store_products-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam</div>
-                            <div class="store_products-rating">
-                                <div class="store_products-rating-stars">
-                                    <span class="is-count">★</span>
-                                    <span class="is-count">★</span>
-                                    <span class="is-count">★</span>
-                                    <span class="is-count">★</span>
-                                    <span class="is-count">★</span>
-                                </div>
-                                <div class="store_products-rating-text">Ratings section</div>
-                            </div>
-                            <div class="store_products-price">
-                                <span class="font-sm"><s>$30.00</s></span> <span class="font-lg font-bold">$10.00</span>
-                            </div>
-                            <div class="store_products-cta">
-                                <a href="#" class="button button-secondary">Shop This</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="store_products-item">
-                    <div class="store_products-item-inner">
-                        <div class="store_products-content">
-                            <div class="store_products-img">
-                                <img src="{{ 'img/placeholder650x650.png' | asset_url }}" alt="">
-                                <div class="store_products-item-tag">
-                                    <span class="tag tag-primary">tag</span>
-                                    <span class="tag tag-success">tag</span>
-                                </div>
-                            </div>
-                            <div class="store_products-title ">Product Name</div>
-                            <div class="store_products-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam</div>
-                            <div class="store_products-rating">
-                                <div class="store_products-rating-stars">
-                                    <span class="is-count">★</span>
-                                    <span class="is-count">★</span>
-                                    <span class="is-count">★</span>
-                                    <span class="is-count">★</span>
-                                    <span>★</span>
-                                </div>
-                                <div class="store_products-rating-text">Ratings section</div>
-                            </div>
-                            <div class="store_products-price">
-                                <span class="font-sm"><s>$30.00</s></span> <span class="font-lg font-bold">$10.00</span>
-                            </div>
-                            <div class="store_products-cta">
-                                <a href="#" class="button button-secondary">Shop This</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -235,8 +106,8 @@
                 <h2 class="store_feature-title">SPECIAL OFFER</h2>
                 <div class="store_feature-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam, natus quae architecto hic quod!</div>
                 <div class="store_feature-cta button-group">
-                    <button data-action="add-product" data-stockrecord-id="1" data-quantity="1" data-clear-cart=true class="button button-secondary button-lg ">Buy one time</button>
-                    <button data-action="add-product" data-stockrecord-id="1" data-quantity="1" data-interval="month" data-interval-count="1" data-redirect=false data-clear-cart=true class="button button-primary button-lg ">Subscribe & Save</button>
+                    <a class="button button-secondary button-lg" href="/checkout/add/?product=2:1&currency={{ request.CURRENCY_CODE }}&replace=true">Buy now</a>
+                    <a class="button button-primary button-lg" href="/checkout/add/?product=2:1:3:month&currency={{ request.CURRENCY_CODE }}&replace=true">Subscribe & Save</a>
                 </div>
             </div>
             <div class="store_feature-img">
@@ -313,7 +184,7 @@
                 <h2 class="store_feature-title">Example Custom Section</h2>
                 <div class="store_feature-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam, natus quae architecto hic quod!</div>
                 <div class="store_feature-cta">
-                    <a href="#" class="button button-lg button-primary">Button Primary</a>
+                    <a href="{% url 'catalogue:index' %}" class="button button-lg button-primary">Shop Now</a>
                 </div>
             </div>
         </div>

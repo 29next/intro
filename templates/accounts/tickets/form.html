@@ -54,6 +54,6 @@
         {% include 'partials/form_field.html' with field=form.attachments %}
             
         <input type="hidden" name='action' value='create_ticket'>
-        <button class="button" type="submit">{% t "customer.support.submit_ticket" %}</button>
+        <button class="button button-primary" type="submit">{% t "customer.support.submit_ticket" %}</button>
     </form>
 {% endblock tabcontent %}
