@@ -253,6 +253,7 @@
         },
         "catalogue": {
             "free": "Gratis",
+            "sale": "Verkoop",
             "none_found": "Er zijn geen producten gevonden.",
             "edit_this_category": "Deze categorie bewerken",
             "edit_this_product": "Dit product bewerken",
@@ -267,6 +268,7 @@
             "add_to_cart": "Toevoegen aan winkelwagen",
             "add_to_cart_loading": "Toevoegen...",
             "product_unavailable": "Niet beschikbaar",
+            "out_of_stock": "Niet op voorraad",
             "about": "Over",
             "reviews": "Recensies",
             "no_reviews": "Dit product heeft nog geen reviews",
@@ -274,7 +276,8 @@
             "customer_reviews": "Recensies van klanten",
             "see_all_reviews": "Bekijk alle reviews",
             "write_a_review": "Schrijf een review",
-            "product_in_wishlist": "Product staat in {{ name }} verlanglijstje."
+            "product_in_wishlist": "Product staat in {{ name }} verlanglijstje.",
+            "recommended_products_header": "Klanten die dit artikel bekeken, kochten ook"
         },
         "registration": {
             "enter_new_password": "Voer een nieuw wachtwoord in",
@@ -472,6 +475,37 @@
             "welcome_to": "Welkom bij {{ shop_name }}",
             "already_have_account": "Heb je al een account?",
             "login": "Inloggen"
+        }
+    },
+    "side_cart": {
+        "default": {
+            "your_order": "Je bestelling",
+            "your_cart_is_empty": "Je winkelwagen is leeg!",
+            "oops_You_have_nothing_here": "Oeps! Je hebt hier niets.",
+            "quantity": "Hoeveelheid",
+            "qty": "Qty",
+            "schedule": "Schema",
+            "price": "Prijs",
+            "savings": "Besparingen",
+            "regular": "Regelmatig",
+            "your_price": "Jouw prijs",
+            "cart_subtotal": "Subtotaal winkelwagentje",
+            "discount": "Korting",
+            "shipping": "Verzenden",
+            "cart": "Winkelwagentje",
+            "total": "Totaal",
+            "product": "Het product",
+            "subscription_details": "Abonnementsgegevens",
+            "applied_coupons": "Toegepaste kortingsbonnen",
+            "subscription_items_one": "Abonnement ({{count}} item)",
+            "subscription_items_other": "Abonnement ({{count}} artikelen)",
+            "calculated_at_checkout": "Berekend bij het afrekenen",
+            "subscription_total": "Totaal abonnement",
+            "subscription_renewal_message": "Je abonnement wordt elke keer verlengd",
+            "proceed_to_checkout": "Ga verder met afrekenen",
+            "have_a_coupon": "Heb je een kortingsbon?",
+            "coupon_code": "Couponcode",
+            "apply_coupon": "Coupon toepassen"
         }
     }
 }
