@@ -253,6 +253,7 @@
         },
         "catalogue": {
             "free": "Gratis",
+            "sale": "Salg",
             "none_found": "Ingen produkter funnet.",
             "edit_this_category": "Rediger denne kategorien",
             "edit_this_product": "Rediger dette produkt",
@@ -267,6 +268,7 @@
             "add_to_cart": "Legg til handlekurv",
             "add_to_cart_loading": "Legger til...",
             "product_unavailable": "Utilgjengelig",
+            "out_of_stock": "Ikke på lager",
             "about": "Om",
             "reviews": "Vurderinger",
             "no_reviews": "Dette produktet har ingen anmeldelser ennå",
@@ -274,7 +276,8 @@
             "customer_reviews": "Kundevurderinger",
             "see_all_reviews": "Se alle vurderinger",
             "write_a_review": "Skriv en anmeldelse",
-            "product_in_wishlist": "Produktet er i {{ name }} ønskeliste."
+            "product_in_wishlist": "Produktet er i {{ name }} ønskeliste.",
+            "recommended_products_header": "Kunder som så på denne varen kjøpte også"
         },
         "registration": {
             "enter_new_password": "Skriv inn et nytt passord",
@@ -472,6 +475,37 @@
             "welcome_to": "Velkommen til {{ shop_name }}",
             "already_have_account": "Har du allerede en konto?",
             "login": "Logg inn"
+        }
+    },
+    "side_cart": {
+        "default": {
+            "your_order": "Din bestilling",
+            "your_cart_is_empty": "Handlekurven din er tom!",
+            "oops_You_have_nothing_here": "Beklager! Du har ingenting her.",
+            "quantity": "Mengde",
+            "qty": "Antall",
+            "schedule": "Tidsplan",
+            "price": "Pris",
+            "savings": "Besparelser",
+            "regular": "Vanlig",
+            "your_price": "Din pris",
+            "cart_subtotal": "Handlekurv Delsum",
+            "discount": "Rabatt",
+            "shipping": "Frakt",
+            "cart": "Handlevogn",
+            "total": "Totalt",
+            "product": "Produkt",
+            "subscription_details": "Abonnement Detaljer",
+            "applied_coupons": "Anvendte kuponger",
+            "subscription_items_one": "Abonnement ({{count}} element)",
+            "subscription_items_other": "Abonnement ({{count}} varer)",
+            "calculated_at_checkout": "Beregnet i kassen",
+            "subscription_total": "Abonnement Totalt",
+            "subscription_renewal_message": "Abonnementet ditt vil fornye hver",
+            "proceed_to_checkout": "Fortsett til kassen",
+            "have_a_coupon": "Har du en kupong?",
+            "coupon_code": "Kupongkode",
+            "apply_coupon": "Bruk kupong"
         }
     }
 }
