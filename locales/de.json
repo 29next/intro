@@ -155,8 +155,8 @@
                 "one": "Abo ({{ count }} Artikel)",
                 "other": "Abo ({{ count }} Artikel)"
             },
-            "message_offer_gained": "Your basket now qualifies for the {{ name }} offer.",
-            "message_offer_lost": "Your basket no longer qualifies for the {{ name }} offer.",
+            "message_offer_gained": "Ihr Warenkorb qualifiziert sich jetzt für das Angebot {{ name }} .",
+            "message_offer_lost": "Ihr Warenkorb ist nicht mehr für das Angebot {{ name }} qualifiziert.",
             "message_addition": "{{ title }}  wurde Ihrem Warenkorb hinzugefügt.",
             "message_addition_multiple": "{{ quantity }}  Exemplare von  {{ title }} wurden Ihrem Warenkorb hinzugefügt.",
             "message_line_restored": "{{ title }} wurde zurück in Ihren Warenkorb verschoben.",
@@ -253,6 +253,7 @@
         },
         "catalogue": {
             "free": "Kostenlos",
+            "sale": "Verkauf",
             "none_found": "Keine Produkte gefunden.",
             "edit_this_category": "Diese Kategorie bearbeiten",
             "edit_this_product": "Dieses Produkt bearbeiten",
@@ -267,6 +268,7 @@
             "add_to_cart": "In den Warenkorb legen",
             "add_to_cart_loading": "Hinzufügen...",
             "product_unavailable": "Nicht verfügbar",
+            "out_of_stock": "Ausverkauft",
             "about": "Über",
             "reviews": "Bewertungen",
             "no_reviews": "Dieses Produkt hat noch keine Bewertungen",
@@ -274,7 +276,8 @@
             "customer_reviews": "Bewertungen von Kunden",
             "see_all_reviews": "Alle Bewertungen ansehen",
             "write_a_review": "Schreibe eine Rezension",
-            "product_in_wishlist": "Das Produkt ist in {{ name }} Wunschliste."
+            "product_in_wishlist": "Das Produkt ist in {{ name }} Wunschliste.",
+            "recommended_products_header": "Kunden, die diesen Artikel angesehen haben, kauften auch"
         },
         "registration": {
             "enter_new_password": "Geben Sie ein neues Passwort ein",
@@ -472,6 +475,37 @@
             "welcome_to": "Willkommen bei {{ shop_name }}",
             "already_have_account": "Hast du schon ein Konto?",
             "login": "Einloggen"
+        }
+    },
+    "side_cart": {
+        "default": {
+            "your_order": "Deine Bestellung",
+            "your_cart_is_empty": "Ihr Einkaufswagen ist leer!",
+            "oops_You_have_nothing_here": "Ups! Du hast hier nichts.",
+            "quantity": "Menge",
+            "qty": "Menge",
+            "schedule": "Spielplan",
+            "price": "Preis",
+            "savings": "Ersparnisse",
+            "regular": "Regulär",
+            "your_price": "Dein Preis",
+            "cart_subtotal": "Zwischensumme des Warenkorbs",
+            "discount": "Rabatt",
+            "shipping": "Versand",
+            "cart": "Einkaufswagen",
+            "total": "Insgesamt",
+            "product": "Produkt",
+            "subscription_details": "Einzelheiten zum Abonnement",
+            "applied_coupons": "Angewandte Gutscheine",
+            "subscription_items_one": "Abonnement ({{count}} Artikel)",
+            "subscription_items_other": "Abonnement ({{count}} Artikel)",
+            "calculated_at_checkout": "Wird an der Kasse berechnet",
+            "subscription_total": "Abonnement insgesamt",
+            "subscription_renewal_message": "Ihr Abonnement wird jedes Mal erneuert",
+            "proceed_to_checkout": "Gehen Sie zur Kasse",
+            "have_a_coupon": "Haben Sie einen Coupon?",
+            "coupon_code": "Coupon-Code",
+            "apply_coupon": "Gutschein anwenden"
         }
     }
 }
