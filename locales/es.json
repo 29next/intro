@@ -161,13 +161,13 @@
             "message_addition_multiple": "Se han añadido {{ quantity }}  copias de  {{ title }} a tu cesta.",
             "message_line_restored": "{{ title }} se ha trasladado de nuevo a tu cesta.",
             "message_line_saved": "{{ title }} se ha guardado para más tarde",
-            "calculated_at_checkout": "Calculated at checkout",
-            "subscription_details": "Subscription Details",
-            "product": "Product",
-            "quantity": "Qty",
-            "price": "Price",
-            "subscription_total": "Subscription Total",
-            "subscription_renewal_message": "Your subscription will renew every"
+            "calculated_at_checkout": "Calculado en la caja",
+            "subscription_details": "Detalles de la suscripción",
+            "product": "Producto",
+            "quantity": "Cant.",
+            "price": "Precio",
+            "subscription_total": "Total de suscripciones",
+            "subscription_renewal_message": "Tu suscripción se renovará cada"
         },
         "checkout": {
             "terms_agree": "Al crear su pedido, acepta nuestros <a href='#' data-toggle='modal' data-target='#terms_page_button'>Términos de servicio</a> y <a href='#' data-toggle='modal' data-target='#privacy_page_button'>Política de privacidad</a>.",
@@ -392,7 +392,7 @@
             "modal_change_ship_date_heading": "Cambiar fecha de envío siguiente",
             "modal_change_ship_date_body": "Cambia el calendario de envíos según la frecuencia con que se deben recibir nuevos pedidos.",
             "modal_next_ship_date": "El próximo envío es {{ next_renewal }}.",
-            "modal_use_calendar_body": "Utiliza el calendario que aparece a continuación para actualizar la próxima fecha de envío.",
+            "modal_use_calendar_body": "Usa el calendario que aparece a continuación para actualizar la próxima fecha de envío.",
             "modal_change_ship_date_button": "Cambiar fecha de envío siguiente",
             "modal_cancel_heading": "Cancelación de suscripción",
             "modal_cancel_body": "¿Hay algo que podamos hacer para que te quedes con nosotros?",
@@ -404,7 +404,7 @@
             "modal_downsell_header": "¡Atención! Oferta especial limitada.",
             "modal_downsell_body": "Una vez cancelado un pedido, intentaremos detener el envío en nuestro centro logístico y se le reembolsará el pago.",
             "modal_downsell_offer_for_you": "Oye {{ name }}, tenemos una oferta especial por tiempo limitado para ti.",
-            "modal_downsell_offer_detail": "Save {{ percentage }}% and lower your commitment to {{ total }} a month",
+            "modal_downsell_offer_detail": "Ahorra un {{ percentage }}% y reduce tu compromiso a {{ total }} al mes",
             "no_downsell": "No, gracias",
             "yes_downsell": "Sí, estoy dentro",
             "modal_change_schedule_heading": "Cambiar calendario de envíos",
@@ -437,7 +437,11 @@
             "ending_in": "terminando en",
             "use_new_credit_card": "¿Utilizas una nueva tarjeta de crédito?",
             "billing_address": "Dirección de facturación",
-            "same_as_shipping_address": "Igual que la dirección de envío"
+            "same_as_shipping_address": "Igual que la dirección de envío",
+            "reactivate": "Reactivar",
+            "modal_reactivate_heading": "Reactivar la suscripción",
+            "modal_reactivate_body": "Establece una nueva fecha de envío para tu suscripción.",
+            "modal_reactivate_button": "Definir fecha de envío"
         },
         "support": {
             "heading": "Soporte",

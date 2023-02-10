@@ -161,13 +161,13 @@
             "message_addition_multiple": "{{ quantity }}  Exemplare von  {{ title }} wurden Ihrem Warenkorb hinzugefügt.",
             "message_line_restored": "{{ title }} wurde zurück in Ihren Warenkorb verschoben.",
             "message_line_saved": "{{ title }} wurde für später gespeichert",
-            "calculated_at_checkout": "Calculated at checkout",
-            "subscription_details": "Subscription Details",
-            "product": "Product",
-            "quantity": "Qty",
-            "price": "Price",
-            "subscription_total": "Subscription Total",
-            "subscription_renewal_message": "Your subscription will renew every"
+            "calculated_at_checkout": "Wird beim Checkout berechnet",
+            "subscription_details": "Einzelheiten zum Abonnement",
+            "product": "Produkt",
+            "quantity": "Menge",
+            "price": "Preis",
+            "subscription_total": "Abonnement insgesamt",
+            "subscription_renewal_message": "Ihr Abonnement verlängert sich jedes Mal"
         },
         "checkout": {
             "terms_agree": "Durch die Erstellung Ihrer Bestellung stimmen Sie unseren <a href='#' data-toggle='modal' data-target='#terms_page_button'>Nutzungsbedingungen</a> und <a href='#' data-toggle='modal' data-target='#privacy_page_button'>Datenschutzrichtlinie</a>zu.",
@@ -392,7 +392,7 @@
             "modal_change_ship_date_heading": "Nächstes Lieferdatum ändern",
             "modal_change_ship_date_body": "Ändern Sie den Versandplan dafür, wie oft neue Bestellungen erhalten werden sollen.",
             "modal_next_ship_date": "Die nächste Lieferung ist {{ next_renewal }}.",
-            "modal_use_calendar_body": "Verwenden Sie den folgenden Kalander, um das nächste Lieferdatum zu aktualisieren.",
+            "modal_use_calendar_body": "Verwenden Sie den unten stehenden Kalender, um das nächste Versanddatum zu aktualisieren.",
             "modal_change_ship_date_button": "Nächstes Lieferdatum ändern",
             "modal_cancel_heading": "Kündigung des Ab",
             "modal_cancel_body": "Können wir irgendetwas tun, damit du bei uns bleibst?",
@@ -437,7 +437,11 @@
             "ending_in": "endet in",
             "use_new_credit_card": "Eine neue Kreditkarte benutzen?",
             "billing_address": "Rechnungsadresse",
-            "same_as_shipping_address": "Gleich wie Lieferadresse"
+            "same_as_shipping_address": "Gleich wie Lieferadresse",
+            "reactivate": "Reaktivieren",
+            "modal_reactivate_heading": "Abonnement reaktivieren",
+            "modal_reactivate_body": "Legen Sie ein neues Versanddatum für Ihr Abonnement fest.",
+            "modal_reactivate_button": "Versanddatum festlegen"
         },
         "support": {
             "heading": "Unterstützung",

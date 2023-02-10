@@ -161,13 +161,13 @@
             "message_addition_multiple": "{{ quantity }}  exemplaren van  {{ title }} zijn toegevoegd aan je winkelmandje.",
             "message_line_restored": "{{ title }} is terugverplaatst naar je winkelmandje.",
             "message_line_saved": "{{ title }} is opgeslagen voor later",
-            "calculated_at_checkout": "Calculated at checkout",
-            "subscription_details": "Subscription Details",
+            "calculated_at_checkout": "Berekend bij afrekenen",
+            "subscription_details": "Details van het abonnement",
             "product": "Product",
-            "quantity": "Qty",
-            "price": "Price",
-            "subscription_total": "Subscription Total",
-            "subscription_renewal_message": "Your subscription will renew every"
+            "quantity": "Aantal",
+            "price": "Prijs",
+            "subscription_total": "Totaal abonnement",
+            "subscription_renewal_message": "Je abonnement wordt elke keer verlengd"
         },
         "checkout": {
             "terms_agree": "Door je bestelling aan te maken, ga je akkoord met onze <a href='#' data-toggle='modal' data-target='#terms_page_button'>Servicevoorwaarden</a> en <a href='#' data-toggle='modal' data-target='#privacy_page_button'>Privacybeleid</a>.",
@@ -392,7 +392,7 @@
             "modal_change_ship_date_heading": "Datum van volgende zending wijzigen",
             "modal_change_ship_date_body": "Wijzig het verzendschema voor hoe vaak nieuwe bestellingen worden ontvangen.",
             "modal_next_ship_date": "De volgende zending is {{ next_renewal }}.",
-            "modal_use_calendar_body": "Gebruik de kalander hieronder om de volgende verzenddatum bij te werken.",
+            "modal_use_calendar_body": "Gebruik de onderstaande kalender om de volgende verzenddatum bij te werken.",
             "modal_change_ship_date_button": "Datum van volgende zending wijzigen",
             "modal_cancel_heading": "Annulering abonnement",
             "modal_cancel_body": "Kunnen we iets doen om bij ons te blijven?",
@@ -437,7 +437,11 @@
             "ending_in": "eindigend op",
             "use_new_credit_card": "Een nieuwe creditcard gebruiken?",
             "billing_address": "Factuuradres",
-            "same_as_shipping_address": "Hetzelfde als Verzendadres"
+            "same_as_shipping_address": "Hetzelfde als Verzendadres",
+            "reactivate": "Reactiveren",
+            "modal_reactivate_heading": "Abonnement opnieuw activeren",
+            "modal_reactivate_body": "Stel een nieuwe verzenddatum in voor uw abonnement.",
+            "modal_reactivate_button": "Datum van verzending instellen"
         },
         "support": {
             "heading": "Ondersteuning",

@@ -155,19 +155,19 @@
                 "one": "Abonnement ({{ count }} vare)",
                 "other": "Abonnement ({{ count }} elementer)"
             },
-            "message_offer_gained": "Your basket now qualifies for the {{ name }} offer.",
-            "message_offer_lost": "Your basket no longer qualifies for the {{ name }} offer.",
+            "message_offer_gained": "Handlekurven din kvalifiserer nå for {{ name }} by på.",
+            "message_offer_lost": "Handlekurven din kvalifiserer ikke lenger for {{ name }} by på.",
             "message_addition": "{{ title }}  har blitt lagt til i kurven din.",
             "message_addition_multiple": "{{ quantity }}  kopier av  {{ title }} har blitt lagt til i kurven din.",
             "message_line_restored": "{{ title }} er flyttet tilbake til handlekurven din.",
             "message_line_saved": "{{ title }} er lagret for senere",
-            "calculated_at_checkout": "Calculated at checkout",
-            "subscription_details": "Subscription Details",
-            "product": "Product",
-            "quantity": "Qty",
-            "price": "Price",
-            "subscription_total": "Subscription Total",
-            "subscription_renewal_message": "Your subscription will renew every"
+            "calculated_at_checkout": "Beregnet i kassen",
+            "subscription_details": "Detaljer om abonnement",
+            "product": "Produkt",
+            "quantity": "Antall",
+            "price": "Pris",
+            "subscription_total": "Abonnement Totalt",
+            "subscription_renewal_message": "Abonnementet ditt vil fornye hver"
         },
         "checkout": {
             "terms_agree": "Ved å opprette bestillingen din godtar du våre <a href='#' data-toggle='modal' data-target='#terms_page_button'>Vilkår for bruk</a> og <a href='#' data-toggle='modal' data-target='#privacy_page_button'>Personvernpolicy</a>.",
@@ -392,7 +392,7 @@
             "modal_change_ship_date_heading": "Endre neste forsendelsesdato",
             "modal_change_ship_date_body": "Endre leveringsplanen for hvor ofte du skal motta nye ordrer.",
             "modal_next_ship_date": "Neste forsendelse er {{ next_renewal }}.",
-            "modal_use_calendar_body": "Bruk kalanderen nedenfor for å oppdatere neste forsendelsesdato.",
+            "modal_use_calendar_body": "Bruk kalenderen nedenfor for å oppdatere neste forsendelsesdato.",
             "modal_change_ship_date_button": "Endre neste forsendelsesdato",
             "modal_cancel_heading": "Avbestilling av abonnement",
             "modal_cancel_body": "Er det noe vi kan gjøre for at du skal bli hos oss?",
@@ -437,7 +437,11 @@
             "ending_in": "slutter i",
             "use_new_credit_card": "Bruke et nytt kredittkort?",
             "billing_address": "Faktureringsadresse",
-            "same_as_shipping_address": "Samme som forsendelsesadresse"
+            "same_as_shipping_address": "Samme som forsendelsesadresse",
+            "reactivate": "Aktiver på nytt",
+            "modal_reactivate_heading": "Aktiver abonnement på nytt",
+            "modal_reactivate_body": "Angi en ny forsendelsesdato for abonnementet ditt.",
+            "modal_reactivate_button": "Angi forsendelsesdato"
         },
         "support": {
             "heading": "Støtte",
