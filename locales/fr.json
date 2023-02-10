@@ -253,6 +253,7 @@
         },
         "catalogue": {
             "free": "Gratuit",
+            "sale": "Vente",
             "none_found": "Aucun produit n'a été trouvé.",
             "edit_this_category": "Modifier cette catégorie",
             "edit_this_product": "Modifier ce produit",
@@ -267,6 +268,7 @@
             "add_to_cart": "Ajouter au panier",
             "add_to_cart_loading": "Ajout de...",
             "product_unavailable": "Indisponible",
+            "out_of_stock": "En rupture de stock",
             "about": "À propos",
             "reviews": "Avis",
             "no_reviews": "Ce produit n'a pas encore d'avis",
@@ -274,7 +276,8 @@
             "customer_reviews": "Avis des clients",
             "see_all_reviews": "Voir tous les avis",
             "write_a_review": "Écrire un avis",
-            "product_in_wishlist": "Le produit est dans la liste de souhaits {{ name }} ."
+            "product_in_wishlist": "Le produit est dans la liste de souhaits {{ name }} .",
+            "recommended_products_header": "Les clients qui ont consulté cet article ont également acheté"
         },
         "registration": {
             "enter_new_password": "Saisissez un nouveau mot de passe",
@@ -472,6 +475,37 @@
             "welcome_to": "Bienvenue sur {{ shop_name }}",
             "already_have_account": "Vous avez déjà un compte ?",
             "login": "Connectez-vous"
+        }
+    },
+    "side_cart": {
+        "default": {
+            "your_order": "Votre commande",
+            "your_cart_is_empty": "Votre panier est vide !",
+            "oops_You_have_nothing_here": "Oups ! Tu n'as rien ici.",
+            "quantity": "Quantité",
+            "qty": "Quantité",
+            "schedule": "Calendrier",
+            "price": "Prix",
+            "savings": "Des économies",
+            "regular": "Régulier",
+            "your_price": "Votre prix",
+            "cart_subtotal": "Sous-total du panier",
+            "discount": "Réduction",
+            "shipping": "Expédition",
+            "cart": "Chariot",
+            "total": "Total",
+            "product": "Produit",
+            "subscription_details": "Détails de l'abonnement",
+            "applied_coupons": "Coupons appliqués",
+            "subscription_items_one": "Abonnement ({{count}} article)",
+            "subscription_items_other": "Abonnement ({{count}} articles)",
+            "calculated_at_checkout": "Calculé au moment du paiement",
+            "subscription_total": "Total de l'abonnement",
+            "subscription_renewal_message": "Votre abonnement sera renouvelé chaque",
+            "proceed_to_checkout": "Procéder au paiement",
+            "have_a_coupon": "Vous avez un coupon ?",
+            "coupon_code": "Code de réduction",
+            "apply_coupon": "Appliquer le coupon"
         }
     }
 }

@@ -253,6 +253,7 @@
         },
         "catalogue": {
             "free": "Libre",
+            "sale": "Venta",
             "none_found": "No se han encontrado productos.",
             "edit_this_category": "Editar esta categoría",
             "edit_this_product": "Editar este producto",
@@ -267,6 +268,7 @@
             "add_to_cart": "Añadir al carrito",
             "add_to_cart_loading": "Añadiendo...",
             "product_unavailable": "No disponible",
+            "out_of_stock": "Agotado",
             "about": "Sobre",
             "reviews": "Opiniones",
             "no_reviews": "Este producto no tiene reseñas todavía",
@@ -274,7 +276,8 @@
             "customer_reviews": "Opiniones de clientes",
             "see_all_reviews": "Ver todas las reseñas",
             "write_a_review": "Escribe una reseña",
-            "product_in_wishlist": "El producto está en la lista de deseos {{ name }} ."
+            "product_in_wishlist": "El producto está en la lista de deseos {{ name }} .",
+            "recommended_products_header": "Los clientes que vieron este artículo también compraron"
         },
         "registration": {
             "enter_new_password": "Introduce una nueva contraseña",
@@ -472,6 +475,37 @@
             "welcome_to": "Bienvenido a {{ shop_name }}",
             "already_have_account": "¿Ya tienes una cuenta?",
             "login": "Iniciar sesión"
+        }
+    },
+    "side_cart": {
+        "default": {
+            "your_order": "Tu pedido",
+            "your_cart_is_empty": "¡Tu carrito está vacío!",
+            "oops_You_have_nothing_here": "¡Uy! No tienes nada aquí.",
+            "quantity": "Cantidad",
+            "qty": "Cant.",
+            "schedule": "Cronograma",
+            "price": "Precio",
+            "savings": "Ahorros",
+            "regular": "Normal",
+            "your_price": "Tu precio",
+            "cart_subtotal": "Subtotal del carrito",
+            "discount": "Descuento",
+            "shipping": "Envío",
+            "cart": "Carro",
+            "total": "Total",
+            "product": "Producto",
+            "subscription_details": "Detalles de la suscripción",
+            "applied_coupons": "Cupones aplicados",
+            "subscription_items_one": "Suscripción ({{count}} artículo)",
+            "subscription_items_other": "Suscripción ({{count}} artículos)",
+            "calculated_at_checkout": "Calculado al finalizar la compra",
+            "subscription_total": "Total de suscripciones",
+            "subscription_renewal_message": "Su suscripción se renovará cada",
+            "proceed_to_checkout": "Proceder a la compra",
+            "have_a_coupon": "¿Tienes un cupón?",
+            "coupon_code": "Código de cupón",
+            "apply_coupon": "Aplicar cupón"
         }
     }
 }
