@@ -6,53 +6,57 @@
     display: none !important;
 }
 
-
-
-
 .font-lg {
-    font-size: $text-lg; // ~18px
+    font-size: $text-lg !important; 
 }
 
 .font-sm {
-    font-size: $text-sm; // ~14px
+    font-size: $text-sm !important; 
 }
 
 .font-bold {
-    font-weight: bold;
+    font-weight: bold !important;
 }
 
 .font-normal {
-    font-weight: normal;
+    font-weight: normal !important;
 }
 
 .text-right {
-    text-align: right;
+    text-align: right !important;
 }
 
 .text-center {
-    text-align: center;
+    text-align: center !important;
 }
 
 .text-left {
-    text-align: left;
+    text-align: left !important;
 }
 .text-secondary {
-    color: $color-primary;
+    color: $color-primary !important;
 }
 .text-primary {
-    color: $color-secondary;
+    color: $color-secondary !important;
 }
 .text-muted {
-    color: $color-muted;
+    color: $color-muted !important;
 }
 .text-success {
-    color: $color-success;
+    color: $color-success !important;
 }
 .text-danger {
-    color: $color-danger;
+    color: $color-danger !important;
 }
 .text-warning {
-    color: $color-warning;
+    color: $color-warning !important;
+}
+.is-float-left {
+  float: left !important;
+}
+
+.is-float-right {
+  float: right !important;
 }
 
 

@@ -39,7 +39,6 @@ var theme = (function(t, $) {
                     t.dropdowns.close();
                 });
             }
-            // Close dropdowns if ESC pressed
             document.addEventListener('keydown', function(event) {
                 var e = event || window.event;
                 if (e.keyCode === 27) {
@@ -82,7 +81,6 @@ var theme = (function(t, $) {
                 var e = event || window.event;
                 if (e.keyCode === 27) {
                     t.modals.closeModals();
-                    // closeDropdowns(); TODO: is this necessary?
                 }
             });
 
@@ -136,19 +134,12 @@ var theme = (function(t, $) {
     t.nav = {
         init: function() {
             document.addEventListener('DOMContentLoaded', function() {
-                // Get all "navbar-burger" elements
                 var $navbarBurgers = t.utils.getAll('.store_nav-burger');
-                // Check if there are any nav burgers
                 if ($navbarBurgers.length > 0) {
-                    // Add a click event on each of them
                     $navbarBurgers.forEach(function($el) {
                         $el.addEventListener('click', function() {
-            
-                            // Get the target from the "data-target" attribute
                             var target = $el.dataset.target;
                             var $target = document.getElementById(target);
-            
-                            // Toggle the class on both the "navbar-burger" and the "navbar-menu"
                             $el.classList.toggle('active');
                             $target.classList.toggle('active');
             
@@ -178,7 +169,6 @@ var theme = (function(t, $) {
         init: function() {
             t.forms.loadingText();
             t.forms.currencySwitcher();
-            t.forms.phoneNumberInput();
         },
         
         loadingText: function() {
@@ -197,43 +187,6 @@ var theme = (function(t, $) {
             $('select[name="currency"]').on('change', function(e) {
                 e.preventDefault();
                 $('form[id="set-currency"]').submit();
-            });
-        },
-        phoneNumberInput: function() {
-            $('input[name=phone_number]').each(function () {
-                var ele = this;
-                // clear placeholder
-                $(ele).attr('placeholder', '');
-                var existingCountry = $(ele).closest('form').find('[name=phone_number_country]').val();
-            
-                var iti = window.intlTelInput(ele, {
-                    geoIpLookup: function (callback) {
-                        $.ajax({
-                            url: "https://freegeoip.app/json/",
-                            jsonpCallback: "callback",
-                            dataType: "jsonp",
-                        }).done(function (location) {
-                            callback(location.country_code);
-                            initDropdownCountry($(ele).closest('form'), location.country_code);
-                        }).fail(function (jqXHR, textStatus, errorThrown) {
-                            callback($(ele).closest('form').find('[name=country]').val());
-                        });
-                    },
-                    initialCountry: existingCountry || "auto",
-                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.js",
-                });
-            
-                // for initial phone_number_country value when phone number not empty and autodetect with libs
-                var countryData = iti.getSelectedCountryData();
-                $(ele).closest('form').find('[name=phone_number_country]').val(Object.keys(countryData).length ? countryData.iso2.toUpperCase() : "");
-            
-                ele.addEventListener('countrychange', function (e) {
-                    var countryCode = window.intlTelInputGlobals.getInstance(ele).getSelectedCountryData().iso2;
-                    if (!countryCode) {
-                        return;
-                    }
-                    $(ele).closest('form').find('[name=phone_number_country]').val(countryCode.toUpperCase());
-                });
             });
         }
     };
@@ -270,11 +223,14 @@ var theme = (function(t, $) {
             t.product.selector = {
                 sliderWrapper: '.slider-for',
                 sliderNav: '.slider-nav',
+                prices: '.catalogue_product-price',
                 salePrice: 'data-product-price',
                 retailPrice: 'data-product-price-retail',
                 productData: 'product-data',
                 addToCartForm: 'add-to-cart',
+                productBuyOptions: 'catalogue_product-option',
                 subscriptionOptionInputName: 'subscription-option',
+                onetimeOptionID: '#product-one-time',
                 subcriptionOptionID: '#product-subscribe',
                 subscriptionOptions: '#product-subscribe-options',
                 productReviewsTab: '#catalogue_product-reviews-tab',
@@ -283,7 +239,6 @@ var theme = (function(t, $) {
 
             t.product.initImageSlider();
             t.product.handleSubscriptionOption();
-            t.product.handleReviewForm();
 
             var productData = document.getElementById(t.product.selector.productData);
             
@@ -333,18 +288,30 @@ var theme = (function(t, $) {
                 $(`[${t.product.selector.retailPrice}]`).html('');
                 return;
             }
+            $('input[name=' + t.product.selector.subscriptionOptionInputName + ']').click(function() {
+                if ($(t.product.selector.subcriptionOptionID).is(":checked")) {
+                    $(`[${t.product.selector.salePrice}]`).html(variant.purchase_info.subscription.format);
+
+                } else {
+                    $(`[${t.product.selector.salePrice}]`).html(variant.purchase_info.price.format);
+                    $(`[${t.product.selector.retailPrice}]`).html(variant.purchase_info.price_retail.format);
+                }
+            });
             $(`[${t.product.selector.salePrice}]`).html(variant.purchase_info.price.format);
             $(`[${t.product.selector.retailPrice}]`).html(variant.purchase_info.price_retail.format);
 
         },
         updateForm: function(variant) {
             var selector = `#${t.product.selector.addToCartForm}`;
+            var buyOpt = `.${t.product.selector.productBuyOptions}`;
             if (!variant || variant.purchase_info.availability === 'outofstock' || variant.purchase_info.availability === 'unavailable') {
                 $(selector).find("button").prop('disabled', true);
+                $(buyOpt).find("input").prop('disabled', true);
                 $(selector).find("button").text(t.product.options.unavailable_msg);
                 return;
             }
             $(selector).find("button").prop('disabled', false);
+            $(buyOpt).find("input").prop('disabled', false);
             $(selector).find("button").text(t.product.options.add_to_cart_msg);
             var addProductUrl = $(selector).attr('action').replace(/\d+/g, variant.id);
             $(selector).attr('action', addProductUrl);
@@ -359,17 +326,17 @@ var theme = (function(t, $) {
                 asNavFor: t.product.selector.sliderNav
             });
             $(t.product.selector.sliderNav).slick({
-                slidesToShow: 3,
+                slidesToShow: 5,
                 slidesToScroll: 1,
                 asNavFor: t.product.selector.sliderWrapper,
                 dots: false,
-                arrows: true,
+                arrows: false,
                 focusOnSelect: true
             });
             $(t.product.selector.sliderWrapper).slickLightbox();
         },
         updateImage: function(variant) {
-            if (!variant || variant.images === null) {
+            if (!variant || (variant.images && !variant.images.length)) {
                 return;
             }
             var slideno = (variant.images[0].id);
@@ -382,13 +349,19 @@ var theme = (function(t, $) {
             t.product.updatePrice(found);
             t.product.updateForm(found);
             t.product.updateImage(found);
+            $(t.product.selector.subscriptionOptions).hide();
+            $(t.product.clearIntervalValue)
+            $(t.product.selector.subcriptionOptionID).prop("checked", false)
+            $(t.product.selector.onetimeOptionID).prop("checked", true)
         },
         handleSubscriptionOption: function() {
             $('input[name=' + t.product.selector.subscriptionOptionInputName + ']').click(function() {
                 if ($(t.product.selector.subcriptionOptionID).is(":checked")) {
                     $(t.product.selector.subscriptionOptions).show();
                     $(t.product.setIntervalValue)
+                    $(`[${t.product.selector.salePrice}]`).html(t.product.productObject.purchase_info.subscription.format);
                 } else {
+                    $(`[${t.product.selector.salePrice}]`).html(t.product.productObject.purchase_info.price.format);
                     $(t.product.selector.subscriptionOptions).hide();
                     $(t.product.clearIntervalValue)
                 }
@@ -408,14 +381,6 @@ var theme = (function(t, $) {
         clearIntervalValue: function() {
             $("#product-subscribe-options-select input[type=radio]").prop("checked", false);
             $("#id_interval").val(""), $("#id_interval_count").val("");
-        },
-        handleReviewForm: function() {
-            if (window.location.hash == '#addreview') {
-                $('#catalogue_product-reviews-tab').addClass('is-active');
-                $('#catalogue_product-about-tab').removeClass('is-active');
-                $('#tab-about').addClass('is-hidden');
-                $('#tab-reviews').removeClass('is-hidden');
-            }
         }
     };
     t.utils = {

@@ -32,7 +32,7 @@
                         <div class="catalogue_item-img">
                             {% block product_image %}
                                 {% with image=product.primary_image %}
-                                    {% image_thumbnail image.original "350x350" crop="center" upscale=True as thumb %}
+                                    {% image_thumbnail image.original "450x450" crop="center" upscale=True as thumb %}
                                         <a href="{{ product.get_absolute_url }}">
                                             <img src="{{ thumb.url }}" alt="{{ product.get_title }}">
                                         </a>
@@ -46,9 +46,6 @@
                         </div>
                         {% endblock %}
 
-                        <div class="catalogue_item-desc">
-                            {{ product.excerpt|safe|truncatewords_html:10 }}
-                        </div>
                         {% block product_review %}
                             {% if product.rating %}
                             <div class="catalogue_item-rating">
@@ -72,19 +69,13 @@
                             <div class="catalogue_item-price">
                                 {% purchase_info_for_product request product as session %}
                                 {% if session.price.exists %}
-                                    {% if session.price.price_retail > session.price.excl_tax %}
+                                    {% if session.price.price_retail > session.price.price %}
                                         <div class="catalogue_item-price-previous">
                                             <s>{{ session.price.price_retail|currency:session.price.currency }}</s>
                                         </div>
                                     {% endif %}
                                     <div class="catalogue_item-price-current">
-                                        {% if session.price.excl_tax == 0 %}
-                                                {% t "store.catalogue.free" %}
-                                            {% elif session.price.is_tax_known %}
-                                                {{ session.price.incl_tax|currency:session.price.currency }}
-                                            {% else %}
-                                                {{ session.price.excl_tax|currency:session.price.currency }}
-                                        {% endif %}
+                                        {{ session.price.price|currency:session.price.currency }}
                                     </div>
                                 {% else %}
                                     &nbsp;

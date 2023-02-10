@@ -4,7 +4,6 @@
             <div class="basket_list">
 
                 {% if basket_warnings %}
-                    <h5>{% t "order.cart.basket_warnings_header" %}</h5>
                     {% for warning in basket_warnings %}
                         <div class="notification notification-warning">
                             <button class="delete"></button>
@@ -15,7 +14,6 @@
 
 
                 {% if upsell_messages %}
-                        <h5 >{% t "order.cart.upsell_messages_header" %}</h5>
                         {% for upsell in upsell_messages %}
                         <div class="notification notification-primary">
                             <button class="delete"></button>

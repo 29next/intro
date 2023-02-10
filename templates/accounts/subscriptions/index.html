@@ -32,7 +32,7 @@
                                 {% elif subscription.status == subscription.CANCELED %}
                                     <span class="tag tag-danger">{{ subscription.status|title }}</span>
                                 {% else %}
-                                    {{ subscription.status|title }}
+                                    <span class="tag tag-primary">{{ subscription.status|title }}</span>
                                 {% endif %}
                             </td>
                             <td data-label='{% t "tables.heading.next_renewal" %}'>{{ subscription.next_renewal_date }}</td>

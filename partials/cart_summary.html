@@ -4,7 +4,7 @@
 
         <h6>{% t "order.cart.summary" %}</h6>
 
-            <span class="tag tag-primary">
+            <span class="tag tag-secondary">
                 {% t "order.cart.items_count" with count=basket.num_items %}
             </span>
 
@@ -53,19 +53,78 @@
                         <tr>
                             <td>
                                 {% t "order.cart.subscription_items" with count=subscription_rebill_quantity %}
+                                <div class="cart-popover-wrapper">
+                                    <span class="help-icon"></span>
+                                    <div class="popover-content">
+                                        <p><strong>{% t "order.cart.subscription_details" %}</strong></p>
+                                        {% for group in subscription_groups %}
+                                            <table class='table popover-table'>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>{% t "order.cart.product" %}</td>
+                                                        <td>{% t "order.cart.quantity" %}</td>
+                                                        <td>{% t "order.cart.price" %}</td>
+                                                    </tr>
+                                                    {% for line in group.lines %}
+                                                        <tr>
+                                                            <td>{{ line.product.get_title }}</td>
+                                                            <td>{{ line.quantity }}</td>
+                                                            <td>{{ line.rebill_unit_price_excl_tax_incl_discount|currency:group.currency }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <span>{% t "order.cart.shipping" %}</span>
+                                                            <span class="text-right is-float-right">
+                                                                {% if group.shipping_price.excl_tax %}
+                                                                    {{ group.shipping_price.excl_tax|currency:group.currency }}
+                                                                {% else %}
+                                                                    <small>{% t "order.cart.calculated_at_checkout" %}</small>
+                                                                {% endif %}
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                    {% if group.total_tax %}
+                                                        <tr>
+                                                            <td colspan='2'>{{ group.display_taxes }}</td>
+                                                            <td>{{ group.total_tax|currency:group.currency }}</td>
+                                                        </tr>
+                                                    {% endif %}
+                                                    <tr>
+                                                        <td colspan='2'>{% t "order.cart.subscription_total" %}</td>
+                                                        <td>{{ group.total_incl_tax|currency:group.currency }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan='3'>
+                                                            {% t "order.cart.subscription_renewal_message" %} {{ group.frequency }}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            {% if not forloop.last %}
+                                                <hr>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
                             </td>
                             <td></td>
                             <td class="text-right">
-                                {{ basket.total_subscription_rebill_price_excl_tax|currency:basket.currency }}
+                                {% if basket.is_tax_known %}
+                                    {{ subscription_total_incl_tax|currency:basket.currency }}
+                                {% else %}
+                                    {{ subscription_total_excl_tax|currency:basket.currency }}
+                                {% endif %}
                             </td>
                         </tr>
                     {% endif %}
                 {% endwith %}
                 <tr>
-                    <td>{% t "order.cart.shipping" %}</td>
-                    <td></td>
-                    <td class="text-right">
-                        {% t "order.cart.calculated_at_checkout" %}
+                    <td colspan="3">
+                        <span>{% t "order.cart.shipping" %}</span>
+                        <span class="text-right is-float-right">
+                            <small>{% t "order.cart.calculated_at_checkout" %}</small>
+                        </span>
                     </td>
                 </tr>
                 {% if basket.display_taxes %}

@@ -143,7 +143,6 @@
             "applied_offer": "Applied Offer",
             "applied_coupons": "Applied Coupons",
             "shipping": "Shipping",
-            "calculated_at_checkout": "<small>Calculated at checkout</small>",
             "order_total": "Order Total",
             "proceed_to_checkout": "Proceed to checkout",
             "basket_warnings_header": "Important messages about items in your basket",
@@ -166,7 +165,14 @@
             "message_addition": "{{ title }}  has been added to your basket.",
             "message_addition_multiple": "{{ quantity }}  copies of  {{ title }} have been added to your basket.",
             "message_line_restored": "{{ title }} has been moved back to your basket.",
-            "message_line_saved": "{{ title }} has been saved for later"
+            "message_line_saved": "{{ title }} has been saved for later",
+            "calculated_at_checkout": "Calculated at checkout",
+            "subscription_details": "Subscription Details",
+            "product": "Product",
+            "quantity": "Qty",
+            "price": "Price",
+            "subscription_total": "Subscription Total",
+            "subscription_renewal_message": "Your subscription will renew every"
         },
         "checkout": {
             "terms_agree": "By creating your order, you agree to our <a href='#' data-toggle='modal' data-target='#terms_page_button'>Terms of Service</a> and <a href='#' data-toggle='modal' data-target='#privacy_page_button'>Privacy Policy</a>.",
@@ -252,6 +258,7 @@
         },
         "catalogue": {
             "free": "Free",
+            "sale": "Sale",
             "none_found": "No products found.",
             "edit_this_category": "Edit this category",
             "edit_this_product": "Edit this product",
@@ -266,6 +273,7 @@
             "add_to_cart": "Add to cart",
             "add_to_cart_loading": "Adding...",
             "product_unavailable": "Unavailable",
+            "out_of_stock": "Out of stock",
             "about": "About",
             "reviews": "Reviews",
             "no_reviews": "This product does not have any reviews yet",
@@ -273,7 +281,8 @@
             "customer_reviews": "Customer Reviews",
             "see_all_reviews": "See all reviews",
             "write_a_review": "Write a review",
-            "product_in_wishlist": "Product is in {{ name }} wishlist."
+            "product_in_wishlist": "Product is in {{ name }} wishlist.",
+            "recommended_products_header": "Customers who viewed this item also bought"
         },
         "registration": {
             "enter_new_password": "Enter a new password",
@@ -392,7 +401,7 @@
             "modal_change_ship_date_heading": "Change Next Shipment Date",
             "modal_change_ship_date_body": "Change the shipping schedule for how often to receive new orders.",
             "modal_next_ship_date": "Next shipment is {{ next_renewal }}.",
-            "modal_use_calendar_body": "Use the calander below to update the next shipment date.",
+            "modal_use_calendar_body": "Use the calendar below to update the next shipment date.",
             "modal_change_ship_date_button": "Change Next Shipment Date",
             "modal_cancel_heading": "Subscription Cancellation",
             "modal_cancel_body": "Is there anything we can do for you to stay with us?",
@@ -437,7 +446,11 @@
             "ending_in": "ending in",
             "use_new_credit_card": "Use a New Credit Card?",
             "billing_address": "Billing address",
-            "same_as_shipping_address": "Same as Shipping address"
+            "same_as_shipping_address": "Same as Shipping address",
+            "reactivate": "Reactivate",
+            "modal_reactivate_heading":"Reactivate Subscription",
+            "modal_reactivate_body": "Set a new shipment date for your subscription.",
+            "modal_reactivate_button": "Set Shipment Date"
         },
         "support": {
              "heading": "Support",
@@ -469,6 +482,37 @@
             "welcome_to": "Welcome to {{ shop_name }}",
             "already_have_account": "Already have an account?",
             "login": "Log in"
+        }
+    },
+    "side_cart": {
+        "default": {
+            "your_order": "Your Order",
+            "your_cart_is_empty": "Your Cart is Empty!",
+            "oops_You_have_nothing_here": "Oops! You have nothing here.",
+            "quantity": "Quantity",
+            "qty": "Qty",
+            "schedule": "Schedule",
+            "price": "Price",
+            "savings": "Savings",
+            "regular": "Regular",
+            "your_price": "Your Price",
+            "cart_subtotal": "Cart Subtotal",
+            "discount": "Discount",
+            "shipping": "Shipping",
+            "cart": "Cart",
+            "total": "Total",
+            "product": "Product",
+            "subscription_details": "Subscription Details",
+            "applied_coupons": "Applied Coupons",
+            "subscription_items_one": "Subscription ({{count}} item)",
+            "subscription_items_other": "Subscription ({{count}} items)",
+            "calculated_at_checkout": "Calculated at checkout",
+            "subscription_total": "Subscription Total",
+            "subscription_renewal_message": "Your subscription will renew every",
+            "proceed_to_checkout": "Proceed to checkout",
+            "have_a_coupon": "Have a coupon?",
+            "coupon_code": "Coupon Code",
+            "apply_coupon": "Apply coupon"
         }
     }
 }

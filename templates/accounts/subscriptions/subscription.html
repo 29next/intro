@@ -50,7 +50,7 @@
                 <input type="hidden" name='action' value='change_next_shipment_date'>
                 {% csrf_token %}
                 <div class="button-group is-centered">
-                    <button class="button" type="submit">
+                    <button class="button button-primary" type="submit">
                         {% t "customer.subscriptions.modal_change_ship_date_button" %}
                     </button>
                 </div>
@@ -80,7 +80,7 @@
                 {% include "partials/form_field.html" with field=cancel_form.cancel_reason nolabel=True %}
                 <input type="hidden" name='action' value='cancel'>
                 <div class="button-group is-centered">
-                    <a class="button store_modal-dismiss">
+                    <a class="button button-primary store_modal-dismiss">
                         {% t "global.button.nevermind" %}
                     </a>
                     <button class="button subscription-cancel-button" disabled>
@@ -171,7 +171,7 @@
                 <div class="button-group is-centered">
                     <a class="button store_modal-dismiss store_modal-button"  data-target="subscription-cancel">{% t "customer.subscriptions.no_downsell" %}</a>
                     <input type="hidden" name='action' value='subscription_downsell'>
-                    <button class="button" type="submit" type="submit">{% t "customer.subscriptions.yes_downsell" %}</button>
+                    <button class="button button-primary" type="submit" type="submit">{% t "customer.subscriptions.yes_downsell" %}</button>
                 </div>
             </div>
         </div>
@@ -199,8 +199,31 @@
                 </div>
                 <input type="hidden" name='action' value='change_schedule'>
                 <div class="button-group is-centered">
-                    <button class="button" type="submit">
+                    <button class="button button-primary" type="submit">
                         {% t "customer.subscriptions.modal_change_schedule_button" %}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <button class="store_modal-close store_modal-dismiss" aria-label="close"></button>
+</div>
+<!-- Reactivate Modal -->
+<div class="store_modal" id="sub-reactivate" tabindex="-1" role="dialog">
+    <div class="store_modal-background"></div>
+    <form method="post" novalidate>
+        <div class="store_modal-content">
+            <div class="store_modal-box content-body text-center">
+                <h5>{% t "customer.subscriptions.modal_reactivate_heading" %}</h5>
+                <p>{% t "customer.subscriptions.modal_reactivate_body" %}</p>
+                <div>
+                    {% include "partials/form_field.html" with field=reactivate_form.renewal_date nolabel=True %}
+                </div>
+                <input type="hidden" name='action' value='reactivate'>
+                {% csrf_token %}
+                <div class="button-group is-centered">
+                    <button class="button button-primary" type="submit">
+                        {% t "customer.subscriptions.modal_reactivate_button" %}
                     </button>
                 </div>
             </div>
@@ -228,7 +251,7 @@
                 <input type="hidden" name='line_id' value='{{ line.id }}'>
                 {% csrf_token %}
                 <div class="button-group is-centered">
-                    <a class="button store_modal-dismiss">
+                    <a class="button button-primary store_modal-dismiss">
                         {% t "global.button.nevermind" %}
                     </a>
                     <button class="button">
@@ -296,9 +319,11 @@
     </div>
     <div class="account_order-detail-actions">
         {% if object.status != object.CANCELED %}
-        <a href="#" class="button button-sm store_modal-button" data-target="sub-change-next-shipment-date">{% t "customer.subscriptions.edit_ship_date" %}</a>
-        <a href="#" class="button button-sm store_modal-button" data-target="sub-change-schedule">{% t "customer.subscriptions.change_schedule" %}</a>
+        <a href="#" class="button button-primary button-sm store_modal-button" data-target="sub-change-next-shipment-date">{% t "customer.subscriptions.edit_ship_date" %}</a>
+        <a href="#" class="button button-primary button-sm store_modal-button" data-target="sub-change-schedule">{% t "customer.subscriptions.change_schedule" %}</a>
         <a href="#" class="button button-sm store_modal-button" {% if object.downsell_avaliable %} data-target="subscription-cancel-downsell" {% else %} data-target="subscription-cancel" {% endif %}>{% t "global.button.cancel" %}</a>
+        {% else %}
+        <a href="#" class="button button-primary button-sm store_modal-button" data-target="sub-reactivate">{% t "customer.subscriptions.reactivate" %}</a>
         {% endif %}
     </div>
 </div>
@@ -346,7 +371,7 @@
                         {{ line.line_price_incl_tax|currency:object.currency }}
                     </div>
                     {% if object.num_lines > 1 %}
-                    <a href="#" class="store_modal-button" data-toggle="modal" data-target="subscription-remove-product-{{ line.id }}">{{% t "customer.subscriptions.remove" %}</a>
+                    <a href="#" class="store_modal-button" data-toggle="modal" data-target="subscription-remove-product-{{ line.id }}">{% t "customer.subscriptions.remove" %}</a>
                     {% endif %}
                 </td>
             </tr>

@@ -133,6 +133,11 @@
             <p>{% t "store.review.no_reviews" %} </p>
         </div>
         {% endif %}
+        <div id="addreview" class="store_container">
+            {% if product|is_review_permitted:user %}
+                {% block product_review %}{% endblock product_review %}
+            {% endif %}
+        </div>
     </div>
 </section>
 {% endblock %}
