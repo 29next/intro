@@ -1,26 +1,25 @@
 {% extends "layouts/base.html" %}
 {% block content_wrapper %}
-
 <section>
     <div class="store_container text-center">
         <div class="page_content-body content-body">
-                        <!-- Preheading -->
-                        <h6 >
-                            {% t "global.error.500" %}
-                        </h6>
-                        <!-- Heading -->
-                        <h1>
-                            {% t "global.error.500_heading" %}
-                        </h1>
-                        <!-- Subheading -->
-                        <p >
-                            {% t "global.error.500_message" %}
-                        </p>
-                        <!-- Button -->
-                        <button onclick="window.history.back();" class="button button-primary">
-                            {% t "global.button.go_back" %}
-                        </button>
-                     </div>
+            <!-- Preheading -->
+            <h6 >
+                {% t "global.error.500" %}
+            </h6>
+            <!-- Heading -->
+            <h1>
+                {% t "global.error.500_heading" %}
+            </h1>
+            <!-- Subheading -->
+            <p >
+                {% t "global.error.500_message" %}
+            </p>
+            <!-- Button -->
+            <button onclick="window.history.back();" class="button button-primary">
+                {% t "global.button.go_back" %}
+            </button>
+        </div>
     </div>
 </section>
 {% endblock %}

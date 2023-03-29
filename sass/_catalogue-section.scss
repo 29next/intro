@@ -22,8 +22,6 @@
         }
     }
 
-
-
     &.header-item-cat {
         @include md-up {
             padding-right: 1.5rem;
@@ -39,14 +37,9 @@
 
 .catalogue_list-row {
     margin-bottom: 3rem;
+    display: flex;
+    flex-wrap: wrap;
     
-    
-
-    @include sm-up {
-        display: flex;
-        flex-wrap: wrap;
-        
-    }
     @include xl-up {
         margin-left: -.75rem;
         margin-right: -.75rem;
@@ -56,12 +49,8 @@
 
 .catalogue_list-item {
     @include column;
-
-    @include sm-up {
-        flex: none;
-        width: 50%;
-
-    }
+    flex: none;
+    width: 50%;
 
     @include lg-up {
         flex: none;
@@ -73,6 +62,8 @@
     padding: .75rem .75rem 3rem;
     background: #fff;
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 .catalogue_item-img {
     position: relative;
@@ -87,18 +78,25 @@
 }
 
 .catalogue_item-name {
-    font-size: $h6;
+    font-size: 1;
     font-weight: bold;
     margin-bottom: .75rem;
+    @include lg-up {
+        font-size: 1.25rem;
+    }
 }
 
 .catalogue_item-desc {
-    font-size: $text-sm;
+    font-size: 0.75rem;
     margin-bottom: 1.5rem;
+    @include lg-up {
+        font-size: 0.875rem;
+    }
 }
 
 .catalogue_item-rating {
     display: none;
+    margin-top: auto;
     margin-bottom: 1.5rem;
     @include md-up {
         display: flex;
@@ -121,9 +119,11 @@
 }
 
 .catalogue_item-rating-count {
-    font-size: $text-sm;
+    font-size: 0.875rem;
 }
-
+.catalogue_item-price {
+    margin-top: auto;
+}
 .catalogue_item-price-previous,
     {
     display: inline-block;
@@ -223,33 +223,31 @@
 
 
 .catalogue_product-title {
-    font-size: $h2;
+    font-size:1.25rem;
     font-weight: bold;
     margin-bottom: .75rem;
-    display: none;
      @include md-up {
-        display: block;
+        font-size: 2rem;
     }
-    &.catalogue_product-title--mobile {
-        display: block;
-        font-size: $h5;
-         @include md-up {
-            display: none;
-        }
-
-    }
+    
 }
 
 
 .catalogue_product-price {
     margin-bottom: .75rem;
     font-weight: bold;
-    font-size: $h6;
+    font-size: 1.125rem;
+     @include md-up {
+        font-size: 1.25rem;
+     }
 }
 
 .catalogue_product-desc {
     margin-bottom: 1.5rem;
-    font-size: $h6;
+    font-size: .875rem;
+     @include md-up {
+        font-size: 1.125rem;
+     }
 }
 
 .catalogue_product-option {
@@ -260,14 +258,20 @@
     margin-bottom: 1.5rem;
 }
 
-.catalogue_product-action {}
 
 .catalogue_product-extra {
-    background-color: #eee;
+    background: rgb(245,245,245);
+    background: linear-gradient(0deg, rgba(245,245,245,0) 0%, rgba(245,245,245,1) 100%);
     margin-top: 3rem;
     padding-top: 3rem;
 }
 
+.catalogue_product-action-form {
+    display: flex;
+    button {
+        margin-left: .75rem;
+    }
+}
 
 
 //-------------------------- Tabs -----------------------//
@@ -284,15 +288,13 @@
 }
 
 .catalogue_product-review-header {
-    
     padding: .75rem;
-
     margin-bottom: 0;
     border-bottom: 1px solid #ccc;
     @include sm-up {
         display: flex;
-    align-items: center;
-    justify-content: space-between;
+        align-items: center;
+        ustify-content: space-between;
     }
 
 }
@@ -302,20 +304,15 @@
 }
 .catalogue_product-review-title {
     font-weight: bold;
-    font-size: $h5;
 }
 
 .catalogue_product-review-date {
     color: #b5b5b5;
 }
 
-
-
 .catalogue_product-review-body {
     padding: 1.5rem .75rem;
     background: #F4F9FC;
-    
-
     hr {
         background-color: #eee;
     }
@@ -336,25 +333,18 @@
         list-style: none;
     }
 }
-//-------------------------- SLick Product SLider -----------------------//
+//-------------------------- Slick Product SLider -----------------------//
 
 
-.slider-for img,
-    {
+.slider-for img {
     margin: 0 auto 1.5rem;
-
-
 }
 
-.slider-nav img,
-    {
+.slider-nav img {
     padding: .75rem;
-
     @include md-up {
         padding: 1.5rem;
     }
-
-
 }
 
 .slider-nav {
@@ -403,7 +393,6 @@
 }
 
 .slick-prev {
-
     &:hover,
     &:focus {
         color: transparent;
@@ -413,7 +402,6 @@
 }
 
 .slick-next {
-
     &:hover,
     &:focus {
         color: transparent;
@@ -423,7 +411,6 @@
 }
 
 .slick-prev {
-
     &:hover:before,
     &:focus:before {
         opacity: .5;
@@ -431,7 +418,6 @@
 }
 
 .slick-next {
-
     &:hover:before,
     &:focus:before {
         opacity: .5;

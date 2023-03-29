@@ -1,0 +1,56 @@
+{% load theme_tags %}
+{% load static %}
+
+<form id="side_basket_formset">
+    <div class="sidecart" id="basket-modal" tabindex="-1" role="dialog">
+        <div class="sidecart-dialog" role="document">
+            <div class="sidecart-content" id="basket-content"></div>
+        </div>
+    </div>
+</form>
+
+<script src="{% static 'shop/js/jscookie.js' %}"></script>
+<script src="{% static 'shop/js/cart.js' %}"></script>
+
+<script>
+    const SIDECART_MSGS  = {
+        'your_order': "{% t 'side_cart.default.your_order' %}",
+        'your_cart_is_empty': "{% t 'side_cart.default.your_cart_is_empty' %}",
+        'oops_You_have_nothing_here': "{% t 'side_cart.default.oops_You_have_nothing_here' %}",
+        'quantity': "{% t 'side_cart.default.quantity' %}",
+        'qty': "{% t 'side_cart.default.qty' %}",
+        'schedule': "{% t 'side_cart.default.schedule' %}",
+        'price': "{% t 'side_cart.default.price' %}",
+        'savings': "{% t 'side_cart.default.savings' %}",
+        'regular': "{% t 'side_cart.default.regular' %}",
+        'your_price': "{% t 'side_cart.default.your_price' %}",
+        'cart_subtotal': "{% t 'side_cart.default.cart_subtotal' %}",
+        'discount': "{% t 'side_cart.default.discount' %}",
+        'shipping': "{% t 'side_cart.default.shipping' %}",
+        'cart': "{% t 'side_cart.default.cart' %}",
+        'total': "{% t 'side_cart.default.total' %}",
+        'product': "{% t 'side_cart.default.product' %}",
+        'subscription_details': "{% t 'side_cart.default.subscription_details' %}",
+        'applied_coupons': "{% t 'side_cart.default.applied_coupons' %}",
+        'subscription_items_one': "{% t 'side_cart.default.subscription_items_one' with count=1 %}",
+        'subscription_items_other': "{% t 'side_cart.default.subscription_items_other' with count=2 %}",
+        'calculated_at_checkout': "{% t 'side_cart.default.calculated_at_checkout' %}",
+        'subscription_total': "{% t 'side_cart.default.subscription_total' %}",
+        'subscription_renewal_message': "{% t 'side_cart.default.subscription_renewal_message' %}",
+        'proceed_to_checkout': "{% t 'side_cart.default.proceed_to_checkout' %}",
+        'have_a_coupon': "{% t 'side_cart.default.have_a_coupon' %}",
+        'coupon_code': "{% t 'side_cart.default.coupon_code' %}",
+        'apply_coupon': "{% t 'side_cart.default.apply_coupon' %}"
+    }
+</script>
+<script src="{% static 'shop/js/side_cart.js' %}"></script>  
+
+<script>
+    var sidecart_options = {
+        modal_open: {% if modal_open %} true {% else %} false {% endif %},
+        graphql_url: "{% url 'storefrontapi:graphql' %}",
+        max_basket_quantity_per_line: {{config.max_basket_quantity_per_line}},
+        SIDECART_MSGS: SIDECART_MSGS
+    }
+    sidecart.init(sidecart_options);
+</script>

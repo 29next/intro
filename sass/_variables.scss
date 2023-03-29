@@ -13,8 +13,8 @@ $navh:3.25rem;
 $navhm:$navh;
 
 // colors
-$color-primary:var(--primary_color);
-$color-secondary:var(--accent_color);
+$color-primary:var(--primary-color);
+$color-secondary:var(--accent-color);
 $color-muted:#f2f2f2;
 $color-success:#48c78e;
 $color-danger:#e02447;
@@ -26,15 +26,9 @@ $nav-item-active-color: $link-color;
 
 
 // font-size
-$h1:3.125rem; // ~50px
-$h2:2.5rem; // ~40px
-$h3:2.25rem; // ~36px
-$h4:1.75rem; // ~28px
-$h5:1.5rem; // ~24px
-$h6:1.25rem; // ~20px
-$text-lg:1.125rem; // ~18px
-$text-default:1rem; // ~16px
-$text-sm:0.875rem; // ~14px;
+$text-lg:1.125rem;
+$text-default:1rem;
+$text-sm:0.875rem; 
 
 
 $body-font: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;

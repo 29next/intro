@@ -36,30 +36,27 @@
     {% if category.description %}
         <section class="catalogue_page">
             <div class="store_container">
-                    <div class="store_section--row category_header">
-                        
-                        
-                                
+                <div class="store_section--row category_header">  
+                    <div class="store_section--item">
+                        <div class="store_section--item_inner">
+                            <div class="store_section--item_content">
+                                <h1 class="h5"><p>{{ category.description|safe }}</p></h1>
+                            </div>
+                        </div>
+                    </div>
+                    {% if category.image %}
                         <div class="store_section--item">
                             <div class="store_section--item_inner">
                                 <div class="store_section--item_content">
-                                    <h1 class="h5"><p>{{ category.description|safe }}</p></h1>
-                                </div>
+                            {% with image=category.image.url %}
+                                {% image_thumbnail image "75x" upscale=False as thumb %}
+                                <img  src="{{ thumb.url }}" alt="{{ category.name }}" >
+                            {% endwith %}
+                            </div>
                             </div>
                         </div>
-                        {% if category.image %}
-                            <div class="store_section--item">
-                                <div class="store_section--item_inner">
-                                    <div class="store_section--item_content">
-                                {% with image=category.image.url %}
-                                    {% image_thumbnail image "75x" upscale=False as thumb %}
-                                    <img  src="{{ thumb.url }}" alt="{{ category.name }}" >
-                                {% endwith %}
-                                </div>
-                                </div>
-                            </div>
-                        {% endif %}
-                    </div>
+                    {% endif %}
+                </div>
             </div>
         </section>
     {% endif %}

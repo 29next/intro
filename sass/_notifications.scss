@@ -71,3 +71,76 @@
   position: absolute;
   top: 0.5rem;
 }
+.alert {
+  margin-bottom: 1.5rem;
+}
+.alert {
+  background-color: whitesmoke;
+  border-radius: 4px;
+  position: relative;
+  padding: 1.25rem 2.5rem 1.25rem 1.5rem;
+  &.alert-primary {
+      background-color: $color-primary;
+      color: #fff;
+  }
+  &.alert-secondary {
+      background-color: $color-secondary;
+      color: #fff;
+  }
+  &.alert-success {
+      background-color: $color-success;
+      color: #fff;
+  }
+  &.alert-danger {
+      background-color: $color-danger;
+      color: #fff;
+  }
+  &.alert-warning {
+      background-color: $color-warning;
+      color: #4c4c4c;
+  }
+}
+
+.alert a:not(.button):not(.dropdown-item) {
+  color: currentColor;
+  text-decoration: underline;
+}
+
+.alert strong {
+  color: currentColor;
+}
+
+
+.alert > .delete {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background-color: rgba(10, 10, 10, 0.2);
+  border: none;
+  border-radius: 290486px;
+  cursor: pointer;
+  pointer-events: auto;
+  display: inline-block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: 0;
+  height: 20px;
+  max-height: 20px;
+  max-width: 20px;
+  min-height: 20px;
+  min-width: 20px;
+  outline: none;
+  position: relative;
+  vertical-align: top;
+  width: 20px;
+}
+
+.alert > .delete {
+  right: 0.5rem;
+  position: absolute;
+  top: 0.5rem;
+} 

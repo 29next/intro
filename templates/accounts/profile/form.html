@@ -1,5 +1,5 @@
 {% extends "layouts/customer_base.html" %}
-
+{% block header %}<h4>{% t "customer.profile.heading" %}</h4>{% endblock %}
 {% block tabcontent %}
     <form id="profile_form" method="post">
         {% csrf_token %}
@@ -14,10 +14,6 @@
         <div class='field-group is-half'>
             
                 {% include 'partials/form_field.html' with field=form.language size='full' %}
-          
-                {% comment %}
-                    {% include 'partials/form_field.html' with field=form.phone_number %}
-                {% endcomment %}
             
         </div>
         <div class="field button-group">

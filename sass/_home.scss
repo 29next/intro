@@ -1,7 +1,7 @@
 .topbar {
-  background-color: #F4F9FC;
-  padding: 1.125rem;
-  text-align: center;
+    background-color: #F4F9FC;
+    padding: 1.125rem;
+    text-align: center;
 }
 
 
@@ -15,7 +15,7 @@
 }
 
 .store_hero-content {
-    padding:3rem 1.5rem;
+    padding: 3rem 1.5rem;
 
     @include md-up {
         padding: 12rem 3rem;
@@ -50,6 +50,7 @@
     @include md-up {
         display: flex;
     }
+
     @include xl-up {
         margin-left: -.75rem;
         margin-right: -.75rem;
@@ -63,12 +64,15 @@
     padding: 0.75rem;
 
 }
+
 .store_collection-item-inner {
     background: #F4F9FC;
     height: 100%;
 }
+
 .store_collection-item-content {
     padding: 0.75rem;
+
     @include md-up {
         padding: 1.5rem 3rem;
     }
@@ -83,6 +87,89 @@
 .store_collection-item-subtitle {
     font-size: 1.125rem;
     margin-bottom: 1.125rem;
+}
+
+// ----------------------- PRODUCTS SECTION -----------------------//
+
+
+.store_products-list {
+    padding: 3rem 0;
+}
+
+.store_products-row {
+    display: flex;
+    flex-wrap: wrap;
+
+    @include xl-up {
+        margin-left: -.75rem;
+        margin-right: -.75rem;
+    }
+}
+
+.store_products-item {
+    @include column;
+    margin-bottom: 1.5rem;
+
+    @include sm-up {
+        margin-bottom: 0;
+        flex: none;
+        width: 50%;
+    }
+
+    @include lg-up {
+        width: 25%;
+    }
+}
+
+.store_products-item-inner {
+    padding: .75rem;
+    background: #fff;
+    height: 100%;
+}
+
+
+.store_products-img {
+    position: relative;
+    margin-bottom: 1.125rem;
+
+}
+
+.store_products-item-tag {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+
+.store_products-title {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.store_products-desc {
+    font-size: $text-lg;
+    margin-bottom: 0.875rem;
+}
+
+.store_products-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.store_products-rating-stars {
+    letter-spacing: -0.1rem;
+
+    .is-count {
+        color: $link-color;
+    }
+}
+
+.store_products-rating-text {
+    margin-left: 1rem;
+}
+
+.store_products-price {
+    margin-bottom: 1.5rem;
 }
 
 
@@ -104,9 +191,11 @@
     }
 
 }
+
 .store_feature-content-lg {
     padding: 9rem 1.5rem
 }
+
 .store_feature-text {
     @include column;
     margin-bottom: 1.5rem;
@@ -114,9 +203,7 @@
     @include md-up {
         padding: .75rem 1.5rem;
     }
-    
 
-    
 }
 
 .store_feature-title {
@@ -140,86 +227,12 @@
     }
 }
 
-// ----------------------- PRODUCTS SECTION -----------------------//
-
-
-.store_products-list {
-    padding:3rem   0;
-}
-
-.store_products-row {
-    @include md-up {
-        display: flex;
-    }
-    @include xl-up {
-         margin-left: -.75rem;
-        margin-right: -.75rem;
-    }
-}
-
-.store_products-item {
-    @include column;
-    margin-bottom: 1.5rem;
-    @include md-up {
-        margin-bottom: 0;
-
-    }
-}
-.store_products-item-inner {
-    padding:.75rem;
-    background: #fff;
-    height: 100%;
-}
-
-
-.store_products-img {
-    position: relative;
-    margin-bottom: 1.125rem;
-
-}
-
-.store_products-item-tag {
-    position: absolute;
-    top: 5%;
-    left: 5%;
-}
-
-.store_products-title {
-    font-size: $h5;
-    font-weight: bold;
-    margin-bottom: 1rem;
-}
-
-.store_products-desc {
-    font-size: $text-lg;
-    margin-bottom: 0.875rem;
-}
-
-.store_products-rating {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1.5rem;
-}
-
-.store_products-rating-stars {
-    letter-spacing: -0.1rem;
-    .is-count {
-        color: $link-color;
-    }
-}
-
-.store_products-rating-text {
-    margin-left: 1rem;
-}
-
-.store_products-price {
-    margin-bottom: 1.5rem;
-}
 
 
 // ----------------------- TESTIMONIALS SECTION -----------------------//
 .store_testimonials {
     padding: 3rem 0;
+
     @include md-up {
         padding: 6rem 0;
     }
@@ -247,15 +260,17 @@
 
 .store_testimonials-item {
     padding: 0.75rem;
-        height: auto !important;
+    height: auto !important;
 
 }
+
 .store_testimonials-item-inner {
     padding: 1.5rem 3rem;
     background: #f5f5f5;
 
     height: 100%;
 }
+
 .store_testimonials-content {
     display: flex;
     flex-direction: column;
@@ -268,7 +283,6 @@
     margin-bottom: 1.5rem;
 }
 
-.store_products-rating-stars {}
 
 .store_testimonials-text {
     margin-bottom: 1.5rem;
@@ -280,23 +294,28 @@
 
 
 // ----------------------- GRID SECTION -----------------------//
-.store_grid {}
+
 .store_grid-list {
     padding: 3rem 0;
+
     @include md-up {
         padding: 6rem 0
     }
 }
+
 .store_grid-row {
     margin-top: -.75rem;
+
     @include sm-down {
         &:not(:last-child) {
             margin-bottom: calc(1.5rem - .75rem);
         }
     }
+
     @include sm-up {
         display: flex;
     }
+
     @include xl-up {
         margin-left: -.75rem;
         margin-right: -.75rem;
@@ -305,14 +324,17 @@
 
 .store_grid-item {
     @include column;
+
     @include md-up {
         margin-bottom: 0;
     }
 }
+
 .store_grid-item-inner {
     background: #fff;
     height: 100%;
 }
+
 .store_grid-item-content {
     padding: 0.75rem;
 
@@ -320,12 +342,15 @@
         padding: 1.5rem 3rem;
     }
 }
+
 .store_grid-item-img {
     margin-bottom: 1.5rem;
+
     img {
         max-height: 55px;
     }
 }
+
 .store_grid-item-title {
     font-weight: bold;
     margin-bottom: 0.875rem;

@@ -155,19 +155,19 @@
                 "one": "Abo ({{ count }} Artikel)",
                 "other": "Abo ({{ count }} Artikel)"
             },
-            "message_offer_gained": "Your basket now qualifies for the {{ name }} offer.",
-            "message_offer_lost": "Your basket no longer qualifies for the {{ name }} offer.",
+            "message_offer_gained": "Ihr Warenkorb qualifiziert sich jetzt für das Angebot {{ name }} .",
+            "message_offer_lost": "Ihr Warenkorb ist nicht mehr für das Angebot {{ name }} qualifiziert.",
             "message_addition": "{{ title }}  wurde Ihrem Warenkorb hinzugefügt.",
             "message_addition_multiple": "{{ quantity }}  Exemplare von  {{ title }} wurden Ihrem Warenkorb hinzugefügt.",
             "message_line_restored": "{{ title }} wurde zurück in Ihren Warenkorb verschoben.",
             "message_line_saved": "{{ title }} wurde für später gespeichert",
-            "calculated_at_checkout": "Calculated at checkout",
-            "subscription_details": "Subscription Details",
-            "product": "Product",
-            "quantity": "Qty",
-            "price": "Price",
-            "subscription_total": "Subscription Total",
-            "subscription_renewal_message": "Your subscription will renew every"
+            "calculated_at_checkout": "Wird beim Checkout berechnet",
+            "subscription_details": "Einzelheiten zum Abonnement",
+            "product": "Produkt",
+            "quantity": "Menge",
+            "price": "Preis",
+            "subscription_total": "Abonnement insgesamt",
+            "subscription_renewal_message": "Ihr Abonnement verlängert sich jedes Mal"
         },
         "checkout": {
             "terms_agree": "Durch die Erstellung Ihrer Bestellung stimmen Sie unseren <a href='#' data-toggle='modal' data-target='#terms_page_button'>Nutzungsbedingungen</a> und <a href='#' data-toggle='modal' data-target='#privacy_page_button'>Datenschutzrichtlinie</a>zu.",
@@ -253,6 +253,7 @@
         },
         "catalogue": {
             "free": "Kostenlos",
+            "sale": "Verkauf",
             "none_found": "Keine Produkte gefunden.",
             "edit_this_category": "Diese Kategorie bearbeiten",
             "edit_this_product": "Dieses Produkt bearbeiten",
@@ -267,6 +268,7 @@
             "add_to_cart": "In den Warenkorb legen",
             "add_to_cart_loading": "Hinzufügen...",
             "product_unavailable": "Nicht verfügbar",
+            "out_of_stock": "Ausverkauft",
             "about": "Über",
             "reviews": "Bewertungen",
             "no_reviews": "Dieses Produkt hat noch keine Bewertungen",
@@ -274,7 +276,8 @@
             "customer_reviews": "Bewertungen von Kunden",
             "see_all_reviews": "Alle Bewertungen ansehen",
             "write_a_review": "Schreibe eine Rezension",
-            "product_in_wishlist": "Das Produkt ist in {{ name }} Wunschliste."
+            "product_in_wishlist": "Das Produkt ist in {{ name }} Wunschliste.",
+            "recommended_products_header": "Kunden, die diesen Artikel angesehen haben, kauften auch"
         },
         "registration": {
             "enter_new_password": "Geben Sie ein neues Passwort ein",
@@ -392,7 +395,7 @@
             "modal_change_ship_date_heading": "Nächstes Lieferdatum ändern",
             "modal_change_ship_date_body": "Ändern Sie den Versandplan dafür, wie oft neue Bestellungen erhalten werden sollen.",
             "modal_next_ship_date": "Die nächste Lieferung ist {{ next_renewal }}.",
-            "modal_use_calendar_body": "Verwenden Sie den folgenden Kalander, um das nächste Lieferdatum zu aktualisieren.",
+            "modal_use_calendar_body": "Verwenden Sie den unten stehenden Kalender, um das nächste Versanddatum zu aktualisieren.",
             "modal_change_ship_date_button": "Nächstes Lieferdatum ändern",
             "modal_cancel_heading": "Kündigung des Ab",
             "modal_cancel_body": "Können wir irgendetwas tun, damit du bei uns bleibst?",
@@ -437,7 +440,11 @@
             "ending_in": "endet in",
             "use_new_credit_card": "Eine neue Kreditkarte benutzen?",
             "billing_address": "Rechnungsadresse",
-            "same_as_shipping_address": "Gleich wie Lieferadresse"
+            "same_as_shipping_address": "Gleich wie Lieferadresse",
+            "reactivate": "Reaktivieren",
+            "modal_reactivate_heading": "Abonnement reaktivieren",
+            "modal_reactivate_body": "Legen Sie ein neues Versanddatum für Ihr Abonnement fest.",
+            "modal_reactivate_button": "Versanddatum festlegen"
         },
         "support": {
             "heading": "Unterstützung",
@@ -468,6 +475,37 @@
             "welcome_to": "Willkommen bei {{ shop_name }}",
             "already_have_account": "Hast du schon ein Konto?",
             "login": "Einloggen"
+        }
+    },
+    "side_cart": {
+        "default": {
+            "your_order": "Deine Bestellung",
+            "your_cart_is_empty": "Ihr Einkaufswagen ist leer!",
+            "oops_You_have_nothing_here": "Ups! Du hast hier nichts.",
+            "quantity": "Menge",
+            "qty": "Menge",
+            "schedule": "Spielplan",
+            "price": "Preis",
+            "savings": "Ersparnisse",
+            "regular": "Regulär",
+            "your_price": "Dein Preis",
+            "cart_subtotal": "Zwischensumme des Warenkorbs",
+            "discount": "Rabatt",
+            "shipping": "Versand",
+            "cart": "Einkaufswagen",
+            "total": "Insgesamt",
+            "product": "Produkt",
+            "subscription_details": "Einzelheiten zum Abonnement",
+            "applied_coupons": "Angewandte Gutscheine",
+            "subscription_items_one": "Abonnement ({{count}} Artikel)",
+            "subscription_items_other": "Abonnement ({{count}} Artikel)",
+            "calculated_at_checkout": "Wird an der Kasse berechnet",
+            "subscription_total": "Abonnement insgesamt",
+            "subscription_renewal_message": "Ihr Abonnement wird jedes Mal erneuert",
+            "proceed_to_checkout": "Gehen Sie zur Kasse",
+            "have_a_coupon": "Haben Sie einen Coupon?",
+            "coupon_code": "Coupon-Code",
+            "apply_coupon": "Gutschein anwenden"
         }
     }
 }

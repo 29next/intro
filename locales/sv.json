@@ -161,13 +161,13 @@
             "message_addition_multiple": "{{ quantity }}  exemplar av  {{ title }} har lagts till i kundkorgen.",
             "message_line_restored": "{{ title }} har flyttats tillbaka till din varukorg.",
             "message_line_saved": "{{ title }} har sparats till senare",
-            "calculated_at_checkout": "Calculated at checkout",
-            "subscription_details": "Subscription Details",
-            "product": "Product",
-            "quantity": "Qty",
-            "price": "Price",
-            "subscription_total": "Subscription Total",
-            "subscription_renewal_message": "Your subscription will renew every"
+            "calculated_at_checkout": "Beräknad i kassan",
+            "subscription_details": "Information om prenumeration",
+            "product": "Produkt",
+            "quantity": "Antal",
+            "price": "Pris",
+            "subscription_total": "Prenumeration Totalt",
+            "subscription_renewal_message": "Din prenumeration förnyas varje"
         },
         "checkout": {
             "terms_agree": "Genom att skapa din beställning godkänner du våra <a href='#' data-toggle='modal' data-target='#terms_page_button'>användarvillkor</a> och <a href='#' data-toggle='modal' data-target='#privacy_page_button'>Sekretesspolicy</a>.",
@@ -253,6 +253,7 @@
         },
         "catalogue": {
             "free": "Gratis",
+            "sale": "Försäljning",
             "none_found": "Inga produkter hittades.",
             "edit_this_category": "Redigera denna kategori",
             "edit_this_product": "Redigera den här produkten",
@@ -267,6 +268,7 @@
             "add_to_cart": "Lägg till i varukorgen",
             "add_to_cart_loading": "Lägger till...",
             "product_unavailable": "Ej tillgänglig",
+            "out_of_stock": "Slut i lager",
             "about": "Om",
             "reviews": "Recensioner",
             "no_reviews": "Den här produkten har inga recensioner ännu",
@@ -274,7 +276,8 @@
             "customer_reviews": "Kundrecensioner",
             "see_all_reviews": "Se alla recensioner",
             "write_a_review": "Skriv en recension",
-            "product_in_wishlist": "Produkten är i {{ name }} önskelista."
+            "product_in_wishlist": "Produkten är i {{ name }} önskelista.",
+            "recommended_products_header": "Kunder som tittade på denna artikel köpte också"
         },
         "registration": {
             "enter_new_password": "Ange ett nytt lösenord",
@@ -384,7 +387,7 @@
         },
         "subscriptions": {
             "heading": "Prenumerationer",
-            "heading_detail": "Subscription {{ page_title }}",
+            "heading_detail": "Prenumeration {{ page_title }}",
             "no_subscriptions": "Inga prenumerationer har skapats ännu.",
             "status_is": "Din prenumeration är",
             "next_shipment": "Din nästa försändelse kommer att vara på <strong>{{ ship_date }}</strong>",
@@ -392,7 +395,7 @@
             "modal_change_ship_date_heading": "Ändra nästa leveransdatum",
             "modal_change_ship_date_body": "Ändra leveransschemat för hur ofta nya beställningar ska tas emot.",
             "modal_next_ship_date": "Nästa försändelse är {{ next_renewal }}.",
-            "modal_use_calendar_body": "Använd nedanstående kalander för att uppdatera nästa leveransdatum.",
+            "modal_use_calendar_body": "Använd kalendern nedan för att uppdatera nästa leveransdatum.",
             "modal_change_ship_date_button": "Ändra nästa leveransdatum",
             "modal_cancel_heading": "Avbeställning av prenumeration",
             "modal_cancel_body": "Finns det något vi kan göra för att du ska bo hos oss?",
@@ -437,7 +440,11 @@
             "ending_in": "slutar i",
             "use_new_credit_card": "Använda ett nytt kreditkort?",
             "billing_address": "Fakturering",
-            "same_as_shipping_address": "Samma som leveransadress"
+            "same_as_shipping_address": "Samma som leveransadress",
+            "reactivate": "Återaktivera",
+            "modal_reactivate_heading": "Återaktivera prenumeration",
+            "modal_reactivate_body": "Ange ett nytt leveransdatum för din prenumeration.",
+            "modal_reactivate_button": "Ställ in leveransdatum"
         },
         "support": {
             "heading": "Support",
@@ -468,6 +475,37 @@
             "welcome_to": "Välkommen till {{ shop_name }}",
             "already_have_account": "Har du redan ett konto?",
             "login": "Logga in"
+        }
+    },
+    "side_cart": {
+        "default": {
+            "your_order": "Din beställning",
+            "your_cart_is_empty": "Din kundvagn är tom!",
+            "oops_You_have_nothing_here": "Hoppsan! Du har ingenting här.",
+            "quantity": "Kvantitet",
+            "qty": "Antal",
+            "schedule": "Schema",
+            "price": "Pris",
+            "savings": "Besparingar",
+            "regular": "Regelbunden",
+            "your_price": "Ditt pris",
+            "cart_subtotal": "Varukorgen Delsumma",
+            "discount": "Rabatt",
+            "shipping": "Frakt",
+            "cart": "Varukorg",
+            "total": "Totalt",
+            "product": "Produkt",
+            "subscription_details": "Information om prenumeration",
+            "applied_coupons": "Tillämpade kuponger",
+            "subscription_items_one": "Prenumeration ({{count}} item)",
+            "subscription_items_other": "Prenumeration ({{count}} artiklar)",
+            "calculated_at_checkout": "Beräknad i kassan",
+            "subscription_total": "Prenumeration Totalt",
+            "subscription_renewal_message": "Din prenumeration förnyas varje",
+            "proceed_to_checkout": "Fortsätt till kassan",
+            "have_a_coupon": "Har du en kupong?",
+            "coupon_code": "Kupong Kod",
+            "apply_coupon": "Tillämpa kupong"
         }
     }
 }

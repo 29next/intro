@@ -79,9 +79,9 @@
                                 {% endwith %}
                                 <div class="blog_list-content">
                                     <div class="blog_list-article-cat">
-                                        {% for category in post.categories.all %}<a href="{{ category.get_absolute_url }}"><span class="tag">{{ category.name }}</span></a>{% if not forloop.last %},{% endif %}{% endfor %}
+                                        {% for category in post.categories.all %}<a href="{{ category.get_absolute_url }}"><span class="tag tag-secondary">{{ category.name }}</span></a>{% if not forloop.last %},{% endif %}{% endfor %}
                                     </div>
-                                    <div class="blog_list-article-title">{{ post.title }}</div>
+                                    <div class="blog_list-article-title h2">{{ post.title }}</div>
                                     <div class="blog_list-article-excerpt">{{ post.excerpt_with_readmore|safe }}</div>
                                     <div class="blog_list-article-author">By &nbsp;{{ post.author.first_name}}&nbsp;{{post.author.last_name }}</div>
                                     <div class="blog_list-article-date">{{ post.created_at }}</div>

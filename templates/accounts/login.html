@@ -38,7 +38,7 @@
 	        		{% include "partials/form_fields.html" with form=login_form size='md' %}
 	        		<div class="field button-group">
 		                <div class="control is-expanded">
-		                    <button name="login_submit" type="submit" value="Log In" class="button button-lg is-fullwidth" data-loading-text='{% t "global.button.login_loading" %}'>{% t "global.button.login" %}</button>
+		                    <button name="login_submit" type="submit" value="Log In" class="button button-primary button-lg is-fullwidth" data-loading-text='{% t "global.button.login_loading" %}'>{% t "global.button.login" %}</button>
 		                </div>
 		            </div>
                         <div class="register_resetpassword-link">
@@ -63,10 +63,6 @@
 	                    {% providers_media_js %}
 	                    <a class="button" href="{% provider_login_url "facebook" method="oauth2" %}">{% t "customer.login.facebook" %}</a>
 	            {% endif %}
-
-	            <div class="register_terms">
-			               <!--  By continuing you accept our <a href="/terms/">Terms & Conditions</a> and <a href="/privacy/">Privacy Policy</a>. -->
-			            </div>
 
 	        </div>
 	    </div>

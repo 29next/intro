@@ -7,7 +7,7 @@
     <div class="account_support">
         <div class="account_support-add">
             <div class="text-bold">{% t "customer.support.support_tickets" %}</div>
-            <a href="{% url 'customer:support-ticket-create' %}" class="button">{% t "customer.support.create_new" %}</a>
+            <a href="{% url 'customer:support-ticket-create' %}" class="button button-primary">{% t "customer.support.create_new" %}</a>
         </div>
         <table class="account_table">
             <thead>
@@ -29,12 +29,17 @@
                             <td data-label='{% t "tables.heading.last_updated" %}'>{{ support.updated_at }}</td>
                             <td data-label='{% t "tables.heading.priority" %}'>{{ support.priority|title }}</td>
                             <td data-label='{% t "tables.heading.status" %}'>
+                                
                                 {% if support.status == support.TICKET_STATUS_SOLVED %}
                                     <span class="tag tag-success">{{ support.status|title }}</span>
+                                {% elif support.status == support.TICKET_STATUS_CLOSED %}
+                                    <span class="tag tag-secondary">{{ support.status|title }}</span>
                                 {% elif support.status == support.TICKET_STATUS_PENDING %}
                                     <span class="tag tag-warning">{{ support.status|title }}</span>
+                                {% elif support.status == support.TICKET_STATUS_NEW %}
+                                    <span class="tag tag-primary">{{ support.status|title }}</span>
                                 {% else %}
-                                    <span class="tag tag tag-primary">{{ support.status|title }}</span>
+                                    <span class="tag tag-secondary">{{ support.status|title }}</span>
                                 {% endif %}
                             </td>
                             <td data-label='{% t "tables.heading.action" %}'><a href="{% url 'customer:support-ticket-detail' support.id %}" class="button button-sm">{% t "tables.actions.view" %}</a></td>

@@ -31,42 +31,34 @@
                     {% for result in page.object_list %}
                     <div class="catalogue_list-item">
                         <div class="catalogue_list-item-inner">
+                            
                             <div class="catalogue_item-img">
-
-                                    {% with image=result.object.primary_image %}
-                                        {% image_thumbnail image.original "350x350" crop="center" upscale=True as thumb %}
-                                        <a href="{{ result.object.get_absolute_url }}" >
-                                            <img original="{{ image.original }}" src="{{ thumb.url }}" alt="{{ result.object.get_title }}">
-                                        </a>
-                                    {% endwith %}
-
-
+                                {% with image=result.object.primary_image %}
+                                    {% image_thumbnail image.original "350x350" crop="center" upscale=True as thumb %}
+                                    <a href="{{ result.object.get_absolute_url }}" >
+                                        <img original="{{ image.original }}" src="{{ thumb.url }}" alt="{{ result.object.get_title }}">
+                                    </a>
+                                {% endwith %}
                             </div>
 
-                             <div class="catalogue_item-name">
-                                 <a href="{{ result.object.get_absolute_url }}" >{{ result.object.get_title }}</a>
-                             </div>
+                            <div class="catalogue_item-name">
+                                <a href="{{ result.object.get_absolute_url }}" >{{ result.object.get_title }}</a>
+                            </div>
 
-                             <div class="catalogue_item-desc">
-                                {{ result.object.excerpt|safe|truncatewords:10 }}
-                             </div>
-
-                             <div class="catalogue_item-price">
+                            <div class="catalogue_item-price">
                                 {% purchase_info_for_product request result.object as session %}
-                                    {% if session.price.exists %}
-                                <div class="catalogue_item-price-current">
-
-                                        {% if session.price.excl_tax == 0 %}
-                                            {% t "store.catalogue.free" %} 
-                                        {% elif session.price.is_tax_known %}
-                                            {{ session.price.incl_tax|currency:session.price.currency }}
-                                        {% else %}
-                                            {{ session.price.excl_tax|currency:session.price.currency }}
-                                        {% endif %}
-                                </div>
-                                    {% else %}
-                                         &nbsp;
+                                {% if session.price.exists %}
+                                    {% if session.price.price_retail > session.price.price %}
+                                        <div class="catalogue_item-price-previous">
+                                            <s>{{ session.price.price_retail|currency:session.price.currency }}</s>
+                                        </div>
                                     {% endif %}
+                                    <div class="catalogue_item-price-current">
+                                        {{ session.price.price|currency:session.price.currency }}
+                                    </div>
+                                {% else %}
+                                    &nbsp;
+                                {% endif %}
                             </div>
                         </div>
 
