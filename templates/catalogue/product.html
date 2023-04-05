@@ -80,7 +80,7 @@
 
                 {% block buy_options %}
                 {% purchase_info_for_product request product as session %}
-                {% if product.attr.interval and interval_count_choices and session.availability.is_available_to_buy %}
+                {% if product.get_interval and interval_count_choices and session.availability.is_available_to_buy %}
                 <div class="font-lg font-bold text-uppercase mb-2 mt-2">{% t "store.catalogue.buy_option" %}</div>
                 <div class="catalogue_product-option">
                     <div class="field">
@@ -99,8 +99,8 @@
                         <h6>{% t "store.catalogue.order_arrival_frequency" %}</h6>
                         <div class="button-group" id="product-subscribe-options-select">
                             {% for interval_count_choice_value, interval_count_choice_text in interval_count_choices %}
-                            <label class="radio" for="{{ interval_count_choice_value }}_{{ product.attr.interval.option }}">
-                                <input id="{{ interval_count_choice_value }}_{{ product.attr.interval.option }}" type="radio" autocomplete="off" name="options" value="{{ interval_count_choice_value }}" interval="{{ product.attr.interval.option }}"> {{ interval_count_choice_text }}
+                            <label class="radio" for="{{ interval_count_choice_value }}_{{ product.get_interval }}">
+                                <input id="{{ interval_count_choice_value }}_{{ product.get_interval }}" type="radio" autocomplete="off" name="options" value="{{ interval_count_choice_value }}" interval="{{ product.get_interval }}"> {{ interval_count_choice_text }}
                             </label>
                             {% endfor %}
                         </div>
