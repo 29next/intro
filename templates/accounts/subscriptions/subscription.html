@@ -93,7 +93,7 @@
     <button class="store_modal-close store_modal-dismiss" aria-label="close"></button>
 </div>
 <!-- Subscription Down Sell Modal -->
-{% if object.downsell_avaliable %}
+{% if object.downsell_available %}
 <form method="post">
     {% csrf_token %}
     <div class="store_modal" id="subscription-cancel-downsell" tabindex="-1" role="dialog">
@@ -139,7 +139,7 @@
                                     <div>
                                         <div class="account_table-pname">
                                         	{{ product.get_title }}
-                                        	({{ line.stockrecord.subscription_suggested_downsell_price|currency:object.currency }})
+                                        	({{ line.downsell_price|currency:object.currency }})
 				                        </div>
                                     </div>
                                 {% endwith %}
@@ -148,7 +148,7 @@
                             <td data-label='{% t "tables.heading.qty" %}'>{{ line.quantity }}</td>
 
                             <td data-label='{% t "tables.heading.total" %}'>
-	                                {{ line.downsell_line_price_incl_tax|currency:object.currency }}
+	                                {{ line.downsell_line_price|currency:object.currency }}
 
                             </td>
 
@@ -321,7 +321,7 @@
         {% if object.status != object.CANCELED %}
         <a href="#" class="button button-primary button-sm store_modal-button" data-target="sub-change-next-shipment-date">{% t "customer.subscriptions.edit_ship_date" %}</a>
         <a href="#" class="button button-primary button-sm store_modal-button" data-target="sub-change-schedule">{% t "customer.subscriptions.change_schedule" %}</a>
-        <a href="#" class="button button-sm store_modal-button" {% if object.downsell_avaliable %} data-target="subscription-cancel-downsell" {% else %} data-target="subscription-cancel" {% endif %}>{% t "global.button.cancel" %}</a>
+        <a href="#" class="button button-sm store_modal-button" {% if object.downsell_available %} data-target="subscription-cancel-downsell" {% else %} data-target="subscription-cancel" {% endif %}>{% t "global.button.cancel" %}</a>
         {% else %}
         <a href="#" class="button button-primary button-sm store_modal-button" data-target="sub-reactivate">{% t "customer.subscriptions.reactivate" %}</a>
         {% endif %}
