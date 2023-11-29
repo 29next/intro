@@ -1,7 +1,7 @@
 {% extends "layouts/base.html" %}
 
 {% block title %}
-    {{ page.title}} | {{ block.super }}
+    {{ page.get_meta_title }} | {{ block.super }}
 {% endblock %}
 
 

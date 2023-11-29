@@ -3,7 +3,7 @@
 
 
 {% block title %}
-    {{ category.name }} | {{ block.super }}
+    {{ category.get_meta_title }} | {{ block.super }}
 {% endblock %}
 
 {% block description %}

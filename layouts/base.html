@@ -2,7 +2,7 @@
 <html lang="{{ LANGUAGE_CODE|default:'en' }}" class="{% block html_class %}{% endblock %}">
 
 <head>
-    <title>{% block title %}{{ store.name }} - {{ store.tagline }}{% endblock %}</title>
+    <title>{% block title %}{{ store.get_meta_title }} - {{ store.tagline }}{% endblock %}</title>
     <link rel="alternate" hreflang="{{ LANGUAGE_CODE }}" href="https://{{ request.get_host }}{{ request.path }}" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <meta name="created" content="{% now " jS M Y h:i" %}" />

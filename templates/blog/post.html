@@ -1,7 +1,7 @@
 {% extends "layouts/base.html" %}
 
 {% block title %}
-    {% t "store.blog.title" %} | {{ block.super }}
+    {{ post.get_meta_title }} | {{ block.super }}
 {% endblock %}
 
 {% block breadcrumbs %}
