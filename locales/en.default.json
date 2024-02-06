@@ -1,31 +1,12 @@
 {
     "global": {
         "button": {
-            "edit": "Edit",
-            "delete": "Delete",
-            "delete_loading": "Deleting...",
-            "cancel": "Cancel",
             "more": "More",
             "search": "Search",
             "close": "Close",
             "save": "Save",
             "save_loading": "Saving...",
-            "nevermind": "Nevermind",
-            "confirm": "Confirm",
-            "submit_loading": "Submitting...",
-            "reorder_all": "Re-order all items",
-            "reorder_loading": "Re-ordering...",
-            "view_basket": "View basket",
-            "back": "Back",
-            "continue": "Continue",
-            "update": "Update",
-            "update_loading": "Updating...",
-            "login": "Login",
-            "login_loading": "Logging in...",
-            "register": "Register",
-            "register_loading": "Registering...",
-            "go_back":  "Go back",
-            "request_cancellation":  "Request cancellation"
+            "go_back": "Go back"
         },
         "error": {
             "please_check_error": "<strong>Oops! We found some errors</strong> - please check the error messages below and try again",
@@ -36,10 +17,6 @@
             "500": "500 Internal Server Error",
             "500_heading": "Sorry, it's not you, it's us.",
             "500_message": "We've been notified of the issue, please try again later."
-
-        },
-        "warning": {
-            "address_form_edit_warning": "Editing this address will update it for subscriptions and credit card payment methods."
         }
     },
     "navigation": {
@@ -49,18 +26,14 @@
             "blog": "Blog",
             "support": "Support",
             "contact": "Contact",
-            "cart": "Cart",
-            "about": "About"
-
+            "cart": "Cart"
         },
         "account": {
-            "account_navigation": "Account Navigation",
             "account": "Account",
             "subscriptions": "Subscriptions",
             "orders": "Order History",
             "profile": "Profile",
             "addresses": "Addresses",
-            "emails": "Email History",
             "support": "Support",
             "dashboard": "Dashboard",
             "logout": "Logout",
@@ -76,65 +49,35 @@
             "privacy": "Privacy Policy",
             "address": "Address",
             "copyright": "All Rights Reserved"
-
         },
         "pagination": {
             "next": "Next"
         }
     },
-    "tables":{
+    "tables": {
         "heading": {
             "product_name": "Product Name",
             "product": "Product",
-            "items_purchased": "Items purchased",
             "quantity": "Quantity",
-            "qty": "Qty",
             "schedule": "Schedule",
             "price": "Price",
-            "price_inc_tax": "Price incl. tax",
-            "price_ex_tax": "Price excl. tax",
             "discount": "Discount",
-            "cart": "Cart",
             "total": "Total",
-            "items_to_buy_now": "Items to buy now",
-            "order_number": "Order number",
-            "total_inc_tax": "Total inc tax",
-            "date_submitted": "Date submitted",
-            "status": "Status",
-            "action": "Action",
-            "id": "ID",
-            "next_renewal": "Next renewal",
-            "new_total": "New total",
-            "subject": "Subject",
-            "last_updated": "Last Updated",
-            "priority": "Priority"
-
+            "items_to_buy_now": "Items to buy now"
         },
         "content": {
             "price": "Price",
-            "shipping": "Shipping",
-            "discount": "Discount",
-            "frequency": "Schedule: {{ frequency }}",
-            "sub_frequency": "Schedule: {{ frequency }}",
-            "not_available": "Not available anymore",
-            "est_dispatch_date": "Estimated dispatch: <strong>{{ date }}</strong>"
-
+            "discount": "Discount"
         },
         "actions": {
             "remove": "Remove",
-            "remove_loading": "Removing...",
             "add_coupon": "Add coupon",
             "add_coupon_loading": "Adding...",
             "reload": "Reload",
-            "reload_loading": "Updating...",
-            "write_review": "Write a review",
-            "reorder": "Re-order",
-            "reorder_loading": "Re-ordering...",
-            "view": "View",
-            "manage": "Manage"
+            "reload_loading": "Updating..."
         }
     },
-    "order":{
+    "order": {
         "cart": {
             "title": "Basket",
             "summary": "Summary",
@@ -145,13 +88,9 @@
             "shipping": "Shipping",
             "order_total": "Order Total",
             "proceed_to_checkout": "Proceed to checkout",
-            "basket_warnings_header": "Important messages about items in your basket",
-            "upsell_messages_header": "You could be missing out on offers!",
             "upsell_message_detail": "{{ message }} to qualify for the <b>{{ offer_name }}</b> special offer",
             "continue_shopping": "Continue shopping",
             "basket_empty": "Your basket is empty.",
-            "basket_total_new_inc_tax": "Your basket total is now <b>{{ total }}</b>",
-            "basket_total_new_ex_tax": "Your basket total is now <b>{{ total }}</b>",
             "items_count": {
                 "one": "{{ count }} Item",
                 "other": "{{ count }} Items"
@@ -160,12 +99,6 @@
                 "one": "Subscription ({{ count }} item)",
                 "other": "Subscription ({{ count }} items)"
             },
-            "message_offer_gained": "Your basket now qualifies for the {{ name }} offer.",
-            "message_offer_lost": "Your basket no longer qualifies for the {{ name }} offer.",
-            "message_addition": "{{ title }}  has been added to your basket.",
-            "message_addition_multiple": "{{ quantity }}  copies of  {{ title }} have been added to your basket.",
-            "message_line_restored": "{{ title }} has been moved back to your basket.",
-            "message_line_saved": "{{ title }} has been saved for later",
             "calculated_at_checkout": "Calculated at checkout",
             "subscription_details": "Subscription Details",
             "product": "Product",
@@ -173,83 +106,9 @@
             "price": "Price",
             "subscription_total": "Subscription Total",
             "subscription_renewal_message": "Your subscription will renew every"
-        },
-        "checkout": {
-            "terms_agree": "By creating your order, you agree to our <a href='#' data-toggle='modal' data-target='#terms_page_button'>Terms of Service</a> and <a href='#' data-toggle='modal' data-target='#privacy_page_button'>Privacy Policy</a>.",
-            "subscription_terms_agree": "You also agree to our <a href='#'data-toggle='modal' data-target='#subscription_terms_page_button'>Subscription Terms & Conditions</a> and authorize us to charge your payment method. You can modify or cancel your subscription at any time through your account."
-        },
-        "confirmation": {
-            "order_confirmation_title": "Order {{ number }}: confirmation",
-            "thanks": "Thank you for your order!",
-            "thanks_message": "Your order has been placed and a confirmation email has been sent - your order number is <strong>{{ number }}</strong>. Please make a note of this reference or print this page and quote it in any communication with us regarding your order.",
-            "shipping": "Shipping",
-            "shipping_address": "Shipping Address",
-            "shipping_not_required": "No shipping address required.",
-            "shipping_contact": "Shipping Contact",
-            "phone": "Phone",
-            "email": "Email",
-            "shipping_notes": "Shipping Notes",
-            "instructions": "Instructions",
-            "shipping_method": "Shipping Method",
-            "payment": "Payment",
-            "billing_address": "Billing Address",
-            "payment_not_required": "No payment was required for this order.",
-            "order_contents": "Order contents",
-            "totals": "Totals",
-            "total": "Total",
-            "order_total": "Order total",
-            "subtotal": "Subtotal",
-            "subtotal_before_discount": "Subtotal (before discounts)",
-            "discount": "Discount",
-            "discounts": "Discounts",
-            "subtotal_after_discount": "Subtotal (after discounts)",
-            "shipping_charge_before_discount": "Shipping charge (before discounts)",
-            "shipping_charge_after_discount": "Shipping charge (after discounts)",
-            "shipping_charge": "Shipping charge",
-            "post_order_actions": "Post order actions",
-            "tracking_your_order": "Tracking your order",
-            "tracking_your_order_message": "You can track the status of your order",
-            "view_order_status": "View order status",
-            "print_this_page": "Print this page",
-            "continue_shopping": "Continue shopping",
-            "order_number": "Order #{{ number }}",
-            "order_status": "Ordered on {{ date_created }} and is",
-            "pending": "Pending",
-            "confirmed": "Confirmed",
-            "processing": "Processing",
-            "shipped": "Shipped",
-            "delivered": "Delivered",
-            "canceled": "Canceled",
-            "shipping_info": "Shipping information",
-            "contact": "Contact",
-            "payment_method": "Payment method",
-            "tracking": "Tracking",
-            "track_my_order": "Track my order",
-            "summary": "Summary",
-            "shipping_discount": "Shipping Discount"
-        },
-        "offline": {
-            "thanks": "Thank you! We have received your order.",
-            "thanks_message": "Please use the instructions below for your bank transfer payment.",
-            "order": "Order",
-            "order_date": "Order Date",
-            "order_total": "Order Total",
-            "payment_method": "Payment Method",
-            "bank_transfer": "Bank Transfer",
-            "bank_transfer_instructions": "Bank Transfer Instructions",
-            "bank_transfer_instructions_message": "Use the bank details below to transfer the full amount of your order.",
-            "bank_details": "Bank Details",
-            "bank_name": "Bank",
-            "bank_account_number": "Account Number",
-            "bank_account_name": "Bank Account Name",
-            "no_bank_details": "No bank details have been provided yet.",
-            "upload_receipt_instructions": "Upload the payment transfer receipt below so that we can process your payment.",
-            "receipt_upload": "Payment Receipt Upload",
-            "payment_receipt": "Payment Receipt",
-            "upload_payment_receipt": "Upload Payment Receipt"
         }
     },
-    "store":{
+    "store": {
         "blog": {
             "title": "Blog",
             "edit_this_post": "Edit this post",
@@ -258,7 +117,6 @@
         },
         "catalogue": {
             "free": "Free",
-            "sale": "Sale",
             "none_found": "No products found.",
             "edit_this_category": "Edit this category",
             "edit_this_product": "Edit this product",
@@ -266,10 +124,6 @@
             "one_time": "One Time",
             "subscribe_save": "Subscribe & Save",
             "order_arrival_frequency": "How often would you like your order to arrive?",
-            "add_to_wishlist": "Add to wishlist",
-            "add_to_wishlist_loading": "Adding...",
-            "remove": "Remove",
-            "remove_loading": "Removing...",
             "add_to_cart": "Add to cart",
             "add_to_cart_loading": "Adding...",
             "product_unavailable": "Unavailable",
@@ -280,40 +134,13 @@
             "no_reviews_add": "be the first to write one",
             "customer_reviews": "Customer Reviews",
             "see_all_reviews": "See all reviews",
-            "write_a_review": "Write a review",
-            "product_in_wishlist": "Product is in {{ name }} wishlist.",
-            "recommended_products_header": "Customers who viewed this item also bought"
+            "write_a_review": "Write a review"
         },
-        "registration": {
-            "enter_new_password": "Enter a new password",
-            "password_recovery": "Password Recovery",
-            "welcome": "Welcome to your Account!",
-            "create_your_password": "Create your password below to enjoy all of benefits of your {{ site_name }} account",
-            "manage_orders": "<strong>Manage Orders</strong> - check on order status, tracking, and manage your orders",
-            "personal_settings": "<strong>Personal Settings</strong> - manage your shipping addresses, password, email address and language preferences",
-            "continue_to_account": "Continue to Your Account",
-            "continue_to_account_loading": "Continuing...",
-            "reset_unsuccessful": "Password reset unsuccessful",
-            "reset_unsuccessful_message": "The password reset link was invalid, possibly because it has already been used.  Please request a new password reset.",
-            "password_reset": "Password reset",
-            "password_reset_text": "Forgotten your password? Enter your e-mail address below, and we'll e-mail instructions for setting a new one.",
-            "send_reset_email": "Send reset email",
-            "send_reset_email_loading": "Sending...",
-            "reset_email_sent_title": "Password reset email sent",
-            "reset_email_sent": "Email sent",
-            "reset_email_sent_message": "<p>We've e-mailed you instructions for resetting your password. You should be receiving it shortly.</p><p> If you don't receive an email, please make sure you've entered the address you registered with, and check your spam folder.</p>",
-            "enter_new_password_message": "Please enter your new password twice so we can verify you typed it in correctly.",
-            "change_my_password": "Change my password",
-            "change_my_password_loading": "Changing...",
-            "password_reset_complete": "Password reset complete",
-            "password_reset_complete_message": "Your password has been set.  You may go ahead and log in now.",
-            "complete": "Complete"
-        },
+        "registration": {},
         "review": {
             "reviews": "Reviews",
             "customer_reviews": "Customer reviews",
             "all_reviews": "All Reviews",
-            "free": "Free",
             "customer_reviews_count": {
                 "one": "{{ count }} customer review",
                 "other": "{{ count }} customer reviews"
@@ -325,10 +152,8 @@
             "save_review": "Save review"
         },
         "search": {
-            "title": "Search",
             "products_matching": "Products matching {{ q }}",
-            "search_not_found": "Found 0 results.",
-            "search_suggestion": "Did you mean <a href='{{ search_url }}?q={{ suggestion }}'>'{{ suggestion }}'</a>?"
+            "search_not_found": "Found 0 results."
         },
         "support": {
             "title": "Support",
@@ -341,147 +166,6 @@
             "no_articles": "No articles have been created yet.",
             "edit_this_article": "Edit this article",
             "last_updated": "Last Updated"
-
-        } 
-    },
-    "customer": {
-        "address": {
-             "heading": "Addresses",
-             "address_book": "Address book",
-             "manage_addresses": "Manage Addresses",
-             "add_new": "Add New",
-             "default_shipping_address": "Default shipping address",
-             "default_billing_address": "Default billing address",
-             "set_default_shipping_address" : "Set as default shipping address",
-             "set_default_billing_address" : "Set as default billing address",
-             "no_addresses" : "There are no addresses in your address book.",
-             "delete_warning": "Are you sure you want to delete this address?"
-        },
-        "order":{
-            "heading": "Order History",
-            "heading_order_date": "Ordered on <strong>{{ order_date }}</strong>",
-            "heading_order_status": "and is <strong>{{ order_status }}</strong>",
-            "cancel_modal_header": "Confirmation to cancel Order #{{ number }}",
-            "cancel_modal_body": "After an order is canceled, we will attempt to stop the shipment at our fulfillment center and your payment will be refunded.",
-            "shipping_address": "Shipping Address",
-            "payment_method": "Payment Method",
-            "no_payment_required": "No payment was required for this order.",
-            "order_summary": "Order Summary",
-            "discount": "Discount",
-            "cart_total_ex_discounts": "Cart total (excl. discounts)",
-            "cart_total_inc_discounts": "Cart total (inc. discounts)",
-            "cart_total": "Cart total",
-            "shipping_total_ex_discounts": "Shipping total (excl. discounts)",
-            "shipping_total_inc_discounts": "Shipping total (inc. discounts)",
-            "shipping_total": "Shipping total",
-            "total": "Total",
-            "order_total": "Order total",
-            "track_order": "Track Order",
-            "payment_instructions": "Payment Instructions",
-            "shipping_method": "Shipping Method",
-            "no_orders_match_search": "No orders match your search.",
-            "no_orders_placed": "You haven't placed any orders."
-        },
-        "profile": {
-             "heading": "Profile",
-             "subheading": "Your profile & security details",
-             "name": "Name",
-             "email": "Email address",
-             "password": "Password",
-             "phone": "Phone number",
-             "lang": "Language"
-        },
-        "subscriptions":{
-            "heading": "Subscriptions",
-            "heading_detail": "Subscription {{ page_title }}",
-            "no_subscriptions": "No subscriptions have been created yet.",
-            "status_is": "Your subscription is",
-            "next_shipment": "Your next shipment will be on <strong>{{ ship_date }}</strong>",
-            "subscription_schedule": "Your subscription is scheduled every <strong>{{ subscription_frequency }}</strong>.",
-            "modal_change_ship_date_heading": "Change Next Shipment Date",
-            "modal_change_ship_date_body": "Change the shipping schedule for how often to receive new orders.",
-            "modal_next_ship_date": "Next shipment is {{ next_renewal }}.",
-            "modal_use_calendar_body": "Use the calendar below to update the next shipment date.",
-            "modal_change_ship_date_button": "Change Next Shipment Date",
-            "modal_cancel_heading": "Subscription Cancellation",
-            "modal_cancel_body": "Is there anything we can do for you to stay with us?",
-            "modal_cancel_create": "Create",
-            "modal_cancel_support_ticket": "a support ticket",
-            "modal_cancel_happy_to_help": "with our team and we'd be happy to help.",
-            "modal_cancel_reason": "Please share your reasons for cancelling.",
-            "required": "(*required)",
-            "modal_downsell_header": "Attention! Limited Special Offer.",
-            "modal_downsell_body": "After an order is canceled, we will attempt to stop the shipment at our fulfillment center and your payment will be refunded.",
-            "modal_downsell_offer_for_you": "Hey {{ name }}, we have a limited time special offer for you.",
-            "modal_downsell_offer_detail": "Save {{ percentage }}% and lower your commitment to {{ total }} a month",
-            "no_downsell": "No Thanks",
-            "yes_downsell": "Yes I'm in",
-            "modal_change_schedule_heading": "Change Shipping Schedule",
-            "modal_change_schedule_body": "Change the shipping schedule for how often to receive new orders.",
-            "modal_change_schedule_label": "Schedule Options",
-            "modal_change_schedule_button": "Update Schedule",
-            "modal_remove_product_heading": "Remove Product",
-            "modal_remove_product_confirmation": "Are you sure you want to remove this product?",
-            "modal_remove_product_body": "You will no longer receive auto shipments or be billed for this product upon removal.",
-            "shipping_address": "Shipping Address",
-            "edit_shipping_address": "Edit Shipping Address",
-            "payment_method": "Payment Method",
-            "expires": "Expires",
-            "update_payment_method": "Update Payment Method",
-            "order_summary": "Order Summary",
-            "subtotal": "Subtotal",
-            "shipping": "Shipping",
-            "total": "Total",
-            "edit_ship_date": "Edit Shipment Date",
-            "change_schedule": "Change Schedule",
-            "remove": "Remove",
-            "change_shipping_address_heading": "An address from your address book?",
-            "ship_to_default_address": "Ship to your default shipping address",
-            "ship_to_this_address": "Ship to this address",
-            "new_address": "Or a new address?",
-            "credit_card": "Credit Cards",
-            "existing_cards": "Your Existing Credit Cards",
-            "name_on_card": "Name on card",
-            "card_expires": "Expires On",
-            "ending_in": "ending in",
-            "use_new_credit_card": "Use a New Credit Card?",
-            "billing_address": "Billing address",
-            "same_as_shipping_address": "Same as Shipping address",
-            "reactivate": "Reactivate",
-            "modal_reactivate_heading":"Reactivate Subscription",
-            "modal_reactivate_body": "Set a new shipment date for your subscription.",
-            "modal_reactivate_button": "Set Shipment Date"
-        },
-        "support": {
-             "heading": "Support",
-             "support_tickets": "Support Tickets",
-             "create_new": "Create New",
-             "submit_ticket": "Submit ticket",
-             "no_tickets": "No tickets have been created yet.",
-             "created_at": "Created {{ created_at }}",
-             "update_ticket": "Update Ticket",
-             "from": "From: <strong>{{ comment_author }}</strong>",
-             "attachments": "Attachments",
-             "create_new_support": "Create new support request",
-             "create_support_request": "Create a Support Request",
-             "create_support_request_timeframe": "We normally respond tickets within 24 business hours."
-             
-        },
-        "login": {
-            "title": "Login",
-            "heading": "Login",
-            "register_link": "Don't have an account? <a href='{{ link }}'>Get started</a>.",
-            "forgot_password": "I've forgotten my password",
-            "sms": "Login with SMS",
-            "social": "Social Login",
-            "facebook": "Login with Facebook"
-        },
-        "register": {
-            "title": "Register",
-            "heading": "Register",
-            "welcome_to": "Welcome to {{ shop_name }}",
-            "already_have_account": "Already have an account?",
-            "login": "Log in"
         }
     },
     "side_cart": {

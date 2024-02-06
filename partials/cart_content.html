@@ -34,7 +34,7 @@
                         <!-- Shopping Cart-->
                         <form method="post" id="basket_formset">
 
-                            <table class="account_table">
+                            <table class="cart_table">
                                 <thead>
                                     <tr>
                                         <th scope="col">{% t "tables.heading.product_name" %}</th>
@@ -52,21 +52,21 @@
                                             {% purchase_info_for_line request line as session %}
                                             <tr>
                                                 <td data-label='{% t "tables.heading.product_name" %}'>
-                                                    <div class="account_table-product">
+                                                    <div class="cart_table-product">
                                                         {{ form.id }}
                                                         {% with image=product.primary_image %}
                                                             {% image_thumbnail image.original "150x150" upscale=False as thumb %}
-                                                            <div class="account_table-pimage">
+                                                            <div class="cart_table-pimage">
                                                                 <a href="{{ product.get_absolute_url }}">
                                                                     <img src="{{ thumb.url }}" alt="Product">
                                                                 </a>
                                                             </div>
                                                         {% endwith %}
                                                             <div>
-                                                                <div class="account_table-pname">
+                                                                <div class="cart_table-pname">
                                                                     {{ line.description }}
                                                                 </div>
-                                                                <div class="account_table-schedule">
+                                                                <div class="cart_table-schedule">
                                                                     <p>
                                                                         {% t "tables.content.price" %}:
                                                                         {% if not line.unit_price_incl_tax and not line.unit_tax_excl_tax %}
@@ -96,13 +96,13 @@
                                                     {% include 'partials/form_field.html' with field=form.subscription_range selectStyle='is-small' %}
                                                 </td>
                                                 <td data-label="Total">
-                                                    <div class="account_table-total">
+                                                    <div class="cart_table-total">
                                                         {{ line.line_price_incl_tax_incl_discounts|currency:line.price_currency }}
                                                     </div>
 
                                                 </td>
                                                  <td data-label="">
-                                                    <div class="account_table-actions">
+                                                    <div class="cart_table-actions">
                                                         <a href="#" data-id="{{ forloop.counter0 }}" data-behaviours="remove" title='{% t "tables.actions.remove" %}' class="remove-from-cart button button-sm">
                                                             Remove
                                                             <div style="display:none">
@@ -180,7 +180,7 @@
                     <form action="{% url 'basket:saved' %}" method="post" id="saved_basket_formset">
 
 
-                         <table class="account_table">
+                         <table class="cart_table">
                                 <thead>
                                     <tr>
                                         <th scope="col">{% t "tables.heading.items_to_buy_now" %}</th>
@@ -203,17 +203,17 @@
                                             {% purchase_info_for_line request line as session %}
                                             <tr>
                                                 <td data-label="Product">
-                                                    <div class="account_table-product">
+                                                    <div class="cart_table-product">
                                                         {{ form.id }}
                                                         {% with image=product.primary_image %}
                                                             {% image_thumbnail image.original "150x150" upscale=False as thumb %}
-                                                            <div class="account_table-pimage">
+                                                            <div class="cart_table-pimage">
                                                                 <a class="product-thumb" href="{{ product.get_absolute_url }}">
                                                                     <img original="{{ image.original }}" src="{{ thumb.url }}" alt="Product">
                                                                 </a>
                                                             </div>
                                                         {% endwith %}
-                                                         <div class="account_table-pname">
+                                                         <div class="cart_table-pname">
                                                                 {{ line.description }}
                                                             </div>
                                                   </div>
