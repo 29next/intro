@@ -1,3 +1,133 @@
+//--------------------------------- Account Table-------------------------//
+
+table.cart_table {
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border-bottom: 1px solid #000;
+    // table-layout: fixed;
+
+    tr {
+        border-top: 1px solid #ddd;
+
+        @include md-up {
+            &:first-child {
+                border-top: transparent;
+            }
+        }
+
+    }
+
+    th,
+    td {
+        padding: 1rem .75rem;
+        // text-align: center;
+        font-size: 0.875rem;
+        vertical-align: middle;
+    }
+
+    thead tr {
+        border-top: transparent;
+        border-bottom: 1px solid #000;
+    }
+
+    th {
+        font-size: 1rem;
+        border-top: transparent;
+    }
+
+    .cart_table-product {
+        display: flex;
+
+        align-items: center;
+
+        img {
+            max-width: 100px;
+            height: 100px;
+            margin-right: 0.75rem;
+        }
+
+    }
+
+    .cart_table-pname {
+        font-weight: bold;
+    }
+
+    .cart_table-total {
+        font-weight: bold;
+    }
+
+
+    .cart_table-actions {
+        text-align: right;
+
+        .button:not(:first-child) {
+            margin-left: .75rem;
+
+        }
+
+        .button:not(:last-child) {
+            margin-bottom: .75rem;
+        }
+
+    }
+
+    @include md-down {
+
+        border: 0;
+
+        thead {
+            border: none;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+        }
+
+        tr {
+            display: block;
+            margin-bottom: 1.5rem;
+            background-color: #f2f2f3;
+        }
+
+        td {
+            border-bottom: 1px solid #ddd;
+            display: block;
+            font-size: .8em;
+            text-align: right !important;
+
+            &::before {
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                // text-transform: uppercase;
+            }
+
+            &:last-child {
+                border-bottom: 0;
+            }
+        }
+
+        .cart_table-product {
+            display: block;
+
+            img {
+                max-width: 50px;
+                height: 50px;
+                margin-right: 0
+            }
+
+
+        }
+    }
+}
+
+//--------------------------------- Sidecart -------------------------//
+
 .sidecart-open {
     overflow: hidden;
 }
@@ -260,7 +390,7 @@
     .item-title {
         display: block;
         font-size: 1rem;
-        
+
         margin-bottom: 0.5rem;
         font-family: inherit;
         font-weight: 500;
@@ -303,7 +433,7 @@
                 background-color: #fff;
                 background-clip: padding-box;
                 border: 1px solid #ced4da;
-        
+
                 transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
             }
         }

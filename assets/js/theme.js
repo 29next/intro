@@ -129,7 +129,7 @@ var theme = (function(t, $) {
                     }
                 })
             })
-        }  
+        }
     };
     t.nav = {
         init: function() {
@@ -142,12 +142,12 @@ var theme = (function(t, $) {
                             var $target = document.getElementById(target);
                             $el.classList.toggle('active');
                             $target.classList.toggle('active');
-            
+
                         });
                     });
                 }
-               window.onscroll = function() { 
-                    stickyHeader() 
+               window.onscroll = function() {
+                    stickyHeader()
                 }
                 var navbar = document.getElementById("store_navbar");
                 var sticky = navbar.offsetTop;
@@ -170,7 +170,7 @@ var theme = (function(t, $) {
             t.forms.loadingText();
             t.forms.currencySwitcher();
         },
-        
+
         loadingText: function() {
             $(document.body).on('submit', 'form', function(){
                 var form = $(this);
@@ -200,7 +200,7 @@ var theme = (function(t, $) {
             }
             t.search.searchActions(
                 t.search.selector.searchWrapper,
-                t.search.selector.searchOpen, 
+                t.search.selector.searchOpen,
                 t.search.selector.searchClose
             );
         },
@@ -241,7 +241,7 @@ var theme = (function(t, $) {
             t.product.handleSubscriptionOption();
 
             var productData = document.getElementById(t.product.selector.productData);
-            
+
             if (!productData || !productData.innerHTML.length) {
                 return;
             }
@@ -251,8 +251,8 @@ var theme = (function(t, $) {
                 return;
             }
             t.product.handleVariantSelect();
-            $("select[name*='attr_']").on("change", t.product.handleVariantSelect);          
-            
+            $("select[name*='attr_']").on("change", t.product.handleVariantSelect);
+
         },
         getSelectAttributeValues: function() {
             var attributeValues = [];
