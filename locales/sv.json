@@ -79,10 +79,10 @@
     },
     "order": {
         "cart": {
-            "title": "Korg",
+            "title": "Varukorg",
             "summary": "Sammanfattning",
-            "basket_total": "Korg Totalt",
-            "basket_total_discount": "Korg totalt (efter rabatter)",
+            "cart_total": "Varukorg Totalt",
+            "cart_total_discount": "Varukorg totalt (efter rabatter)",
             "applied_offer": "Tillämpat erbjudande",
             "applied_coupons": "Tillämpade kuponger",
             "shipping": "Frakt",
@@ -90,7 +90,7 @@
             "proceed_to_checkout": "Fortsätt till kassan",
             "upsell_message_detail": "{{ message }} för att kvalificera sig för <b>{{ offer_name }}</b> specialerbjudande",
             "continue_shopping": "Fortsätt shoppa",
-            "basket_empty": "Din varukorg är tom.",
+            "cart_empty": "Din varukorg är tom.",
             "items_count": {
                 "one": "{{ count }} objekt",
                 "other": "{{ count }} objekt"
