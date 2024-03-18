@@ -81,8 +81,8 @@
         "cart": {
             "title": "panier",
             "summary": "Résumé",
-            "basket_total": "Total du panier",
-            "basket_total_discount": "Total du panier (après rabais)",
+            "cart_total": "Total du panier",
+            "cart_total_discount": "Total du panier (après rabais)",
             "applied_offer": "Offre appliquée",
             "applied_coupons": "Coupons appliqués",
             "shipping": "Expédition",
@@ -90,7 +90,7 @@
             "proceed_to_checkout": "Procéder à la caisse",
             "upsell_message_detail": "{{ message }} pour bénéficier de l'offre spéciale <b>{{ offer_name }}</b>",
             "continue_shopping": "Continuer vos achats",
-            "basket_empty": "Votre panier est vide.",
+            "cart_empty": "Votre panier est vide.",
             "items_count": {
                 "one": "{{ count }} article",
                 "other": "{{ count }} articles"

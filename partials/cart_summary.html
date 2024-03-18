@@ -5,7 +5,7 @@
         <h6>{% t "order.cart.summary" %}</h6>
 
             <span class="tag tag-secondary">
-                {% t "order.cart.items_count" with count=basket.num_items %}
+                {% t "order.cart.items_count" with count=cart.num_items %}
             </span>
 
 
@@ -16,18 +16,18 @@
         <table class="basket_summary-table">
             <tbody>
                 <tr>
-                    <td>{% t "order.cart.basket_total" %}</td>
+                    <td>{% t "order.cart.cart_total" %}</td>
                     <td></td>
                     <td class="text-right">
-                        {{ basket.total_excl_tax_excl_discounts|currency:basket.currency }}
+                        {{ cart.total_excl_tax_excl_discounts|currency:cart.currency }}
                     </td>
                 </tr>
-                {% with offer_discounts=basket.offer_discounts voucher_discounts=basket.grouped_voucher_discounts %}
+                {% with offer_discounts=cart.offer_discounts voucher_discounts=cart.grouped_voucher_discounts %}
                     {% for discount in offer_discounts %}
                         <tr>
                             <td>{% t "order.cart.applied_offer" %} <span class="tag tag-primary">{{ discount.name }}</span></td>
                             <td></td>
-                            <td class="text-right">-{{ discount.discount|currency:basket.currency }}</td>
+                            <td class="text-right">-{{ discount.discount|currency:cart.currency }}</td>
                         </tr>
                     {% endfor %}
 
@@ -37,18 +37,18 @@
                                 <td>{% t "order.cart.applied_coupons" %} <span class="tag tag-primary">{{ discount.voucher.code }}</span></td>
                                 <td>
                                     {% if editable %}
-                                        <form action="{% url 'basket:vouchers-remove' pk=discount.voucher.id %}" method="POST" id="remove-vocher-form-{{ discount.voucher.id }}">
+                                        <form action="{% url 'cart:vouchers-remove' pk=discount.voucher.id %}" method="POST" id="remove-vocher-form-{{ discount.voucher.id }}">
                                             {% csrf_token %}
                                             <a class="remove-from-cart text-danger" href="#" onclick="document.getElementById('remove-vocher-form-{{ discount.voucher.id }}').submit();" data-toggle="tooltip" title="" data-original-title="Remove">X</a>
                                         </form>
                                     {% endif %}
                                 </td>
-                                <td class="text-right">-{{ discount.discount|currency:basket.currency }}</td>
+                                <td class="text-right">-{{ discount.discount|currency:cart.currency }}</td>
                             </tr>
                         {% endfor %}
                     {% endif %}
                 {% endwith %}
-                {% with subscription_rebill_quantity=basket.subscription_rebill_quantity %}
+                {% with subscription_rebill_quantity=cart.subscription_rebill_quantity %}
                     {% if subscription_rebill_quantity %}
                         <tr>
                             <td>
@@ -110,10 +110,10 @@
                             </td>
                             <td></td>
                             <td class="text-right">
-                                {% if basket.is_tax_known %}
-                                    {{ subscription_total_incl_tax|currency:basket.currency }}
+                                {% if cart.is_tax_known %}
+                                    {{ subscription_total_incl_tax|currency:cart.currency }}
                                 {% else %}
-                                    {{ subscription_total_excl_tax|currency:basket.currency }}
+                                    {{ subscription_total_excl_tax|currency:cart.currency }}
                                 {% endif %}
                             </td>
                         </tr>
@@ -127,12 +127,12 @@
                         </span>
                     </td>
                 </tr>
-                {% if basket.display_taxes %}
+                {% if cart.display_taxes %}
                     <tr>
-                        <td>{{ basket.display_taxes }}</td>
+                        <td>{{ cart.display_taxes }}</td>
                         <td></td>
                         <td class="text-right">
-                        {{ order_total.tax|currency:basket.currency }}
+                        {{ order_total.tax|currency:cart.currency }}
                         </td>
                     </tr>
                 {% endif %}
@@ -140,7 +140,7 @@
                     <td>{% t "order.cart.order_total" %}</td>
                     <td></td>
                     <td class="text-right">
-                        {{ order_total.incl_tax|currency:basket.currency }}
+                        {{ order_total.incl_tax|currency:cart.currency }}
                     </td>
                 </tr>
             </tbody>

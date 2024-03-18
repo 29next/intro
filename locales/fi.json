@@ -81,8 +81,8 @@
         "cart": {
             "title": "Ostoskori",
             "summary": "Yhteenveto",
-            "basket_total": "Ostoskori yhteensä",
-            "basket_total_discount": "Ostoskori yhteensä (alennusten jälkeen)",
+            "cart_total": "Ostoskori yhteensä",
+            "cart_total_discount": "Ostoskori yhteensä (alennusten jälkeen)",
             "applied_offer": "Sovellettu tarjous",
             "applied_coupons": "Sovelletut kupongit",
             "shipping": "Toimitus",
@@ -90,7 +90,7 @@
             "proceed_to_checkout": "Siirry kassalle",
             "upsell_message_detail": "{{ message }} päästäksesi <b>{{ offer_name }}</b> -erikoistarjoukseen",
             "continue_shopping": "Jatka ostoksia",
-            "basket_empty": "Ostoskorisi on tyhjä.",
+            "cart_empty": "Ostoskorisi on tyhjä.",
             "items_count": {
                 "one": "{{ count }} Tuote",
                 "other": "{{ count }} Tuotteet"

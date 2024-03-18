@@ -110,14 +110,14 @@
                 <hr class="mb-3">
                 {% endblock %}
 
-                {% block product_basket_form %}
+                {% block product_cart_form %}
                 <div class="catalogue_product-action">
                     {% purchase_info_for_product request product as session %}
                     {% if session.availability.is_available_to_buy %}
-                    {% basket_form request product 'single' as basket_form %}
-                    <form id="add-to-cart" class="catalogue_product-action-form" action="{% url 'basket:add' pk=product.pk %}" method="post">
+                    {% cart_form request product 'single' as cart_form %}
+                    <form id="add-to-cart" class="catalogue_product-action-form" action="{% url 'cart:add' pk=product.pk %}" method="post">
                         {% csrf_token %}
-                        {% include "partials/form_fields.html" with form=basket_form nolabel=True selectStyle='is-medium' %}
+                        {% include "partials/form_fields.html" with form=cart_form nolabel=True selectStyle='is-medium' %}
                         <button type="submit" class="button button-primary button-lg is-fullwidth omnisend-add-to-cart-button" data-loading-text='{% t "store.catalogue.add_to_cart_loading" %}' data-disabled-text='{% t "store.catalogue.product_unavailable" %}'>{% t "store.catalogue.add_to_cart" %}</button>
                     </form>
                     {% else %}

@@ -81,8 +81,8 @@
                     <a class="store_nav-item store_nav-mobile-search store_search-icon" href="#">
                         <img src="{{ 'img/icons/icon-search.svg'|asset_url }}" alt="{% t 'global.button.search' %}">
                     </a>
-                    <a class="store_nav-item store_nav-mobile-cart" href="#basket-modal" data-toggle="side-cart">
-                        <img src="{{ 'img/icons/icon-cart.svg'|asset_url }}" alt="{% t 'navigation.main.cart' %}" alt="{% t 'navigation.main.cart' %}">&nbsp;<span id="basket-count">{{ request.basket.num_items }}</span>
+                    <a class="store_nav-item store_nav-mobile-cart" href="#cart-modal" data-toggle="side-cart">
+                        <img src="{{ 'img/icons/icon-cart.svg'|asset_url }}" alt="{% t 'navigation.main.cart' %}" alt="{% t 'navigation.main.cart' %}">&nbsp;<span id="cart-count">{{ request.cart.num_items }}</span>
                     </a>
                 </div>
                 <div id="store_nav-site-links" class="store_nav-menu">
@@ -145,9 +145,9 @@
 
                             </div>
                         </div>
-                        {% block mini_basket %}
-                            <a class="store_nav-item store_nav-cart" href="#basket-modal" data-toggle="side-cart">
-                                <img src="{{ 'img/icons/icon-cart.svg'|asset_url }}" alt="{% t 'navigation.main.cart' %}">&nbsp;<span id="basket-count">{{ request.basket.num_items }}</span>
+                        {% block mini_cart %}
+                            <a class="store_nav-item store_nav-cart" href="#cart-modal" data-toggle="side-cart">
+                                <img src="{{ 'img/icons/icon-cart.svg'|asset_url }}" alt="{% t 'navigation.main.cart' %}">&nbsp;<span id="cart-count">{{ request.cart.num_items }}</span>
                             </a>
                         {% endblock %}
                         {% include 'partials/nav_lang_currency_switcher.html' %}

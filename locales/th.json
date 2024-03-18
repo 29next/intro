@@ -81,8 +81,8 @@
         "cart": {
             "title": "ตะกร้า",
             "summary": "สรุป",
-            "basket_total": "รวมตะกร้า",
-            "basket_total_discount": "รวมตะกร้า (หลังจากส่วนลด)",
+            "cart_total": "รวมตะกร้า",
+            "cart_total_discount": "รวมตะกร้า (หลังจากส่วนลด)",
             "applied_offer": "ข้อเสนอที่สมัครใช้",
             "applied_coupons": "คูปองที่ใช้แล้วได้",
             "shipping": "การจัดส่งสินค้า",
@@ -90,7 +90,7 @@
             "proceed_to_checkout": "ดำเนินการเช็คเอาท์",
             "upsell_message_detail": "{{ message }} เพื่อรับข้อเสนอพิเศษ <b>{{ offer_name }}</b>",
             "continue_shopping": "ซื้อสินค้าต่อ",
-            "basket_empty": "ตะกร้าของคุณว่างเปล่า",
+            "cart_empty": "ตะกร้าของคุณว่างเปล่า",
             "items_count": {
                 "one": "{{ count }} รายการ",
                 "other": "{{ count }} รายการ"
