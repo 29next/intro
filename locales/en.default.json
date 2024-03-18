@@ -79,10 +79,10 @@
     },
     "order": {
         "cart": {
-            "title": "Basket",
+            "title": "Cart",
             "summary": "Summary",
-            "basket_total": "Basket Total",
-            "basket_total_discount": "Basket total (after discounts)",
+            "cart_total": "Cart Total",
+            "cart_total_discount": "Cart total (after discounts)",
             "applied_offer": "Applied Offer",
             "applied_coupons": "Applied Coupons",
             "shipping": "Shipping",
@@ -90,7 +90,7 @@
             "proceed_to_checkout": "Proceed to checkout",
             "upsell_message_detail": "{{ message }} to qualify for the <b>{{ offer_name }}</b> special offer",
             "continue_shopping": "Continue shopping",
-            "basket_empty": "Your basket is empty.",
+            "cart_empty": "Your cart is empty.",
             "items_count": {
                 "one": "{{ count }} Item",
                 "other": "{{ count }} Items"

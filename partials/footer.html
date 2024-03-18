@@ -17,7 +17,7 @@
                         {% t "navigation.footer.account_info" %}
                     </div>
                     <ul>
-                        <li><a href="{% url 'basket:summary' %}">{% t "navigation.main.cart" %}</a></li>
+                        <li><a href="{% url 'cart:summary' %}">{% t "navigation.main.cart" %}</a></li>
                         {% if user.is_authenticated %}
                         <li><a href="{% url 'customer:summary' %}">{% t "navigation.account.account" %}</a></li>
             

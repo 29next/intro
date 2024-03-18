@@ -1,10 +1,10 @@
 {% load theme_tags %}
 {% load static %}
 
-<form id="side_basket_formset">
-    <div class="sidecart" id="basket-modal" tabindex="-1" role="dialog">
+<form id="side_cart_formset">
+    <div class="sidecart" id="cart-modal" tabindex="-1" role="dialog">
         <div class="sidecart-dialog" role="document">
-            <div class="sidecart-content" id="basket-content"></div>
+            <div class="sidecart-content" id="cart-content"></div>
         </div>
     </div>
 </form>
@@ -49,7 +49,7 @@
     var sidecart_options = {
         modal_open: {% if modal_open %} true {% else %} false {% endif %},
         graphql_url: "{% url 'storefrontapi:graphql' %}",
-        max_basket_quantity_per_line: {{config.max_basket_quantity_per_line}},
+        max_cart_quantity_per_line: {{ max_cart_quantity_per_line }},
         SIDECART_MSGS: SIDECART_MSGS
     }
     sidecart.init(sidecart_options);
