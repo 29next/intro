@@ -79,10 +79,10 @@
     },
     "order": {
         "cart": {
-            "title": "Kurv",
+            "title": "Handlekurv",
             "summary": "Summering",
-            "basket_total": "Kurv totalt",
-            "basket_total_discount": "Kurv totalt (etter rabatter)",
+            "cart_total": "Handlekurv Totalt",
+            "cart_total_discount": "Handlekurv totalt (etter rabatter)",
             "applied_offer": "Anvendt tilbud",
             "applied_coupons": "Anvendte kuponger",
             "shipping": "Frakt",
@@ -90,7 +90,7 @@
             "proceed_to_checkout": "Gå videre til kassen",
             "upsell_message_detail": "{{ message }} for å kvalifisere seg for <b>{{ offer_name }}</b> spesialtilbud",
             "continue_shopping": "Fortsett å handle",
-            "basket_empty": "Kurven din er tom.",
+            "cart_empty": "Handlekurven din er tom.",
             "items_count": {
                 "one": "{{ count }} Element",
                 "other": "{{ count }} Elementer"
