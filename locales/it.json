@@ -79,10 +79,10 @@
     },
     "order": {
         "cart": {
-            "title": "Cestino",
+            "title": "Carrello",
             "summary": "Riepilogo",
-            "basket_total": "Totale del carrello",
-            "basket_total_discount": "Totale del carrello (al netto degli sconti)",
+            "cart_total": "Totale del carrello",
+            "cart_total_discount": "Totale del carrello (al netto degli sconti)",
             "applied_offer": "Offerta applicata",
             "applied_coupons": "Coupon applicati",
             "shipping": "Spedizione",
@@ -90,7 +90,7 @@
             "proceed_to_checkout": "Procedi al checkout",
             "upsell_message_detail": "{{ message }} per qualificarsi per l'offerta speciale <b>{{ offer_name }}</b>",
             "continue_shopping": "Continua a fare acquisti",
-            "basket_empty": "Il carrello è vuoto.",
+            "cart_empty": "Il tuo carrello è vuoto.",
             "items_count": {
                 "one": "{{ count }} Oggetto",
                 "other": "{{ count }} Oggetti"
