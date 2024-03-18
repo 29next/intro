@@ -79,10 +79,10 @@
     },
     "order": {
         "cart": {
-            "title": "Mandje",
+            "title": "Winkelwagentje",
             "summary": "Samenvatting",
-            "basket_total": "Totaal mandje",
-            "basket_total_discount": "Totaal mandje (na kortingen)",
+            "cart_total": "Totaal winkelwagentje",
+            "cart_total_discount": "Totaal winkelwagentje (na kortingen)",
             "applied_offer": "Toegepast aanbod",
             "applied_coupons": "Toegepaste kortingsbonnen",
             "shipping": "Verzenden",
@@ -90,7 +90,7 @@
             "proceed_to_checkout": "Ga verder met afrekenen",
             "upsell_message_detail": "{{ message }} om in aanmerking te komen voor de speciale aanbieding <b>{{ offer_name }}</b>",
             "continue_shopping": "Ga verder met winkelen",
-            "basket_empty": "Je mandje is leeg.",
+            "cart_empty": "Je winkelwagen is leeg.",
             "items_count": {
                 "one": "{{ count }} item",
                 "other": "{{ count }} items"
