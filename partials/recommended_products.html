@@ -22,18 +22,16 @@
                             <div class="catalogue_item-price">
                                 {% purchase_info_for_product request product as session %}
                                 {% if session.price.exists %}
-                                {% if session.price.price_retail > session.price.excl_tax %}
+                                {% if session.price.price_retail > session.price.price %}
                                 <span class="catalogue_item-price-previous">
                                     <s>{{ session.price.price_retail|currency:session.price.currency }}</s>
                                 </span>
                                 {% endif %}
                                 <span class="catalogue_item-price-current">
-                                    {% if session.price.excl_tax == 0 %}
+                                    {% if session.price.price == 0 %}
                                     {% t "store.catalogue.free" %}
-                                    {% elif session.price.is_tax_known %}
-                                    {{ session.price.incl_tax|currency:session.price.currency }}
                                     {% else %}
-                                    {{ session.price.excl_tax|currency:session.price.currency }}
+                                    {{ session.price.price|currency:session.price.currency }}
                                     {% endif %}
                                     {% else %}
                                     &nbsp;
